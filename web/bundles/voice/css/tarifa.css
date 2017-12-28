@@ -1,0 +1,176 @@
+.valores-destino{
+	margin-top: 10px;
+	border-collapse: collapse;
+}
+
+.valores-destino thead tr:nth-child(1) th:nth-child(1){
+	background-color: #fff !important;
+}
+
+.valores-destino thead tr{
+	background-color: #ccc !important
+}
+
+.valores-destino thead tr:nth-child(1) td:nth-child(1){
+	background-color: #efefef !important
+}
+
+.valores-destino thead tr{
+	font-size: 12px;
+}
+
+.tabela-destinos{
+	border-collapse: collapse;
+}
+
+.valores-destino thead tr th{
+	border: 1px solid #fff;
+	border-bottom: none !important;
+	padding: 5px;
+	font-family: Dax-Light;
+}
+
+.valores-destinos{
+	width: 97%;
+}
+
+.sessao-titulo{
+	border-bottom: 1px solid #CCC;
+	padding-bottom: 5px;
+	width: 97%;
+	margin-top: 10px;
+}
+
+.cabecario-origem span{
+	padding: 4px;
+	display: inline-block;
+	color: #FFF;
+	font-family: Arial;
+	border-right: 2px solid #FFF;
+	width: 15%;
+	text-align: center;
+}
+
+.cabecario-origem span:nth-child(3), 
+.cabecario-origem span:nth-child(4){
+	width: 20%;
+}
+
+.cabecario-origem{
+	height: 25px;
+	width: 97%;
+	background-color: #CCC;
+}
+
+div.row div.sessao-titulo span{
+	font-size: 16px;
+	margin-top: 10px;
+	font-family: Dax-Bold;
+}
+
+.sessao-titulo button{
+	margin-left: 10px;
+	padding: 1px 10px;
+}
+
+.title-destino{
+	background-color: #0088D2 !important;
+	color: #fff;
+}
+
+.tabela-destinos td{
+	padding: 5px;
+	font-family: Dax-Light;
+}
+
+.tabela-destinos tr:nth-child(even){
+	background-color: #ECECEC;
+}
+
+.tabela-destinos input{
+	text-align: center;
+}
+
+#dialog .busca{
+	max-height: 300px;
+}
+
+.listaMesmoLocal span {
+	display: inline-block;
+	margin: 3px;
+}
+
+.listaMesmoLocal span.liga{
+	border: 1px solid #000;
+	height: 20px;
+	width: 10px;
+	border-left: none;
+	border-bottom: none;
+	border-top: none;
+	border: 1px solid #000;
+}
+
+tr td.celula.listaMesmoLocal{
+	padding: 0 5px 5px 8% !important
+}
+
+tr td.listaMesmoLocal hr{
+	width: 1px !important;
+	height: 100px !important;
+	border: 1px solid #000 !important;
+	display: inline;
+}
+
+tr td.listaMesmoLocal span.vert{
+	width: 11%;
+	border-bottom: 1px;
+	border: 1px solid #000 !important;
+}
+
+tr.listaLocal td.listaMesmoLocal{
+	background-color: #fff !important
+}
+
+.adicionado-origem{
+	width: 97%;
+}
+
+.valores-origem th{
+	background-color: #0088D2;
+	color: #FFF;
+	font-family: Dax-Light;
+	padding: 5px;
+	font-size: 14px;
+}
+
+.valores-origem td{
+	border: 1px solid #CCC;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	padding: 5px;
+}
+
+.valores-origem tbody tr:nth-child(even){
+	background-color: #F3F3F3;
+}
+
+.valores-origem .listaMesmoLocal .cnl-area-local{
+	width: 18% !important;
+	text-align: center;
+}
+
+.adicionar-excecao{
+	padding: 2px 10px;
+	font-size: 10px;
+	margin-left: 10px;
+}
+
+#template,
+#plano{
+	width: 300px;
+}
+
+.template,
+.plano{
+	margin-right: 5px;
+}

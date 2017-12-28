@@ -1,0 +1,50 @@
+Servicos\LumaBundle\Entity\Categoriaunidade:
+    type: entity
+    table: luma.categoriaunidade
+    indexes:
+        fk_categoriaunidade_categoria1:
+            columns:
+                - cate_codigoid
+        fk_categoriaunidade_unidade1:
+            columns:
+                - unid_codigoid
+    uniqueConstraints:
+        cate_codigoid:
+            columns:
+                - cate_codigoid
+                - unid_codigoid
+    id:
+        cateunidCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: cateunid_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        cateunidAtivo:
+            type: boolean
+            nullable: false
+            default: '0'
+            column: cateunid_ativo
+    manyToOne:
+        cateCodigoid:
+            targetEntity: Categoria
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cate_codigoid:
+                    referencedColumnName: cate_codigoid
+            orphanRemoval: false
+        unidCodigoid:
+            targetEntity: Unidade
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                unid_codigoid:
+                    referencedColumnName: unid_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

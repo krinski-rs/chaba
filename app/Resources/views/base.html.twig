@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% use "::default/menu.html.twig" %}
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% if titleTop is not defined %}{% block title %}SISTECH{% endblock %}{% else %}{{ titleTop }}{% endif %}</title>
+	    <link rel="icon" sizes="16x16" href="{{ asset('favicon.ico') }}" />
+	    <link rel="stylesheet" href="{{ asset('bundles/base/css/base.css') }}" />
+	    <link rel="stylesheet" href="{{ asset('bundles/base/css/jquery-ui.css') }}"/>
+	    <link rel="stylesheet" href="{{ asset('bundles/base/css/jquery-gridsor2.css') }}"/>
+	    <link rel="stylesheet" href="{{ asset('bundles/base/css/jquery.setColumns.css') }}"/>
+	    <link rel="stylesheet" href="{{ asset('bundles/base/css/jquery.multiselect.filter.css') }}"/>
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+{% block static_css %}{% endblock %}
+		<script type="text/javascript" src="{{ asset('bundles/base/js/jquery/jquery-1.11.3.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/base/js/jquery-ui/jquery-ui.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/base/js/jquery-ui/jquery.ui.menubar.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/base/js/jquery.gridSort2.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/base/js/jquery.setColumns.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/base/js/jquery-mask-plugin/src/jquery.mask.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('bundles/base/js/base.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/base/js/jquery-mask-plugin/src/jquery.mask.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/base/js/jquery-validation/dist/jquery.validate.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/base/js/jquery-validation/src/localization/messages_pt_BR.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/base/js/jquery.ui.datepicker-pt-BR.js')}}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/base/js/jquery.multiselect.js')}}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/base/js/jquery.multiselect.filter.js')}}"></script>
+{% block static_js %}{% endblock %}
+    </head>
+    <body>
+   		{{ block('menu') }}
+   		<div class="content"> 
+        	{% block body %}{% endblock %}
+     	</div>
+    </body>
+</html>

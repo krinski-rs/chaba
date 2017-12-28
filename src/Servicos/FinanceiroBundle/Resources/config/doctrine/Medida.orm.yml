@@ -1,0 +1,43 @@
+Servicos\FinanceiroBundle\Entity\Medida:
+    type: entity
+    table: financeiro.medida
+    id:
+        mediCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: medi_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        mediNome:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: medi_nome
+        mediSigla:
+            type: string
+            nullable: false
+            length: 10
+            fixed: false
+            column: medi_sigla
+        mediMultiplicador:
+            type: integer
+            nullable: false
+            unsigned: false
+            default: '1024'
+            column: medi_multiplicador
+        mediVezes:
+            type: integer
+            nullable: false
+            unsigned: false
+            default: '0'
+            column: medi_vezes
+        mediCategoria:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: medi_categoria
+    lifecycleCallbacks: {  }

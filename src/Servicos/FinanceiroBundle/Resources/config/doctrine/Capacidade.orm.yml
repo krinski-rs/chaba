@@ -1,0 +1,19 @@
+Servicos\FinanceiroBundle\Entity\Capacidade:
+    type: entity
+    table: financeiro.capacidade
+    id:
+        capaCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: capa_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        capaCapacidade:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: capa_capacidade
+    lifecycleCallbacks: {  }

@@ -1,0 +1,78 @@
+{% extends 'TroubleticketBundle::base.html.twig' %}
+{% use "TroubleticketBundle:BS/modal:bs_export.html.twig" %}
+{% block body %}
+    <div class="titleModulo">
+        <div>
+            <span>Fila de Boletim de Serviço - BS</span>
+        </div>
+    </div>
+    <div class="row" style="margin-bottom: 0px !important;">
+        <form id="form_stack_search" action="" method="get">
+            <div class="col-sm-10">
+                <label>ID do BS</label>
+                <input type="text" id="input_id" name="id">
+            </div>
+            <div class="col-sm-10">
+                <label>CID</label>
+                <input type="text" id="input_cid" name="cid">
+            </div>
+            <div class="col-sm-10">
+                <label>Designação</label>
+                <input type="text" id="input_designacao" name="designation">
+            </div>
+            <div class="col-sm-30">
+                <label>Data de abertura</label>
+                <div class="row" style="margin-top: 0 !important;">
+                    <div class="col-sm-10">
+                        de:
+                    </div>
+                    <div class="col-sm-40">
+                        <input type="text" class="input_date" id="initial_date" name="initial_date">
+                    </div>
+                    <div class="col-sm-10">
+                        até:
+                    </div>
+                    <div class="col-sm-40">
+                        <input type="text" class="input_date" id="final_date" name="final_date">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-10">
+                <button class="btn btn-primary">Pesquisar</button>
+            </div>
+        </form>
+    </div>
+    <table id="table_ba_stack" class="hover row-border stripe compact cell-border"></table>
+    <div class="row report_actions">
+        <button class="btn btn-primary btn_stack_bs_export" id="btn_stack_bs_export">Relatório</button>
+        <div class="clearfix"></div>
+    </div>
+    <div id="div_stack_bs_export" style="display:none;">
+        {{ block('bs_export') }}
+    </div>
+{% endblock %}
+{% block static_css %}
+    <link rel="stylesheet" href="{{ asset('bundles/troubleticket/js/plugins/jquery-dataTables/datatables.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/troubleticket/css/style.css') }}" />
+{% endblock %}
+{% block static_js %}
+    <script type="text/javascript">
+        var stack_request = "{{path('troubleticket_bs_stack_request')}}",
+            main_request = "{{path('troubleticket_bs_main',{'id':0})}}",
+            page_limit = parseInt('{{page_limit}}'),
+            report_id_pos = 0,
+            stack_columns = [
+                { title: 'ID' },
+                { title: 'Status' },
+                { title: 'Item' },
+                { title: 'Designação do Circuito' },
+                { title: 'Técnico' },
+                { title: 'Data de criação' },
+                { title: 'BA/BI' },
+                { title: 'Ações' },
+            ];
+
+    </script>
+    <script type="text/javascript" src="{{ asset('bundles/troubleticket/js/plugins/jquery-dataTables/datatables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/troubleticket/js/stack.js') }}"></script>
+{% endblock %}

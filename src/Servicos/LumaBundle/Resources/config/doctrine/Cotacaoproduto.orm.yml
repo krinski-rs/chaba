@@ -1,0 +1,58 @@
+Servicos\LumaBundle\Entity\Cotacaoproduto:
+    type: entity
+    table: luma.cotacaoproduto
+    indexes:
+        fk_cotacaoproduto_cotacao1:
+            columns:
+                - cota_codigoid
+        fk_cotacaoproduto_produto1:
+            columns:
+                - prod_codigoid
+        fk_cotacaoproduto_tipo1:
+            columns:
+                - tipo_codigoid
+    id:
+        cotaprodCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: cotaprod_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        cotaprodQuantidade:
+            type: decimal
+            nullable: false
+            precision: 10
+            scale: 2
+            column: cotaprod_quantidade
+    manyToOne:
+        cotaCodigoid:
+            targetEntity: Cotacao
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cota_codigoid:
+                    referencedColumnName: cota_codigoid
+            orphanRemoval: false
+        prodCodigoid:
+            targetEntity: Produto
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                prod_codigoid:
+                    referencedColumnName: prod_codigoid
+            orphanRemoval: false
+        tipoCodigoid:
+            targetEntity: Tipo
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                tipo_codigoid:
+                    referencedColumnName: tipo_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,33 @@
+Servicos\GcdbBundle\Entity\DocumentosCustomers:
+    type: entity
+    table: gcdb.Documentos_Customers
+    indexes:
+        CustomerID:
+            columns:
+                - CustomerID
+        CategoriaID:
+            columns:
+                - CategoriaID
+    id:
+        associaid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: AssociaID
+            generator:
+                strategy: IDENTITY
+    fields:
+        customerid:
+            type: integer
+            nullable: false
+            unsigned: false
+            default: '0'
+            column: CustomerID
+        categoriaid:
+            type: integer
+            nullable: false
+            unsigned: false
+            default: '0'
+            column: CategoriaID
+    lifecycleCallbacks: {  }

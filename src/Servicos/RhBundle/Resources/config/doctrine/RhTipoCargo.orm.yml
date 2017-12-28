@@ -1,0 +1,26 @@
+Servicos\RhBundle\Entity\RhTipoCargo:
+    type: entity
+    table: rh.rh_tipo_cargo
+    id:
+        idTipoCargo:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_tipo_cargo
+            generator:
+                strategy: IDENTITY
+    fields:
+        descricao:
+            type: string
+            nullable: true
+            length: 85
+            fixed: false
+        dataInc:
+            type: datetime
+            nullable: true
+            column: data_inc
+        ativo:
+            type: boolean
+            nullable: true
+    lifecycleCallbacks: {  }

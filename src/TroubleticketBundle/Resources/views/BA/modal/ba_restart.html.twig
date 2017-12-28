@@ -1,0 +1,14 @@
+{% block ba_restart %}
+<div class="row">
+	<form id="form_ba_restart" method="POST" action="{{ path('troubleticket_ba_main_restart', { 'report_id': reports.getId()}) }}">
+		<div class="col-sm-100">
+			<div class="row">
+				<label>*Comentário</label>
+				<textarea name="comentario" id="textarea_ba_restart_comentario"></textarea>
+				<div class="error alert" id="div_error_textarea_ba_restart_comentario" style="display:none"><span>Este campo precisa ser preenchido corretamente!</span></div>
+			</div>
+			<small><em>(*) Campos obrigatórios</em></small>
+		</div>
+	</form>
+</div>
+{% endblock %}

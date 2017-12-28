@@ -1,0 +1,19 @@
+Servicos\LumaBundle\Entity\ManutencaoTipo:
+    type: entity
+    table: luma.manutencao_tipo
+    id:
+        tipoCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: tipo_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        tipo:
+            type: string
+            nullable: false
+            length: 30
+            fixed: false
+    lifecycleCallbacks: {  }

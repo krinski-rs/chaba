@@ -1,0 +1,47 @@
+Servicos\FinanceiroBundle\Entity\ServicoAtributo:
+    type: entity
+    table: financeiro.servico_atributo
+    indexes:
+        fk_atributo_idx:
+            columns:
+                - atri_codigoid
+        fk_servico_idx:
+            columns:
+                - serv_codigoid
+    id:
+        idServicoAtributo:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_servico_atributo
+            generator:
+                strategy: IDENTITY
+    fields:
+        registrante:
+            type: integer
+            nullable: true
+            unsigned: false
+        ativo:
+            type: boolean
+            nullable: true
+    manyToOne:
+        atriCodigoid:
+            targetEntity: Atributo
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                atri_codigoid:
+                    referencedColumnName: atri_codigoid
+            orphanRemoval: false
+        servCodigoid:
+            targetEntity: Servico
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                serv_codigoid:
+                    referencedColumnName: serv_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

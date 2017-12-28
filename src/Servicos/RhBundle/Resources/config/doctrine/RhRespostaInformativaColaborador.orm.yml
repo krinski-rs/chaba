@@ -1,0 +1,44 @@
+Servicos\RhBundle\Entity\RhRespostaInformativaColaborador:
+    type: entity
+    table: rh.rh_resposta_informativa_colaborador
+    indexes:
+        fk_rh_pergunta_informativa_has_rh_colaborador_rh_colaborado_idx:
+            columns:
+                - id_colaborador
+        fk_rh_pergunta_informativa_has_rh_colaborador_rh_pergunta_i_idx:
+            columns:
+                - id_pergunta_informativa
+    id:
+        idRespostaInformativaColaborador:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_resposta_informativa_colaborador
+            generator:
+                strategy: IDENTITY
+    fields:
+        idPerguntaInformativa:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: id_pergunta_informativa
+        idColaborador:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: id_colaborador
+        resposta:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+        dataInc:
+            type: datetime
+            nullable: true
+            column: data_inc
+        registrante:
+            type: integer
+            nullable: true
+            unsigned: false
+    lifecycleCallbacks: {  }

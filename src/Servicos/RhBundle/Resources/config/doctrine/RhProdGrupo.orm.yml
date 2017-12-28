@@ -1,0 +1,36 @@
+Servicos\RhBundle\Entity\RhProdGrupo:
+    type: entity
+    table: rh.rh_prod_grupo
+    indexes:
+        fk_rh_prod_grupo_rh_grupo_material1_idx:
+            columns:
+                - id_cargo_material
+    id:
+        idProdGrupo:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_prod_grupo
+            generator:
+                strategy: IDENTITY
+    fields:
+        produtoSimilarCodigoid:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: produto_similar_codigoid
+        ativo:
+            type: boolean
+            nullable: true
+    manyToOne:
+        idCargoMaterial:
+            targetEntity: RhGrupoMaterial
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_cargo_material:
+                    referencedColumnName: id_cargo_material
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

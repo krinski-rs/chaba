@@ -1,0 +1,20 @@
+Servicos\LumaBundle\Entity\Status:
+    type: entity
+    table: status
+    id:
+        statCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: stat_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        statNome:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            column: stat_nome
+    lifecycleCallbacks: {  }

@@ -1,0 +1,24 @@
+Servicos\GcdbBundle\Entity\TicketsConfig:
+    type: entity
+    table: gcdb.Tickets_Config
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        emailTo:
+            type: string
+            nullable: false
+            length: 150
+            fixed: false
+            column: email_to
+        addDate:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: add_date
+    lifecycleCallbacks: {  }

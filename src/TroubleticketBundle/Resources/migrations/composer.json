@@ -1,0 +1,12 @@
+{
+    "name": "vogel/troubleticket/migrations",
+    "type": "project",
+    "license": "proprietary",
+    "require": {
+        "robmorgan/phinx": "0.3.8"
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "minimum-stability": "stable"
+}

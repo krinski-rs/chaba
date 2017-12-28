@@ -1,0 +1,64 @@
+Servicos\GcdbBundle\Entity\Ticketfollowup:
+    type: entity
+    table: gcdb.TicketFollowUp
+    indexes:
+        TicketID:
+            columns:
+                - TicketID
+    id:
+        uid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        autor:
+            type: string
+            nullable: false
+            length: 250
+            fixed: false
+            default: ''
+            column: Autor
+        email:
+            type: string
+            nullable: false
+            length: 250
+            fixed: false
+            default: ''
+            column: Email
+        mensagem:
+            type: text
+            nullable: false
+            length: 65535
+            fixed: false
+            column: Mensagem
+        data:
+            type: datetime
+            nullable: false
+            default: '0000-00-00 00:00:00'
+        ip:
+            type: string
+            nullable: false
+            length: 20
+            fixed: false
+            default: ''
+        tipo:
+            type: string
+            nullable: false
+            length: 1
+            fixed: true
+            default: ''
+            column: Tipo
+    manyToOne:
+        ticketid:
+            targetEntity: Tickets
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                TicketID:
+                    referencedColumnName: TicketID
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

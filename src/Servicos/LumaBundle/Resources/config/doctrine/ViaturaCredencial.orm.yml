@@ -1,0 +1,66 @@
+Servicos\LumaBundle\Entity\ViaturaCredencial:
+    type: entity
+    table: luma.viatura_credencial
+    indexes:
+        fk_cartao_chip_viatura1_idx:
+            columns:
+                - viaturaid
+        fk_credencial_tipo_idx:
+            columns:
+                - credenci_tipo
+    id:
+        viatCartaoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: viat_cartaoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        credenciTipo:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: credenci_tipo
+        credenciCadUsuarioid:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: credenci_cad_usuarioid
+        credenciDatainc:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: credenci_datainc
+        credenciNumero:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            column: credenci_numero
+        credenciDataVencimento:
+            type: datetime
+            nullable: true
+            column: credenci_data_vencimento
+        credenciDatafim:
+            type: datetime
+            nullable: true
+            column: credenci_datafim
+        credenciObservacao:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            column: credenci_observacao
+    manyToOne:
+        viaturaid:
+            targetEntity: Viatura
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                viaturaid:
+                    referencedColumnName: viaturaid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

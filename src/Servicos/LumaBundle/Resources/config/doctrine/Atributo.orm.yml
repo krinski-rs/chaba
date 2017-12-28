@@ -1,0 +1,44 @@
+Servicos\LumaBundle\Entity\Atributo:
+    type: entity
+    table: luma.atributo
+    indexes:
+        index_atributonome:
+            columns:
+                - atri_nome
+    id:
+        atriCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: atri_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        atriNome:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: atri_nome
+        atriMascara:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            column: atri_mascara
+        atriRequeridosn:
+            type: boolean
+            nullable: false
+            column: atri_requeridosn
+        atriUnicosn:
+            type: boolean
+            nullable: false
+            column: atri_unicosn
+        atriTipohtml:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+            column: atri_tipohtml
+    lifecycleCallbacks: {  }

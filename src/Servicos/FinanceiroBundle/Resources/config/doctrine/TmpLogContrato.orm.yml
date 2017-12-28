@@ -1,0 +1,37 @@
+Servicos\FinanceiroBundle\Entity\TmpLogContrato:
+    type: entity
+    table: financeiro.tmp_log_contrato
+    indexes:
+        fk_tmp_log_contrato_idx:
+            columns:
+                - id_tmp_contrato
+    id:
+        idLog:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_log
+            generator:
+                strategy: IDENTITY
+    fields:
+        dataInc:
+            type: datetime
+            nullable: false
+            column: data_inc
+        obs:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+    manyToOne:
+        idTmpContrato:
+            targetEntity: TmpContrato
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_tmp_contrato:
+                    referencedColumnName: id_tmp_contrato
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

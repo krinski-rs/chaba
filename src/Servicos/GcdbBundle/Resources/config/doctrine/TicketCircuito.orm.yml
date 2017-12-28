@@ -1,0 +1,44 @@
+Servicos\GcdbBundle\Entity\TicketCircuito:
+    type: entity
+    table: gcdb.ticket_circuito
+    indexes:
+        TicketID:
+            columns:
+                - TicketID
+        unid_codigoid:
+            columns:
+                - unid_codigoid
+        circ_codigoid:
+            columns:
+                - circ_codigoid
+    id:
+        tickcircCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: tickcirc_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        ticketid:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: TicketID
+        unidCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: unid_codigoid
+        circCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: circ_codigoid
+        popId:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: pop_id
+    lifecycleCallbacks: {  }

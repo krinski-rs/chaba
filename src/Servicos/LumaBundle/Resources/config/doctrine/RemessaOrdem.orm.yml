@@ -1,0 +1,38 @@
+Servicos\LumaBundle\Entity\RemessaOrdem:
+    type: entity
+    table: remessa_ordem
+    indexes:
+        remessa_ordem_remessa_ibfk1:
+            columns:
+                - rem_id
+        remessa_ordem_ordem_ibfk1:
+            columns:
+                - orde_codigoid
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        ordeCodigoid:
+            targetEntity: Ordem
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                orde_codigoid:
+                    referencedColumnName: orde_codigoid
+            orphanRemoval: false
+        rem:
+            targetEntity: Remessa
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                rem_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,27 @@
+Servicos\GcdbBundle\Entity\Semana:
+    type: entity
+    table: gcdb.semana
+    id:
+        semaCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: sema_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        semaDatainicio:
+            type: date
+            nullable: false
+            column: sema_datainicio
+        semaDatafim:
+            type: date
+            nullable: false
+            column: sema_datafim
+        semaAtivo:
+            type: boolean
+            nullable: false
+            default: '1'
+            column: sema_ativo
+    lifecycleCallbacks: {  }

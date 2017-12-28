@@ -1,0 +1,101 @@
+Servicos\LumaBundle\Entity\Pedido:
+    type: entity
+    table: luma.pedido
+    indexes:
+        area_codigoid:
+            columns:
+                - pediarea_codigoid
+        unid_codigoid:
+            columns:
+                - unid_codigoid
+        status:
+            columns:
+                - pedistat_codigoid
+    id:
+        pediCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: pedi_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        pediNome:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: pedi_nome
+        pediDatainc:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: pedi_datainc
+        pediDataprazo:
+            type: datetime
+            nullable: true
+            column: pedi_dataprazo
+        autUsuario:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: aut_usuario
+    oneToMany:
+        pedidoproduto:
+            targetEntity: Pedidoproduto
+            cascade: {  }
+            mappedBy: pediCodigoid
+    manyToOne:
+        pediareaCodigoid:
+            targetEntity: Pedidoarea
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                pediarea_codigoid:
+                    referencedColumnName: pediarea_codigoid
+            orphanRemoval: false
+        unidCodigoid:
+            targetEntity: Unidade
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                unid_codigoid:
+                    referencedColumnName: unid_codigoid
+            orphanRemoval: false
+        pedistatCodigoid:
+            targetEntity: Pedidostatus
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                pedistat_codigoid:
+                    referencedColumnName: pedistat_codigoid
+            orphanRemoval: false
+    manyToMany:
+        moviCodigoid:
+            targetEntity: Movimentacao
+            cascade: {  }
+            mappedBy: null
+            inversedBy: pediCodigoid
+            joinTable:
+                name: pedidomovimentacao
+                joinColumns:
+                    -
+                        name: pedi_codigoid
+                        referencedColumnName: pedi_codigoid
+                inverseJoinColumns:
+                    -
+                        name: movi_codigoid
+                        referencedColumnName: movi_codigoid
+            orderBy: null
+        projCodigoid:
+            targetEntity: Projeto
+            cascade: {  }
+            mappedBy: pediCodigoid
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+    lifecycleCallbacks: {  }

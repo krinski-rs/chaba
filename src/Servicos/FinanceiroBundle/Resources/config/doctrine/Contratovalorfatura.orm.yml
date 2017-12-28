@@ -1,0 +1,39 @@
+Servicos\FinanceiroBundle\Entity\Contratovalorfatura:
+    type: entity
+    table: financeiro.contratovalorfatura
+    indexes:
+        fk_invoiceperiodicidade_fatura1_idx:
+            columns:
+                - fatu_codigoid
+        fk_contratovalorfatura_contratovalor1_idx:
+            columns:
+                - contvalo_codigoid
+    id:
+        contvalofatuCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: contvalofatu_codigoid
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        contvaloCodigoid:
+            targetEntity: Contratovalor
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                contvalo_codigoid:
+                    referencedColumnName: contvalo_codigoid
+            orphanRemoval: false
+        fatuCodigoid:
+            targetEntity: Fatura
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                fatu_codigoid:
+                    referencedColumnName: fatu_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

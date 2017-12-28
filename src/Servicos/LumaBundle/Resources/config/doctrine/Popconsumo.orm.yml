@@ -1,0 +1,54 @@
+Servicos\LumaBundle\Entity\Popconsumo:
+    type: entity
+    table: luma.popconsumo
+    indexes:
+        id_pop:
+            columns:
+                - id_pop
+    id:
+        idConsumo:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_consumo
+            generator:
+                strategy: IDENTITY
+    fields:
+        consumoDc:
+            type: string
+            nullable: true
+            length: 20
+            fixed: false
+            column: consumo_dc
+        dataLeitura:
+            type: datetime
+            nullable: true
+            column: data_leitura
+        leitura1:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+        leitura2:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+        estimativaTempo:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+            column: estimativa_tempo
+    manyToOne:
+        idPop:
+            targetEntity: Pop
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_pop:
+                    referencedColumnName: id_pop
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

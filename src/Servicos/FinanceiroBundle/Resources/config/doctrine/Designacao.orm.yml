@@ -1,0 +1,58 @@
+Servicos\FinanceiroBundle\Entity\Designacao:
+    type: entity
+    repositoryClass: Servicos\FinanceiroBundle\Repository\DesignacaoRepository
+    table: financeiro.designacao
+    id:
+        desigCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: desig_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        clieCodigoid:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: clie_codigoid
+        desigStt:
+            type: string
+            nullable: true
+            length: 20
+            fixed: false
+            column: desig_stt
+        desigNumero:
+            type: integer
+            nullable: false
+            unsigned: false
+            default: '0'
+            column: desig_numero
+        desigPedido:
+            type: string
+            nullable: true
+            length: 90
+            fixed: false
+            column: desig_pedido
+        desigPonta:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: desig_ponta
+    oneToMany:
+        contrato:
+            targetEntity: Contrato
+            cascade: {  }
+            mappedBy: desigCodigoid
+    manyToOne:
+        endeentrCodigoid:
+            targetEntity: Enderecoentrega
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                endeentr_codigoid:
+                    referencedColumnName: endeentr_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

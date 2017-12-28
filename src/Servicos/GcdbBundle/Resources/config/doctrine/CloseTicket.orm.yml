@@ -1,0 +1,85 @@
+Servicos\GcdbBundle\Entity\CloseTicket:
+    type: entity
+    table: gcdb.close_ticket
+    indexes:
+        fk_close_ticket_1_ticket_idx:
+            columns:
+                - ticket_id
+    id:
+        closeTicketId:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: close_ticket_id
+            generator:
+                strategy: IDENTITY
+    fields:
+        closeTicketUserId:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: close_ticket_user_id
+        closeTicketResponsavel:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: close_ticket_responsavel
+        viaturaid:
+            type: integer
+            nullable: true
+            unsigned: false
+        closeTicketDataInc:
+            type: datetime
+            nullable: false
+            column: close_ticket_data_inc
+        closeTicketIndisponibilidadeInicio:
+            type: datetime
+            nullable: true
+            column: close_ticket_indisponibilidade_inicio
+        closeTicketIndisponibilidadeFim:
+            type: datetime
+            nullable: true
+            column: close_ticket_indisponibilidade_fim
+        closeTicketEscalonamentoInicio:
+            type: datetime
+            nullable: true
+            column: close_ticket_escalonamento_inicio
+        closeTicketEscalonamentoFim:
+            type: datetime
+            nullable: true
+            column: close_ticket_escalonamento_fim
+        closeTicketProblema:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            column: close_ticket_problema
+    manyToOne:
+        ticket:
+            targetEntity: Tickets
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                ticket_id:
+                    referencedColumnName: TicketID
+            orphanRemoval: false
+    manyToMany:
+        closestTicketProblema:
+            targetEntity: CloseTicketProblema
+            cascade: {  }
+            mappedBy: null
+            inversedBy: closeTicket
+            joinTable:
+                name: closest_ticket_problema_close_ticket
+                joinColumns:
+                    -
+                        name: close_ticket_id
+                        referencedColumnName: close_ticket_id
+                inverseJoinColumns:
+                    -
+                        name: closest_ticket_problema_id
+                        referencedColumnName: closest_ticket_problema_id
+            orderBy: null
+    lifecycleCallbacks: {  }

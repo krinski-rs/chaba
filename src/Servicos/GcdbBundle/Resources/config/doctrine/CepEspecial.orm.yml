@@ -1,0 +1,70 @@
+Servicos\GcdbBundle\Entity\CepEspecial:
+    type: entity
+    table: gcdb.cep_especial
+    indexes:
+        ix_cepespecialClien:
+            columns:
+                - Cliente
+        ix_cepespecialCEP:
+            columns:
+                - CEP
+        ix_cepespecialUF:
+            columns:
+                - UF
+        ix_cepespecialIDLoc:
+            columns:
+                - IDLocalidades
+        ix_cepespecialIDLog:
+            columns:
+                - IDLogradouros
+    id:
+        idcepespecial:
+            type: integer
+            nullable: false
+            unsigned: false
+            default: '0'
+            id: true
+            column: IDCepEspecial
+            generator:
+                strategy: IDENTITY
+    fields:
+        uf:
+            type: string
+            nullable: true
+            length: 2
+            fixed: true
+            column: UF
+        idlocalidades:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: IDLocalidades
+        idlogradouros:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: IDLogradouros
+        idbairros:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: IDBairros
+        cliente:
+            type: string
+            nullable: true
+            length: 72
+            fixed: false
+            column: Cliente
+        cep:
+            type: string
+            nullable: true
+            length: 8
+            fixed: false
+            column: CEP
+        endereco:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            column: Endereco
+    lifecycleCallbacks: {  }

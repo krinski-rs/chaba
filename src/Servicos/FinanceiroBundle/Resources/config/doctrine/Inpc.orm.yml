@@ -1,0 +1,44 @@
+Servicos\FinanceiroBundle\Entity\Inpc:
+    type: entity
+    table: financeiro.inpc
+    id:
+        inpcCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: inpc_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        inpcDatainc:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: inpc_datainc
+        inpcPercentual:
+            type: decimal
+            nullable: false
+            precision: 5
+            scale: 2
+            column: inpc_percentual
+        inpcAcumuladonoano:
+            type: decimal
+            nullable: false
+            precision: 5
+            scale: 2
+            default: '0.00'
+            column: inpc_acumuladonoano
+        inpcAcumulado12meses:
+            type: decimal
+            nullable: false
+            precision: 5
+            scale: 2
+            default: '0.00'
+            column: inpc_acumulado12meses
+        inpcPrazo:
+            type: datetime
+            nullable: false
+            default: '0000-00-00 00:00:00'
+            column: inpc_prazo
+    lifecycleCallbacks: {  }

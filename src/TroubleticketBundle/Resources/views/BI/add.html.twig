@@ -1,0 +1,76 @@
+{% extends 'TroubleticketBundle::base.html.twig' %}
+{% set symptom = null %}
+{% set severidade = null %}
+
+{% form_theme form _self %}
+
+{% block form_errors %}
+    {% if errors|length > 0 %}
+        <span style="color:red">
+            {% for error in errors %}
+                {{ error.message|trans }}
+            {% endfor %}
+        </span>
+    {% endif %}
+{% endblock form_errors %}
+
+{% block body %}
+    {% if message_error %}
+        <div class="error">
+            <span>{{message_error}}</span>
+        </div>
+    {% endif %}
+    <div class="titleModulo">
+        <div>
+            <span>Abertura de BI</span>
+        </div>
+        <strong>Dados do Chamado</strong>
+    </div>
+    <div class="row">
+        <form action="{{ path('troubleticket_bi_create', {'report_id': reports.getId()}) }}" id="form_add_bi" name="form_add_bi" method="post">
+            <input type="hidden" name="reports_id" value="{{reports.getId()}}">
+            {{ form_widget(form._token) }}
+            <div class="col-sm-50">
+                <label>Técnico Responsável:</label>
+                <input type="text" name="reports_responsible" value="{{reports.getResponsibleData().nome}}" disabled="disabled" style="padding:0px;">
+                <label>*Sintoma:</label>
+                <select name="form[symptom]" id="select_ba_add_sintoma" style="background-color: #fff;" required="required">
+                    <option value="">---</option>
+                    {% for key, options in yaml_options_sintoma %}
+                        {% if (key == symptom) %}
+                            <option value="{{key}}" selected="selected">{{options.sintoma}}</option>
+                            {% set severidade = options.severidade %}
+                        {% else %}
+                            <option value="{{key}}">{{options.sintoma}}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+                <label>*Severidade:</label>
+                <input type="text" disabled="disabled" value="{{severidade}}" name="severidade" id="input_ba_add_severidade">
+            </div>
+            <div class="col-sm-50" style="float:left;">
+                <label>Nº do chamado:</label>
+                <input type="text" name="reports_circuit_id" value="{{reports.getCode()}}" disabled="disabled" style="padding:0px;">
+                <label>Designação:</label>
+                <input type="text" name="reports_designation" value="{{reports.getDesignation()}}" disabled="disabled" style="padding:0px;">
+                <label>Trecho:</label>
+                <input type="text" name="form[stretch]" value="" style="padding:0px;">
+            </div>
+            <div class="col-sm-100">
+                <label>*Comentário:</label>
+                {{form_widget(form.description)}}
+                {{form_errors(form.description)}}
+            </div>
+            <small><em>(*) Campos obrigatórios</em></small>
+            <div class="row">
+                <div class="col-sm-100">
+                    <button type="submit" class="btn btn-primary">Abrir BI</button>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}
+{% block static_js %}
+    <script type="text/javascript" src="{{ asset('bundles/troubleticket/js/bi_add.js') }}"></script>
+{% endblock %}
+

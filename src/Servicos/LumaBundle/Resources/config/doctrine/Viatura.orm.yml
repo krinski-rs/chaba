@@ -1,0 +1,117 @@
+Servicos\LumaBundle\Entity\Viatura:
+    type: entity
+    table: luma.viatura
+    indexes:
+        fk_viatura_modelo1_idx:
+            columns:
+                - viat_modeloid
+        fk_viatura_unidade_idx:
+            columns:
+                - viat_unidadeid
+    id:
+        viaturaid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        viatCadUsuarioid:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: viat_cad_usuarioid
+        viatNumero:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: viat_numero
+        viatAnoFabricacao:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: viat_ano_fabricacao
+        viatAnoModelo:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: viat_ano_modelo
+        viatEspecieId:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: viat_especie_id
+        idViatCorPredominante:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: id_viat_cor_predominante
+        viatPlaca:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            column: viat_placa
+        viatRenavan:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            column: viat_renavan
+        viatChassi:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            column: viat_chassi
+        viatDatainc:
+            type: datetime
+            nullable: true
+            default: CURRENT_TIMESTAMP
+            column: viat_datainc
+        viatPassageiro:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: viat_passageiro
+        viatCombustivel:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            column: viat_combustivel
+        viatAtivo:
+            type: boolean
+            nullable: true
+            default: '1'
+            column: viat_ativo
+        viatReboque:
+            type: boolean
+            nullable: true
+            column: viat_reboque
+        viatIdEstado:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: viat_id_estado
+    manyToOne:
+        viatModeloid:
+            targetEntity: ViaturaModelo
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                viat_modeloid:
+                    referencedColumnName: viat_modeloid
+            orphanRemoval: false
+        viatUnidadeid:
+            targetEntity: Unidade
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                viat_unidadeid:
+                    referencedColumnName: unid_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

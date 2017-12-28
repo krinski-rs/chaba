@@ -1,0 +1,26 @@
+{% macro input(name, type, value, id, attr, options) %}
+{% if type is defined and type != 'select' %}
+    <input type="{{ type|default('text') }}" id="{{ id|e }}" name="{{ name }}" value="{{ value|e }}" {{ attr|default('')|raw }} />
+{% else %}
+	<select name="{{ name }}" id="{{ id|e }}" {{ attr|default('') }}>
+		<option value"">Selecione</option>
+{% if options is defined %}
+{% for option in options %}
+		<option value="{{ option.value }}"{% if option.value == value %} selected{% endif %}>{{ option.label }}</option>
+{% endfor %}
+{% endif %}
+	</select>
+{% endif %}
+
+{% endmacro %}
+
+{% macro wrapped_input(name, type, value, id, attr, class, label, options, descricao) %}
+    {% import _self as forms %}
+    <div class="{{ class }}">
+    	<label>{{ label }}</label>
+        {{ forms.input(name, type, value, id,  attr, options) }}
+{% if descricao %}
+        <span>{{ descricao }}</span>
+{% endif %}
+    </div>
+{% endmacro %}

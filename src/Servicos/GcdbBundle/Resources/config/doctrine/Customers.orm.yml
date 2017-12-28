@@ -1,0 +1,177 @@
+Servicos\GcdbBundle\Entity\Customers:
+    type: entity
+    repositoryClass: Servicos\GcdbBundle\Repository\CustomersRepository
+    table: gcdb.Customers
+    indexes:
+        origemexterna_fk:
+            columns:
+                - origemexterna
+    id:
+        customerid:
+            type: integer
+            nullable: false
+            unsigned: true
+            id: true
+            column: CustomerID
+            generator:
+                strategy: IDENTITY
+    fields:
+        first:
+            type: string
+            nullable: true
+            length: 30
+            fixed: false
+            column: First
+        mid:
+            type: string
+            nullable: true
+            length: 1
+            fixed: true
+            column: Mid
+        last:
+            type: string
+            nullable: true
+            length: 40
+            fixed: false
+            column: Last
+        address:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            column: Address
+        telephone:
+            type: string
+            nullable: true
+            length: 16
+            fixed: false
+            column: Telephone
+        fax:
+            type: string
+            nullable: true
+            length: 16
+            fixed: false
+            column: Fax
+        email:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            column: Email
+        city:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+            column: City
+        state:
+            type: string
+            nullable: true
+            length: 2
+            fixed: true
+            column: State
+        zip:
+            type: string
+            nullable: true
+            length: 10
+            fixed: false
+            column: Zip
+        status:
+            type: string
+            nullable: true
+            length: 20
+            fixed: false
+            column: Status
+        fantasia:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            column: Fantasia
+        razao:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            column: Razao
+        cnpj:
+            type: string
+            nullable: true
+            length: 18
+            fixed: false
+            column: CNPJ
+        pais:
+            type: string
+            nullable: true
+            length: 20
+            fixed: false
+            column: Pais
+        obs:
+            type: text
+            nullable: true
+            length: 65535
+            fixed: false
+            column: Obs
+        emergencia:
+            type: string
+            nullable: true
+            length: 200
+            fixed: false
+            column: Emergencia
+        cpf:
+            type: string
+            nullable: true
+            length: 14
+            fixed: false
+            column: CPF
+        atpass:
+            type: string
+            nullable: false
+            length: 20
+            fixed: false
+            default: temporar
+            column: ATPass
+        tributaicms:
+            type: boolean
+            nullable: true
+        delin:
+            type: boolean
+            nullable: true
+    oneToMany:
+        cadLigacaoC2u:
+            targetEntity: CadLigacaoC2u
+            cascade: ['persist']
+            mappedBy: cadCid
+        prioridade:
+            targetEntity: Prioridade
+            cascade: ['persist']
+            mappedBy: customerid
+        relGn:
+            targetEntity: RelGn
+            cascade: ['persist']
+            mappedBy: customerid
+    manyToMany:
+        cadUser:
+            targetEntity: CadUsers
+            cascade: ['persist']
+            joinTable:
+                name: gcdb.Customers2users
+                joinColumns:
+                    id_customers:
+                        referencedColumnName: CustomerID
+                        unique: true
+                inverseJoinColumns:
+                    id_users:
+                        referencedColumnName: id
+                        unique: true
+    manyToOne:
+        origemexterna:
+            targetEntity: Origemexterna
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                origemexterna:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

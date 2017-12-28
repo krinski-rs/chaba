@@ -1,0 +1,91 @@
+Servicos\FinanceiroBundle\Entity\Periodicidade:
+    type: entity
+    table: financeiro.periodicidade
+    indexes:
+        fk_periodicidade_contratovalor1_idx:
+            columns:
+                - contvalo_codigoid
+    id:
+        periCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: peri_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        periPeriodicidadefatura:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: peri_periodicidadefatura
+        periPeriodicidadenota:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: peri_periodicidadenota
+        periParcelasfatura:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: peri_parcelasfatura
+        periParcelasnota:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: peri_parcelasnota
+        periVencimento:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: peri_vencimento
+        periDatainc:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: peri_datainc
+        periAposassinatura:
+            type: boolean
+            nullable: true
+            column: peri_aposassinatura
+        periPospago:
+            type: integer
+            nullable: false
+            unsigned: false
+            default: '0'
+            column: peri_pospago
+        periNumeroparcelas:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: peri_numeroparcelas
+        periCarenciadias:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: peri_carenciadias
+        periCarenciames:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: peri_carenciames
+        periCarenciadatafixa:
+            type: datetime
+            nullable: true
+            column: peri_carenciadatafixa
+        periVencimentodatafixa:
+            type: datetime
+            nullable: true
+            column: peri_vencimentodatafixa
+    manyToOne:
+        contvaloCodigoid:
+            targetEntity: Contratovalor
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                contvalo_codigoid:
+                    referencedColumnName: contvalo_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,72 @@
+Servicos\RhBundle\Entity\RhDocumentoGen:
+    type: entity
+    table: rh.rh_documento_gen
+    indexes:
+        fk_rh_documento_gen_rh_colaborador1_idx:
+            columns:
+                - id_colaborador
+        fk_rh_documento_gen_rh_documento1_idx:
+            columns:
+                - id_documento
+    id:
+        idDocumentoGen:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_documento_gen
+            generator:
+                strategy: IDENTITY
+    fields:
+        sistechTmpId:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: sistech_tmp_id
+        sistechTmpHistoricoId:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: sistech_tmp_historico_id
+        sessao:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+        dataInc:
+            type: datetime
+            nullable: true
+            column: data_inc
+        registrante:
+            type: integer
+            nullable: true
+            unsigned: false
+        registranteRetorno:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: registrante_retorno
+        dataRetorno:
+            type: datetime
+            nullable: true
+            column: data_retorno
+    manyToOne:
+        idColaborador:
+            targetEntity: RhColaborador
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_colaborador:
+                    referencedColumnName: id_colaborador
+            orphanRemoval: false
+        idDocumento:
+            targetEntity: RhDocumento
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_documento:
+                    referencedColumnName: id_documento
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,46 @@
+Servicos\LumaBundle\Entity\Cotacaoformapagamento:
+    type: entity
+    table: cotacaoformapagamento
+    indexes:
+        fk_cotacaoformapagamento_cotacao1_idx:
+            columns:
+                - cota_codigoid
+        fk_cotacaoformapagamento_condicao_pagamento_ibfk1:
+            columns:
+                - id_condicao_pagamento
+    id:
+        cotaformpagaCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: cotaformpaga_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        cotaformpagaForma:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: cotaformpaga_forma
+    manyToOne:
+        idCondicaoPagamento:
+            targetEntity: CondicaoPagamento
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_condicao_pagamento:
+                    referencedColumnName: id
+            orphanRemoval: false
+        cotaCodigoid:
+            targetEntity: Cotacao
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cota_codigoid:
+                    referencedColumnName: cota_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

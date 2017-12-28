@@ -1,0 +1,47 @@
+Servicos\FinanceiroBundle\Entity\Desativacao:
+    type: entity
+    table: financeiro.desativacao
+    indexes:
+        fk_desativacao_contrato1_idx:
+            columns:
+                - cont_codigoid
+    id:
+        desaCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: desa_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        usuaCodigoid:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: usua_codigoid
+        desaDatainc:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: desa_datainc
+        desaDatadesativado:
+            type: datetime
+            nullable: true
+            column: desa_datadesativado
+        desaAtivo:
+            type: boolean
+            nullable: false
+            default: '1'
+            column: desa_ativo
+    manyToOne:
+        contCodigoid:
+            targetEntity: Contrato
+            cascade: {  }
+            mappedBy: null
+            inversedBy: desativacao
+            joinColumns:
+                cont_codigoid:
+                    referencedColumnName: cont_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

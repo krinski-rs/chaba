@@ -1,0 +1,44 @@
+Servicos\RhBundle\Entity\RhColaboradorFerias:
+    type: entity
+    table: rh.rh_colaborador_ferias
+    indexes:
+        fk_rh_colaborador_ferias_rh_colaborador1_idx:
+            columns:
+                - id_colaborador
+    id:
+        idColaboradorFerias:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_colaborador_ferias
+            generator:
+                strategy: IDENTITY
+    fields:
+        dataInc:
+            type: datetime
+            nullable: true
+            column: data_inc
+        dataInicial:
+            type: date
+            nullable: true
+            column: data_inicial
+        dataFinal:
+            type: date
+            nullable: true
+            column: data_final
+        registrante:
+            type: integer
+            nullable: false
+            unsigned: false
+    manyToOne:
+        idColaborador:
+            targetEntity: RhColaborador
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_colaborador:
+                    referencedColumnName: id_colaborador
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

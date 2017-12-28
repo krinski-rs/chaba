@@ -1,0 +1,75 @@
+Servicos\LumaBundle\Entity\ViaturaMotorista:
+    type: entity
+    table: luma.viatura_motorista
+    indexes:
+        fk_viatura_motorista_idx:
+            columns:
+                - viaturaid
+        fk_movime_motorista_idx:
+            columns:
+                - movi_codigoid
+    id:
+        idViaturaMotorista:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_viatura_motorista
+            generator:
+                strategy: IDENTITY
+    fields:
+        registrante:
+            type: integer
+            nullable: false
+            unsigned: false
+        rhIdDocumento:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: rh_id_documento
+        idColaborador:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: id_colaborador
+        assinado:
+            type: boolean
+            nullable: false
+        idColaboradorAprovador:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: id_colaborador_aprovador
+        dataAprovacao:
+            type: datetime
+            nullable: true
+            default: CURRENT_TIMESTAMP
+            column: data_aprovacao
+        dataInc:
+            type: datetime
+            nullable: false
+            column: data_inc
+        dataFim:
+            type: datetime
+            nullable: true
+            column: data_fim
+    manyToOne:
+        moviCodigoid:
+            targetEntity: Movimentacao
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                movi_codigoid:
+                    referencedColumnName: movi_codigoid
+            orphanRemoval: false
+        viaturaid:
+            targetEntity: Viatura
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                viaturaid:
+                    referencedColumnName: viaturaid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

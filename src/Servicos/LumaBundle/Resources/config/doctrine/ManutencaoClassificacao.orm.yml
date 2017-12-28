@@ -1,0 +1,19 @@
+Servicos\LumaBundle\Entity\ManutencaoClassificacao:
+    type: entity
+    table: luma.manutencao_classificacao
+    id:
+        classCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: class_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        classificacao:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+    lifecycleCallbacks: {  }

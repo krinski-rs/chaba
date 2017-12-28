@@ -1,0 +1,34 @@
+Servicos\FinanceiroBundle\Entity\Ativacaotemplate:
+    type: entity
+    table: financeiro.ativacaotemplate
+    indexes:
+        fk_servico_serv_codigoid_idx:
+            columns:
+                - serv_codigoid
+    id:
+        ativtempCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: ativtemp_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        ativtempNome:
+            type: string
+            nullable: false
+            length: 75
+            fixed: false
+            column: ativtemp_nome
+    manyToOne:
+        servCodigoid:
+            targetEntity: Servico
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                serv_codigoid:
+                    referencedColumnName: serv_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

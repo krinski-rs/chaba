@@ -1,0 +1,44 @@
+Servicos\FinanceiroBundle\Entity\Ipciepe:
+    type: entity
+    table: financeiro.ipciepe
+    id:
+        ipciepeCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: ipciepe_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        ipciepeDatainc:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: ipciepe_datainc
+        ipciepePercentual:
+            type: decimal
+            nullable: false
+            precision: 5
+            scale: 2
+            column: ipciepe_percentual
+        ipciepeAcumuladonoano:
+            type: decimal
+            nullable: false
+            precision: 5
+            scale: 2
+            default: '0.00'
+            column: ipciepe_acumuladonoano
+        ipciepeAcumulado12meses:
+            type: decimal
+            nullable: false
+            precision: 5
+            scale: 2
+            default: '0.00'
+            column: ipciepe_acumulado12meses
+        ipciepePrazo:
+            type: datetime
+            nullable: false
+            default: '0000-00-00 00:00:00'
+            column: ipciepe_prazo
+    lifecycleCallbacks: {  }

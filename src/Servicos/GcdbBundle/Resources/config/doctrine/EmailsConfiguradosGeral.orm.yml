@@ -1,0 +1,29 @@
+Servicos\GcdbBundle\Entity\EmailsConfiguradosGeral:
+    type: entity
+    table: gcdb.emails_configurados_geral
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        proposito:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+        tituloEmail:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: titulo_email
+        email:
+            type: text
+            nullable: false
+            length: 65535
+            fixed: false
+    lifecycleCallbacks: {  }

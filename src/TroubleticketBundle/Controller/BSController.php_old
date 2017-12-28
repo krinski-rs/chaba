@@ -1,0 +1,381 @@
+<?php
+
+namespace TroubleticketBundle\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation;
+
+use TroubleticketBundle\Service;
+use TroubleticketBundle\Entity;
+use TroubleticketBundle\Exception\TroubleticketBundleException;
+
+use Symfony\Component\Validator\Constraints;
+
+/**
+ * Controladora para ações realizadas sobre boletins de serviço
+ */
+class BSController extends Controller
+{
+
+    /**
+     * Ação responsável pela apresentação do HTML da fila de Boletins de Serviço
+     *
+     * @param HttpFoundation\Request $request
+     * @access public
+     * @return mixed
+     */
+    public function stackAction(HttpFoundation\Request $request)
+    {
+        $permissions = $this->get('permissions');
+        if (!$permissions->isAllowed('BS', 'read')) {
+            $request->getSession()->getFlashBag()->add(
+                'error',
+                'Você não possui permissões para visualizar a listagem de BS'
+            );
+            return $this->redirectToHome($request);
+        }
+        return $this->render('TroubleticketBundle:BS:stack.html.twig', array('page_limit' => 10));
+    }
+
+    /**
+     * Ação responsável pela obtenção dos dados da fila de Boletins de Serviço
+     *
+     * @param HttpFoundation\Request $request
+     * @access public
+     * @return HttpFoundation\JsonResponse
+     */
+    public function stackRequestAction(HttpFoundation\Request $request)
+    {
+        $permissions = $this->get('permissions');
+        if (!$permissions->isAllowed('BS', 'read')) {
+            $request->getSession()->getFlashBag()->add(
+                'error',
+                'Você não possui permissões para visualizar a listagem de BS'
+            );
+            return $this->redirectToHome($request);
+        }
+
+        $offset = (int)$request->get('start', 0);
+        $limit = (int)$request->get('length', 10);
+        $draw = (int)$request->get('draw');
+
+        $availableFilters = array('id', 'cid', 'designation', 'initial_date', 'final_date');
+
+        $filters = array();
+        foreach ($availableFilters as $filter) {
+            $value = $request->get($filter);
+            if (!empty($value)) {
+                if ($filter == 'initial_date' || $filter == 'final_date') {
+                    if (!preg_match('/^[0-9]{4}(-)[0-9]{2}(-)[0-9]{2}$/',$value)) {
+                        $request_date_list = explode('-',$value);
+
+                        $value = vsprintf('%s-%s-%s',array($request_date_list[2],$request_date_list[1],$request_date_list[0]));
+                    }
+                }
+
+                $filters[$filter] = $value;
+            }
+        }
+
+        $service = new Service\Reports($this->getDoctrine(), $this->container);
+        try {
+            $data = $service->getBSStack($limit, $offset, $filters);
+            $error = null;
+        } catch (TroubleticketBundleException $e) {
+            $error = $e->getMessage();
+            $data = array(
+                'reports' => null,
+                'total' => 0,
+            );
+        }
+
+        return new HttpFoundation\JsonResponse(array(
+            'data' => $data['reports'],
+            'recordsTotal' => $data['total'],
+            'recordsFiltered' => $data['total'],
+            'draw' => $draw,
+        ));
+    }
+
+    /**
+     * Ação responsável pela apresentação dos dados de um BS
+     *
+     * @param HttpFoundation\Request $request
+     * @param int $id
+     * @access public
+     * @return mixed
+     */
+    public function mainAction(HttpFoundation\Request $request, $id)
+    {
+        $permissions = $this->get('permissions');
+        if (!$permissions->isAllowed('BS', 'read')) {
+            $request->getSession()->getFlashBag()->add(
+                'error',
+                'Você não possui permissão para visualizar Boletins de Serviço'
+            );
+            return $this->redirect($this->generateUrl('troubleticket_bs_stack'));
+        }
+
+        $report = $this->getBS($id);
+        if (empty($report)) {
+            $request->getSession()->getFlashBag()->add(
+                'error',
+                'BS não encontrado'
+            );
+            return $this->redirect($this->generateUrl('troubleticket_ba_stack'));
+        }
+
+        $circuitApi = $this->get('troubleticket.circuit_api');
+        $circuitApi->setUrlPath('circuito/' . $report->getCircuitId());
+
+        try {
+            $circuit = $circuitApi->get(1, 0, null, null,null);
+
+        } catch (TroubleticketBundleException $error) {
+            $request->getSession()->getFlashBag()->add(
+                'error',
+                'Não foi possível obter os dados do circuito'
+            );
+            return $this->redirect($this->generateUrl('troubleticket_ba_stack'));
+        }
+
+        $circuit = $circuit->circuito;
+
+
+        $service = new Service\Reports($this->getDoctrine(), $this->container);
+        $service->loadResponsibleData($report);
+
+        $params = array(
+            'report' => $report,
+            'circuit' => $circuit,
+            'session_user' => !empty($_SESSION['usr_codigoid']) ? $_SESSION['usr_codigoid'] : '',
+        );
+
+        return $this->render('TroubleticketBundle:BS:main.html.twig', $params);
+    }
+
+    /**
+     * Ação que permite um usuário assumir um BS
+     *
+     * @param HttpFoundation\Request $request
+     * @param int $id
+     * @access public
+     * @return mixed
+     */
+    public function takeOnAction(HttpFoundation\Request $request, $id)
+    {
+        $permissions = $this->get('permissions');
+        if (!$permissions->isAllowed('BS', 'take_on')) {
+            $request->getSession()->getFlashBag()->add(
+                'error',
+                'Você não possui permissão para editar Boletins de Serviço'
+            );
+            return $this->redirect($this->generateUrl('troubleticket_bs_stack'));
+        }
+        $report = $this->getBS($id);
+        if (empty($report)) {
+            $request->getSession()->getFlashBag()->add(
+                'error',
+                'BS não encontrado'
+            );
+            return $this->redirect($this->generateUrl('troubleticket_bs_stack'));
+        }
+
+        $service = new Service\Reports($this->getDoctrine(), $this->container);
+        try {
+            if ($service->takeOn($report, $_SESSION['usr_codigoid'])) {
+                $request->getSession()->getFlashBag()->add(
+                    'success',
+                    'BS assumido com sucesso!'
+                );
+            } else {
+                $request->getSession()->getFlashBag()->add(
+                    'error',
+                    'Não foi possível assumir o BS'
+                );
+            }
+        } catch (Exception $e) {
+            $request->getSession()->getFlashBag()->add(
+                'error',
+                'Ocorreu um erro ao tentar assumir o BS'
+            );
+        }
+        return $this->redirect($this->generateUrl('troubleticket_bs_main', array('id' => $id)));
+    }
+
+    /**
+     * Ação que permite que comentários sejam realizados em um BS
+     *
+     * @param HttpFoundation\Request $request
+     * @param int $id
+     * @access public
+     * @return mixed
+     */
+    public function commentAction(HttpFoundation\Request $request, $id)
+    {
+        $permissions = $this->get('permissions');
+        if (!$permissions->isAllowed('BS', 'comment')) {
+            $request->getSession()->getFlashBag()->add(
+                'error',
+                'Você não possui permissão para editar Boletin de Serviço'
+            );
+            return $this->redirect($this->generateUrl('troubleticket_bs_stack'));
+        }
+        $report = $this->getBS($id);
+        if (empty($report)) {
+            $request->getSession()->getFlashBag()->add(
+                'error',
+                'BS não encontrado'
+            );
+            return $this->redirect($this->generateUrl('troubleticket_bs_stack'));
+        }
+
+        if ($request->isMethod('POST')) {
+            $status = $comment = $request->get('comment');
+            if (!empty($comment)) {
+                $service = new Service\Reports($this->getDoctrine(), $this->container);
+                $status = $service->comment($report, $comment);
+            }
+            if (!$status) {
+                $request->getSession()->getFlashBag()->add(
+                    'error',
+                    'Não foi possível realizar o comentário'
+                );
+            }
+        }
+
+        return $this->redirect($this->generateUrl('troubleticket_bs_main', array('id' => $id)));
+    }
+
+    /**
+     * Ação que realiza o fechamento de um BS
+     *
+     * @param HttpFoundation\Request $request
+     * @param int $id
+     * @access public
+     * @return mixed
+     */
+    public function closeAction(HttpFoundation\Request $request, $id)
+    {
+        $permissions = $this->get('permissions');
+        if (!$permissions->isAllowed('BS', 'close')) {
+            $request->getSession()->getFlashBag()->add(
+                'error',
+                'Você não possui permissão para editar Boletim de Serviço'
+            );
+            return $this->redirect($this->generateUrl('troubleticket_bs_stack'));
+        }
+        $report = $this->getBS($id);
+        if (empty($report)) {
+            $request->getSession()->getFlashBag()->add(
+                'error',
+                'BS não encontrado'
+            );
+            return $this->redirect($this->generateUrl('troubleticket_bs_stack'));
+        }
+
+        $request_comment = $request->request->get('comment',null);
+        $service = new Service\Reports($this->getDoctrine(), $this->container);
+        try {
+            if ($service->close($report, $report->getLastTimeCounter(), 'BS Fechado', null, $request_comment)) {
+                $request->getSession()->getFlashBag()->add(
+                    'success',
+                    'BS fechado com sucesso!'
+                );
+            } else {
+                $request->getSession()->getFlashBag()->add(
+                    'error',
+                    'Não foi possível fechar o BS'
+                );
+            }
+        } catch (Exception $e) {
+            $request->getSession()->getFlashBag()->add(
+                'error',
+                'Ocorreu um erro ao tentar fechar o BS'
+            );
+        }
+        return $this->redirect($this->generateUrl('troubleticket_bs_stack'));
+
+    }
+
+
+    /**
+     * Ação para editar as configurações de Boletins de Serviço de Análise de Problemas
+     *
+     * @param HttpFoundation\Request $request
+     * @access public
+     * @return mixed
+     */
+    public function configAction(HttpFoundation\Request $request)
+    {
+        $permissions = $this->get('permissions');
+        if (!$permissions->isAllowed('BS', 'config')) {
+            $request->getSession()->getFlashBag()->add(
+                'error',
+                'Você não possui permissão para editar as configurações de boletins de serviço!'
+            );
+            return $this->redirectToHome($request);
+        }
+
+        $service = new Service\Reports($this->getDoctrine(), $this->container);
+        $config = $service->getBSConfigs();
+        $constraints = array(
+            new Constraints\NotBlank,
+            new Constraints\GreaterThanOrEqual(array('value' => 0))
+        );
+        $form = $this->createFormBuilder($config)
+            ->add('interval_days', 'integer', array('constraints' => $constraints))
+            ->add('reports_amount', 'integer', array('constraints' => $constraints))
+            ->add('salvar', 'submit', array('attr' => array('class' => 'btn btn-success block-button')))
+            ->getForm();
+
+        $messages = array();
+        if ($request->isMethod('POST')) {
+            $form->handleRequest($request);
+            if ($form->isValid()) {
+                if ($service->saveBSConfig($form->getData()) !== false) {
+                    $messages[] = array('type' => 'sucesso', 'message' => 'Configurações alteradas com sucesso');
+                } else {
+                    $messages[] = array('type' => 'error', 'message' => 'Ocorreu um erro!');
+                }
+            } else {
+                $messages[] = array('type' => 'error', 'message' => 'Verifique os dados informados!');
+            }
+        }
+        $data = array('form' => $form->createView(), 'messages' => $messages);
+        return $this->render('TroubleticketBundle:BS:config.html.twig', $data);
+    }
+
+
+    /**
+     * Ação que padroniza o redirecionamento para a home
+     *
+     * @param HttpFoundation\Request $request
+     * @access protected
+     * @return HttpFoundation\Response
+     */
+    protected function redirectToHome(HttpFoundation\Request $request)
+    {
+        //TODO para onde deve redirecionar??
+        $pathInfo = $request->getPathInfo();
+        $uri = $request->getRequestUri();
+        return $this->redirect(preg_replace('$'.$pathInfo.'.*$', '', $uri));
+    }
+
+
+    /**
+     * Busca o boletim de serviço pelo identificador
+     *
+     * @param integer $id
+     * @access protected
+     * @return Entity\Reports
+     */
+    protected function getBS($id)
+    {
+        $repository = $this->getDoctrine()->getRepository('TroubleticketBundle:Reports', 'troubleticket');
+        return $repository->findOneBy(array('id' => $id, 'type' => Entity\Reports::TYPE_BS));
+
+    }
+
+
+}

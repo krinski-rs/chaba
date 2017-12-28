@@ -1,0 +1,79 @@
+{% extends 'TroubleticketBundle::base.html.twig' %}
+{% block body %}
+    {% if message_error %}
+        <div class="error">
+            <span>{{message_error}}</span>
+        </div>
+    {% endif %}
+    {% if message_success %}
+        <div class="sucesso">
+            <span>{{message_success}}</span>
+        </div>
+    {% endif %}
+    <div class="titleModulo">
+        <div>
+            <span>Incidentes relacionados ao Boletim de Interrupção {{reports.getCode()}}</span>
+        </div>
+    </div>
+    <div class="row" style="margin-bottom: 0px !important;">
+        <form id="form_bi_related_ba_search" action="" method="get">
+            <div class="col-sm-10">
+                <label>ID do BA</label>
+                <input type="text" id="input_id" name="ba_id">
+            </div>
+            <div class="col-sm-10">
+                <label>Designação</label>
+                <input type="text" id="input_designacao" name="designacao">
+            </div>
+            <div class="col-sm-10">
+                <label>Técnico</label>
+                <input type="text" id="input_data" name="responsible">
+            </div>
+            <div class="col-sm-10">
+                <label>Fila</label>
+                <select id="input_stack_fila" name="stack_fila">
+                    <option value="">Todas</option>
+                    {% for stack in stacks %}
+                        <option value="{{stack.code}}">{{stack.label}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-sm-10">
+                <label>Status</label>
+                <select type="text" id="input_status" name="status">
+                    <option value="">Todos</option>
+                    {% for entry in status %}
+                        <option value="{{entry.code}}">{{entry.label}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-sm-10">
+                <button class="btn btn-primary">Pesquisar</button>
+            </div>
+        </form>
+        <form>
+            <div class="col-sm-10 div_stack_bi_related_ba_rollback">
+                <a href="{{ path('troubleticket_bi_main',{'report_id':reports.getId()})}}" class="btn btn-primary a_btn" style="float:right;">Voltar para o BI</a>
+            </div>
+            {% if isAllowed('BI', 'update_related_ba') %}
+            <div class="col-sm-10 div_stack_bi_related_ba_disassociate" style="margin-top: -35px;float: right;padding-right: 0px;">
+                <button class="btn btn-primary disabled" id="btn_bi_related_ba" style="float:right;">Desassociar BA</button>
+            </div>
+            {% endif %}
+        </form>
+    </div>
+    <table id="table_bi_related_ba" class="hover row-border stripe compact cell-border"></table>
+{% endblock %}
+{% block static_css %}
+    <link rel="stylesheet" href="{{ asset('bundles/troubleticket/js/plugins/jquery-dataTables/datatables.min.css') }}" />
+{% endblock %}
+{% block static_js %}
+    <script type="text/javascript">
+        var bi_related_ba_request = "{{path('troubleticket_bi_related_ba_request',{'report_id':reports.getId()})}}",
+            ba_main_request = "{{path('troubleticket_ba_main',{'report_id':0})}}",
+            bi_related_ba_delete_request = "{{path('troubleticket_ba_link_to_bi',{'report_id':0})}}",
+            page_limit = parseInt('{{page_limit}}');
+    </script>
+    <script type="text/javascript" src="{{ asset('bundles/troubleticket/js/plugins/jquery-dataTables/datatables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/troubleticket/js/bi_related_ba.js') }}"></script>
+{% endblock %}

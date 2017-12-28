@@ -1,0 +1,37 @@
+Servicos\LumaBundle\Entity\NfRecebimento:
+    type: entity
+    table: nf_recebimento
+    repositoryClass: Servicos\LumaBundle\Repository\NfRecebimentoRepository
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nfCod:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: nf_cod
+        nfSerie:
+            type: string
+            nullable: false
+            length: 3
+            fixed: false
+            column: nf_serie
+        nfEmissao:
+            type: datetime
+            nullable: false
+            column: nf_emissao
+        nfCnpj:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: nf_cnpj
+        status:
+            type: boolean
+            nullable: false
+    lifecycleCallbacks: {  }

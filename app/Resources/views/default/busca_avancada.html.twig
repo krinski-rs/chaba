@@ -1,0 +1,35 @@
+{% block busca_avancada %}
+	<div class="buttonBuscaAvancada" title="Busca Avançada">
+		<img src="{{ asset('bundles/base/img/busca_avancada.png') }}" title="Busca Avançada"/>
+	</div>
+	<div class="formBuscaAvancada" style="display: none;">
+{% for busca in buscas %}
+		<div {% if busca.class is defined %}class="{{ busca.class }}"{% endif %}>
+{% if busca.label is defined %}
+			<label>{{ busca.label }}</label>
+{% endif %}
+{% if busca.text is defined %}
+			<input type="text" {% if busca.text.id is defined %}id="{{ busca.text.id }}"{% endif %} name="{{ busca.text.name }}" placeholder="{{ busca.text.placeholder|raw }}" {% if busca.text.value is defined %}value="{{ busca.text.value }}"{% endif %}>
+{% endif %}
+{% if busca.select is defined %}
+			<select name="{{ busca.select.name }}" {% if busca.select.id  is defined %}id="{{ busca.select.id }}"{% endif %} {% if busca.select.attr  is defined %}{{ busca.select.attr }}{% endif %}>
+{% if busca.select.start is defined %}
+				<option value=""> {{ busca.select.start|raw }} </option>
+{% endif %} 
+{% for select in busca.select.options  %}
+				<option value="{{ select.value }}"{% if busca.select.options|length == 1 %} selected{% endif %}{% if select.attr is defined %} {{ select.attr|raw }}{% endif %}> {{ select.label|raw }} </option>
+{% endfor %}		
+			</select>
+{% endif %}
+		</div>
+{% endfor %}
+		<div class="search-advanced">
+			<button id="search" type="button">Buscar</button>
+		</div>
+		{% if showExcelButtonBar is defined and showExcelButtonBar %}
+		<div class="search-advanced">
+			<button id="exportExcel" type="button">Exportar</button>
+		</div>
+		{% endif %}
+	</div>
+{% endblock %}

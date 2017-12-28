@@ -1,0 +1,33 @@
+Servicos\GcdbBundle\Entity\RegionalMeta:
+    type: entity
+    table: gcdb.regional_meta
+    id:
+        regionalCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: regional_codigoid
+        mes:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+        ano:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+        tme:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: 'Tempo médio dos chamados'
+            id: true
+    fields:
+        projecao:
+            type: decimal
+            nullable: false
+            precision: 10
+            scale: 2
+    lifecycleCallbacks: {  }

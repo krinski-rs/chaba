@@ -1,0 +1,50 @@
+Servicos\LumaBundle\Entity\Saldodata:
+    type: entity
+    table: luma.saldodata
+    indexes:
+        foreing_index1:
+            columns:
+                - tipo_codigoid
+        foreing_index2:
+            columns:
+                - esto_codigoid
+    id:
+        saldodataCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: saldodata_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        saldodataData:
+            type: date
+            nullable: false
+            column: saldodata_data
+        saldodataSaldo:
+            type: decimal
+            nullable: false
+            precision: 10
+            scale: 2
+            column: saldodata_saldo
+    manyToOne:
+        tipoCodigoid:
+            targetEntity: Tipo
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                tipo_codigoid:
+                    referencedColumnName: tipo_codigoid
+            orphanRemoval: false
+        estoCodigoid:
+            targetEntity: Estoque
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                esto_codigoid:
+                    referencedColumnName: esto_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

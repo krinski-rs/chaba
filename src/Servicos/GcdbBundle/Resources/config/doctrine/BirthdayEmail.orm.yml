@@ -1,0 +1,52 @@
+Servicos\GcdbBundle\Entity\BirthdayEmail:
+    type: entity
+    table: gcdb.birthday_email
+    indexes:
+        birthday_id:
+            columns:
+                - birthday_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        ip:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+        userAgent:
+            type: text
+            nullable: true
+            length: 65535
+            fixed: false
+            column: user_agent
+        referer:
+            type: text
+            nullable: true
+            length: 65535
+            fixed: false
+        dateRead:
+            type: datetime
+            nullable: true
+            column: date_read
+        dateSent:
+            type: datetime
+            nullable: false
+            default: '0000-00-00 00:00:00'
+            column: date_sent
+    manyToOne:
+        birthday:
+            targetEntity: Birthday
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                birthday_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

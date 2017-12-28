@@ -1,0 +1,23 @@
+Servicos\GcdbBundle\Entity\AdmTipoNome:
+    type: entity
+    table: gcdb.adm_tipo_nome
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nome:
+            type: string
+            nullable: true
+            length: 20
+            fixed: false
+        tipo:
+            type: string
+            nullable: true
+            length: null
+            fixed: false
+    lifecycleCallbacks: {  }

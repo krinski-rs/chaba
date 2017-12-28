@@ -1,0 +1,48 @@
+Servicos\LumaBundle\Entity\ViaturaProprietario:
+    type: entity
+    table: luma.viatura_proprietario
+    id:
+        viatProprietario:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: viat_proprietario
+            generator:
+                strategy: IDENTITY
+    fields:
+        viaturaid:
+            type: integer
+            nullable: false
+            unsigned: false
+        propSistechcid:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: prop_sistechcid
+        propCadUsuarioid:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: prop_cad_usuarioid
+        propAlteracaoUsuarioid:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: prop_alteracao_usuarioid
+        propDatainc:
+            type: datetime
+            nullable: true
+            default: CURRENT_TIMESTAMP
+            column: prop_datainc
+        propDataAlteracao:
+            type: datetime
+            nullable: true
+            column: prop_data_alteracao
+        propMotivoAlteracao:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            column: prop_motivo_alteracao
+    lifecycleCallbacks: {  }

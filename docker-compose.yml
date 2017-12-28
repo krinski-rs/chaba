@@ -1,0 +1,18 @@
+version: '2'
+services:
+  troubleticket:
+    container_name: dev-troubleticket
+    hostname: dev-troubleticket
+    extends:
+      file: ./docker-projeto.yml
+      service: default
+#    volumes:
+#      - "/mnt/dados:/mnt/dados"
+    ports:
+     - "5001:80"
+    extra_hosts:
+      - "dev.vogeltelecom.com:172.17.0.1"
+networks:
+  default:
+    external:
+      name: mynet

@@ -1,0 +1,42 @@
+Servicos\GcdbBundle\Entity\AutOpcoes:
+    type: entity
+    repositoryClass: Servicos\GcdbBundle\Repository\AutOpcoesRepository
+    table: gcdb.aut_opcoes
+    indexes:
+        visivel:
+            columns:
+                - visivel
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nome:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+            default: ''
+        descricao:
+            type: text
+            nullable: true
+            length: 65535
+            fixed: false
+        visivel:
+            type: boolean
+            nullable: false
+            default: '1'
+    oneToMany:
+        autPermissoesGrupos:
+            targetEntity: AutPermissoesGrupos
+            mappedBy: autOpcoes
+            cascade: ['persist']
+        autPermissoes:
+            targetEntity: AutPermissoes
+            mappedBy: autOpcoes
+            cascade: ['persist']
+    lifecycleCallbacks: {  }

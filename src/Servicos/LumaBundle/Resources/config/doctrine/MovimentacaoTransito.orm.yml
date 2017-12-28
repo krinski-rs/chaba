@@ -1,0 +1,43 @@
+Servicos\LumaBundle\Entity\MovimentacaoTransito:
+    type: entity
+    table: luma.movimentacao_transito
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        movitransDataInc:
+            type: datetime
+            nullable: false
+            column: movitrans_data_inc
+        movitransStatus:
+            type: integer
+            nullable: false
+            unsigned: true
+            column: movitrans_status
+
+    oneToOne:
+        unidCodigoid:
+            targetEntity: Unidade
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                unid_codigoid:
+                    referencedColumnName: unid_codigoid
+            orphanRemoval: false
+        moviCodigoid:
+            targetEntity: Movimentacao
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                movi_codigoid:
+                    referencedColumnName: movi_codigoid
+            orphanRemoval: false
+
+    lifecycleCallbacks: {  }

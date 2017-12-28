@@ -1,0 +1,28 @@
+Servicos\GcdbBundle\Entity\Usuarios:
+    type: entity
+    table: gcdb.usuarios
+    id:
+        idusuario:
+            type: integer
+            nullable: false
+            unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        usuario:
+            type: string
+            nullable: false
+            length: 25
+            fixed: true
+        senha:
+            type: string
+            nullable: false
+            length: 60
+            fixed: true
+        nivel:
+            type: string
+            nullable: false
+            length: 1
+            fixed: true
+    lifecycleCallbacks: {  }

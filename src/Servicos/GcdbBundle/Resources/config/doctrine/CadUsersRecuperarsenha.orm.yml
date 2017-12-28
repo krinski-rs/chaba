@@ -1,0 +1,46 @@
+Servicos\GcdbBundle\Entity\CadUsersRecuperarsenha:
+    type: entity
+    table: gcdb.cad_users_recuperarsenha
+    indexes:
+        fk_cad_users_recuperarsenha_1_idx:
+            columns:
+                - cadUserId
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        dataInc:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: data_inc
+        dataValidade:
+            type: datetime
+            nullable: true
+            column: data_validade
+        confirmacao:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+        email:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+    manyToOne:
+        caduserid:
+            targetEntity: CadUsers
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cadUserId:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

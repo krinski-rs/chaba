@@ -1,0 +1,20 @@
+Servicos\GcdbBundle\Entity\ClosestTicketTipoProblema:
+    type: entity
+    table: gcdb.closest_ticket_tipo_problema
+    id:
+        closestTicketTipoProblemaId:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: closest_ticket_tipo_problema_id
+            generator:
+                strategy: IDENTITY
+    fields:
+        closestTicketTipoProblemaDescricao:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            column: closest_ticket_tipo_problema_descricao
+    lifecycleCallbacks: {  }

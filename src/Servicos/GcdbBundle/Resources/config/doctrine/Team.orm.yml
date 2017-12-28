@@ -1,0 +1,31 @@
+Servicos\GcdbBundle\Entity\Team:
+    type: entity
+    table: gcdb.team
+    id:
+        teamCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: team_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        teamNome:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: team_nome
+        teamApelido:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            column: team_apelido
+        teamAtivo:
+            type: boolean
+            nullable: false
+            default: '1'
+            column: team_ativo
+    lifecycleCallbacks: {  }

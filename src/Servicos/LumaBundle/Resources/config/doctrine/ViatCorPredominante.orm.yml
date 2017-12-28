@@ -1,0 +1,19 @@
+Servicos\LumaBundle\Entity\ViatCorPredominante:
+    type: entity
+    table: luma.viat_cor_predominante
+    id:
+        idViatCorPredominante:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_viat_cor_predominante
+            generator:
+                strategy: IDENTITY
+    fields:
+        descricao:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+    lifecycleCallbacks: {  }

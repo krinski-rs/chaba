@@ -1,0 +1,23 @@
+Servicos\GcdbBundle\Entity\AdmTipoLigacao:
+    type: entity
+    table: gcdb.adm_tipo_ligacao
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nome:
+            type: string
+            nullable: true
+            length: 30
+            fixed: false
+        tipo:
+            type: string
+            nullable: true
+            length: 3
+            fixed: true
+    lifecycleCallbacks: {  }

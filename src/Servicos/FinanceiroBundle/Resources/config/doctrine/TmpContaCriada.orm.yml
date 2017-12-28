@@ -1,0 +1,71 @@
+Servicos\FinanceiroBundle\Entity\TmpContaCriada:
+    type: entity
+    table: financeiro.tmp_conta_criada
+    id:
+        idTmpContaCriada:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_tmp_conta_criada
+            generator:
+                strategy: IDENTITY
+    fields:
+        ramoAtividade:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            column: ramo_atividade
+        tipo:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+        estado:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+        cidade:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+        cnpj:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+        porte:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+        tipoPessoa:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            column: tipo_pessoa
+        contaCriada:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: conta_criada
+        gc:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+        canalVenda:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            column: canal_venda
+        cid:
+            type: integer
+            nullable: false
+            unsigned: false
+    lifecycleCallbacks: {  }

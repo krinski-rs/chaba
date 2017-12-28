@@ -1,0 +1,22 @@
+Servicos\RhBundle\Entity\RhTipoColaborador:
+    type: entity
+    table: rh.rh_tipo_colaborador
+    id:
+        idTipoColaborador:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_tipo_colaborador
+            generator:
+                strategy: IDENTITY
+    fields:
+        descricao:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+        ativo:
+            type: boolean
+            nullable: true
+    lifecycleCallbacks: {  }

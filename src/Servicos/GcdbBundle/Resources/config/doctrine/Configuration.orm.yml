@@ -1,0 +1,28 @@
+Servicos\GcdbBundle\Entity\Configuration:
+    type: entity
+    table: gcdb.Configuration
+    id:
+        version:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            default: ''
+            id: true
+            column: Version
+            generator:
+                strategy: IDENTITY
+    fields:
+        billahead:
+            type: string
+            nullable: true
+            length: null
+            fixed: false
+            column: BillAhead
+        language:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+            column: Language
+    lifecycleCallbacks: {  }

@@ -1,0 +1,16 @@
+Servicos\LumaBundle\Entity\TipoAprovacao:
+  type: entity
+  table: luma.tipo_aprovacao
+  fields:
+    id:
+      id: true
+      type: integer
+      unsigned: false
+      nullable: false
+      column: id
+      generator:
+        strategy: IDENTITY
+    descricao:
+      type: text
+      nullable: false
+      column: descricao

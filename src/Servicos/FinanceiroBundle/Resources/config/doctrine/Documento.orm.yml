@@ -1,0 +1,71 @@
+Servicos\FinanceiroBundle\Entity\Documento:
+    type: entity
+    table: financeiro.documento
+    indexes:
+        fk_documento_tipodocumento1_idx:
+            columns:
+                - tipodocu_codigoid
+        fk_documento_contrato1_idx:
+            columns:
+                - cont_codigoid
+    id:
+        docuCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: docu_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        docuNome:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: docu_nome
+        docuDatainc:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: docu_datainc
+        docuUsuainc:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: docu_usuainc
+        docuDatafim:
+            type: datetime
+            nullable: true
+            column: docu_datafim
+        docuUsuafim:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: docu_usuafim
+        docuAprovado:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            column: docu_aprovado
+    manyToOne:
+        contCodigoid:
+            targetEntity: Contrato
+            cascade: {  }
+            mappedBy: null
+            inversedBy: documento
+            joinColumns:
+                cont_codigoid:
+                    referencedColumnName: cont_codigoid
+            orphanRemoval: false
+        tipodocuCodigoid:
+            targetEntity: Tipodocumento
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                tipodocu_codigoid:
+                    referencedColumnName: tipodocu_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

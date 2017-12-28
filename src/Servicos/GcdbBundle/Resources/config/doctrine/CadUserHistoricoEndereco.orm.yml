@@ -1,0 +1,76 @@
+Servicos\GcdbBundle\Entity\CadUserHistoricoEndereco:
+    type: entity
+    table: gcdb.cad_user_historico_endereco
+    indexes:
+        fk_cad_user_historico_idx:
+            columns:
+                - cad_user_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        cadUserId:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: cad_user_id
+        endereco:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+        admLogradouroId:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: adm_logradouro_id
+        cep:
+            type: string
+            nullable: true
+            length: 8
+            fixed: false
+        numero:
+            type: string
+            nullable: true
+            length: 15
+            fixed: false
+        bairro:
+            type: string
+            nullable: true
+            length: 200
+            fixed: false
+        admPaisId:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: adm_pais_id
+        admUfId:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: adm_uf_id
+        admCidadeId:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: adm_cidade_id
+        latitude:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+        longitude:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+        dataInc:
+            type: datetime
+            nullable: true
+            column: data_inc
+    lifecycleCallbacks: {  }

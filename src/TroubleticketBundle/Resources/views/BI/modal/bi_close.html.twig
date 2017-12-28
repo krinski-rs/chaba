@@ -1,0 +1,88 @@
+{% block bi_close %}
+
+<div class="row">
+    <small><em>(*) Campos obrigatórios</em></small>
+    <form id="form_bi_close" method="POST" action="{{ path('troubleticket_bi_main_close', { 'report_id': reports.getId()}) }}">
+        <div class="col-sm-50" style="float: left;">
+            <div class="row">
+                <label for="select_bi_close_incidente">* Incidente</label>
+                <select name="incidente" id="select_bi_close_incidente">
+                    <option value="">---</option>
+                </select>
+                <div class="error alert" id="div_error_select_bi_close_incidente" style="display:none"><span>Este campo precisa ser preenchido corretamente!</span></div>
+            </div>
+            <div class="row">
+                <label>* Abrir BS?</label>
+                <select name="abrir_bs" id="select_bi_close_abrir_bs">
+                    <option value="">---</option>
+                </select>
+                <div class="error alert" id="div_error_select_bi_close_abrir_bs" style="display:none"><span>Este campo precisa ser preenchido corretamente!</span></div>
+            </div>
+            <div class="row">
+                <label for="select_bi_close_severidade">* Severidade</label>
+                <select name="severidade" id="select_bi_close_severidade">
+                    <option value="">---</option>
+                </select>
+                <div class="error alert" id="div_error_select_bi_close_severidade" style="display:none"><span>Este campo precisa ser preenchido corretamente!</span></div>
+            </div>
+            <div class="row">
+                <label for="select_bi_close_pop">* POP</label>
+                <select name="pop" id="select_bi_close_pop" data-url="{{ path('troubleticket_ba_link_to_bi', { 'report_id': reports.getId()}) }}">
+                    <option value="">---</option>
+                </select>
+                <div class="error alert" id="div_error_select_bi_close_pop" style="display:none"><span>Este campo precisa ser preenchido corretamente!</span></div>
+            </div>
+            <div class="row">
+                <label for="select_bi_close_fornecedor">Fornecedor</label>
+                <select name="fornecedor" id="select_bi_close_fornecedor">
+                    <option value="">---</option>
+                </select>
+                <div class="error alert" id="div_error_select_bi_close_fornecedor" style="display:none"><span>Este campo precisa ser preenchido corretamente!</span></div>
+            </div>
+        </div>
+        <div class="col-sm-50" style="float: left;">
+            <div class="row">
+                <label for="select_bi_close_estrutura">* Estrutura</label>
+                <select name="estrutura" id="select_bi_close_estrutura">
+                    <option value="">---</option>
+                </select>
+                <div class="error alert" id="div_error_select_bi_close_estrutura" style="display:none"><span>Este campo precisa ser preenchido corretamente!</span></div>
+            </div>
+            <div class="row">
+                <label for="select_bi_close_elemento">* Elemento</label>
+                <select name="elemento" id="select_bi_close_elemento">
+                    <option value="">---</option>
+                </select>
+                <div class="error" id="div_error_select_bi_close_elemento" style="display:none"><span>Este campo precisa ser preenchido corretamente!</span></div>
+            </div>
+            <div class="row">
+                <label for="select_bi_close_causa">* Causa</label>
+                <select name="causa" id="select_bi_close_causa">
+                    <option value="">---</option>
+                </select>
+                <div class="error" id="div_error_select_bi_close_causa" style="display:none"><span>Este campo precisa ser preenchido corretamente!</span></div>
+            </div>
+            <div class="row">
+                <label>* Problema</label>
+                <select name="problema" id="select_bi_close_problema">
+                    <option value="">---</option>
+                </select>
+                <div class="error alert" id="div_error_select_bi_close_problema" style="display:none"><span>Este campo precisa ser preenchido corretamente!</span></div>
+            </div>
+            <div class="row">
+                <label>* Solução</label>
+                <select name="solucao" id="select_bi_close_solucao">
+                    <option value="">---</option>
+                </select>
+                <div class="error alert" id="div_error_select_bi_close_solucao" style="display:none"><span>Este campo precisa ser preenchido corretamente!</span></div>
+            </div>
+        </div>
+        <div class="col-sm-100">
+            <div class="row">
+                <label>Motivo</label>
+                <textarea name="comentario" id="textarea_bi_close_comentario"></textarea>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

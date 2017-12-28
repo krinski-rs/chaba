@@ -1,0 +1,63 @@
+Servicos\LumaBundle\Entity\Estoqueproduto:
+    type: entity
+    table: luma.estoqueproduto
+    indexes:
+        fk_estoqueproduto_estoque1:
+            columns:
+                - esto_codigoid
+        fk_estoqueproduto_produto1:
+            columns:
+                - prod_codigoid
+    uniqueConstraints:
+        esto_codigoid:
+            columns:
+                - esto_codigoid
+                - prod_codigoid
+    id:
+        estoprodCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: estoprod_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        estoprodMinimo:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: estoprod_minimo
+        estoprodNormal:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: estoprod_normal
+        estoprodTotal:
+            type: decimal
+            nullable: false
+            precision: 10
+            scale: 2
+            column: estoprod_total
+    manyToOne:
+        estoCodigoid:
+            targetEntity: Estoque
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                esto_codigoid:
+                    referencedColumnName: esto_codigoid
+            orphanRemoval: false
+        prodCodigoid:
+            targetEntity: Produto
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                prod_codigoid:
+                    referencedColumnName: prod_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

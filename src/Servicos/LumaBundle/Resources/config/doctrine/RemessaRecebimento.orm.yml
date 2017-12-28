@@ -1,0 +1,31 @@
+Servicos\LumaBundle\Entity\RemessaRecebimento:
+    type: entity
+    table: remessa_recebimento
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        dataCriacao:
+            type: datetime
+            nullable: false
+            column: data_criacao
+        dataRetorno:
+            type: datetime
+            nullable: true
+            column: data_retorno
+        arquivoRecebimento:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: arquivo_recebimento
+    oneToMany:
+        remessaRecebimentoOrdem:
+            targetEntity: RemessaRecebimentoOrdem
+            mappedBy: idRemessaRecebimento
+    lifecycleCallbacks: {  }

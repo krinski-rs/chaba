@@ -1,0 +1,110 @@
+Servicos\LumaBundle\Entity\Email:
+    type: entity
+    table: luma.email
+    indexes:
+        email_datainc:
+            columns:
+                - email_datainc
+        email_tipooperacao:
+            columns:
+                - email_tipooperacao
+        tipo_codigoid:
+            columns:
+                - tipo_codigoid
+        email_idoperacao:
+            columns:
+                - email_idoperacao
+        email_prioridade:
+            columns:
+                - email_prioridade
+        email_anexo:
+            columns:
+                - email_anexo
+    id:
+        emailCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: email_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        tipoCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: tipo_codigoid
+        emailPagina:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: email_pagina
+        emailAssunto:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: email_assunto
+        emailCorpo:
+            type: text
+            nullable: false
+            length: 65535
+            fixed: false
+            column: email_corpo
+        emailDe:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: email_de
+        emailPara:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: email_para
+        emailCc:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            column: email_cc
+        emailBcc:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            column: email_bcc
+        emailAnexo:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            column: email_anexo
+        emailDataenvio:
+            type: datetime
+            nullable: false
+            column: email_dataenvio
+        emailDatainc:
+            type: datetime
+            nullable: false
+            column: email_datainc
+        emailIdoperacao:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: email_idoperacao
+        emailTipooperacao:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: email_tipooperacao
+        emailPrioridade:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: email_prioridade
+    lifecycleCallbacks: {  }

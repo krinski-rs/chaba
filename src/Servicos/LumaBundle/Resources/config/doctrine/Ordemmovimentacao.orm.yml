@@ -1,0 +1,45 @@
+Servicos\LumaBundle\Entity\Ordemmovimentacao:
+    type: entity
+    table: luma.ordemmovimentacao
+    indexes:
+        fk_orde_codigoid:
+            columns:
+                - orde_codigoid
+        fk_movi_codigoid:
+            columns:
+                - movi_codigoid
+    id:
+        ordemoviCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: ordemovi_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        ordemoviDatainc:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: ordemovi_datainc
+    manyToOne:
+        ordeCodigoid:
+            targetEntity: Ordem
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                orde_codigoid:
+                    referencedColumnName: orde_codigoid
+            orphanRemoval: false
+        moviCodigoid:
+            targetEntity: Movimentacao
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                movi_codigoid:
+                    referencedColumnName: movi_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

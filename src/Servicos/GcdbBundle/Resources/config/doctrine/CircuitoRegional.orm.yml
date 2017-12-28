@@ -1,0 +1,19 @@
+Servicos\GcdbBundle\Entity\CircuitoRegional:
+    type: entity
+    table: gcdb.circuito_regional
+    id:
+        regional:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+        data:
+            type: date
+            nullable: false
+            id: true
+    fields:
+        circuitos:
+            type: integer
+            nullable: true
+            unsigned: false
+    lifecycleCallbacks: {  }

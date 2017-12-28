@@ -1,0 +1,31 @@
+Servicos\GcdbBundle\Entity\LogsDelete:
+    type: entity
+    table: gcdb.logs_delete
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        userId:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: user_id
+        sql:
+            type: text
+            nullable: false
+            length: 65535
+            fixed: false
+        data:
+            type: datetime
+            nullable: false
+        ip:
+            type: string
+            nullable: true
+            length: 20
+            fixed: false
+    lifecycleCallbacks: {  }

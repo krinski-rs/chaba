@@ -1,0 +1,36 @@
+Servicos\GcdbBundle\Entity\TicketsCategoria:
+    type: entity
+    table: gcdb.Tickets_Categoria
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nome:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+        contaSla:
+            type: boolean
+            nullable: true
+            column: conta_sla
+        prioridade:
+            type: integer
+            nullable: true
+            unsigned: false
+        tipo:
+            type: integer
+            nullable: true
+            unsigned: false
+        ativo:
+            type: integer
+            nullable: false
+            unsigned: false
+            default: '1'
+            column: Ativo
+    lifecycleCallbacks: {  }

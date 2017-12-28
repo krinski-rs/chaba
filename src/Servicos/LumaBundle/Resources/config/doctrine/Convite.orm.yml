@@ -1,0 +1,45 @@
+Servicos\LumaBundle\Entity\Convite:
+    type: entity
+    table: luma.convite
+    indexes:
+        fk_convite_cotacao1_idx:
+            columns:
+                - cota_codigoid
+        fk_convite_unidade1_idx:
+            columns:
+                - unid_codigoid
+    id:
+        convCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: conv_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        convDatainc:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: conv_datainc
+    manyToOne:
+        cotaCodigoid:
+            targetEntity: Cotacao
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cota_codigoid:
+                    referencedColumnName: cota_codigoid
+            orphanRemoval: false
+        unidCodigoid:
+            targetEntity: Unidade
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                unid_codigoid:
+                    referencedColumnName: unid_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

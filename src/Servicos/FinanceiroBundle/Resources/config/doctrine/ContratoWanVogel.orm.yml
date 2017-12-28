@@ -1,0 +1,32 @@
+Servicos\FinanceiroBundle\Entity\ContratoWanVogel:
+    type: entity
+    table: financeiro.contrato_wan_vogel
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id
+            generator:
+                strategy: IDENTITY
+    fields:
+        ctrCodigo:
+            type: integer
+            nullable: false
+            column: ctr_codigo
+        dataInc:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: data_inc
+    oneToOne:
+        contCodigoid:
+            targetEntity: Contrato
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cont_codigoid:
+                    referencedColumnName: cont_codigoid
+    lifecycleCallbacks: {  }

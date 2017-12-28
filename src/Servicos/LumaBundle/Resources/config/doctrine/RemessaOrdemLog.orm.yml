@@ -1,0 +1,41 @@
+Servicos\LumaBundle\Entity\RemessaOrdemLog:
+    type: entity
+    table: remessa_ordem_log
+    indexes:
+        remessa_ordem_log_ibfk1:
+            columns:
+                - id_remessa_ordem
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        campo:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+        mensagem:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+        dataCriacao:
+            type: datetime
+            nullable: false
+            column: data_criacao
+    manyToOne:
+        idRemessaOrdem:
+            targetEntity: RemessaOrdem
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_remessa_ordem:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

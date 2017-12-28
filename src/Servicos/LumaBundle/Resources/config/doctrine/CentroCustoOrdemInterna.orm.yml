@@ -1,0 +1,18 @@
+Servicos\LumaBundle\Entity\CentroCustoOrdemInterna:
+    type: entity
+    table: luma.centro_custo_ordem_interna
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        centroCustoOrdemInterna:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: centro_custo_ordem_interna
+    lifecycleCallbacks: {  }

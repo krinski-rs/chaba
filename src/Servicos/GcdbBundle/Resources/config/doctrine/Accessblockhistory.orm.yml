@@ -1,0 +1,49 @@
+Servicos\GcdbBundle\Entity\Accessblockhistory:
+    type: entity
+    table: gcdb.AccessBlockHistory
+    indexes:
+        sid:
+            columns:
+                - id
+        CustomerID:
+            columns:
+                - CustomerID
+        IP:
+            columns:
+                - IP
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        customerid:
+            type: string
+            nullable: false
+            length: 10
+            fixed: false
+            default: ''
+            column: CustomerID
+        ip:
+            type: string
+            nullable: false
+            length: 15
+            fixed: false
+            default: ''
+            column: IP
+        data:
+            type: string
+            nullable: false
+            length: 30
+            fixed: false
+            default: ''
+        block:
+            type: boolean
+            nullable: true
+        datalib:
+            type: datetime
+            nullable: true
+    lifecycleCallbacks: {  }

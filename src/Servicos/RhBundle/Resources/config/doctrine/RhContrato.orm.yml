@@ -1,0 +1,56 @@
+Servicos\RhBundle\Entity\RhContrato:
+    type: entity
+    table: rh.rh_contrato
+    indexes:
+        fk_rh_contrato_rh_colaborador1_idx:
+            columns:
+                - id_colaborador
+    id:
+        idContrato:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_contrato
+            generator:
+                strategy: IDENTITY
+    fields:
+        dataInicio:
+            type: date
+            nullable: true
+            column: data_inicio
+        dataPrevista:
+            type: date
+            nullable: true
+            column: data_prevista
+        contratoPrincipal:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: contrato_principal
+        dias:
+            type: integer
+            nullable: true
+            unsigned: false
+        registrante:
+            type: integer
+            nullable: true
+            unsigned: false
+        dataInc:
+            type: datetime
+            nullable: true
+            column: data_inc
+        ativo:
+            type: boolean
+            nullable: true
+    manyToOne:
+        idColaborador:
+            targetEntity: RhColaborador
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_colaborador:
+                    referencedColumnName: id_colaborador
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

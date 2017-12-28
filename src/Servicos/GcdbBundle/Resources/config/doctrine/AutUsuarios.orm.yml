@@ -1,0 +1,54 @@
+Servicos\GcdbBundle\Entity\AutUsuarios:
+    type: entity
+    repositoryClass: Servicos\GcdbBundle\Repository\AutUsuariosRepository
+    table: gcdb.aut_usuarios
+    indexes:
+        username:
+            columns:
+                - username
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        username:
+            type: string
+            nullable: false
+            length: 20
+            fixed: false
+            default: ''
+        pass:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+        nome:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+        ativo:
+            type: integer
+            nullable: false
+            unsigned: false
+            default: '1'
+        canal:
+            type: boolean
+            nullable: false
+            default: false
+    oneToMany:
+        autPermissoes:
+            targetEntity: AutPermissoes
+            mappedBy: autUsuario
+            cascade:
+                - persist
+                - merge
+        autUsuariosHasGrupos:
+            targetEntity: AutUsuariosHasGrupos
+            mappedBy: autUsuario
+            cascade: { }
+    lifecycleCallbacks: {  }

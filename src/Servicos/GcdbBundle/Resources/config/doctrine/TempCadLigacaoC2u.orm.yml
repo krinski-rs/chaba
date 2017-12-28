@@ -1,0 +1,39 @@
+Servicos\GcdbBundle\Entity\TempCadLigacaoC2u:
+    type: entity
+    table: gcdb.temp_cad_ligacao_c2u
+    indexes:
+        cad_ligacao_u2u_FKIndex2:
+            columns:
+                - cad_users_id2
+        cad_ligacao_u2u_FKIndex3:
+            columns:
+                - cad_cid_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        cadCidId:
+            type: integer
+            nullable: true
+            unsigned: true
+            column: cad_cid_id
+        cadUsersId2:
+            type: integer
+            nullable: true
+            unsigned: true
+            column: cad_users_id2
+        dtInicio:
+            type: date
+            nullable: true
+            column: dt_inicio
+        dtFim:
+            type: date
+            nullable: false
+            default: '0000-00-00'
+            column: dt_fim
+    lifecycleCallbacks: {  }

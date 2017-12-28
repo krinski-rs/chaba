@@ -1,0 +1,89 @@
+#servicos_rest_homepage:
+#    path:     /hello/{name}
+#    defaults: { _controller: ServicosRestBundle:Default:index }
+
+test:
+    path:     /hello/{name}
+    defaults: { _controller: ServicosRestBundle:Default:index }
+########## CLIENTE ##########
+cliente:
+    path:     /cliente
+    defaults: { _controller: ServicosRestBundle:Cliente/Cliente:index }
+    methods:  [GET]
+cliente_create:
+    path:     /cliente
+    defaults: { _controller: ServicosRestBundle:Cliente/Cliente:create}
+    methods:  [POST]
+cliente_retrieve:
+    path:     /cliente/{id}
+    defaults: { _controller: ServicosRestBundle:Cliente/Cliente:retrieve }
+    methods:  [GET]
+    requirements:
+        id:  \d+
+cliente_update:
+    path:     /cliente/{id}
+    defaults: { _controller: ServicosRestBundle:Cliente/Cliente:update }
+    methods:  [PUT]
+    requirements:
+        id:  \d+
+cliente_delete:
+    path:     /cliente/{id}
+    defaults: { _controller: ServicosRestBundle:Cliente/Cliente:delete }
+    methods:  [DELETE]
+    requirements:
+        id:  \d+
+########## CIRCUITO ##########
+circuito:
+    path:     /circuito
+    defaults: { _controller: ServicosRestBundle:Cliente/Circuito:index }
+    methods:  [GET]
+circuito_create:
+    path:     /circuito
+    defaults: { _controller: ServicosRestBundle:Cliente/Circuito:create}
+    methods:  [POST]
+circuito_retrieve:
+    path:     /circuito/{id}
+    defaults: { _controller: ServicosRestBundle:Cliente/Circuito:retrieve }
+    methods:  [GET]
+    requirements:
+        id:  \d+
+circuito_update:
+    path:     /circuito/{id}
+    defaults: { _controller: ServicosRestBundle:Cliente/Circuito:update }
+    methods:  [PUT]
+    requirements:
+        id:  \d+
+circuito_delete:
+    path:     /circuito/{id}
+    defaults: { _controller: ServicosRestBundle:Cliente/Circuito:delete }
+    methods:  [DELETE]
+    requirements:
+        id:  \d+
+######### COLABORADOR ########
+colaborador:
+    path:     /colaborador
+    defaults: { _controller: ServicosRestBundle:Colaborador/Colaborador:index }
+    methods:  [GET]
+colaborador_create:
+    path:     /colaborador
+    defaults: { _controller: ServicosRestBundle:Colaborador/Colaborador:create}
+    methods:  [POST]
+colaborador_retrieve:
+    path:     /colaborador/{id}
+    defaults: { _controller: ServicosRestBundle:Colaborador/Colaborador:retrieve }
+    methods:  [GET]
+    requirements:
+        id:  \d+
+colaborador_update:
+    path:     /colaborador/{id}
+    defaults: { _controller: ServicosRestBundle:Colaborador/Colaborador:update }
+    methods:  [PUT]
+    requirements:
+        id:  \d+
+colaborador_delete:
+    path:     /colaborador/{id}
+    defaults: { _controller: ServicosRestBundle:Colaborador/Colaborador:delete }
+    methods:  [DELETE]
+    requirements:
+        id:  \d+
+        

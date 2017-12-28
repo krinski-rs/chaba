@@ -1,0 +1,47 @@
+Servicos\GcdbBundle\Entity\RelServicosRecursos:
+    type: entity
+    table: gcdb.rel_servicos_recursos
+    indexes:
+        ServicoID:
+            columns:
+                - ServicoID
+        RecursoID:
+            columns:
+                - RecursoID
+    id:
+        relservicosrecursosid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: RelServicosRecursosID
+            generator:
+                strategy: IDENTITY
+    fields:
+        servicoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            default: '0'
+            column: ServicoID
+        recursoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            default: '0'
+            column: RecursoID
+        conteudo:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+            default: ''
+            column: Conteudo
+        obrigatorio:
+            type: string
+            nullable: false
+            length: null
+            fixed: false
+            default: '1'
+            column: Obrigatorio
+    lifecycleCallbacks: {  }

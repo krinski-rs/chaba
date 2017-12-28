@@ -1,0 +1,82 @@
+Servicos\LumaBundle\Entity\Poprelacaolocalizacao:
+    type: entity
+    table: luma.poprelacaolocalizacao
+    indexes:
+        id_pop:
+            columns:
+                - id_pop
+        id_localizacao:
+            columns:
+                - id_localizacao
+        id_tipo:
+            columns:
+                - id_tipo
+    id:
+        idPopLocalizacao:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_pop_localizacao
+            generator:
+                strategy: IDENTITY
+    fields:
+        dataInicio:
+            type: datetime
+            nullable: true
+            column: data_inicio
+        dataFim:
+            type: datetime
+            nullable: true
+            column: data_fim
+        usuario:
+            type: string
+            nullable: true
+            length: 80
+            fixed: false
+            column: Usuario
+        usuarioAprovador:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+            column: usuario_aprovador
+        observacaoAprovador:
+            type: string
+            nullable: true
+            length: 500
+            fixed: false
+            column: observacao_aprovador
+        dataAprovador:
+            type: datetime
+            nullable: true
+            column: data_aprovador
+    manyToOne:
+        idPop:
+            targetEntity: Pop
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_pop:
+                    referencedColumnName: id_pop
+            orphanRemoval: false
+        idLocalizacao:
+            targetEntity: Poplocalizacao
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_localizacao:
+                    referencedColumnName: id_localizacao
+            orphanRemoval: false
+        idTipo:
+            targetEntity: Poptipolocalizacao
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_tipo:
+                    referencedColumnName: id_tipo
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

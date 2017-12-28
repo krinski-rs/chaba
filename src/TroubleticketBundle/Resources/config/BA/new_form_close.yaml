@@ -1,0 +1,166 @@
+Incidente:
+  Cliente:
+    Elemento:
+      Cabo Interno:
+        
+  Vogel:
+
+Causa: 
+  Cliente: 
+      Local: 
+      Falha: 
+          Cabo Interno: 
+            Problema: 
+                Problemas no cabo interno: 
+                  Solução: 
+                    - "Substituído"
+                    - "Falha corrigida pelo cliente"
+          Rede Interna: 
+            Problema: 
+                Rede Interna: 
+                  Solução: 
+                    - "Falha corrigida pelo cliente"
+          Falta de Energia:
+            Problema:
+                Falta de Energia:
+                    Solução:
+                        - "Energia reestabelecida"
+  Vogel: 
+      Local: 
+          POP: 
+            Falha: 
+                Equipamento: 
+                  Problema: 
+                      Travado: 
+                        Solução: 
+                          - "Troca"
+                      Porta: 
+                        Solução: 
+                          - "Troca"
+                      Queimado: 
+                        Solução: 
+                          - "Troca"
+                      Fonte: 
+                        Solução: 
+                          - "Reset"
+                      Fan: 
+                        Solução: 
+                          - "Reset"
+                      Gerência: 
+                        Solução: 
+                          - "Reset"
+                Infra: 
+                  Problema: 
+                      Falha de Energia Elétrica: 
+                        Solução: 
+                          - "Energia reestabelecida"
+                      Falha no Retificador: 
+                        Solução: 
+                          - "Retificador corrigido"
+                          - "Troca do Retificador"
+          Rede Externa: 
+            Falha: 
+                Rompimento: 
+                  Problema: 
+                      Vandalismo: 
+                        Solução: 
+                          - "Fusão de Fibra"
+                      Troca de Poste: 
+                        Solução: 
+                          - "Fusão de Fibra"
+                      Carga Alta de Veículos: 
+                        Solução: 
+                          - "Fusão de Fibra"
+                      Descarga Elétrica: 
+                        Solução: 
+                          - "Fusão de Fibra"
+                      Caixa de Emenda: 
+                        Solução: 
+                          - "Fusão de Fibra"
+                          - "Troca da caixa"
+                Atenuação: 
+                  Problema: 
+                      Fibra Atenuada: 
+                        Solução: 
+                          - "Retirada Atenuação"
+          Cliente: 
+            Falha: 
+                Equipamento: 
+                  Problema: 
+                      Travado: 
+                        Solução: 
+                          - "Troca"
+                      Porta: 
+                        Solução: 
+                          - "Troca"
+                      Queimado: 
+                        Solução: 
+                          - "Troca"
+                      Fonte: 
+                        Solução: 
+                          - "Troca"
+                      Fan: 
+                        Solução: 
+                          - "Reset"
+                      Gerencia: 
+                        Solução: 
+                          - "Reset"
+                      Configuração: 
+                        Solução: 
+                          - "Reset"
+                      Cabo: 
+                        Solução: 
+                          - "Reset"
+          Lógico: 
+            Falha: 
+                EAPS: 
+                  Problema: 
+                      Manutenção: 
+                        Solução: 
+                          - "Reconfigurado"
+                Roteamento: 
+                  Problema: 
+                      Manutenção: 
+                        Solução: 
+                          - "Reconfigurado"
+                BGP: 
+                  Problema: 
+                      Conflito de Configuração: 
+                        Solução: 
+                          - "Reset Lógico"
+                VLAN: 
+                  Problema: 
+                      Conflito de Configuração: 
+                        Solução: 
+                          - "Reset Lógico"
+                LOOP: 
+                  Problema: 
+                      Travamento de tunel: 
+                        Solução: 
+                          - "Reset Lógico"
+                Configuração: 
+                  Problema: 
+                      Travamento de tunel: 
+                        Solução: 
+                          - "Reset Lógico"
+  Mantainer: 
+      Local: 
+          Rede Parceira: 
+            Falha: 
+                Falha na Rede Parceira: 
+                  Problema: 
+                      Falha na Rede Parceira: 
+                        Solução: 
+                          - "Rede Normalizada"
+Severidade:
+  - 1
+  - 2
+  - 3
+  - 4
+
+AbrirBS: 
+  - "Não"
+  - "Relatório de Incidentes"
+  - "Relatório de Causa Raiz"
+  - "Relatório de Disponibilidade"
+  - "Relatório de Consumo de Banda"

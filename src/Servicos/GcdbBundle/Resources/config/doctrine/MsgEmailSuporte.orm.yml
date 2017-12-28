@@ -1,0 +1,23 @@
+Servicos\GcdbBundle\Entity\MsgEmailSuporte:
+    type: entity
+    table: gcdb.msg_email_suporte
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        msg:
+            type: text
+            nullable: false
+            length: 65535
+            fixed: false
+        tipo:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+    lifecycleCallbacks: {  }

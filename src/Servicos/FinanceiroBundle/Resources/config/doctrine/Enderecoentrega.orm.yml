@@ -1,0 +1,132 @@
+Servicos\FinanceiroBundle\Entity\Enderecoentrega:
+    type: entity
+    table: financeiro.enderecoentrega
+    indexes:
+        fk_endereco_contrato1_idx:
+            columns:
+                - cont_codigoid
+    id:
+        endeentrCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: endeentr_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        contCodigoid:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: cont_codigoid
+        endeentrConcentrador:
+            type: boolean
+            nullable: false
+            column: endeentr_concentrador
+        endeentrPais:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: endeentr_pais
+        endeentrEstado:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: endeentr_estado
+        endeentrCidade:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: endeentr_cidade
+        endeentrBairro:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: endeentr_bairro
+        endeentrLogradouro:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: endeentr_logradouro
+        endeentrCep:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: endeentr_cep
+        endeentrNumero:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: endeentr_numero
+        endeentrComplemento:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            column: endeentr_complemento
+        endeentrPonta:
+            type: string
+            nullable: true
+            length: 10
+            fixed: false
+            column: endeentr_ponta
+        endeentrLatitude:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+            column: endeentr_latitude
+        endeentrLongitude:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+            column: endeentr_longitude
+        endeentrDesignadorOld:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            column: endeentr_designador_old
+    manyToOne:
+        admPais:
+            targetEntity: \Servicos\GcdbBundle\Entity\AdmPais
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                endeentr_pais:
+                    referencedColumnName: id
+            orphanRemoval: false
+        admUf:
+            targetEntity: \Servicos\GcdbBundle\Entity\AdmUf
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                endeentr_estado:
+                    referencedColumnName: id
+            orphanRemoval: false
+        admCidades:
+            targetEntity: \Servicos\GcdbBundle\Entity\AdmCidades
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                endeentr_cidade:
+                    referencedColumnName: id
+            orphanRemoval: false
+    oneToMany:
+        contrato:
+            targetEntity: Contrato
+            cascade: {  }
+            mappedBy: endeentrCodigoid
+        circuito:
+            targetEntity: \Servicos\GcdbBundle\Entity\Circuito
+            cascade: ['persist']
+            mappedBy: enderecoentrega
+    lifecycleCallbacks: {  }

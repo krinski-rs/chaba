@@ -1,0 +1,132 @@
+{# src/TroubleticketBundle/Resources/views/Subcaso/pdf.html.twig #}
+{% set radioOpticalFiber = [48, 16] %}
+{% set type = null %}
+
+<html>
+    <meta charset="UTF-8" />
+    <style type="text/css">
+        .bolder{
+            font-weight: bold;
+            text-align: left;
+        }
+
+        table{
+            border-collapse: collapse;
+            width:80%;
+            margin-left:10%;
+            margin-right:10%;
+            padding-left:5px;
+        }
+
+        #info>div, #atendimento>div{
+            margin-bottom: 35px;
+        }
+
+        #atendimento, #material{
+            margin-top: 150px;
+        }
+
+        th{
+            border: 1px solid black;
+            width: 50%;
+        }
+
+        td{
+            border: 1px solid black;
+            width: 50%;
+        }
+
+        .textarea{
+            line-height: 120px;
+        }
+
+        .textarea td, .textarea td *{
+            vertical-align: top;
+        }
+    </style>
+    <body>
+        <div id="info">
+            <div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="bolder" colspan=2>INFORMAÇÕES PRINCIPAIS</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td class="bolder">Nº do Boletim:</td>
+                            <td>{{subcase.getReportId().getCode()}}</td>
+                        </tr>
+                        <tr>
+                            <td class="bolder">ID/Nome do cliente:</td>
+                            <td>{{api_client.customerid ~ " - " ~ api_client.razaoSocial}}</td>
+                        </tr>
+                        <tr>
+                            <td class="bolder">Contato local:</td>
+                            {% if api_circuit.contatos.contatos is empty %}
+                                <td></td>
+                            {% else %}
+                                <td>{{api_circuit.contatos.contatos[0].nome}}</td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            <td class="bolder">Meio de Transmissão:</td>
+                            {% for key, atributos in attr_circuit %}
+                                {% if atributos.atriCodigo in radioOpticalFiber and type is null %}
+                                    {% set type = atributos.atriValor %}
+                                    <td>{{type}}</td>
+                                {% elseif type is null %}
+                                    {% set type = "Informação não disponível" %}
+                                    <td>{{type}}</td>
+                                {% endif %}
+                            {% endfor %}
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div id="atendimento">
+            <div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="bolder" colspan=2>SOBRE O ATENDIMENTO</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td class="bolder">Dificuldade:</td>
+                            <td>{{subcase.getReportId().getSymptomAsString()}}</td>
+                        </tr>
+                        <tr class="textarea">
+                            <td class="bolder">Problema:</td>
+                            <td>{{subcase.getReportId().getDescription()}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div id="material">
+            <div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="bolder" colspan=2>Material:</th>
+                            <th>{{subcase.getMaterials()}}</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>
+

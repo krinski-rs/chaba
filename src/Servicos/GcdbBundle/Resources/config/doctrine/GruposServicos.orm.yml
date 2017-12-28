@@ -1,0 +1,30 @@
+Servicos\GcdbBundle\Entity\GruposServicos:
+    type: entity
+    table: gcdb.Grupos_servicos
+    indexes:
+        GrupoServicoID:
+            columns:
+                - GrupoServicoID
+    id:
+        gruposervicoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: GrupoServicoID
+            generator:
+                strategy: IDENTITY
+    fields:
+        nome:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            default: ''
+            column: Nome
+        cgst:
+            type: boolean
+            nullable: false
+            comment: 'Serviço usar sistema de Contabilização de Banda ? 0=Não 1=Sim'
+            column: CGST
+    lifecycleCallbacks: {  }

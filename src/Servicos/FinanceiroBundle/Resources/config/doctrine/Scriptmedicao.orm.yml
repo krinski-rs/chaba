@@ -1,0 +1,38 @@
+Servicos\FinanceiroBundle\Entity\Scriptmedicao:
+    type: entity
+    table: financeiro.scriptmedicao
+    id:
+        scrimediCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: scrimedi_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        scrimediNome:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: scrimedi_nome
+        scrimediDescricao:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: scrimedi_descricao
+        scrimediPath:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: scrimedi_path
+        scrimediTiporetorno:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            column: scrimedi_tiporetorno
+    lifecycleCallbacks: {  }

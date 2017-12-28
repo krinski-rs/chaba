@@ -1,0 +1,77 @@
+Servicos\LumaBundle\Entity\ManutencaoCusto:
+    type: entity
+    table: luma.manutencao_custo
+    indexes:
+        fk_baixa_viatura_id:
+            columns:
+                - viat_baixaid
+        fk_tipo_id:
+            columns:
+                - tipo_codigoid
+        fk_forma_pagamento_id:
+            columns:
+                - formpag_codigoid
+        fk_status_id:
+            columns:
+                - status_codigoid
+    id:
+        custCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: cust_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        dataNf:
+            type: date
+            nullable: false
+            column: data_nf
+        dataGarantia:
+            type: date
+            nullable: false
+            column: data_garantia
+        numeroNf:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: numero_nf
+    manyToOne:
+        viatBaixaid:
+            targetEntity: ViaturaBaixa
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                viat_baixaid:
+                    referencedColumnName: viat_baixaid
+            orphanRemoval: false
+        formpagCodigoid:
+            targetEntity: ManutencaoFormapag
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                formpag_codigoid:
+                    referencedColumnName: formapag_codigoid
+            orphanRemoval: false
+        statusCodigoid:
+            targetEntity: ManutencaoStatus
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                status_codigoid:
+                    referencedColumnName: status_codigoid
+            orphanRemoval: false
+        tipoCodigoid:
+            targetEntity: ManutencaoTipo
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                tipo_codigoid:
+                    referencedColumnName: tipo_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

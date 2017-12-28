@@ -1,0 +1,41 @@
+Servicos\GcdbBundle\Entity\CepBairros:
+    type: entity
+    table: gcdb.cep_bairros
+    indexes:
+        ix_bairrosBairr:
+            columns:
+                - Bairro
+        ix_bairrosUF:
+            columns:
+                - UF
+        ix_bairrosIDLoc:
+            columns:
+                - IDLocalidades
+    id:
+        idbairros:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: IDBairros
+            generator:
+                strategy: IDENTITY
+    fields:
+        uf:
+            type: string
+            nullable: true
+            length: 2
+            fixed: true
+            column: UF
+        idlocalidades:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: IDLocalidades
+        bairro:
+            type: string
+            nullable: true
+            length: 72
+            fixed: false
+            column: Bairro
+    lifecycleCallbacks: {  }

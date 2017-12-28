@@ -1,0 +1,74 @@
+Servicos\FinanceiroBundle\Entity\Servicocapacidade:
+    type: entity
+    table: financeiro.servicocapacidade
+    repositoryClass: Servicos\FinanceiroBundle\Repository\ServicoCapacidadeRepository
+    indexes:
+        fk_servicocapacidade_sevico1_idx:
+            columns:
+                - serv_codigoid
+        fk_servicocapacidade_capacidade1_idx:
+            columns:
+                - capa_codigoid
+        fk_servicocapacidade_medida1_idx:
+            columns:
+                - medi_codigoid
+        fk_servicocapacidade_scriptmedicao1_idx:
+            columns:
+                - scrimedi_codigoid
+    id:
+        servcapaCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: servcapa_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        servicapaDatainc:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: servicapa_datainc
+        servcapaVisibilidade:
+            type: boolean
+            nullable: false
+            column: servcapa_visibilidade
+    manyToOne:
+        capaCodigoid:
+            targetEntity: Capacidade
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                capa_codigoid:
+                    referencedColumnName: capa_codigoid
+            orphanRemoval: false
+        mediCodigoid:
+            targetEntity: Medida
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                medi_codigoid:
+                    referencedColumnName: medi_codigoid
+            orphanRemoval: false
+        scrimediCodigoid:
+            targetEntity: Scriptmedicao
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                scrimedi_codigoid:
+                    referencedColumnName: scrimedi_codigoid
+            orphanRemoval: false
+        servCodigoid:
+            targetEntity: Servico
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                serv_codigoid:
+                    referencedColumnName: serv_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

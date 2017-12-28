@@ -1,0 +1,9 @@
+div#table_ba_stack_wrapper {
+	font-family: 'Conv_myriad-web-pro';
+}
+.row input[type="text"], .row select, textarea {
+	padding: 0px;
+}
+#table_ba_stack > tbody > tr {
+    cursor: pointer;
+}

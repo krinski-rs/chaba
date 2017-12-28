@@ -1,0 +1,35 @@
+{% for body in dados %}
+		<tr>    
+{% for coluna in body %}
+{% if coluna.buttons is defined %}
+			<td class="celula icone center {% if coluna.class is defined %}{{ coluna.class }}{% endif %}" {% if coluna.attr is defined %}{{ coluna.attr|raw }}{% endif %}>
+{% for button in coluna.buttons %}
+				<span> 
+{% if button.link is defined %}
+					<a href="{{ button.link }}" {% if button.linkAttr is defined %}{{ button.linkAttr|raw }}{% endif %}>
+						<span class="{{ button.class }}" {% if button.attr is defined %}{{ button.attr|raw }}{% endif %}></span>
+					</a>
+{% else %}
+					<span class="pointer {{ button.class }}" {% if button.attr is defined %}{{ button.attr|raw }}{% endif %}></span>
+{% endif %}
+				</span>
+{% endfor %}
+			</td>
+{% else %}
+			<td class="celula{% if coluna.class is defined %} {{ coluna.class }}{% endif %}"{% if coluna.attr is defined %} {{ coluna.attr|raw }}{% endif %}>{{ coluna.texto|raw }}</td>
+{% endif %}
+{% endfor %}
+		</tr>
+{% endfor %}
+
+{% if not(dados|length) or dados|length == 0%}
+{% if mensagemErroTabela is defined %}
+<tr class="error">
+ 	<td colspan="20" class="celula center error">{{ mensagemErroTabela }}</td>
+</tr>
+{% else %}
+<tr class="error">
+ 	<td colspan="20" class="celula center error">Dados não encontrados.</td>
+</tr>
+{% endif %}
+{% endif %}

@@ -1,0 +1,30 @@
+Servicos\GcdbBundle\Entity\TeamautUsuarios:
+    type: entity
+    table: gcdb.teamaut_usuarios
+    indexes:
+        fk_teamaut_usuarios_team1:
+            columns:
+                - team_codigoid
+        fk_teamaut_usuarios_aut_usuarios1:
+            columns:
+                - id
+    id:
+        idteamautUsrCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: idteamaut_usr_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        teamCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: team_codigoid
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+    lifecycleCallbacks: {  }

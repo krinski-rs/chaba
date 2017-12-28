@@ -1,0 +1,11 @@
+1:
+    sintoma: "Serviço Interrompido"
+    severidade: "Crítica"
+2:
+    sintoma: "Serviço Intermitente/Degradado"
+    severidade: "Alta"
+3:
+    sintoma: "Sem Impacto no serviço"
+    severidade: "Baixa"
+
+

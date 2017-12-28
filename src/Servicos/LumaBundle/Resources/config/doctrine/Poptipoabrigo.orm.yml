@@ -1,0 +1,19 @@
+Servicos\LumaBundle\Entity\Poptipoabrigo:
+    type: entity
+    table: luma.poptipoabrigo
+    id:
+        idTipoAbrigo:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_tipo_abrigo
+            generator:
+                strategy: IDENTITY
+    fields:
+        nome:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+    lifecycleCallbacks: {  }

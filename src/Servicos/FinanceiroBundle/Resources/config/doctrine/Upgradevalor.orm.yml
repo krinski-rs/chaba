@@ -1,0 +1,82 @@
+Servicos\FinanceiroBundle\Entity\Upgradevalor:
+    type: entity
+    table: financeiro.upgradevalor
+    indexes:
+        fk_upgradevalor_upgrade1_idx:
+            columns:
+                - upgr_codigoid
+        fk_upgradevalor_moeda1_idx:
+            columns:
+                - moed_codigoid
+        fk_upgradevalor_natureza1_idx:
+            columns:
+                - natu_codigoid
+        fk_upgradevalor_periodicidade1_idx:
+            columns:
+                - peri_codigoid
+    id:
+        upgrvaloCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: upgrvalo_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        upgrvaloValor:
+            type: decimal
+            nullable: false
+            precision: 10
+            scale: 2
+            column: upgrvalo_valor
+        upgrValorsemdesconto:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 2
+            column: upgr_valorsemdesconto
+        upgrValorsemimposto:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 2
+            column: upgr_valorsemimposto
+    manyToOne:
+        moedCodigoid:
+            targetEntity: Moeda
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                moed_codigoid:
+                    referencedColumnName: moed_codigoid
+            orphanRemoval: false
+        natuCodigoid:
+            targetEntity: Natureza
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                natu_codigoid:
+                    referencedColumnName: natu_codigoid
+            orphanRemoval: false
+        periCodigoid:
+            targetEntity: Periodicidade
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                peri_codigoid:
+                    referencedColumnName: peri_codigoid
+            orphanRemoval: false
+        upgrCodigoid:
+            targetEntity: Upgrade
+            cascade: {  }
+            mappedBy: null
+            inversedBy: upgradevalor
+            joinColumns:
+                upgr_codigoid:
+                    referencedColumnName: upgr_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

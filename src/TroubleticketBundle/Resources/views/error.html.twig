@@ -1,0 +1,9 @@
+{% extends 'TroubleticketBundle::base.html.twig' %}
+{% block body %}
+    <div class="error">
+        <span><strong>Ocorreu um erro!</strong></span>
+    </div>
+    {% if exception is defined %}
+        {{ exception.getMessage() }}
+    {% endif %}
+{% endblock %}

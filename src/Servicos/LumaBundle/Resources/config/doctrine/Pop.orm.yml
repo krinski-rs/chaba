@@ -1,0 +1,119 @@
+Servicos\LumaBundle\Entity\Pop:
+    type: entity
+    repositoryClass: Servicos\LumaBundle\Repository\PopRepository
+    table: luma.pop
+    id:
+        idPop:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_pop
+            generator:
+                strategy: IDENTITY
+    fields:
+        nome:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+        regionalResponsavel:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            column: regional_responsavel
+        compartilhado:
+            type: string
+            nullable: true
+            length: 5000
+            fixed: false
+        processoAcesso:
+            type: string
+            nullable: true
+            length: 5000
+            fixed: false
+            column: processo_acesso
+        contatoFaltaLuz:
+            type: string
+            nullable: true
+            length: 150
+            fixed: false
+            column: contato_falta_luz
+        anatelRegistro:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            column: anatel_registro
+        dataInicio:
+            type: datetime
+            nullable: true
+            column: data_inicio
+        dataFim:
+            type: datetime
+            nullable: true
+            column: data_fim
+        usuario:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+        gerador:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+        cag:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+        ativo:
+            type: string
+            nullable: true
+            length: 1
+            fixed: true
+        ramal:
+            type: string
+            nullable: true
+            length: 4
+            fixed: true
+        usuarioAprovador:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+            column: usuario_aprovador
+        observacaoAprovador:
+            type: string
+            nullable: true
+            length: 500
+            fixed: false
+            column: observacao_aprovador
+        dataAprovador:
+            type: datetime
+            nullable: true
+            column: data_aprovador
+    oneToMany:
+        idPopLocalizacao:
+            targetEntity: Poprelacaolocalizacao
+            cascade: {  }
+            mappedBy: idPop
+        idBaterias:
+            targetEntity: Popbateria
+            cascade: {  }
+            mappedBy: idPop
+        idConsumo:
+            targetEntity: Popconsumo
+            cascade: {  }
+            mappedBy: idPop
+        idEstruturaFisica:
+            targetEntity: Popestruturafisica
+            cascade: {  }
+            mappedBy: idPop
+        idConcessionaria:
+            targetEntity: Popconcessionaria
+            cascade: {  }
+            mappedBy: idPop
+    lifecycleCallbacks: {  }

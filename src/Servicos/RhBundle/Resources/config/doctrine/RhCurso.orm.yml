@@ -1,0 +1,61 @@
+Servicos\RhBundle\Entity\RhCurso:
+    type: entity
+    table: rh.rh_curso
+    indexes:
+        fk_rh_curso_rh_colaborador1_idx:
+            columns:
+                - id_colaborador
+    id:
+        idCurso:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_curso
+            generator:
+                strategy: IDENTITY
+    fields:
+        idColaborador:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: id_colaborador
+        curso:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+        tipoCurso:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            column: tipo_curso
+        instituicao:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+        dataInc:
+            type: datetime
+            nullable: true
+            column: data_inc
+        dataInicio:
+            type: datetime
+            nullable: true
+            column: data_inicio
+        dataConclusao:
+            type: datetime
+            nullable: true
+            column: data_conclusao
+        horasCurso:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            column: horas_curso
+        registrante:
+            type: integer
+            nullable: true
+            unsigned: false
+    lifecycleCallbacks: {  }

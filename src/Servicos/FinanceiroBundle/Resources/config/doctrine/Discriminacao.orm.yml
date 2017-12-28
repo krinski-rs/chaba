@@ -1,0 +1,19 @@
+Servicos\FinanceiroBundle\Entity\Discriminacao:
+    type: entity
+    table: financeiro.discriminacao
+    id:
+        idDiscriminacao:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_discriminacao
+            generator:
+                strategy: IDENTITY
+    fields:
+        descricao:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+    lifecycleCallbacks: {  }

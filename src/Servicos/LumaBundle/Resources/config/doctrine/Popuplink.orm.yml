@@ -1,0 +1,38 @@
+Servicos\LumaBundle\Entity\Popuplink:
+    type: entity
+    table: luma.popuplink
+    indexes:
+        fk_popuplink_1_idx:
+            columns:
+                - origem
+        fk_popuplink_2_idx:
+            columns:
+                - destino
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        origem:
+            targetEntity: Pop
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                origem:
+                    referencedColumnName: id_pop
+            orphanRemoval: false
+        destino:
+            targetEntity: Pop
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                destino:
+                    referencedColumnName: id_pop
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

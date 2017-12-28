@@ -1,0 +1,50 @@
+Servicos\LumaBundle\Entity\ManutencaoPecas:
+    type: entity
+    table: luma.manutencao_pecas
+    indexes:
+        fk_classificacao:
+            columns:
+                - class_codigoid
+    id:
+        pecaCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: peca_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        peca:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+    manyToOne:
+        classCodigoid:
+            targetEntity: ManutencaoClassificacao
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                class_codigoid:
+                    referencedColumnName: class_codigoid
+            orphanRemoval: false
+    manyToMany:
+        custitemCodigoid:
+            targetEntity: ManutencaoCustoItem
+            cascade: {  }
+            mappedBy: null
+            inversedBy: pecaCodigoid
+            joinTable:
+                name: manutencao_item_peca
+                joinColumns:
+                    -
+                        name: peca_codigoid
+                        referencedColumnName: peca_codigoid
+                inverseJoinColumns:
+                    -
+                        name: custitem_codigoid
+                        referencedColumnName: custitem_codigoid
+            orderBy: null
+    lifecycleCallbacks: {  }

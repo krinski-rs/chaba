@@ -1,0 +1,39 @@
+Servicos\LumaBundle\Entity\Emailleitura:
+    type: entity
+    table: luma.emailleitura
+    indexes:
+        fk_email_codigoid:
+            columns:
+                - email_codigoid
+    id:
+        emailleituraCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: emailleitura_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        emailCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: email_codigoid
+        emailleituraDatainc:
+            type: datetime
+            nullable: false
+            column: emailleitura_datainc
+        emailleituraIp:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            column: emailleitura_ip
+        emailleituraInformacao:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: emailleitura_informacao
+    lifecycleCallbacks: {  }

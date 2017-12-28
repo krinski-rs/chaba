@@ -1,0 +1,32 @@
+Servicos\GcdbBundle\Entity\CadUsersSite:
+    type: entity
+    table: gcdb.cad_users_site
+    indexes:
+        cad_users_site_FKIndex1:
+            columns:
+                - cad_users_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        site:
+            type: string
+            nullable: true
+            length: 200
+            fixed: false
+    manyToOne:
+        cadUsers:
+            targetEntity: CadUsers
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cad_users_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

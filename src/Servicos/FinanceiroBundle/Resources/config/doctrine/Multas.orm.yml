@@ -1,0 +1,57 @@
+Servicos\FinanceiroBundle\Entity\Multas:
+    type: entity
+    table: financeiro.multas
+    id:
+        multCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: mult_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        multAtraso:
+            type: decimal
+            nullable: false
+            precision: 5
+            scale: 2
+            column: mult_atraso
+        multJuro:
+            type: decimal
+            nullable: false
+            precision: 5
+            scale: 2
+            column: mult_juro
+        multMora:
+            type: decimal
+            nullable: false
+            precision: 5
+            scale: 2
+            column: mult_mora
+        multDowngrade:
+            type: decimal
+            nullable: false
+            precision: 5
+            scale: 2
+            column: mult_downgrade
+        multRecisao:
+            type: decimal
+            nullable: false
+            precision: 5
+            scale: 2
+            column: mult_recisao
+        multCobrardesconto:
+            type: boolean
+            nullable: false
+            column: mult_cobrardesconto
+        multCobrardescontofuturo:
+            type: boolean
+            nullable: false
+            column: mult_cobrardescontofuturo
+    oneToMany:
+        contrato:
+            targetEntity: Contrato
+            cascade: {  }
+            mappedBy: multCodigoid
+    lifecycleCallbacks: {  }

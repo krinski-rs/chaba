@@ -1,0 +1,1015 @@
+{
+    "Incidente": {
+        "Cliente": {
+            "Elemento": {
+                "Cabo Interno": {
+                    "Causa": {
+                        "Cabo Interno": {
+                            "Problema": {
+                                "Cabo Interno": {
+                                    "Solução": [
+                                        "Falha corrigida pelo cliente"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "Rede Interna": {
+                    "Causa": {
+                        "Rede Interna": {
+                            "Problema": {
+                                "Rede Interna": {
+                                    "Solução": [
+                                        "Falha corrigida pelo cliente"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "Falta de Energia": {
+                    "Causa": {
+                        "Falta de Energia": {
+                            "Problema": {
+                                "Falta de Energia": {
+                                    "Solução": [
+                                        "Energia reestabelecida"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "Vogel": {
+            "Estrutura": {
+                "POP": {
+                    "Elemento": {
+                        "Infra": {
+                            "Causa": {
+                                "Retificador": {
+                                    "Problema": {
+                                        "Módulo": {
+                                            "Solução": [
+                                                "Substituído"
+                                            ]
+                                        },
+                                        "Fusível": {
+                                            "Solução": [
+                                                "Substituído"
+                                            ]
+                                        },
+                                        "Caixa": {
+                                            "Solução": [
+                                                "Substituído"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "Inversor": {
+                                    "Problema": {
+                                        "Caixa": {
+                                            "Solução": [
+                                                "Substituído"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "Disjuntor": {
+                                    "Problema": {
+                                        "Defeito": {
+                                            "Solução": [
+                                                "Substituído"
+                                            ]
+                                        },
+                                        "Desarmado": {
+                                            "Solução": [
+                                                "Rearmado"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "Elétrica": {
+                                    "Problema": {
+                                        "Sem Energia": {
+                                            "Solução": [
+                                                "Reestabelecimento da energia"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "Bateria": {
+                                    "Problema": {
+                                        "Não segura a carga": {
+                                            "Solução": [
+                                                "Substituído"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "Nobreak": {
+                                    "Problema": {
+                                        "Defeito": {
+                                            "Solução": [
+                                                "Substituído"
+                                            ]
+                                        },
+                                        "Travado": {
+                                            "Solução": [
+                                                "Reset"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "Ar Condicionado": {
+                                    "Problema": {
+                                        "Defeito": {
+                                            "Solução": [
+                                                "Substituído"
+                                            ]
+                                        },
+                                        "Congelado": {
+                                            "Solução": [
+                                                "Limpeza de filtro"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "Gerador": {
+                                    "Problema": {
+                                        "Sem combustível": {
+                                            "Solução": [
+                                                "Reabastecido"
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "Cabo": {
+                            "Causa": {
+                                "Conector": {
+                                    "Problema": {
+                                        "Sujeira": {
+                                            "Solução": [
+                                                "Limpeza"
+                                            ]
+                                        },
+                                        "Mau contato": {
+                                            "Solução": [
+                                                "Refeito conector",
+                                                "Cabo substituído"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "Cabo": {
+                                    "Problema": {
+                                        "Defeito": {
+                                            "Solução": [
+                                                "Cabo substituído"
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "Rede": {
+                    "Elemento": {
+                        "Equipamento": {
+                            "Causa": {
+                                "Switch": {
+                                    "Problema": {
+                                        "SW-IOS": {
+                                            "Solução": [
+                                                "Firmware"
+                                            ]
+                                        },
+                                        "SW-VLAN": {
+                                            "Solução": [
+                                                "Reconfigurado"
+                                            ]
+                                        },
+                                        "SW-EAPS": {
+                                            "Solução": [
+                                                "Reconfigurado"
+                                            ]
+                                        },
+                                        "SW-Túnel": {
+                                            "Solução": [
+                                                "Reconfigurado"
+                                            ]
+                                        },
+                                        "SW-Configuração": {
+                                            "Solução": [
+                                                "Reconfigurado"
+                                            ]
+                                        },
+                                        "HW- Fonte": {
+                                            "Solução": [
+                                                "Substituído"
+                                            ]
+                                        },
+                                        "HW- FAN": {
+                                            "Solução": [
+                                                "Substituído"
+                                            ]
+                                        },
+                                        "HW-SFP": {
+                                            "Solução": [
+                                                "Substituído"
+                                            ]
+                                        },
+                                        "CPU": {
+                                            "Solução": [
+                                                "Normalizado"
+                                            ]
+                                        },
+                                        "Memoria": {
+                                            "Solução": [
+                                                "Normalizado"
+                                            ]
+                                        },
+                                        "Chassi": {
+                                            "Solução": [
+                                                "Substituído"
+                                            ]
+                                        },
+                                        "Porta": {
+                                            "Solução": [
+                                                "Reset",
+                                                "Remanejada"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "Roteador": {
+                                    "Problema": {
+                                        "SW-IOS": {
+                                            "Solução": [
+                                                "Firmware"
+                                            ]
+                                        },
+                                        "SW-VLAN": {
+                                            "Solução": [
+                                                "Reconfigurado"
+                                            ]
+                                        },
+                                        "SW-Roteamento": {
+                                            "Solução": [
+                                                "Reconfigurado"
+                                            ]
+                                        },
+                                        "SW-Aggregation": {
+                                            "Solução": [
+                                                "Reconfigurado"
+                                            ]
+                                        },
+                                        "SW-Configuração": {
+                                            "Solução": [
+                                                "Reconfigurado"
+                                            ]
+                                        },
+                                        "HW- Fonte": {
+                                            "Solução": [
+                                                "Substituído"
+                                            ]
+                                        },
+                                        "HW- FAN": {
+                                            "Solução": [
+                                                "Substituído"
+                                            ]
+                                        },
+                                        "HW-SFP": {
+                                            "Solução": [
+                                                "Substituído"
+                                            ]
+                                        },
+                                        "CPU": {
+                                            "Solução": [
+                                                "Normalizado"
+                                            ]
+                                        },
+                                        "Memoria": {
+                                            "Solução": [
+                                                "Normalizado"
+                                            ]
+                                        },
+                                        "Chassi": {
+                                            "Solução": [
+                                                "Substituído"
+                                            ]
+                                        },
+                                        "Porta": {
+                                            "Solução": [
+                                                "Reset",
+                                                "Remanejada"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "DWDM": {
+                                    "Problema": {
+                                        "SW-IOS": {
+                                            "Solução": [
+                                                "Firmware"
+                                            ]
+                                        },
+                                        "SW-Configuração": {
+                                            "Solução": [
+                                                "Reconfigurado"
+                                            ]
+                                        },
+                                        "HW- Fonte": {
+                                            "Solução": [
+                                                "Substituído"
+                                            ]
+                                        },
+                                        "HW- FAN": {
+                                            "Solução": [
+                                                "Substituído"
+                                            ]
+                                        },
+                                        "HW-SFP": {
+                                            "Solução": [
+                                                "Substituído"
+                                            ]
+                                        },
+                                        "CPU": {
+                                            "Solução": [
+                                                "Normalizado"
+                                            ]
+                                        },
+                                        "Memoria": {
+                                            "Solução": [
+                                                "Normalizado"
+                                            ]
+                                        },
+                                        "Chassi": {
+                                            "Solução": [
+                                                "Substituído"
+                                            ]
+                                        },
+                                        "SLOT": {
+                                            "Solução": [
+                                                "Substituído",
+                                                "Reset"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "SDH": {
+                                    "Problema": {
+                                        "SW-IOS": {
+                                            "Solução": [
+                                                "Firmware"
+                                            ]
+                                        },
+                                        "SW-Configuração": {
+                                            "Solução": [
+                                                "Reconfigurado"
+                                            ]
+                                        },
+                                        "HW- Fonte": {
+                                            "Solução": [
+                                                "Substituído"
+                                            ]
+                                        },
+                                        "HW- FAN": {
+                                            "Solução": [
+                                                "Substituído"
+                                            ]
+                                        },
+                                        "HW-SFP": {
+                                            "Solução": [
+                                                "Substituído"
+                                            ]
+                                        },
+                                        "CPU": {
+                                            "Solução": [
+                                                "Normalizado"
+                                            ]
+                                        },
+                                        "Memoria": {
+                                            "Solução": [
+                                                "Normalizado"
+                                            ]
+                                        },
+                                        "Chassi": {
+                                            "Solução": [
+                                                "Substituído"
+                                            ]
+                                        },
+                                        "SLOT": {
+                                            "Solução": [
+                                                "Substituído",
+                                                "Reset"
+                                            ]
+                                        },
+                                        "Régua de tributário": {
+                                            "Solução": [
+                                                "Substituído"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "GPON": {
+                                    "Problema": {
+                                        "SW-IOS": {
+                                            "Solução": [
+                                                "Firmware"
+                                            ]
+                                        },
+                                        "HW- Fonte": {
+                                            "Solução": [
+                                                "Substituído"
+                                            ]
+                                        },
+                                        "HW- FAN": {
+                                            "Solução": [
+                                                "Substituído"
+                                            ]
+                                        },
+                                        "HW-SFP": {
+                                            "Solução": [
+                                                "Substituído"
+                                            ]
+                                        },
+                                        "CPU": {
+                                            "Solução": [
+                                                "Normalizado"
+                                            ]
+                                        },
+                                        "Memoria": {
+                                            "Solução": [
+                                                "Normalizado"
+                                            ]
+                                        },
+                                        "Chassi": {
+                                            "Solução": [
+                                                "Substituído"
+                                            ]
+                                        },
+                                        "SLOT": {
+                                            "Solução": [
+                                                "Substituído",
+                                                "Reset"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "Servidor DNS": {
+                                    "Problema": {
+                                        "Configuração": {
+                                            "Solução": [
+                                                "Reconfigurado"
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "Rede Terceira": {
+                            "Causa": {
+                                "Rede Terceira": {
+                                    "Problema": {
+                                        "Rede Terceira": {
+                                            "Solução": [
+                                                "Rede Terceira"
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "Acesso": {
+                    "Elemento": {
+                        "FO ultima milha": {
+                            "Causa": {
+                                "Rompimento": {
+                                    "Problema": {
+                                        "Roubo CEO": {
+                                            "Solução": [
+                                                "Substituído"
+                                            ]
+                                        },
+                                        "Roubo Cabo": {
+                                            "Solução": [
+                                                "Substituído"
+                                            ]
+                                        },
+                                        "Vandalismo CEO": {
+                                            "Solução": [
+                                                "Substituído"
+                                            ]
+                                        },
+                                        "Vandalismo Cabo": {
+                                            "Solução": [
+                                                "Substituído"
+                                            ]
+                                        },
+                                        "Carga Alta": {
+                                            "Solução": [
+                                                "Realizada a fusão"
+                                            ]
+                                        },
+                                        "Poda de árvore": {
+                                            "Solução": [
+                                                "Realizada a fusão"
+                                            ]
+                                        },
+                                        "Troca de poste": {
+                                            "Solução": [
+                                                "Realizada a fusão"
+                                            ]
+                                        },
+                                        "Connect master": {
+                                            "Solução": [
+                                                "Realizada a fusão"
+                                            ]
+                                        },
+                                        "Implantação": {
+                                            "Solução": [
+                                                "Realizada a fusão"
+                                            ]
+                                        },
+                                        "Descarga Elétrica": {
+                                            "Solução": [
+                                                "Realizada a fusão"
+                                            ]
+                                        },
+                                        "Acidente de trânsito ": {
+                                            "Solução": [
+                                                "Realizada a fusão"
+                                            ]
+                                        },
+                                        "Obras terceiros": {
+                                            "Solução": [
+                                                "Realizada a fusão"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "Atenuação": {
+                                    "Problema": {
+                                        "Manipulação inadequada": {
+                                            "Solução": [
+                                                "Atividade interrompida"
+                                            ]
+                                        },
+                                        "Equipagem inadequada": {
+                                            "Solução": [
+                                                "Trecho reequipado"
+                                            ]
+                                        },
+                                        "Fusão mal executada": {
+                                            "Solução": [
+                                                "Fusão refeita"
+                                            ]
+                                        },
+                                        "Acomodação de cabo em bandeja": {
+                                            "Solução": [
+                                                "Cabos reacomodados"
+                                            ]
+                                        },
+                                        "Excesso de emendas no trecho": {
+                                            "Solução": [
+                                                "Trecho substituído"
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "Radio Acesso": {
+                            "Causa": {
+                                "RAU": {
+                                    "Problema": {
+                                        "RAU": {
+                                            "Solução": [
+                                                "Substituído"
+                                            ]
+                                        },
+                                        "Interferência": {
+                                            "Solução": [
+                                                "Troca de frequência"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "MMU": {
+                                    "Problema": {
+                                        "Configuração": {
+                                            "Solução": [
+                                                "Reconfigurado"
+                                            ]
+                                        },
+                                        "IOS": {
+                                            "Solução": [
+                                                "Firmware"
+                                            ]
+                                        },
+                                        "MMU": {
+                                            "Solução": [
+                                                "Substituído"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "Magazine": {
+                                    "Problema": {
+                                        "Magazine": {
+                                            "Solução": [
+                                                "Substituído"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "Antena": {
+                                    "Problema": {
+                                        "Alimentador": {
+                                            "Solução": [
+                                                "Substituído"
+                                            ]
+                                        },
+                                        "Perda de Alinhamento": {
+                                            "Solução": [
+                                                "Realinhado"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "NPU": {
+                                    "Problema": {
+                                        "Configuração": {
+                                            "Solução": [
+                                                "Reconfigurado"
+                                            ]
+                                        },
+                                        "Licença de Software": {
+                                            "Solução": [
+                                                "Licença renovada"
+                                            ]
+                                        },
+                                        "NPU": {
+                                            "Solução": [
+                                                "Substituído"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "Cabo": {
+                                    "Problema": {
+                                        "Cabo com defeito": {
+                                            "Solução": [
+                                                "Cabo substituído"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "Perda de sinal": {
+                                    "Problema": {
+                                        "Visada Obstruída": {
+                                            "Solução": [
+                                                "Antena redirecionada"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "Frequência": {
+                                    "Problema": {
+                                        "Interferência": {
+                                            "Solução": [
+                                                "Redefinida faixa de frequência"
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "Equipamento": {
+                            "Causa": {
+                                "Switch": {
+                                    "Problema": {
+                                        "SW-Configuração": {
+                                            "Solução": [
+                                                "Reconfigurado"
+                                            ]
+                                        },
+                                        "Chassi": {
+                                            "Solução": [
+                                                "Substituído",
+                                                "Reset"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "Roteador": {
+                                    "Problema": {
+                                        "SW-Configuração": {
+                                            "Solução": [
+                                                "Reconfigurado"
+                                            ]
+                                        },
+                                        "Chassi": {
+                                            "Solução": [
+                                                "Reset"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "Conversor de mídia": {
+                                    "Problema": {
+                                        "Chassi": {
+                                            "Solução": [
+                                                "Substituído",
+                                                "Reset"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "ONU": {
+                                    "Problema": {
+                                        "Configuração": {
+                                            "Solução": [
+                                                "Reconfigurado"
+                                            ]
+                                        },
+                                        "Chassi": {
+                                            "Solução": [
+                                                "Substituído",
+                                                "Reset"
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "Cabo": {
+                            "Causa": {
+                                "Cabo": {
+                                    "Problema": {
+                                        "Defeito": {
+                                            "Solução": [
+                                                "Cabo substituído"
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "Backbone": {
+                    "Elemento": {
+                        "Fibra": {
+                            "Causa": {
+                                "Rompimento": {
+                                    "Problema": {
+                                        "Roubo CEO": {
+                                            "Solução": [
+                                                "Substituído"
+                                            ]
+                                        },
+                                        "Roubo cabo": {
+                                            "Solução": [
+                                                "Substituído"
+                                            ]
+                                        },
+                                        "Vandalismo CEO": {
+                                            "Solução": [
+                                                "Substituído"
+                                            ]
+                                        },
+                                        "Vandalismo cabo": {
+                                            "Solução": [
+                                                "Substituído"
+                                            ]
+                                        },
+                                        "Carga Alta": {
+                                            "Solução": [
+                                                "Realizada a fusão"
+                                            ]
+                                        },
+                                        "Queda/Poda de árvore": {
+                                            "Solução": [
+                                                "Realizada a fusão"
+                                            ]
+                                        },
+                                        "Troca de poste": {
+                                            "Solução": [
+                                                "Realizada a fusão"
+                                            ]
+                                        },
+                                        "Connect Master": {
+                                            "Solução": [
+                                                "Realizada a fusão"
+                                            ]
+                                        },
+                                        "Implantação": {
+                                            "Solução": [
+                                                "Realizada a fusão"
+                                            ]
+                                        },
+                                        "Descarga Elétrica": {
+                                            "Solução": [
+                                                "Realizada a fusão"
+                                            ]
+                                        },
+                                        "Acidente de trânsito ": {
+                                            "Solução": [
+                                                "Realizada a fusão"
+                                            ]
+                                        },
+                                        "Obras terceiros": {
+                                            "Solução": [
+                                                "Realizada a fusão"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "Atenuação": {
+                                    "Problema": {
+                                        "Atenuação": {
+                                            "Solução": [
+                                                "Removida atenuação"
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "Radio Backbone": {
+                            "Causa": {
+                                "RAU": {
+                                    "Problema": {
+                                        "RAU": {
+                                            "Solução": [
+                                                "Substituído"
+                                            ]
+                                        },
+                                        "Interferência": {
+                                            "Solução": [
+                                                "Troca de Frequência"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "MMU": {
+                                    "Problema": {
+                                        "Configuração": {
+                                            "Solução": [
+                                                "Reconfigurado"
+                                            ]
+                                        },
+                                        "IOS": {
+                                            "Solução": [
+                                                "Firmware"
+                                            ]
+                                        },
+                                        "MMU": {
+                                            "Solução": [
+                                                "Substituído"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "Magazine": {
+                                    "Problema": {
+                                        "Magazine": {
+                                            "Solução": [
+                                                "Substituído"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "Antena": {
+                                    "Problema": {
+                                        "Perda de alinhamento": {
+                                            "Solução": [
+                                                "Realinhado"
+                                            ]
+                                        },
+                                        "Alimentador": {
+                                            "Solução": [
+                                                "Substituído"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "NPU": {
+                                    "Problema": {
+                                        "Configuração": {
+                                            "Solução": [
+                                                "Reconfigurado"
+                                            ]
+                                        },
+                                        "Licença de software": {
+                                            "Solução": [
+                                                "Licença renovada"
+                                            ]
+                                        },
+                                        "NPU": {
+                                            "Solução": [
+                                                "Substituído"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "Cabo": {
+                                    "Problema": {
+                                        "Cabo com defeito": {
+                                            "Solução": [
+                                                "Cabo substituído"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "Perda de Sinal": {
+                                    "Problema": {
+                                        "Visada obstruída": {
+                                            "Solução": [
+                                                "Antena redirecionada"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "Frequência": {
+                                    "Problema": {
+                                        "Interferência": {
+                                            "Solução": [
+                                                "Redefinida faixa de frequência"
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "Rede IP": {
+                    "Elemento": {
+                        "BGP": {
+                            "Causa": {
+                                "Configuração": {
+                                    "Problema": {
+                                        "Divulgação de prefixo": {
+                                            "Solução": [
+                                                "Reconfigurado"
+                                            ]
+                                        },
+                                        "Sessão BGP": {
+                                            "Solução": [
+                                                "Reconfigurado"
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "Saída de Internet ": {
+                            "Causa": {
+                                "Falha na operadora": {
+                                    "Problema": {
+                                        "Falha na operadora": {
+                                            "Solução": [
+                                                "Falha corrigida pela operadora"
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "PTT": {
+                            "Causa": {
+                                "Falha saída PTT": {
+                                    "Problema": {
+                                        "Falha saída PTT": {
+                                            "Solução": [
+                                                "Falha corrigida pelo PTT"
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "Severidade": [1, 2, 3],
+    "AbrirBS": [
+        "Não",
+        "Relatório de Incidentes",
+        "Relatório de Causa Raiz",
+        "Relatório de Disponibilidade",
+        "Relatório de Consumo de Banda"
+    ]
+}

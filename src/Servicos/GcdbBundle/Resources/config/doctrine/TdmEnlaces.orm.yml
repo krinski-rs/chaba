@@ -1,0 +1,38 @@
+Servicos\GcdbBundle\Entity\TdmEnlaces:
+    type: entity
+    table: gcdb.tdm_enlaces
+    indexes:
+        id_tdm_equipamentos:
+            columns:
+                - id_tdm_equipamentos
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nome:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+        capacidadeConfigurada:
+            type: string
+            nullable: true
+            length: 20
+            fixed: false
+            column: capacidade_configurada
+    manyToOne:
+        idTdmEquipamentos:
+            targetEntity: TdmEquipamentos
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_tdm_equipamentos:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

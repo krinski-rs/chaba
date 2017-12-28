@@ -1,0 +1,33 @@
+Servicos\FinanceiroBundle\Entity\Contratoticket:
+    type: entity
+    table: financeiro.contratoticket
+    indexes:
+        fk_contratoticket_contrato1_idx:
+            columns:
+                - cont_codigoid
+    id:
+        conttickCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: conttick_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        tickCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: tick_codigoid
+    manyToOne:
+        contCodigoid:
+            targetEntity: Contrato
+            cascade: {  }
+            mappedBy: null
+            inversedBy: contratoticket
+            joinColumns:
+                cont_codigoid:
+                    referencedColumnName: cont_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

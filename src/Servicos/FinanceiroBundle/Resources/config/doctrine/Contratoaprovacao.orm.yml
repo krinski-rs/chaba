@@ -1,0 +1,46 @@
+Servicos\FinanceiroBundle\Entity\Contratoaprovacao:
+    type: entity
+    table: financeiro.contratoaprovacao
+    indexes:
+        fk_contratoaprovacao_contrato1_idx:
+            columns:
+                - cont_codigoid
+    id:
+        contaproCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: contapro_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        usuaCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: usua_codigoid
+        contaproDatainc:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: contapro_datainc
+        contaproDataaprovado:
+            type: datetime
+            nullable: true
+            column: contapro_dataaprovado
+        contaproAprovado:
+            type: boolean
+            nullable: true
+            column: contapro_aprovado
+    manyToOne:
+        contCodigoid:
+            targetEntity: Contrato
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cont_codigoid:
+                    referencedColumnName: cont_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

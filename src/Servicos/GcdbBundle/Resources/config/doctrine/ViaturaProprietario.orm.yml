@@ -1,0 +1,58 @@
+Servicos\GcdbBundle\Entity\ViaturaProprietario:
+    type: entity
+    table: gcdb.viatura_proprietario
+    indexes:
+        fk_alienacao_viatura_viatura1_idx:
+            columns:
+                - viaturaid
+    id:
+        viatProprietario:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: viat_proprietario
+            generator:
+                strategy: IDENTITY
+    fields:
+        propSistechcid:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: prop_sistechcid
+        propCadUsuarioid:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: prop_cad_usuarioid
+        propAlteracaoUsuarioid:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: prop_alteracao_usuarioid
+        propDatainc:
+            type: datetime
+            nullable: true
+            default: CURRENT_TIMESTAMP
+            column: prop_datainc
+        propDataAlteracao:
+            type: datetime
+            nullable: true
+            column: prop_data_alteracao
+        propMotivoAlteracao:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            column: prop_motivo_alteracao
+    manyToOne:
+        viaturaid:
+            targetEntity: ViaturaProprietario
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                viaturaid:
+                    referencedColumnName: viaturaid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

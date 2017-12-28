@@ -1,0 +1,15 @@
+BA:
+  - 'read'
+  - 'export_report'
+  - 'history'
+BI:
+  - 'read'
+  - 'export_report'
+  - 'history'
+  - 'read_related_ba'
+BS:
+  - 'read'
+SUB_COC:
+  - 'read'
+SUB_MANTAINER:
+  - 'read'

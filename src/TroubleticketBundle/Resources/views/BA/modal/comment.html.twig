@@ -1,0 +1,10 @@
+{% block ba_comment %}
+    <div class="row">
+        <div class="col-sm-100">
+            <form method="post" action="{{ path('troubleticket_ba_comment', {'report_id': reports.getId() }) }}">
+                <label>*Comentário</label>
+                <textarea name="comment" required="required"></textarea>
+            </form>
+        </div>
+    </div>
+{% endblock %}

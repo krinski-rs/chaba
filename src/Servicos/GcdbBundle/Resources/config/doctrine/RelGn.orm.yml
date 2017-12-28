@@ -1,0 +1,48 @@
+Servicos\GcdbBundle\Entity\RelGn:
+    type: entity
+    table: gcdb.Rel_GN
+    indexes:
+        CustomerID:
+            columns:
+                - CustomerID
+        UsuarioID:
+            columns:
+                - UsuarioID
+    id:
+        gnid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: GNID
+            generator:
+                strategy: IDENTITY
+    fields:
+        delegado:
+            type: datetime
+            nullable: true
+            column: Delegado
+        revogado:
+            type: datetime
+            nullable: true
+            column: Revogado
+    manyToOne:
+        customerid:
+            targetEntity: Customers
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                CustomerID:
+                    referencedColumnName: CustomerID
+            orphanRemoval: false
+        usuarioid:
+            targetEntity: AutUsuarios
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                UsuarioID:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

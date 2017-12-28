@@ -1,0 +1,40 @@
+Servicos\GcdbBundle\Entity\ServicosDetalhes:
+    type: entity
+    table: gcdb.servicos_detalhes
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        servicoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: ServicoID
+        nome:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+        descricao:
+            type: text
+            nullable: false
+            length: 65535
+            fixed: false
+        volumeTrafego:
+            type: string
+            nullable: false
+            length: 20
+            fixed: true
+            column: volume_trafego
+        velocidadeTrafego:
+            type: string
+            nullable: false
+            length: 20
+            fixed: true
+            column: velocidade_trafego
+    lifecycleCallbacks: {  }

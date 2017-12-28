@@ -1,0 +1,86 @@
+Servicos\GcdbBundle\Entity\CepLogradouros:
+    type: entity
+    table: gcdb.cep_logradouros
+    indexes:
+        ix_logradourosUF:
+            columns:
+                - UF
+        ix_logradourosCEP:
+            columns:
+                - CEP
+        ix_logradourosIDLoc:
+            columns:
+                - IDLocalidades
+        ix_logradourosLogra:
+            columns:
+                - Logradouro
+    id:
+        idlogradouros:
+            type: integer
+            nullable: false
+            unsigned: false
+            default: '0'
+            id: true
+            column: IDLogradouros
+            generator:
+                strategy: IDENTITY
+    fields:
+        uf:
+            type: string
+            nullable: true
+            length: 2
+            fixed: true
+            column: UF
+        idlocalidades:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: IDLocalidades
+        logradouro:
+            type: string
+            nullable: true
+            length: 65
+            fixed: false
+            column: Logradouro
+        idbairrosinicial:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: IDBairrosInicial
+        idbairrosfinal:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: IDBairrosFinal
+        cep:
+            type: string
+            nullable: true
+            length: 8
+            fixed: false
+            column: CEP
+        complemento:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            column: Complemento
+        tipo:
+            type: string
+            nullable: true
+            length: 22
+            fixed: false
+            column: Tipo
+        status:
+            type: string
+            nullable: true
+            length: 1
+            fixed: true
+            column: Status
+        cepespecial:
+            type: string
+            nullable: true
+            length: 1
+            fixed: true
+            default: 'N'
+            column: CEPEspecial
+    lifecycleCallbacks: {  }

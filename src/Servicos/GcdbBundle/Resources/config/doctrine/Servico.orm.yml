@@ -1,0 +1,21 @@
+Servicos\GcdbBundle\Entity\Servico:
+    type: entity
+    table: gcdb.servico
+    id:
+        idservico:
+            type: integer
+            nullable: false
+            unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        servico:
+            type: string
+            nullable: false
+            length: 40
+            fixed: true
+        ativo:
+            type: boolean
+            nullable: true
+    lifecycleCallbacks: {  }

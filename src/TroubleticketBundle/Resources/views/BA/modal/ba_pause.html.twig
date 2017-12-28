@@ -1,0 +1,20 @@
+{% block ba_pause %}
+<div class="row">
+	<form id="form_ba_pause" method="POST" action="{{ path('troubleticket_ba_main_pause', { 'report_id': reports.getId()}) }}">
+		<div class="col-sm-100">
+			<div class="row">
+				<label>*Motivo da Pausa</label>
+				<select name="motivo" id="select_ba_pause_motivo">
+					<option value="">---</option>
+				</select>
+				<div class="error alert" id="div_error_select_ba_pause_motivo" style="display:none"><span>Este campo precisa ser preenchido corretamente!</span></div>
+			</div>
+			<div class="row">
+				<label>Comentário</label>
+				<textarea name="comentario" id="textarea_ba_pause_comentario"></textarea>
+			</div>
+			<small><em>(*) Campos obrigatórios</em></small>
+		</div>
+	</form>
+</div>
+{% endblock %}

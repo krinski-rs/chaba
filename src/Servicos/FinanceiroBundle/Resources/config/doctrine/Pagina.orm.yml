@@ -1,0 +1,68 @@
+Servicos\FinanceiroBundle\Entity\Pagina:
+    type: entity
+    table: financeiro.pagina
+    indexes:
+        fk_pagina_documento1_idx:
+            columns:
+                - docu_codigoid
+        fk_pagina_pagina1_idx:
+            columns:
+                - pagi_proxima
+    id:
+        pagiCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: pagi_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        pagiPagina:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: pagi_pagina
+        pagiNome:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: pagi_nome
+        pagiExtensao:
+            type: string
+            nullable: false
+            length: 5
+            fixed: false
+            column: pagi_extensao
+        pagiDatainc:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: pagi_datainc
+        pagiTexto:
+            type: text
+            nullable: true
+            length: 65535
+            fixed: false
+            column: pagi_texto
+    manyToOne:
+        docuCodigoid:
+            targetEntity: Documento
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                docu_codigoid:
+                    referencedColumnName: docu_codigoid
+            orphanRemoval: false
+        pagiProxima:
+            targetEntity: Pagina
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                pagi_proxima:
+                    referencedColumnName: pagi_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

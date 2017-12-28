@@ -1,0 +1,19 @@
+Servicos\LumaBundle\Entity\ViaturaEspecie:
+    type: entity
+    table: luma.viatura_especie
+    id:
+        viatEspecieId:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: viat_especie_id
+            generator:
+                strategy: IDENTITY
+    fields:
+        descricao:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+    lifecycleCallbacks: {  }

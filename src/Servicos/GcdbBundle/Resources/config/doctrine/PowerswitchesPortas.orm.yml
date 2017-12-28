@@ -1,0 +1,62 @@
+Servicos\GcdbBundle\Entity\PowerswitchesPortas:
+    type: entity
+    table: gcdb.PowerSwitches_Portas
+    indexes:
+        CustomerID:
+            columns:
+                - CustomerID
+        SwitchID:
+            columns:
+                - PowerSwitchID
+    uniqueConstraints:
+        portas:
+            columns:
+                - PowerSwitchID
+                - Porta
+    id:
+        portaid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: PortaID
+            generator:
+                strategy: IDENTITY
+    fields:
+        nomemaquina:
+            type: text
+            nullable: false
+            length: 65535
+            fixed: false
+            column: NomeMaquina
+        customerid:
+            type: integer
+            nullable: false
+            unsigned: false
+            default: '0'
+            column: CustomerID
+        powerswitchid:
+            type: integer
+            nullable: false
+            unsigned: false
+            default: '0'
+            column: PowerSwitchID
+        porta:
+            type: integer
+            nullable: false
+            unsigned: false
+            default: '0'
+            column: Porta
+        local:
+            type: string
+            nullable: false
+            length: 150
+            fixed: false
+            default: ''
+            column: Local
+        mostrarparacliente:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: MostrarParaCliente
+    lifecycleCallbacks: {  }

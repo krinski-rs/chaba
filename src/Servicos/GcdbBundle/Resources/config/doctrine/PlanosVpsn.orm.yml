@@ -1,0 +1,32 @@
+Servicos\GcdbBundle\Entity\PlanosVpsn:
+    type: entity
+    table: gcdb.Planos_VPSN
+    indexes:
+        Planos_VPSN_FKIndex1:
+            columns:
+                - AccountID
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        accountid:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: AccountID
+        vpsn:
+            type: string
+            nullable: true
+            length: 20
+            fixed: false
+        tipo:
+            type: string
+            nullable: true
+            length: null
+            fixed: false
+    lifecycleCallbacks: {  }

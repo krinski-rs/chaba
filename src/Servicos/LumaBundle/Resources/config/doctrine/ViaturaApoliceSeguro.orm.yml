@@ -1,0 +1,63 @@
+Servicos\LumaBundle\Entity\ViaturaApoliceSeguro:
+    type: entity
+    table: luma.viatura_apolice_seguro
+    indexes:
+        fk_apolice_viatura1_idx:
+            columns:
+                - viaturaid
+    id:
+        viatApoliceid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: viat_apoliceid
+            generator:
+                strategy: IDENTITY
+    fields:
+        apoliCadUsersid:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: apoli_cad_usersid
+        apoliNumero:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            column: apoli_numero
+        apoliFoneAtendimento:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            column: apoli_fone_atendimento
+        apoliDatainc:
+            type: datetime
+            nullable: true
+            default: CURRENT_TIMESTAMP
+            column: apoli_datainc
+        apoliDataVencimento:
+            type: datetime
+            nullable: true
+            column: apoli_data_vencimento
+        apoliDatafim:
+            type: datetime
+            nullable: true
+            column: apoli_datafim
+        apoliSistechcid:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: apoli_sistechcid
+    manyToOne:
+        viaturaid:
+            targetEntity: Viatura
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                viaturaid:
+                    referencedColumnName: viaturaid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

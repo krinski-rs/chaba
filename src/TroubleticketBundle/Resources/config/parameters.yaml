@@ -1,0 +1,20 @@
+# This file is auto-generated during the composer install
+parameters:
+#    database_driver: pdo_pgsql
+#    database_host: troubleticket-db
+#    database_port: 5432
+#    database_name: postgres
+#    database_user: root
+#    database_password: abacate00
+    database_driver: pdo_pgsql
+    database_host: 192.168.10.227
+    database_port: 5432
+    database_name: vogel
+    database_user: postgres
+    database_password: AbmeOsdoumlojus
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    locale: en
+    secret: 5436ba8e506102e19a49c480dcbed689d141a069

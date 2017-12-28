@@ -1,0 +1,51 @@
+Servicos\LumaBundle\Entity\Matriznota:
+    type: entity
+    table: luma.matriznota
+    indexes:
+        fk_matriznota_tipo1_idx:
+            columns:
+                - tipo_decodigoid
+        fk_matriznota_tipo2_idx:
+            columns:
+                - tipo_paracodigoid
+        fk_matriznota_finalidade1_idx:
+            columns:
+                - fina_codigoid
+    id:
+        matrnotaCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: matrnota_codigoid
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        finaCodigoid:
+            targetEntity: Finalidade
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                fina_codigoid:
+                    referencedColumnName: fina_codigoid
+            orphanRemoval: false
+        tipoDecodigoid:
+            targetEntity: Tipo
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                tipo_decodigoid:
+                    referencedColumnName: tipo_codigoid
+            orphanRemoval: false
+        tipoParacodigoid:
+            targetEntity: Tipo
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                tipo_paracodigoid:
+                    referencedColumnName: tipo_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

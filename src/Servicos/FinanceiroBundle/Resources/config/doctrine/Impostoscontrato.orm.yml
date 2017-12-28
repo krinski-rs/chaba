@@ -1,0 +1,198 @@
+Servicos\FinanceiroBundle\Entity\Impostoscontrato:
+    type: entity
+    table: financeiro.impostoscontrato
+    indexes:
+        fk_impostoscontrato_contrato1_idx:
+            columns:
+                - cont_codigoid
+    id:
+        impocontCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: impocont_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        impocontPisReter:
+            type: boolean
+            nullable: false
+            column: impocont_pis_reter
+        impocontPisDestacar:
+            type: boolean
+            nullable: false
+            column: impocont_pis_destacar
+        impocontPisValor:
+            type: decimal
+            nullable: false
+            precision: 5
+            scale: 2
+            column: impocont_pis_valor
+        impocontPisReducao:
+            type: decimal
+            nullable: true
+            precision: 5
+            scale: 2
+            column: impocont_pis_reducao
+        impocontCofinsReter:
+            type: boolean
+            nullable: false
+            column: impocont_cofins_reter
+        impocontCofinsDestacar:
+            type: boolean
+            nullable: false
+            column: impocont_cofins_destacar
+        impocontCofinsValor:
+            type: decimal
+            nullable: false
+            precision: 5
+            scale: 2
+            column: impocont_cofins_valor
+        impocontCofinsReducao:
+            type: decimal
+            nullable: true
+            precision: 5
+            scale: 2
+            column: impocont_cofins_reducao
+        impocontIrReter:
+            type: boolean
+            nullable: false
+            column: impocont_ir_reter
+        impocontIrDestacar:
+            type: boolean
+            nullable: false
+            column: impocont_ir_destacar
+        impocontIrValor:
+            type: decimal
+            nullable: false
+            precision: 5
+            scale: 2
+            column: impocont_ir_valor
+        impocontIrReducao:
+            type: decimal
+            nullable: true
+            precision: 5
+            scale: 2
+            column: impocont_ir_reducao
+        impocontIsllReter:
+            type: boolean
+            nullable: false
+            column: impocont_isll_reter
+        impocontIsllDestacar:
+            type: boolean
+            nullable: false
+            column: impocont_isll_destacar
+        impocontIsllValor:
+            type: decimal
+            nullable: false
+            precision: 5
+            scale: 2
+            column: impocont_isll_valor
+        impocontIsllReducao:
+            type: decimal
+            nullable: true
+            precision: 5
+            scale: 2
+            column: impocont_isll_reducao
+        impocontIssqnReter:
+            type: boolean
+            nullable: false
+            column: impocont_issqn_reter
+        impocontIssqnDestacar:
+            type: boolean
+            nullable: false
+            column: impocont_issqn_destacar
+        impocontIssqnValor:
+            type: decimal
+            nullable: false
+            precision: 5
+            scale: 2
+            column: impocont_issqn_valor
+        impocontIssqnReducao:
+            type: decimal
+            nullable: true
+            precision: 5
+            scale: 2
+            column: impocont_issqn_reducao
+        impocontIcmsReter:
+            type: boolean
+            nullable: false
+            column: impocont_icms_reter
+        impocontIcmsDestacar:
+            type: boolean
+            nullable: false
+            column: impocont_icms_destacar
+        impocontIcmsValor:
+            type: decimal
+            nullable: false
+            precision: 5
+            scale: 2
+            column: impocont_icms_valor
+        impocontIcmsReducao:
+            type: decimal
+            nullable: true
+            precision: 5
+            scale: 2
+            column: impocont_icms_reducao
+        ativPisValor:
+            type: decimal
+            nullable: true
+            precision: 5
+            scale: 2
+            column: ativ_pis_valor
+        ativPisReter:
+            type: boolean
+            nullable: true
+            column: ativ_pis_reter
+        ativCofinsValor:
+            type: decimal
+            nullable: true
+            precision: 5
+            scale: 2
+            column: ativ_cofins_valor
+        ativCofinsReter:
+            type: boolean
+            nullable: true
+            column: ativ_cofins_reter
+        ativIrValor:
+            type: decimal
+            nullable: true
+            precision: 5
+            scale: 2
+            column: ativ_ir_valor
+        ativIrReter:
+            type: boolean
+            nullable: true
+            column: ativ_ir_reter
+        ativCsllValor:
+            type: decimal
+            nullable: true
+            precision: 5
+            scale: 2
+            column: ativ_csll_valor
+        ativCsllReter:
+            type: boolean
+            nullable: true
+            column: ativ_csll_reter
+        ativIssqnValor:
+            type: decimal
+            nullable: true
+            precision: 5
+            scale: 2
+            column: ativ_issqn_valor
+        ativIssqnReter:
+            type: boolean
+            nullable: true
+            column: ativ_issqn_reter
+    manyToOne:
+        contCodigoid:
+            targetEntity: Contrato
+            cascade: {  }
+            mappedBy: null
+            inversedBy: impostoscontrato
+            joinColumns:
+                cont_codigoid:
+                    referencedColumnName: cont_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

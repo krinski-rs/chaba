@@ -1,0 +1,31 @@
+Servicos\GcdbBundle\Entity\LimiteBanda:
+    type: entity
+    table: gcdb.limite_banda
+    id:
+        circBandaid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: circ_bandaid
+            generator:
+                strategy: IDENTITY
+    fields:
+        circLimite:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: circ_limite
+        dataInc:
+            type: datetime
+            nullable: true
+            column: data_inc
+        dataEdit:
+            type: datetime
+            nullable: true
+            column: data_edit
+        ativo:
+            type: boolean
+            nullable: true
+    lifecycleCallbacks: {  }

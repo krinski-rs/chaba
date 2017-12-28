@@ -1,0 +1,63 @@
+Servicos\GcdbBundle\Entity\CadUsersTelefone:
+    type: entity
+    table: gcdb.cad_users_telefone
+    indexes:
+        cad_users_telefones_FKIndex1:
+            columns:
+                - adm_tipos_telefone_id
+        cad_users_telefones_FKIndex2:
+            columns:
+                - cad_users_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        ddi:
+            type: integer
+            nullable: true
+            unsigned: true
+        ddd:
+            type: string
+            nullable: true
+            length: 30
+            fixed: false
+        telefone:
+            type: string
+            nullable: true
+            length: 30
+            fixed: false
+        ramal:
+            type: integer
+            nullable: true
+            unsigned: false
+        principal:
+            type: boolean
+            nullable: true
+        emergencia:
+            type: boolean
+            nullable: true
+    manyToOne:
+        admTiposTelefone:
+            targetEntity: AdmTipoTelefone
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                adm_tipos_telefone_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        cadUsers:
+            targetEntity: CadUsers
+            cascade: {  }
+            mappedBy: null
+            inversedBy: cadUsersTelefone
+            joinColumns:
+                cad_users_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

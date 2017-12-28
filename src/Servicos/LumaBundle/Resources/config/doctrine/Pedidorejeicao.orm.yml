@@ -1,0 +1,70 @@
+Servicos\LumaBundle\Entity\Pedidorejeicao:
+    type: entity
+    table: luma.pedidorejeicao
+    indexes:
+        fk_pedireje_pediresp:
+            columns:
+                - pediresp_codigoid
+        fk_pedireje_pedi:
+            columns:
+                - pedi_codigoid
+    id:
+        pedirejeCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: pedireje_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        pedirejeJustificativa:
+            type: text
+            nullable: false
+            length: 65535
+            fixed: false
+            column: pedireje_justificativa
+        pedirejeAceito:
+            type: boolean
+            nullable: true
+            comment: 'true se cancelado, false se for ser alterado'
+            column: pedireje_aceito
+        autUsuarioinc:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: aut_usuarioinc
+        pedirejeDatainc:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: pedireje_datainc
+        autUsuarioresp:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: aut_usuarioresp
+        pedirejeDataresp:
+            type: datetime
+            nullable: true
+            column: pedireje_dataresp
+    manyToOne:
+        pediCodigoid:
+            targetEntity: Pedido
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                pedi_codigoid:
+                    referencedColumnName: pedi_codigoid
+            orphanRemoval: false
+        pedirespCodigoid:
+            targetEntity: Pedidoresposta
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                pediresp_codigoid:
+                    referencedColumnName: pediresp_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

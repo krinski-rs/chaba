@@ -1,0 +1,40 @@
+Servicos\LumaBundle\Entity\Infoseguranca:
+    type: entity
+    table: luma.infoseguranca
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        usuario:
+            type: integer
+            nullable: true
+            unsigned: false
+        imagem:
+            type: blob
+            nullable: true
+            length: 65535
+            fixed: false
+        tela:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+        liberacao:
+            type: string
+            nullable: true
+            length: 1
+            fixed: true
+        data:
+            type: datetime
+            nullable: true
+        direciona:
+            type: string
+            nullable: true
+            length: 300
+            fixed: false
+    lifecycleCallbacks: {  }

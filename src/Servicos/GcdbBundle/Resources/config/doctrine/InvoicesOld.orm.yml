@@ -1,0 +1,65 @@
+Servicos\GcdbBundle\Entity\InvoicesOld:
+    type: entity
+    table: gcdb.invoices_old
+    indexes:
+        CustomerID:
+            columns:
+                - CustomerID
+        AccountID:
+            columns:
+                - AccountID
+    uniqueConstraints:
+        InvoiceID:
+            columns:
+                - InvoiceID
+    id:
+        invoiceid:
+            type: integer
+            nullable: false
+            unsigned: true
+            id: true
+            column: InvoiceID
+            generator:
+                strategy: IDENTITY
+    fields:
+        customerid:
+            type: integer
+            nullable: false
+            unsigned: true
+            default: '0'
+            column: CustomerID
+        description:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            column: Description
+        datebilled:
+            type: date
+            nullable: true
+            column: DateBilled
+        amount:
+            type: float
+            nullable: true
+            precision: 5
+            scale: 2
+            column: Amount
+        email:
+            type: string
+            nullable: true
+            length: 1
+            fixed: true
+            column: EMail
+        nota:
+            type: string
+            nullable: true
+            length: 6
+            fixed: false
+            column: Nota
+        accountid:
+            type: integer
+            nullable: false
+            unsigned: false
+            default: '0'
+            column: AccountID
+    lifecycleCallbacks: {  }

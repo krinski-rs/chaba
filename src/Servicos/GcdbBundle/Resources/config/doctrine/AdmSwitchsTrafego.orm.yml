@@ -1,0 +1,41 @@
+Servicos\GcdbBundle\Entity\AdmSwitchsTrafego:
+    type: entity
+    table: gcdb.adm_switchs_trafego
+    id:
+        id:
+            type: bigint
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        idPorta:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: id_porta
+        datetime:
+            type: datetime
+            nullable: false
+        trIn:
+            type: bigint
+            nullable: true
+            unsigned: false
+            column: tr_in
+        trOut:
+            type: bigint
+            nullable: true
+            unsigned: false
+            column: tr_out
+        mediaTrIn:
+            type: bigint
+            nullable: true
+            unsigned: false
+            column: media_tr_in
+        mediaTrOut:
+            type: bigint
+            nullable: true
+            unsigned: false
+            column: media_tr_out
+    lifecycleCallbacks: {  }

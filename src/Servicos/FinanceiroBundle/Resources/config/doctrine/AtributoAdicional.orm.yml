@@ -1,0 +1,49 @@
+Servicos\FinanceiroBundle\Entity\AtributoAdicional:
+    type: entity
+    table: financeiro.atributo_adicional
+    indexes:
+        fk_atributo_adiconal_enderecoentregaatributovalor1_idx:
+            columns:
+                - endeentratrivalo_codigoid
+    id:
+        idAtributoAdiconal:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_atributo_adiconal
+            generator:
+                strategy: IDENTITY
+    fields:
+        valor:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+        infoInterna:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            column: info_interna
+        infoExterna:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            column: info_externa
+        dataInc:
+            type: datetime
+            nullable: true
+            column: data_inc
+    manyToOne:
+        endeentratrivaloCodigoid:
+            targetEntity: Enderecoentregaatributovalor
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                endeentratrivalo_codigoid:
+                    referencedColumnName: endeentratrivalo_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

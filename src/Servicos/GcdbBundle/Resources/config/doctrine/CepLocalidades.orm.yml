@@ -1,0 +1,62 @@
+Servicos\GcdbBundle\Entity\CepLocalidades:
+    type: entity
+    table: gcdb.cep_localidades
+    indexes:
+        ix_localidadesLocal:
+            columns:
+                - Localidade
+        ix_localidadesCEP:
+            columns:
+                - CEP
+        ix_localidadesUF:
+            columns:
+                - UF
+        ix_localidadesSitua:
+            columns:
+                - Situacao
+    id:
+        idlocalidades:
+            type: integer
+            nullable: false
+            unsigned: false
+            default: '0'
+            id: true
+            column: IDLocalidades
+            generator:
+                strategy: IDENTITY
+    fields:
+        localidade:
+            type: string
+            nullable: true
+            length: 40
+            fixed: false
+            column: Localidade
+        cep:
+            type: string
+            nullable: true
+            length: 8
+            fixed: false
+            column: CEP
+        uf:
+            type: string
+            nullable: true
+            length: 2
+            fixed: true
+            column: UF
+        situacao:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: Situacao
+        tipo:
+            type: string
+            nullable: true
+            length: 1
+            fixed: true
+            column: Tipo
+        idlocalidadessub:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: IDLocalidadesSub
+    lifecycleCallbacks: {  }

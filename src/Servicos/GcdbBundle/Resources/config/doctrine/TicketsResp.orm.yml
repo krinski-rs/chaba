@@ -1,0 +1,39 @@
+Servicos\GcdbBundle\Entity\TicketsResp:
+    type: entity
+    table: gcdb.Tickets_Resp
+    indexes:
+        tickets_id:
+            columns:
+                - tickets_id
+        user_id:
+            columns:
+                - user_id
+    id:
+        tickrespCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: tickresp_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        ticketsId:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: tickets_id
+        userId:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: user_id
+        dataInicial:
+            type: datetime
+            nullable: false
+            column: data_inicial
+        dataFinal:
+            type: datetime
+            nullable: true
+            column: data_final
+    lifecycleCallbacks: {  }

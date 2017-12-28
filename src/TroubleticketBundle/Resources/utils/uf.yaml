@@ -1,0 +1,82 @@
+states:
+    AC:
+        code: AC
+        state: 'Acre'
+    AL:
+        code: AL
+        state: 'Alagoas'
+    AM:
+        code: AM
+        state: 'Amazonas'
+    AP:
+        code: AP
+        state: 'Amapá'
+    BA:
+        code: BA
+        state: 'Bahia'
+    CE:
+        code: CE
+        state: 'Ceará'
+    DF:
+        code: DF
+        state: 'Distrito Federal'
+    ES:
+        code: ES
+        state: 'Espírito Santo'
+    GO:
+        code: GO
+        state: 'Goiás'
+    MA:
+        code: MA
+        state: 'Maranhão'
+    MG:
+        code: MG
+        state: 'Minas Gerais'
+    MS:
+        code: MS
+        state: 'Mato Grosso do Sul'
+    MT:
+        code: MT
+        state: 'Mato Grosso'
+    PA:
+        code: PA
+        state: 'Pará'
+    PE:
+        code: PE
+        state: 'Pernambuco'
+    PB:
+        code: PB
+        state: 'Paraíba'
+    PI:
+        code: PI
+        state: 'Piauí'
+    PR:
+        code: PR
+        state: 'Paraná'
+    RJ:
+        code: RJ
+        state: 'Rio de Janeiro'
+    RN:
+        code: RN
+        state: 'Rio Grande do Norte'
+    RO:
+        code: RO
+        state: 'Rondônia'
+    RR:
+        code: RR
+        state: 'Roraima'
+    RS:
+        code: RS
+        state: 'Rio Grande do Sul'
+    SC:
+        code: SC
+        state: 'Santa Catarina'
+    SE:
+        code: SE
+        state: 'Sergipe'
+    SP:
+        code: SP
+        state: 'São Paulo'
+    TO:
+        code: TO
+        state: 'Tocantins'

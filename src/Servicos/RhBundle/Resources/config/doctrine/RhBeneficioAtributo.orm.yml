@@ -1,0 +1,38 @@
+Servicos\RhBundle\Entity\RhBeneficioAtributo:
+    type: entity
+    table: rh.rh_beneficio_atributo
+    indexes:
+        fk_rh_beneficio_atributo_rh_beneficio1_idx:
+            columns:
+                - id_beneficio
+        fk_rh_beneficio_atributo_rh_beneficio_tipo_atributo1_idx:
+            columns:
+                - id_beneficio_tipo_atributo
+    id:
+        idBeneficioAtributo:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_beneficio_atributo
+            generator:
+                strategy: IDENTITY
+    fields:
+        idBeneficio:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: id_beneficio
+        idBeneficioTipoAtributo:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: id_beneficio_tipo_atributo
+        dataInc:
+            type: datetime
+            nullable: true
+            column: data_inc
+        ativo:
+            type: boolean
+            nullable: true
+    lifecycleCallbacks: {  }

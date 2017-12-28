@@ -1,0 +1,58 @@
+Servicos\LumaBundle\Entity\Industrializacaoestoqueproduto:
+    type: entity
+    table: luma.industrializacaoestoqueproduto
+    indexes:
+        fk_industrializacaoestoqueproduto_estoqueproduto1:
+            columns:
+                - estoprod_codigoid
+        fk_industrializacaoestoqueproduto_industrializacao1:
+            columns:
+                - indu_codigoid
+        fk_industrializacaoestoqueproduto_lote1:
+            columns:
+                - lote_codigoid
+    id:
+        induestoprodCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: induestoprod_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        induestoprodQuantidade:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+            column: induestoprod_quantidade
+    manyToOne:
+        estoprodCodigoid:
+            targetEntity: Estoqueproduto
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                estoprod_codigoid:
+                    referencedColumnName: estoprod_codigoid
+            orphanRemoval: false
+        induCodigoid:
+            targetEntity: Industrializacao
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                indu_codigoid:
+                    referencedColumnName: indu_codigoid
+            orphanRemoval: false
+        loteCodigoid:
+            targetEntity: Lote
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                lote_codigoid:
+                    referencedColumnName: lote_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

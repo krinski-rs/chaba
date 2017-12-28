@@ -1,0 +1,33 @@
+Servicos\GcdbBundle\Entity\Ticketsplantao:
+    type: entity
+    table: gcdb.TicketsPlantao
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        userId:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: user_id
+        dt:
+            type: datetime
+            nullable: true
+        userIdAlteracao:
+            type: integer
+            nullable: false
+            unsigned: false
+            default: '0'
+            column: user_id_alteracao
+        ip:
+            type: string
+            nullable: false
+            length: 15
+            fixed: false
+            default: ''
+    lifecycleCallbacks: {  }

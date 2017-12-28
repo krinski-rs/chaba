@@ -1,0 +1,14 @@
+Servicos\LumaBundle\Entity\ViaturaDestinatario:
+    type: entity
+    table: luma.viatura_destinatario
+    id:
+        viatCadUsuarioid:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: 'Id do usuário'
+            id: true
+            column: viat_cad_usuarioid
+            generator:
+                strategy: IDENTITY
+    lifecycleCallbacks: {  }

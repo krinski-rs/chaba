@@ -1,0 +1,35 @@
+Servicos\LumaBundle\Entity\ProdSimilarProduto:
+    type: entity
+    table: luma.prod_similar_produto
+    indexes:
+        fk_produto_similar_has_produto_produto1_idx:
+            columns:
+                - prod_codigoid
+        fk_produto_similar_has_produto_produto_similar1_idx:
+            columns:
+                - similar_codigoid
+    id:
+        prodSimilaCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: prod_simila_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        similarCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: similar_codigoid
+        prodCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: prod_codigoid
+        dataInc:
+            type: date
+            nullable: true
+            column: data_inc
+    lifecycleCallbacks: {  }

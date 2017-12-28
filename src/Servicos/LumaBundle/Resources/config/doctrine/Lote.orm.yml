@@ -1,0 +1,56 @@
+Servicos\LumaBundle\Entity\Lote:
+    type: entity
+    table: luma.lote
+    indexes:
+        fk_table1_estoqueproduto1:
+            columns:
+                - estoprod_codigoid
+        fk_ordemcotacaounidadeproduto:
+            columns:
+                - ordecotaunidprod
+    id:
+        loteCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: lote_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        loteQuantidade:
+            type: decimal
+            nullable: false
+            precision: 10
+            scale: 2
+            column: lote_quantidade
+        loteMarcaelotefabricacao:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            column: lote_marcaelotefabricacao
+        loteDatainc:
+            type: datetime
+            nullable: false
+            column: lote_datainc
+    manyToOne:
+        estoprodCodigoid:
+            targetEntity: Estoqueproduto
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                estoprod_codigoid:
+                    referencedColumnName: estoprod_codigoid
+            orphanRemoval: false
+        ordecotaunidprod:
+            targetEntity: Ordemcotacaounidadeproduto
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                ordecotaunidprod:
+                    referencedColumnName: ordecotaunidprod
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

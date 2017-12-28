@@ -1,0 +1,44 @@
+Servicos\LumaBundle\Entity\ViaturaLimite:
+    type: entity
+    table: luma.viatura_limite
+    indexes:
+        viatura_id:
+            columns:
+                - viatura_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        limite:
+            type: decimal
+            nullable: false
+            precision: 7
+            scale: 2
+        author:
+            type: integer
+            nullable: false
+            unsigned: false
+        dateRecord:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: date_record
+        active:
+            type: boolean
+            nullable: false
+    manyToOne:
+        viatura:
+            targetEntity: Viatura
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                viatura_id:
+                    referencedColumnName: viaturaid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

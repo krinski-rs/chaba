@@ -1,0 +1,86 @@
+Servicos\LumaBundle\Entity\CentroCusto:
+    type: entity
+    table: luma.centro_custo
+    indexes:
+        categoria_id:
+            columns:
+                - categoria_id
+        pai_id:
+            columns:
+                - pai_id
+        centro_custo_ordem_interna_ibfk1:
+            columns:
+                - centro_custo_ordem_interna_id
+    uniqueConstraints:
+        centro_custo_uniq:
+            columns:
+                - codigo
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        codigo:
+            type: integer
+            nullable: false
+            unsigned: false
+        responsavelId:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: responsavel_id
+        nome:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+        dataCriacao:
+            type: datetime
+            nullable: false
+            column: data_criacao
+        ativo:
+            type: boolean
+            nullable: false
+        dataExclusao:
+            type: datetime
+            nullable: true
+            column: data_exclusao
+        ordemInterna:
+            type: boolean
+            nullable: true
+            column: ordem_interna
+            options:
+                default: 0
+    manyToOne:
+        centroCustoOrdemInterna:
+            targetEntity: CentroCustoOrdemInterna
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                ordem_interna:
+                    referencedColumnName: id
+            orphanRemoval: false
+        categoria:
+            targetEntity: CentroCustoCategoria
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                categoria_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        pai:
+            targetEntity: CentroCusto
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                pai_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

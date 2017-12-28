@@ -1,0 +1,58 @@
+Servicos\LumaBundle\Entity\Pedidoproduto:
+    type: entity
+    table: luma.pedidoproduto
+    indexes:
+        prod_codigoid:
+            columns:
+                - prod_codigoid
+        pediprodstat_codigoid:
+            columns:
+                - pediprodstat_codigoid
+        pedi_codigoid:
+            columns:
+                - pedi_codigoid
+    id:
+        pediprodCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: pediprod_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        pediprodQuantidade:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+            column: pediprod_quantidade
+    manyToOne:
+        pediprodstatCodigoid:
+            targetEntity: Pedidoprodutostatus
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                pediprodstat_codigoid:
+                    referencedColumnName: pediprodstat_codigoid
+            orphanRemoval: false
+        pediCodigoid:
+            targetEntity: Pedido
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                pedi_codigoid:
+                    referencedColumnName: pedi_codigoid
+            orphanRemoval: false
+        prodCodigoid:
+            targetEntity: Produto
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                prod_codigoid:
+                    referencedColumnName: prod_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

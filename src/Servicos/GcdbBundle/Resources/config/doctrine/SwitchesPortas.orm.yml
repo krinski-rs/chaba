@@ -1,0 +1,46 @@
+Servicos\GcdbBundle\Entity\SwitchesPortas:
+    type: entity
+    table: gcdb.Switches_Portas
+    indexes:
+        CustomerID:
+            columns:
+                - CustomerID
+        SwitchID:
+            columns:
+                - SwitchID
+    id:
+        portaid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: PortaID
+            generator:
+                strategy: IDENTITY
+    fields:
+        customerid:
+            type: integer
+            nullable: false
+            unsigned: false
+            default: '0'
+            column: CustomerID
+        switchid:
+            type: integer
+            nullable: false
+            unsigned: false
+            default: '0'
+            column: SwitchID
+        porta:
+            type: integer
+            nullable: false
+            unsigned: false
+            default: '0'
+            column: Porta
+        local:
+            type: string
+            nullable: false
+            length: 150
+            fixed: false
+            default: ''
+            column: Local
+    lifecycleCallbacks: {  }

@@ -1,0 +1,106 @@
+Servicos\LumaBundle\Entity\Ordem:
+    type: entity
+    table: luma.ordem
+    repositoryClass: Servicos\LumaBundle\Repository\OrdemRepository
+    indexes:
+        fk_ordem_tipo1_idx:
+            columns:
+                - tipo_codigoid
+    id:
+        ordeCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: orde_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        ordeDataentrega:
+            type: datetime
+            nullable: true
+            column: orde_dataentrega
+        ordeEnderecoentrega:
+            type: text
+            nullable: true
+            length: 65535
+            fixed: false
+            column: orde_enderecoentrega
+        ordeDescricao:
+            type: text
+            nullable: true
+            length: 65535
+            fixed: false
+            column: orde_descricao
+        ordeDatainc:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: orde_datainc
+        usuaCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: usua_codigoid
+        usuaAprovador:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: usua_aprovador
+        ordeDataprevista:
+            type: datetime
+            nullable: true
+            column: orde_dataprevista
+        ordeInformacaoAdicional:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            column: orde_informacao_adicional
+        ordeStatusIntegracao:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: orde_status_integracao
+    oneToMany:
+        remessaOrdem:
+            targetEntity: RemessaOrdem
+            mappedBy: ordeCodigoid
+        nfEntrada:
+            targetEntity: OrdemNfEntrada
+            mappedBy: ordeCodigoid
+    manyToOne:
+        tipoCodigoid:
+            targetEntity: Tipo
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                tipo_codigoid:
+                    referencedColumnName: tipo_codigoid
+            orphanRemoval: false
+    manyToMany:
+        centroCusto:
+            targetEntity: CentroCusto
+            cascade: {  }
+            mappedBy: ordeCodigoid
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+        endeCodigoid:
+            targetEntity: Endereco
+            cascade: {  }
+            mappedBy: null
+            inversedBy: ordeCodigoid
+            joinTable:
+                name: ordem_endereco
+                joinColumns:
+                    -
+                        name: orde_codigoid
+                        referencedColumnName: orde_codigoid
+                inverseJoinColumns:
+                    -
+                        name: ende_codigoid
+                        referencedColumnName: ende_codigoid
+            orderBy: null
+    lifecycleCallbacks: {  }

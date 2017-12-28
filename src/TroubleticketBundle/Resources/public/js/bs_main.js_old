@@ -1,0 +1,93 @@
+$(document).ready(function() {
+    $('#btn_take_on').on('click', function(event) {
+        event.preventDefault();
+
+        var ok = function() {
+            showOverlay();
+            $('#form_take_on').submit();
+        };
+
+        tt_confirm('Você deseja realmente assumir este BS?', ok);
+    });
+
+    $('#btn_comment').on('click', function(event) {
+        event.preventDefault();
+        var div = $('#comment_bs');
+        $(div).dialog({
+            modal:true,
+            title: "Comentar BS",
+            width: 500,
+            resizable: false,
+            position: {
+                my: "center top+100",
+                at: "center top",
+                of: window
+            },
+            close: function(){
+                $(this).dialog("destroy");
+            },
+            buttons: {
+                Salvar:{
+                    click: function() {
+                        var form = $('form', this)[0];
+                        if (!form.checkValidity()) {
+                            tt_alert('Informe um comentário!')
+
+                        } else {
+                            $(this).dialog("destroy");
+                            showOverlay();
+                            form.submit();
+                        }
+                    },
+                   'text': 'Comentar',
+                },
+                Cancel:{
+                    click: function(){
+                        $(this).dialog("destroy");
+                    },
+                   'text': 'Fechar',
+                    class: 'cancelar'
+                },
+            }
+        }).html($(div).html());
+
+    });
+
+    $('#btn_close').on('click', function(event) {
+        event.preventDefault();
+
+        var div = $('#close_bs');
+        $(div).dialog({
+            modal:true,
+            title: "Fechar BS",
+            width: 500,
+            resizable: false,
+            position: {
+                my: "center top+100",
+                at: "center top",
+                of: window
+            },
+            close: function(){
+                $(this).dialog("destroy");
+            },
+            buttons: {
+                Salvar:{
+                    click: function() {
+                        var form = $('form', this)[0];
+                        $(this).dialog("destroy");
+                        showOverlay();
+                        form.submit();
+                    },
+                   'text': 'Confirmar',
+                },
+                Cancel:{
+                    click: function(){
+                        $(this).dialog("destroy");
+                    },
+                   'text': 'Fechar',
+                    class: 'cancelar'
+                },
+            }
+        }).html($(div).html());
+    });
+})

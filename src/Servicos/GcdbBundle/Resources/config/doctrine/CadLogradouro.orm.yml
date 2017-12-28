@@ -1,0 +1,21 @@
+Servicos\GcdbBundle\Entity\CadLogradouro:
+    type: entity
+    table: gcdb.cad_logradouro
+    id:
+        cad01Codigo:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: CAD01_CODIGO
+            generator:
+                strategy: IDENTITY
+    fields:
+        cad01Nome:
+            type: string
+            nullable: false
+            length: 20
+            fixed: false
+            default: ''
+            column: CAD01_NOME
+    lifecycleCallbacks: {  }

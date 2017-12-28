@@ -1,0 +1,23 @@
+Servicos\GcdbBundle\Entity\InterfaceConfiguracaoBwd:
+    type: entity
+    table: gcdb.interface_configuracao_bwd
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        periodicidadeDias:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: periodicidade_dias
+        texto:
+            type: text
+            nullable: false
+            length: 65535
+            fixed: false
+    lifecycleCallbacks: {  }

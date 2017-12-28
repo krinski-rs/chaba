@@ -1,0 +1,139 @@
+Servicos\LumaBundle\Entity\Inserirproduto:
+    type: entity
+    table: luma.inserirproduto
+    indexes:
+        fk_inserirproduto_categoria1:
+            columns:
+                - cate_codigoid
+        fk_inserirproduto_medida1:
+            columns:
+                - medi_codigoid
+        fk_inserirproduto_produto1:
+            columns:
+                - prod_codigoid
+        fk_inserirproduto_ncm1:
+            columns:
+                - ncm_codigoid
+    id:
+        inseCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: inse_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        inseNome:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: inse_nome
+        inseDescricao:
+            type: text
+            nullable: false
+            length: 65535
+            fixed: false
+            column: inse_descricao
+        inseIslance:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: inse_islance
+        inseSolicitantecodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: inse_solicitantecodigoid
+        inseDatainc:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: inse_datainc
+        inseTecnicocodigoid:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: inse_tecnicocodigoid
+        inseTecnicoaprovadosn:
+            type: boolean
+            nullable: true
+            column: inse_tecnicoaprovadosn
+        inseTecnicoobservacao:
+            type: text
+            nullable: true
+            length: 65535
+            fixed: false
+            column: inse_tecnicoobservacao
+        inseTecnicodataalteracao:
+            type: datetime
+            nullable: true
+            column: inse_tecnicodataalteracao
+        inseMaterialcodigoid:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: inse_materialcodigoid
+        inseMaterialaprovadosn:
+            type: boolean
+            nullable: true
+            column: inse_materialaprovadosn
+        inseMaterialobservacao:
+            type: text
+            nullable: true
+            length: 65535
+            fixed: false
+            column: inse_materialobservacao
+        inseMaterialdataalteracao:
+            type: datetime
+            nullable: true
+            column: inse_materialdataalteracao
+        inseAlteracao:
+            type: boolean
+            nullable: false
+            column: inse_alteracao
+        inseImagens:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            column: inse_imagens
+    manyToOne:
+        cateCodigoid:
+            targetEntity: Categoria
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cate_codigoid:
+                    referencedColumnName: cate_codigoid
+            orphanRemoval: false
+        mediCodigoid:
+            targetEntity: Medida
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                medi_codigoid:
+                    referencedColumnName: medi_codigoid
+            orphanRemoval: false
+        ncmCodigoid:
+            targetEntity: Ncm
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                ncm_codigoid:
+                    referencedColumnName: ncm_codigoid
+            orphanRemoval: false
+        prodCodigoid:
+            targetEntity: Produto
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                prod_codigoid:
+                    referencedColumnName: prod_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

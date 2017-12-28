@@ -1,0 +1,24 @@
+Servicos\LumaBundle\Entity\Popnomeconcessionaria:
+    type: entity
+    table: luma.popnomeconcessionaria
+    id:
+        idNomeConcessionaria:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_nome_concessionaria
+            generator:
+                strategy: IDENTITY
+    fields:
+        telefone:
+            type: string
+            nullable: true
+            length: 15
+            fixed: false
+        nome:
+            type: string
+            nullable: true
+            length: 200
+            fixed: false
+    lifecycleCallbacks: {  }

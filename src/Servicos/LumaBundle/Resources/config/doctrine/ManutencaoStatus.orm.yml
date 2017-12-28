@@ -1,0 +1,19 @@
+Servicos\LumaBundle\Entity\ManutencaoStatus:
+    type: entity
+    table: luma.manutencao_status
+    id:
+        statusCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: status_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        status:
+            type: string
+            nullable: false
+            length: 30
+            fixed: false
+    lifecycleCallbacks: {  }

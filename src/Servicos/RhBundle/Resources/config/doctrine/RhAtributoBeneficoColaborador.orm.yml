@@ -1,0 +1,46 @@
+Servicos\RhBundle\Entity\RhAtributoBeneficoColaborador:
+    type: entity
+    table: rh.rh_atributo_benefico_colaborador
+    indexes:
+        fk_rh_atributo_benefico_colaborador_rh_colaborador_benefici_idx:
+            columns:
+                - id_colaborador_beneficio
+        fk_rh_atributo_benefico_colaborador_rh_beneficio_atributo1_idx:
+            columns:
+                - id_beneficio_atributo
+    id:
+        idAtributoBeneficoColaborador:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_atributo_benefico_colaborador
+            generator:
+                strategy: IDENTITY
+    fields:
+        idColaboradorBeneficio:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: id_colaborador_beneficio
+        idBeneficioAtributo:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: id_beneficio_atributo
+        valor:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+        valorDecimal:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 2
+            column: valor_decimal
+        valorData:
+            type: datetime
+            nullable: true
+            column: valor_data
+    lifecycleCallbacks: {  }

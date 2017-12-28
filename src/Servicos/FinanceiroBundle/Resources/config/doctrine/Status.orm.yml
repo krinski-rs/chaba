@@ -1,0 +1,25 @@
+Servicos\FinanceiroBundle\Entity\Status:
+    type: entity
+    table: financeiro.status
+    id:
+        statCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: stat_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        statNome:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            column: stat_nome
+    oneToMany:
+        contrato:
+            targetEntity: Contrato
+            cascade: {  }
+            mappedBy: statCodigoid
+    lifecycleCallbacks: {  }

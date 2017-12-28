@@ -1,0 +1,30 @@
+Servicos\RhBundle\Entity\RhBeneficioTipoAtributo:
+    type: entity
+    table: rh.rh_beneficio_tipo_atributo
+    id:
+        idBeneficioTipoAtributo:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_beneficio_tipo_atributo
+            generator:
+                strategy: IDENTITY
+    fields:
+        descricao:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+        dataInc:
+            type: datetime
+            nullable: true
+            column: data_inc
+        mascara:
+            type: integer
+            nullable: true
+            unsigned: false
+        ativo:
+            type: boolean
+            nullable: true
+    lifecycleCallbacks: {  }

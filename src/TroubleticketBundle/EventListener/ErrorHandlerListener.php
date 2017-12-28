@@ -1,0 +1,72 @@
+<?php
+
+namespace TroubleticketBundle\EventListener;
+
+use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
+use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
+
+/**
+ * Classe para a realização de tratamento de eventos de erro
+ *
+ * Para deixar mais human readable
+ */
+class ErrorHandlerListener
+{
+
+    /**
+     * Motor de processamento do Twig
+     *
+     * @var EngineInterface
+     * @access protected
+     */
+    protected $engine;
+
+    /**
+     * Ambiente de execução
+     *
+     * @var mixed
+     * @access protected
+     */
+    protected $env;
+
+    /**
+     * Construtor da class
+     *
+     * @param EngineInterface $engine
+     * @param mixed $env
+     * @access public
+     * @return null
+     */
+    public function __construct(EngineInterface $engine, $env)
+    {
+        $this->engine = $engine;
+        $this->env = $env;
+    }
+
+    /**
+     * Método para a realização de tratamento de exceções não capturadas
+     *
+     * @param GetResponseForExceptionEvent $event
+     * @access public
+     * @todo verificar se o erro está ocorrendo no módulo de TroubleTicket uma vez os manipuladores de eventos são
+     * registrados para todos os módulos e requisições
+     * @return null
+     */
+    public function onKernelException(GetResponseForExceptionEvent $event)
+    {
+//         if ($this->env == 'dev') {
+//             $exception = $event->getException();
+//             if ($exception instanceof \Twig_Error_Runtime) {
+//                 $prev = $exception->getPrevious();
+//                 if ($prev) {
+//                     $exception = $prev;
+//                 }
+//             }
+//         } else {
+//             $exception = $event->getException();
+//         }
+//         $response = $this->engine->renderResponse('::error.html.twig', array('exception' => $exception));
+
+//        $event->setResponse($response);
+    }
+}

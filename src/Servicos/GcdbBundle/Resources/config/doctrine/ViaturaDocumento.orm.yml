@@ -1,0 +1,66 @@
+Servicos\GcdbBundle\Entity\ViaturaDocumento:
+    type: entity
+    table: gcdb.viatura_documento
+    indexes:
+        fk_documento_viatura_viatura1_idx:
+            columns:
+                - viaturaid
+        fk_documento_tipo_idx:
+            columns:
+                - tipo_documento
+    id:
+        viatDocumentoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: viat_documentoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        docCadUsuarioid:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: doc_cad_usuarioid
+        tipoDocumento:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: tipo_documento
+        docDatainc:
+            type: datetime
+            nullable: true
+            default: CURRENT_TIMESTAMP
+            column: doc_datainc
+        docVencimento:
+            type: datetime
+            nullable: true
+            column: doc_vencimento
+        docImagem:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            column: doc_imagem
+        docPrincipal:
+            type: boolean
+            nullable: true
+            column: doc_principal
+        docNumero:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            column: doc_numero
+    manyToOne:
+        viaturaid:
+            targetEntity: ViaturaDocumento
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                viaturaid:
+                    referencedColumnName: viaturaid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,40 @@
+Servicos\GcdbBundle\Entity\NotaFiscal:
+    type: entity
+    table: gcdb.nota_fiscal
+    indexes:
+        nft:
+            columns:
+                - nft
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        cid:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+        accounts:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+        nf:
+            type: integer
+            nullable: false
+            unsigned: true
+        user:
+            type: string
+            nullable: true
+            length: 30
+            fixed: false
+        nft:
+            type: integer
+            nullable: false
+            unsigned: true
+    lifecycleCallbacks: {  }

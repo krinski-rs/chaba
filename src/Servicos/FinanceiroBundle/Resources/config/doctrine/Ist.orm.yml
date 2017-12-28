@@ -1,0 +1,44 @@
+Servicos\FinanceiroBundle\Entity\Ist:
+    type: entity
+    table: financeiro.ist
+    id:
+        istCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: ist_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        istDatainc:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: ist_datainc
+        istPercentual:
+            type: decimal
+            nullable: false
+            precision: 5
+            scale: 2
+            column: ist_percentual
+        istAcumuladonoano:
+            type: decimal
+            nullable: false
+            precision: 5
+            scale: 2
+            default: '0.00'
+            column: ist_acumuladonoano
+        istAcumulado12meses:
+            type: decimal
+            nullable: false
+            precision: 5
+            scale: 2
+            default: '0.00'
+            column: ist_acumulado12meses
+        istPrazo:
+            type: datetime
+            nullable: false
+            default: '0000-00-00 00:00:00'
+            column: ist_prazo
+    lifecycleCallbacks: {  }

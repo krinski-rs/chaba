@@ -1,0 +1,20 @@
+Servicos\LumaBundle\Entity\Pedidoresposta:
+    type: entity
+    table: luma.pedidoresposta
+    id:
+        pedirespCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: pediresp_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        pedirespResposta:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: pediresp_resposta
+    lifecycleCallbacks: {  }

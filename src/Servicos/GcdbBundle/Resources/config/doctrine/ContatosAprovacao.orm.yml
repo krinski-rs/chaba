@@ -1,0 +1,42 @@
+Servicos\GcdbBundle\Entity\ContatosAprovacao:
+    type: entity
+    table: gcdb.contatos_aprovacao
+    indexes:
+        id_fornecedor:
+            columns:
+                - id_fornecedor
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        tipo:
+            type: string
+            nullable: false
+            length: 200
+            fixed: false
+        valor:
+            type: string
+            nullable: true
+            length: 200
+            fixed: false
+        complemento:
+            type: string
+            nullable: true
+            length: 200
+            fixed: false
+    manyToOne:
+        idFornecedor:
+            targetEntity: FornecedoresAprovacao
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_fornecedor:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

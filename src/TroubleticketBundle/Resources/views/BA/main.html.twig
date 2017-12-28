@@ -1,0 +1,453 @@
+{% extends 'TroubleticketBundle::base.html.twig' %}
+{% use "TroubleticketBundle:BA/modal:ba_close.html.twig" %}
+{% use "TroubleticketBundle:BA/modal:ba_pause.html.twig" %}
+{% use "TroubleticketBundle:BA/modal:ba_restart.html.twig" %}
+{% use "TroubleticketBundle:BA/modal:comment.html.twig" %}
+{% use "TroubleticketBundle:BA/modal:ba_subcase_open.html.twig" %}
+{% use "TroubleticketBundle:BA/modal:ba_change_responsible.html.twig" %}
+{% use "TroubleticketBundle:BA/modal:ba_change_stack.html.twig" %}
+{% set coc       = reports.getCOCSubcase() %}
+{% set mantainer = reports.getMantainerSubcase() %}
+{% set symptom = reports.getSymptom() %}
+{% set severidade = null %}
+
+{% block title %}{{ reports.getCode() }} - SisTech{% endblock %}
+{% block body %}
+    {% if message_error %}
+        <div class="error">
+            <span>{{message_error}}</span>
+        </div>
+    {% endif %}
+    {% if message_success %}
+        <div class="sucesso">
+            <span>{{message_success}}</span>
+        </div>
+    {% endif %}
+    <div class="titleModulo">
+        <div>
+            <span>Apresentação de BA</span>
+        </div>
+    </div>
+    <div class="row report_actions">
+        <a href="{{ path('troubleticket_history', { 'id': reports.getId()}) }}" style="float:right;">
+            <button  class="btn btn-primary">Visualizar histórico</button>
+        </a>
+        {% if reports.canChat() %}
+            <a href="{{ path('troubleticket_ba_chat', { 'report_id': reports.getId()}) }}" id="chat" style="float:right;">
+                {% if comment_badge > 0 %}
+                    <button class="btn btn-primary badge" data-badge="{{ comment_badge }}">Comentários do cliente</button>
+                {% else %}
+                    <button class="btn btn-primary" data-badge="{{ comment_badge }}">Comentários do cliente</button>
+                {% endif %}
+            </a>
+        {% endif %}
+        <div class="clearfix"></div>
+    </div>
+    <div class="row report-data">
+        <div class="col-sm-50" style="float:left;">
+            <h3>Informação do circuito</h3>
+            <hr>
+            <div class="col-sm-100">
+                <div class="row">
+                    <div class="col-sm-50">
+                        <label>Designação:</label>
+                        <input type="text" value="{{reports.getDesignation()}}" disabled="disabled" style="padding:0px;">
+                    </div>
+                    <div class="col-sm-50">
+                        <label>Ativado Em:</label>
+                        <input type="text" value="{% if api_circuit.ativDataativado.date is defined %}{{api_circuit.ativDataativado.date|date('d/m/Y H:i:s')}}{% endif %}" disabled="disabled" style="padding:0px;">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-100">
+                        <label>Produto:</label>
+                        <input type="text" value="" disabled="disabled" style="padding:0px;">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-50">
+                        <label>Serviço:</label>
+                        <input type="text" value="{{api_circuit.servNome}}" disabled="disabled" style="padding:0px;">
+                    </div>
+                    <div class="col-sm-50">
+                        <label>Velocidade:</label>
+                        <input type="text" value="{{api_circuit.velocidade}}" disabled="disabled" style="padding:0px;">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-50">
+                    	<label>Ponta A Cliente:</label>
+                        <input type="text" value="{{api_circuit.pontACliente}}" disabled="disabled" style="padding:0px; width: 90%;">
+                        <span class="icon visualiza absolute visualizaPonta" data-circuito="{{ api_circuit.contCodigoid }}" title="Visualizar Ponta A"></span>
+                    </div>
+                    <div class="col-sm-50">
+                        <label>Ponta B Cliente:</label>
+                        <input type="text" value="{{api_circuit.pontBCliente}}" disabled="disabled" style="padding:0px;">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-50">
+                        <label>Ponta A Pop:</label>
+                        <input type="text" value="{{api_circuit.pontAPop}}" disabled="disabled" style="padding:0px;">
+                    </div>
+                    <div class="col-sm-50">
+                        <label>Ponta B Pop:</label>
+                        <input type="text" value="{{api_circuit.pontBPop}}" disabled="disabled" style="padding:0px;">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-50">
+                        <label>Designador Sthima:</label>
+                        <input type="text" value="{{api_circuit.endeentrDesignadorOld}}" disabled="disabled" style="padding:0px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-50" style="float:left;">
+            <h3>Informação do incidente</h3>
+            <hr>
+            <div class="col-sm-100">
+                <form method="post" action="{{ path('troubleticket_ba_symptom_update', { 'report_id': reports.getId()}) }}">
+                    <div class="row">
+                        <div class="col-sm-40">
+                            <label>Sintoma:</label>
+                            <select name="symptom" id="select_ba_add_sintoma" style="background-color: #fff;" {% if not reports.canChangeSymptom() %}disabled="disabled"{% endif %}>
+                                <option value="">---</option>
+                                {% for key, options in yaml_options_sintoma %}
+                                    {% if (key == symptom) %}
+                                        <option value="{{key}}" selected="selected">{{options.sintoma}}</option>
+                                        {% set severidade = options.severidade %}
+                                    {% else %}
+                                        <option value="{{key}}">{{options.sintoma}}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-sm-40">
+                            <label>Severidade:</label>
+                            <input type="text" disabled="disabled" value="{{severidade}}" name="severidade" id="input_ba_add_severidade">
+                        </div>
+                        {% if reports.canChangeSymptom() %}
+                            <div class="col-sm-20">
+                                <button type="submit" class="btn btn-primary full-width">Atualizar</button>
+                            </div>
+                        {% endif %}
+                    </div>
+                </form>
+                <div class="row">
+                    <div class="col-sm-40">
+                        <label>Número do chamado:</label>
+                        <input type="text" value="{{reports.getCode()}}" disabled="disabled" style="padding:0px;">
+                    </div>
+                    <div class="col-sm-60">
+                        <label>Status:</label>
+                        <input type="text" value="{{reports.getStatusString()}}" disabled="disabled" style="padding:0px;">
+                    </div>
+                </div>
+                <div class="row">
+                    {% set responsibleWidth = 100 %}
+                    {% if isAllowed('BA', 'send_to_user') %}
+                        {% set responsibleWidth = 77 %}
+                    {% elseif reports.canTakeOn(session_user) and isAllowed('BA', 'take_on') %}
+                        {% set responsibleWidth = 80 %}
+                    {% endif %}
+                    <div class=" col-sm-{{ responsibleWidth }}">
+                        <label>Téc. Responsavel:</label>
+                        {% if reports.getResponsible() %}
+                            <input type="text" value="{{ reports.getResponsibleData().nome }}" disabled="disabled" style="padding:0px;">
+                        {% else %}
+                            <input type="text" value="" disabled="disabled" style="padding:0px;">
+                        {% endif %}
+                    </div>
+                    {% if reports.canTakeOn() and isAllowed('BA', 'send_to_user') %}
+                        <div class="col-sm-20">
+                            <button type="button" class="btn btn-primary" id="btn_ba_send_to_user">Transferir Boletim</button>
+                        </div>
+                    {% elseif reports.canTakeOn(session_user) and isAllowed('BA', 'take_on') %}
+                        <div class="col-sm-20">
+                            <form id="form_ba_take_on" method="get" action="{{ path('troubleticket_ba_take_on', {'report_id': reports.getId()}) }}">
+                                    <button type="submit" class="btn btn-primary full-width" id="btn_ba_take_on">Assumir BA</button>
+                            </form>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="row">
+                    <div class="col-sm-50">
+                        <label>Data e hora da abertura:</label>
+                        <input type="text" value="{{reports.getInitialDate()|date('d/m/Y H:i:s')}}" disabled="disabled" style="padding:0px;">
+                    </div>
+                    <div class="col-sm-50">
+                        <label>Tempo decorrido:</label>
+                        <input type="text" value="{{reports.getTME()|tt_time}}" disabled="disabled" style="padding:0px;">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-50">
+                        <label>Data e hora da última atualização:</label>
+                        <input type="text" value="{{history_last.getDate().format('d/m/Y H:i:s')}}" disabled="disabled" style="padding:0px;">
+                    </div>
+                    <div class="col-sm-50">
+                        <label>Tempo decorrido:</label>
+                        <input type="text" value="{{history_last.getTimeDiffHistory()|tt_time}}" disabled="disabled" style="padding:0px;">
+                    </div>
+                </div>
+                <div class="row">
+                    <form method="post" action="{{ path('troubleticket_ba_main_update', { 'report_id': reports.getId()}) }}">
+                        <div class="col-sm-{% if reports.getStatus() == '0' and isAllowed('BA', 'update') and not reports.hasOpenedSubcases() %}80 {% else %}100 {% endif %}">
+                            <label>ID chamado operadora:</label>
+                            <input type="text" name="reports_operator_report_identifier" value="{{reports.getOperatorReportIdentifier()}}"{% if reports.getStatus() != '0' or not isAllowed('BA', 'update') %} disabled="disabled" {% endif %} style="padding:0px;">
+                        </div>
+                        {% if reports.getStatus() == '0' and isAllowed('BA', 'update') and not reports.hasOpenedSubcases() %}
+                            <div class="col-sm-20">
+                                <button type="submit" class="btn btn-primary full-width">Atualizar</button>
+                            </div>
+                        {% endif %}
+                    </form>
+                </div>
+                <div class="row">
+                    <div class="col-sm-{% if reports.canLinkToBi() and isAllowed('BA', 'link_to_bi') %}80 {% else %}100 {% endif %}" id="linked_bi">
+                        <label>BI:</label>
+                        {% if reports.getParent() %}
+                            <input type="text" value="{{reports.getParent().getCode()}} - {{reports.getParent().getDesignation() }}" disabled="disabled" style="padding:0px;">
+                        {% else %}
+                            <input type="text" disabled="disabled" style="padding:0px;">
+                        {% endif %}
+                    </div>
+                    {% if reports.canLinkToBi() and isAllowed('BA', 'link_to_bi') %}
+                    <div class="col-sm-20">
+                        <button id="link_to_bi" class="btn btn-primary full-width" data-url="{{ path('troubleticket_ba_link_to_bi', { 'report_id': reports.getId()}) }}" {% if reports.getParent() %} style="display:none;" {% endif %}>Vincular BI</button>
+                        <button id="remove_link_to_bi" class="btn btn-danger" data-url="{{ path('troubleticket_ba_link_to_bi', { 'report_id': reports.getId()}) }}" {% if not reports.getParent() %} style="display:none;" {% endif %}>Desvincular BI</button>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-100">
+            <h3>Informação do cliente</h3>
+            <hr>
+            <form>
+                <div class="col-sm-50">
+                    <label>Cliente:</label>
+                    <input type="text" value="{{api_client.razaoSocial}}" disabled="disabled" style="padding:0px;">
+                    <label>Solicitante:</label>
+                    <input type="text" value="{{reports.getRequesterName}}" disabled="disabled" style="padding:0px;">
+                    <label>Email:</label>
+                    <input type="text" value="{{reports.getRequesterEmail}}" disabled="disabled" style="padding:0px;">
+                    <label>Telefone:</label>
+                    <input type="text" value="{{reports.getRequesterPhone}}" disabled="disabled" style="padding:0px;">
+                </div>
+                <div class="col-sm-50">
+                    <label>Cliente Final:</label>
+                    <input type="text" value="{{api_circuit.clienteFinal.nome}}" disabled="disabled" style="padding:0px;">
+                    <label>Contato:</label>
+                    {% if api_circuit.contatos.contatos is empty %}
+                        <input type="text" name="" value="" disabled="disabled" style="padding:0px;">
+                    {% else %}
+                        <input type="text" value="{{api_circuit.contatos.contatos[0].nome}}" disabled="disabled" style="padding:0px;">
+                    {% endif %}
+                    <label>Telefone:</label>
+                    <input type="text" value="{{api_circuit.contatos.telefone.numero}}" disabled="disabled" style="padding:0px;">
+                    <label>Email:</label>
+                    <input type="text" value="{{api_circuit.contatos.email.email}}" disabled="disabled" style="padding:0px;">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="row report-data">
+        <div class="col-sm-100">
+            <div class="col-sm-100">
+                <h3>Atendimento</h3>
+                <hr>
+                <div class="col-sm-50">
+                    <div class="row">
+                        <div class="col-sm-{% if mantainer.getId() is not null %}80 {% else %}100 full-width{% endif %}">
+                            <label>Sub Caso Mainteiner:</label>
+                            <input type="text" value="{{mantainer.getCode()}}" disabled="disabled" style="padding:0px;">
+                        </div>
+                        {% if mantainer.getId() is not null %}
+                            <div class="col-sm-20">
+                                <a href="{{ path('troubleticket_ba_subcase_main', { 'subcaseId': mantainer.getId()}) }}">
+                                    <button class="btn btn-primary full-width">Visualizar</button>
+                                </a>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="row">
+                        <label>Status:</label>
+                        <input type="text" value="{{mantainer.getStatusString()}}" disabled="disabled" style="padding:0px;">
+                    </div>
+                    <div class="row">
+                        <label>Tempo Decorrido:</label>
+                        <input type="text" value="{{mantainer.getTME() | tt_time}}" disabled="disabled" style="padding:0px;">
+                    </div>
+                </div>
+                <div class="col-sm-50">
+                    <div class="row">
+                        <div class="col-sm-{% if coc.getId() is not null %}80 {% else %}100 full-width{% endif %}">
+                            <label>Sub Caso COC:</label>
+                            <input type="text" value="{{coc.getCode()}}" disabled="disabled" style="padding:0px;">
+                        </div>
+                        {% if coc.getId() is not null %}
+                            <div class="col-sm-20">
+                                <a href="{{ path('troubleticket_ba_subcase_main', { 'subcaseId': coc.getId()}) }}">
+                                    <button class="btn btn-primary full-width">Visualizar</button>
+                                </a>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-50">
+                            <label>Status:</label>
+                            <input type="text" value="{{coc.getStatusString()}}" disabled="disabled" style="padding:0px;">
+                        </div>
+                        <div class="col-sm-50">
+                            <label>Previsão:</label>
+                            <input type="text" value="{% if coc.getForecast() %}{{coc.getForecast().format('H:i')}}{% endif %}" disabled="disabled" style="padding:0px;">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-50">
+                            <label>Tempo Decorrido:</label>
+                            <input type="text" value="{{coc.getTME() | tt_time}}" disabled="disabled" style="padding:0px;">
+                        </div>
+                        <div class="col-sm-50">
+                            <label>Última atualização:</label>
+                            <input type="text" value="{% if coc.getId() is not null %} {{history_last_coc.getDate().format('d/m/Y H:i:s')}} {% endif %}" disabled="disabled" style="padding:0px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="row report_actions">
+                    {% if reports.canOpenSubcase() and (isAllowed('SUB_COC', 'create') or isAllowed('SUB_MANTAINER', 'create')) %}
+                        <form id="form_ba_subcase_open" method="post">
+                            <button type="submit" id="btn_open_subcase_ba" class="btn btn-primary">Abrir subcaso</button>
+                        </form>
+                    {% endif %}
+                    {# <button id="btn_view_ralotorio_subcase" class="btn btn-primary" data-reportid="{{ reports.getId() }}">Daily Extract TOA</button> #}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-100">
+            <div class="col-sm-100">
+                <h3>Solicitação</h3>
+                <hr>
+                <form>
+                    <div class="col-sm-50">
+                        <label>Solicitação:</label>
+                        <textarea col="4" disabled="disabled" style="padding:0px;">{{reports.getDescription()}}</textarea>
+                    </div>
+                    <div class="col-sm-50">
+                        {% set reason = history_last.getReason() ? "Motivo: " ~ history_last.getReason() : '' %}
+                        <label>Último comentário:</label>
+                        <textarea col="4" disabled="disabled" style="padding:0px;">{{ '[' ~ history_last.getDate().format('d/m/Y H:i:s') ~ ' - ' ~ history_last.getUserName() ~ '] ' ~ history_last.getComment() ~ '\n' ~ reason}}</textarea>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="row report_actions">
+        {% if reports.getStatus() == 0 and isAllowed('BA', 'cancel') %}
+            <form id="form_ba_cancel" action="{{ path('troubleticket_ba_main_cancel', { 'report_id': reports.getId()}) }}" method="post">
+                <button type="submit" id="btn_cancel_ba" class="btn btn-danger">Cancelar</button>
+            </form>
+        {% endif %}
+
+        {% if reports.getStatus() == 0 and isAllowed('BA', 'solve') and not reports.hasOpenedSubcases() %}
+            <form id="form_ba_solve" action="{{ path('troubleticket_ba_main_solve', { 'report_id': reports.getId()}) }}" method="post">
+                <button class="btn btn-success" id="btn_solve_ba">Resolver</button>
+            </form>
+        {% endif %}
+        {% if reports.getStatus() == 0 and isAllowed('BA', 'pause') and not reports.hasOpenedSubcases() %}
+            <button class="btn btn-primary" id="btn_pause_ba">Pausar</button>
+        {% endif %}
+
+        {% if reports.getStatus() == 1 and isAllowed('BA', 'restart') and not reports.hasOpenedSubcases() %}
+            <form action="{{ path('troubleticket_ba_main_restart', { 'report_id': reports.getId()}) }}" method="post">
+                <button class="btn btn-primary" id="btn_restart_ba">Reiniciar</button>
+            </form>
+        {% endif %}
+
+        {% if reports.getStatus() == 2 and isAllowed('BA', 'unsolved') %}
+            <form id="form_ba_unsolved" action="{{ path('troubleticket_ba_main_unsolved', { 'report_id': reports.getId()}) }}" method="post">
+                <button class="btn btn-primary" id="btn_unsolved_ba">Marcar como não Resolvido</button>
+            </form>
+        {% endif %}
+        {% if reports.getStatus() == 2 and isAllowed('BA', 'close') and reports.getCreatedBySystem() != 3 %}
+            <form id="form_ba_only_close" action="{{ path('troubleticket_ba_main_close', { 'report_id': reports.getId()}) }}" method="post">
+                <button class="btn btn-success" id="btn_close_ba">Fechar</button>
+            </form>
+        {% endif %}
+        {% if reports.canChangeStack() and isAllowed('BA', 'change_stack') %}
+            <button type="submit" id="btn_change_stack" class="btn btn-primary">Alterar Fila</button>
+        {% endif %}
+        {# {% if reports.canSendToSN3() and isAllowed('BA', 'send_to_sn3') %} #}
+            {# <form id="form_ba_send_sn3" action="{{ path('troubleticket_ba_send_to_sn3', {'report_id': reports.getId() }) }}" method="get">
+                <button type="submit" id="btn_send_sn3" class="btn btn-primary">Enviar para SN3</button>
+            </form> #}
+        {# {% endif %} #}
+
+        {% if reports.canComment() and isAllowed('BA', 'comment') %}
+            <button class="btn btn-primary" id="btn_comment_ba">Comentar</button>
+        {% endif %}
+        <div class="clearfix"></div>
+    </div>
+
+
+    <div id="div_close_ba" style="width:500px;display:none;">
+        {{ block('ba_close') }}
+    </div>
+    <div id="div_pause_ba" style="width:500px;display:none;">
+        {{ block('ba_pause') }}
+    </div>
+    <div id="div_open_subcase_ba" style="width:500px;display:none;">
+        {{ block('ba_subcase_open') }}
+    </div>
+    <div id="div_restart_ba" style="width:500px;display:none;">
+        {{ block('ba_restart') }}
+    </div>
+    <div id="div_comment_ba" style="width:500px; display:none">
+        {{ block('ba_comment') }}
+    </div>
+    <div id="div_change_responsible" style="width:500px; display:none">
+        {{ block('ba_change_responsible') }}
+    </div>
+    <div id="div_change_stack" style="width:500px; display:none">
+        {{ block('ba_change_stack') }}
+    </div>
+
+    <div id="div_link_to_bi" style="display:none; max-height: 300px">
+    </div>
+
+    <div id="div_chat" style="display:none; max-height: 300px">
+    </div>
+    
+    <div id="dialog"></div>
+{% endblock %}
+
+{% block static_css %}
+    <link rel="stylesheet" href="{{ asset('bundles/troubleticket/js/plugins/jquery-dataTables/datatables.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/base/css/abs.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/base/css/jquery-gridsor2.css') }}" />
+{% endblock %}
+
+{% block static_js %}
+    <script type="text/javascript">
+        var pop_request = "{{path('troubleticket_pop_request')}}",
+            provider_request = "{{path('troubleticket_provider_request')}}",
+            yaml_form_close = JSON.parse('{{yaml_form_close|json_encode()}}'.replace(/&quot;/g,'"')),
+            yaml_options_sintoma = JSON.parse('{{yaml_options_sintoma|json_encode()}}'.replace(/&quot;/g,'"')),
+            yaml_form_pause = JSON.parse('{{yaml_form_pause|json_encode()}}'.replace(/&quot;/g,'"'));
+    </script>
+    <script type="text/javascript" src="{{ asset('bundles/troubleticket/js/plugins/jquery-dataTables/datatables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/troubleticket/js/main.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/troubleticket/js/subcase.js') }}"></script>
+    <script type="text/javascript" src="/bundles/base/js/base.js"></script>
+{% endblock %}

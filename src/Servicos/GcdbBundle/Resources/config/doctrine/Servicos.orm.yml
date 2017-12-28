@@ -1,0 +1,42 @@
+Servicos\GcdbBundle\Entity\Servicos:
+    type: entity
+    table: gcdb.Servicos
+    indexes:
+        GrupoServicoID:
+            columns:
+                - GrupoServicoID
+    id:
+        servicoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: ServicoID
+            generator:
+                strategy: IDENTITY
+    fields:
+        nome:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            default: ''
+            column: Nome
+        apelido:
+            type: string
+            nullable: false
+            length: 10
+            fixed: false
+            default: ''
+            column: Apelido
+    manyToOne:
+        gruposervicoid:
+            targetEntity: GruposServicos
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                GrupoServicoID:
+                    referencedColumnName: GrupoServicoID
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

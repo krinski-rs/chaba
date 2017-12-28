@@ -1,0 +1,54 @@
+Servicos\GcdbBundle\Entity\CadUsersImagem:
+    type: entity
+    table: gcdb.cad_users_imagem
+    indexes:
+        fk_caduser_imagem_idx:
+            columns:
+                - id_cad_user
+    id:
+        idImagem:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_imagem
+            generator:
+                strategy: IDENTITY
+    fields:
+        dataInc:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: data_inc
+        descricao:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+        urlImagem:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: url_imagem
+        ativo:
+            type: boolean
+            nullable: false
+        dataFoto:
+            type: datetime
+            nullable: true
+            column: data_foto
+        principal:
+            type: boolean
+            nullable: true
+    manyToOne:
+        idCadUser:
+            targetEntity: CadUsers
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_cad_user:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

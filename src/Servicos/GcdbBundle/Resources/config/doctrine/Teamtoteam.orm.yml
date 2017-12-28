@@ -1,0 +1,28 @@
+Servicos\GcdbBundle\Entity\Teamtoteam:
+    type: entity
+    table: gcdb.teamtoteam
+    indexes:
+        fk_teamtoteam_team1:
+            columns:
+                - team_codigoid
+    id:
+        teamtoCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: teamto_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        teamCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: team_codigoid
+        teamtoTeam:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: teamto_team
+    lifecycleCallbacks: {  }

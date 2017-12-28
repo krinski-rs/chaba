@@ -1,0 +1,265 @@
+Servicos\FinanceiroBundle\Entity\TmpCircuito:
+    type: entity
+    table: financeiro.tmp_circuito
+    indexes:
+        fk_tmp_circuito_tmp_contrato1_idx:
+            columns:
+                - id_tmp_contrato
+    id:
+        idTmpCircuito:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_tmp_circuito
+            generator:
+                strategy: IDENTITY
+    fields:
+        contCodigoid:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: cont_codigoid
+        circuito:
+            type: integer
+            nullable: true
+            unsigned: false
+        idCircuito:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: id_circuito
+        razaoSocial:
+            type: string
+            nullable: true
+            length: 90
+            fixed: false
+            column: razao_social
+        fantasia:
+            type: string
+            nullable: true
+            length: 90
+            fixed: false
+        cnpj:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+        ie:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+        im:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+        contribuinteIcms:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            column: contribuinte_icms
+        segmentoMercado:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            column: segmento_mercado
+        ramoAtividade:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            column: ramo_atividade
+        porte:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+        areaAtuacao:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            column: area_atuacao
+        faturamentoAnual:
+            type: boolean
+            nullable: true
+            column: faturamento_anual
+        numeroFuncionario:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: numero_funcionario
+        gerenteConta:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            column: gerente_conta
+        canalVenda:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            column: canal_venda
+        produto:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+        meioAcesso:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            column: meio_acesso
+        capacidade:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+        pedido:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+        dataPedido:
+            type: datetime
+            nullable: true
+            column: data_pedido
+        clienteFinal:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            column: cliente_final
+        tipoServico:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            column: tipo_servico
+        prazoMes:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            column: prazo_mes
+        dataPervistaAtivacao:
+            type: datetime
+            nullable: true
+            column: data_pervista_ativacao
+        slaDisponibilidade:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            column: sla_disponibilidade
+        numero:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+        complemento:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+        cep:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+        bairro:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+        cidade:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+        uf:
+            type: string
+            nullable: true
+            length: 20
+            fixed: false
+        telefone:
+            type: string
+            nullable: true
+            length: 20
+            fixed: false
+        motivoAlteracao:
+            type: string
+            nullable: true
+            length: 90
+            fixed: false
+            column: motivo_alteracao
+        equipamentoCliente:
+            type: string
+            nullable: true
+            length: 90
+            fixed: false
+            column: equipamento_cliente
+        historico:
+            type: string
+            nullable: true
+            length: 90
+            fixed: false
+        dataInicial:
+            type: datetime
+            nullable: true
+            column: data_inicial
+        dataAtivacao:
+            type: datetime
+            nullable: true
+            column: data_ativacao
+        dataCancelamento:
+            type: datetime
+            nullable: true
+            column: data_cancelamento
+        dataAtivacaoComercial:
+            type: datetime
+            nullable: true
+            column: data_ativacao_comercial
+        designacao:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+        valorAtivacao:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 2
+            column: valor_ativacao
+        valorSemImposto:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 2
+            column: valor_sem_imposto
+        valorComImposto:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 2
+            column: valor_com_imposto
+        status:
+            type: boolean
+            nullable: true
+    manyToOne:
+        idTmpContrato:
+            targetEntity: TmpContrato
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_tmp_contrato:
+                    referencedColumnName: id_tmp_contrato
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

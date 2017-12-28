@@ -1,0 +1,54 @@
+Servicos\RhBundle\Entity\RhColaboradorEmpresaAnterior:
+    type: entity
+    table: rh.rh_colaborador_empresa_anterior
+    indexes:
+        fk_rh_emprego_anterior_rh_colaborador1_idx:
+            columns:
+                - id_colaborador
+    id:
+        idEmpregoAnterior:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_emprego_anterior
+            generator:
+                strategy: IDENTITY
+    fields:
+        idColaborador:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: id_colaborador
+        empresa:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+        dataInicio:
+            type: datetime
+            nullable: true
+            column: data_inicio
+        dataFinal:
+            type: datetime
+            nullable: true
+            column: data_final
+        cargo:
+            type: string
+            nullable: true
+            length: 75
+            fixed: false
+        salario:
+            type: decimal
+            nullable: true
+            precision: 15
+            scale: 2
+        registrante:
+            type: integer
+            nullable: true
+            unsigned: false
+        dataInc:
+            type: datetime
+            nullable: true
+            column: data_inc
+    lifecycleCallbacks: {  }

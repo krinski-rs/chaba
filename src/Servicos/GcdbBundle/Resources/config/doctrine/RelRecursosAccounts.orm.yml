@@ -1,0 +1,40 @@
+Servicos\GcdbBundle\Entity\RelRecursosAccounts:
+    type: entity
+    table: gcdb.rel_recursos_accounts
+    indexes:
+        AccountID:
+            columns:
+                - AccountID
+        RecursoID:
+            columns:
+                - RecursoID
+    id:
+        relrecursosaccountsid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: RelRecursosAccountsID
+            generator:
+                strategy: IDENTITY
+    fields:
+        accountid:
+            type: integer
+            nullable: false
+            unsigned: false
+            default: '0'
+            column: AccountID
+        recursoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            default: '0'
+            column: RecursoID
+        conteudo:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            default: ''
+            column: Conteudo
+    lifecycleCallbacks: {  }

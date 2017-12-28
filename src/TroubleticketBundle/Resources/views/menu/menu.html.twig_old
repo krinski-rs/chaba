@@ -1,0 +1,75 @@
+{% use "TroubleticketBundle:menu:breadcrumb.html.twig" %}
+{% block menu %}
+    <div class="modal fade" id="myModal"></div>
+    <div class="menu">
+        <div class="lista">
+            <div class="migalha">
+                <a href="/"><img src="{{ asset('bundles/base/img/home.png') }}" class="home"></a>
+                <a href="/"><span>SISTECH ></span></a>
+                {{ block('breadcrumb') }}
+            </div>
+            <div class="infoSistema">
+{% if modulos is defined %}
+                <div class="floatL modulos">
+{% if modulos|length %}
+                    <ul class="navModulos pointer no-select">
+                        <li class="select"> Modulos <span class="iconSelect pointer"></span></li>
+{% for modulo in modulos %}
+                        <a href="{{ modulo.link }}"> <li class="displayN item"> {{ modulo.titulo|raw }}  </li>  </a>
+{% endfor %}
+                    </ul>
+{% endif %}
+                </div>
+{% endif %}
+                <form action="/sistech/busca.php" method="post">
+                    <div class="floatL pesquisa">
+                        <input type="text" name="busca" placeholder="Pesquisar no Sistech">
+                        <input type="submit" class="btBusca" value=" ">
+                    </div>
+                </form>
+                <div class="floatL login">
+                    <span>{% if login is defined %}{{ login|raw }}{% endif %} &nbsp;|<a href="/sistech/fim_sessao.php">sair</a></span>
+                </div>
+                <div class="headLogo">
+                    <img src="{{ asset('bundles/base/img/header-logo.png') }}">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="navegacao" id="navegacao">
+        <ul class="nave" id="listaMenu">
+            {% if isAllowed('BA', 'read') %}
+                <li><a>Boletins de Anormalidade</a>
+                    <ul>
+                        <li><a href="{{ path('troubleticket_ba_stack') }}">Fila</a></li>
+                         {% if isAllowed('BA', 'create') %}
+                            <li><a href="{{ path('troubleticket_ba_new') }}">Novo</a></li>
+                         {% endif %}
+                    </ul>
+                </li>
+            {% endif %}
+            {% if isAllowed('BI', 'read') %}
+                <li><a>Boletins de Interrupção</a>
+                    <ul>
+                        <li><a href="{{ path('troubleticket_bi_stack') }}">Fila</a></li>
+                         {% if isAllowed('BI', 'create') %}
+                            <li><a href="{{ path('troubleticket_bi_new') }}">Novo</a></li>
+                         {% endif %}
+                    </ul>
+                </li>
+            {% endif %}
+            {% if isAllowed('BS', 'read') %}
+                <li><a>Boletins de Serviço</a>
+                    <ul>
+                        <li><a href="{{ path('troubleticket_bs_stack') }}">Fila</a></li>
+                        {% if isAllowed('BS', 'config') %}
+                            <li>
+                                <a href="{{ path('troubleticket_bs_config') }}">Configurações</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+{% endblock %}

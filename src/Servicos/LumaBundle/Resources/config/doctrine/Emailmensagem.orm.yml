@@ -1,0 +1,33 @@
+Servicos\LumaBundle\Entity\Emailmensagem:
+    type: entity
+    table: luma.emailmensagem
+    indexes:
+        fk_emailmensagem_email1:
+            columns:
+                - email_codigoid
+    id:
+        emailmensagemCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: emailmensagem_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        emailCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: email_codigoid
+        emailmensagemMensagem:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: emailmensagem_mensagem
+        emailmensagemDatainc:
+            type: datetime
+            nullable: false
+            column: emailmensagem_datainc
+    lifecycleCallbacks: {  }

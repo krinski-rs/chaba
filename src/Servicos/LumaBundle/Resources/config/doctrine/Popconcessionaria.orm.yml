@@ -1,0 +1,98 @@
+Servicos\LumaBundle\Entity\Popconcessionaria:
+    type: entity
+    table: luma.popconcessionaria
+    indexes:
+        id_nome_concessionaria:
+            columns:
+                - id_nome_concessionaria
+        id_pop:
+            columns:
+                - id_pop
+    id:
+        idConcessionaria:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_concessionaria
+            generator:
+                strategy: IDENTITY
+    fields:
+        fase:
+            type: integer
+            nullable: true
+            unsigned: false
+        tensao:
+            type: integer
+            nullable: true
+            unsigned: false
+        medidor:
+            type: string
+            nullable: true
+            length: 10
+            fixed: false
+        ligacao:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+        titular:
+            type: string
+            nullable: true
+            length: 200
+            fixed: false
+        pagaConta:
+            type: string
+            nullable: true
+            length: 200
+            fixed: false
+            column: paga_conta
+        dataInicio:
+            type: datetime
+            nullable: true
+            column: data_inicio
+        dataFim:
+            type: datetime
+            nullable: true
+            column: data_fim
+        usuario:
+            type: string
+            nullable: true
+            length: 80
+            fixed: false
+        usuarioAprovador:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+            column: usuario_aprovador
+        observacaoAprovador:
+            type: string
+            nullable: true
+            length: 500
+            fixed: false
+            column: observacao_aprovador
+        dataAprovador:
+            type: datetime
+            nullable: true
+            column: data_aprovador
+    manyToOne:
+        idNomeConcessionaria:
+            targetEntity: Popnomeconcessionaria
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_nome_concessionaria:
+                    referencedColumnName: id_nome_concessionaria
+            orphanRemoval: false
+        idPop:
+            targetEntity: Pop
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_pop:
+                    referencedColumnName: id_pop
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

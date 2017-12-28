@@ -1,0 +1,123 @@
+Servicos\GcdbBundle\Entity\Tickets:
+    type: entity
+    table: gcdb.Tickets
+    indexes:
+        CustomerID:
+            columns:
+                - CustomerID
+        fk_Tickets_1_idx:
+            columns:
+                - Nivel
+    id:
+        ticketid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: TicketID
+            generator:
+                strategy: IDENTITY
+    fields:
+        subject:
+            type: string
+            nullable: false
+            length: 250
+            fixed: false
+            default: ''
+            column: Subject
+        description:
+            type: text
+            nullable: true
+            length: 65535
+            fixed: false
+            column: Description
+        status:
+            type: string
+            nullable: true
+            length: 10
+            fixed: false
+            column: Status
+        opendate:
+            type: date
+            nullable: true
+            column: OpenDate
+        opentime:
+            type: time
+            nullable: true
+            column: OpenTime
+        closedate:
+            type: date
+            nullable: true
+            column: CloseDate
+        closetime:
+            type: time
+            nullable: true
+            column: CloseTime
+        opener:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            column: Opener
+        solicitante:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            column: Solicitante
+        email:
+            type: string
+            nullable: false
+            length: 250
+            fixed: false
+            default: ''
+            column: Email
+        closer:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+            default: ''
+            column: Closer
+        categoriaid:
+            type: integer
+            nullable: false
+            unsigned: false
+            default: '0'
+            column: CategoriaID
+        fechado:
+            type: datetime
+            nullable: true
+            column: Fechado
+        aberto:
+            type: datetime
+            nullable: false
+            default: '0000-00-00 00:00:00'
+            column: Aberto
+        metodo:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+            default: interna
+            column: Metodo
+    manyToOne:
+        nivel:
+            targetEntity: NiveisCriticidade
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                Nivel:
+                    referencedColumnName: id
+            orphanRemoval: false
+        customerid:
+            targetEntity: Customers
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                CustomerID:
+                    referencedColumnName: CustomerID
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

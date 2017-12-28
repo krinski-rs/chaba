@@ -1,0 +1,57 @@
+Servicos\GcdbBundle\Entity\Servicequalityresearch:
+    type: entity
+    table: gcdb.ServiceQualityResearch
+    id:
+        ticketid:
+            type: integer
+            nullable: false
+            unsigned: false
+            default: '0'
+            id: true
+            column: TicketID
+            generator:
+                strategy: IDENTITY
+    fields:
+        dtResposta:
+            type: datetime
+            nullable: false
+            default: '0000-00-00 00:00:00'
+            column: dt_resposta
+        p1Cordialidade:
+            type: integer
+            nullable: false
+            unsigned: false
+            default: '0'
+            column: p1_cordialidade
+        p2Tempo:
+            type: integer
+            nullable: false
+            unsigned: false
+            default: '0'
+            column: p2_tempo
+        p3Avaliacao:
+            type: integer
+            nullable: false
+            unsigned: false
+            default: '0'
+            column: p3_avaliacao
+        userId:
+            type: integer
+            nullable: false
+            unsigned: false
+            default: '0'
+            column: user_id
+        customerid:
+            type: integer
+            nullable: false
+            unsigned: false
+            default: '0'
+            column: CustomerID
+        ip:
+            type: string
+            nullable: true
+            length: 15
+            fixed: false
+            default: 0.0.0.0
+            column: IP
+    lifecycleCallbacks: {  }

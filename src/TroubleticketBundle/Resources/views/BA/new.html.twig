@@ -1,0 +1,52 @@
+{% extends 'TroubleticketBundle::base.html.twig' %}
+{% block body %}
+    {% if message_error %}
+        <div class="error">
+            <span>{{message_error}}</span>
+        </div>
+    {% endif %}
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="alert">
+            <span>{{ flashMessage }}</span>
+        </div>
+    {% endfor %}
+    <div class="titleModulo">
+        <div>
+            <span>Abrir BA</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-100">
+            <form action="{{ path('troubleticket_ba_new') }}" id="form_open_ba" name="form_open_ba" method="post">
+                <div class="row">
+                    <div class="col-sm-20">
+                        <input type="hidden" name="_csrf_token" value="{{csrf_token('authenticate')}}">
+                        <label for="input_ba_data">Digite uma informação do cliente:</label>
+                        <input type="text" id="input_ba_data" name="data" value="{{ designador ? designador : cid }}">
+                    </div>
+                    <div class="col-sm-20">
+                        <button type="submit" class="btn btn-primary">Abrir</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <table id="table_ba_new" class="hover row-border stripe compact cell-border"></table>
+    <form method="post" id="form_ba_new" action="{{ path('troubleticket_ba_create_preview') }}">
+        <input type="hidden" name="data" value="" id="input_ba_new_data">
+    </form>
+{% endblock %}
+{% block static_css %}
+    <link rel="stylesheet" href="{{ asset('bundles/troubleticket/js/plugins/jquery-dataTables/datatables.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/troubleticket/css/style.css') }}" />
+{% endblock %}
+{% block static_js %}
+    <script type="text/javascript">
+        var circuit_request = "{{path('troubleticket_circuit_ba_request')}}",
+            page_limit = parseInt('{{page_limit}}'),
+            request_cid = parseInt("{{cid}}"),
+            request_designador = "{{designador}}";
+    </script>
+    <script type="text/javascript" src="{{ asset('bundles/troubleticket/js/plugins/jquery-dataTables/datatables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/troubleticket/js/new.js') }}"></script>
+{% endblock %}

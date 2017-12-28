@@ -1,0 +1,20 @@
+Servicos\FinanceiroBundle\Entity\Natureza:
+    type: entity
+    table: financeiro.natureza
+    id:
+        natuCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: natu_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        natuDescricao:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: natu_descricao
+    lifecycleCallbacks: {  }

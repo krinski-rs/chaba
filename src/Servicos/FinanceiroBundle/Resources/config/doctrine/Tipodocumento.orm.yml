@@ -1,0 +1,20 @@
+Servicos\FinanceiroBundle\Entity\Tipodocumento:
+    type: entity
+    table: financeiro.tipodocumento
+    id:
+        tipodocuCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: tipodocu_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        tipodocuNome:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: tipodocu_nome
+    lifecycleCallbacks: {  }

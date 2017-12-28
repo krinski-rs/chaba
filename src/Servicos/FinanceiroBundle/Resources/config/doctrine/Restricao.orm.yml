@@ -1,0 +1,44 @@
+Servicos\FinanceiroBundle\Entity\Restricao:
+    type: entity
+    table: financeiro.restricao
+    indexes:
+        fk_restricao_contrato1_idx:
+            columns:
+                - cont_codigoid
+    id:
+        restCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: rest_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        restContratardeterceiro:
+            type: boolean
+            nullable: false
+            column: rest_contratardeterceiro
+        restDivulgaramarca:
+            type: boolean
+            nullable: false
+            column: rest_divulgaramarca
+        restMudarmeiotransmicao:
+            type: boolean
+            nullable: false
+            column: rest_mudarmeiotransmicao
+        restTransferirdireitos:
+            type: boolean
+            nullable: false
+            column: rest_transferirdireitos
+    manyToOne:
+        contCodigoid:
+            targetEntity: Contrato
+            cascade: {  }
+            mappedBy: null
+            inversedBy: restricao
+            joinColumns:
+                cont_codigoid:
+                    referencedColumnName: cont_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

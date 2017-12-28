@@ -1,0 +1,46 @@
+Servicos\GcdbBundle\Entity\TdmPortas:
+    type: entity
+    table: gcdb.tdm_portas
+    indexes:
+        id_enlaces_side:
+            columns:
+                - id_enlaces_side
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        tipo:
+            type: string
+            nullable: false
+            length: 20
+            fixed: false
+        impedancia:
+            type: string
+            nullable: false
+            length: 10
+            fixed: false
+        nome:
+            type: string
+            nullable: false
+            length: 30
+            fixed: false
+        nexthop:
+            type: integer
+            nullable: false
+            unsigned: true
+    manyToOne:
+        idEnlacesSide:
+            targetEntity: TdmEnlaceSide
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_enlaces_side:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

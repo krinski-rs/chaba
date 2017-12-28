@@ -1,0 +1,27 @@
+Servicos\GcdbBundle\Entity\PlanosDomHasAccount:
+    type: entity
+    table: gcdb.Planos_dom_has_account
+    indexes:
+        Planos_dom_has_account_FKIndex1:
+            columns:
+                - AccountID
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        accountid:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: AccountID
+        dominio:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+    lifecycleCallbacks: {  }

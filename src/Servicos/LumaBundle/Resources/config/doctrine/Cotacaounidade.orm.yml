@@ -1,0 +1,87 @@
+Servicos\LumaBundle\Entity\Cotacaounidade:
+    type: entity
+    table: luma.cotacaounidade
+    indexes:
+        fk_cotacaounidade_cotacao1_idx:
+            columns:
+                - cota_codigoid
+        fk_cotacaounidade_unidade1_idx:
+            columns:
+                - unid_codigoid
+    id:
+        cotaunidCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: cotaunid_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        cotaunidDatainc:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: cotaunid_datainc
+        cotaunidHash:
+            type: string
+            nullable: false
+            length: 32
+            fixed: false
+            column: cotaunid_hash
+        cotaunidValidade:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: cotaunid_validade
+        cotaunidFrete:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 2
+            column: cotaunid_frete
+        cotaunidTipofrete:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            column: cotaunid_tipofrete
+        cotaunidPrazodeentrega:
+            type: integer
+            nullable: false
+            unsigned: false
+            default: '0'
+            column: cotaunid_prazodeentrega
+        cotaunidInseridopor:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            default: 0.0.0.0
+            column: cotaunid_inseridopor
+        cotaunidComentario:
+            type: text
+            nullable: true
+            length: 65535
+            fixed: false
+            column: cotaunid_comentario
+    manyToOne:
+        cotaCodigoid:
+            targetEntity: Cotacao
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cota_codigoid:
+                    referencedColumnName: cota_codigoid
+            orphanRemoval: false
+        unidCodigoid:
+            targetEntity: Unidade
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                unid_codigoid:
+                    referencedColumnName: unid_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

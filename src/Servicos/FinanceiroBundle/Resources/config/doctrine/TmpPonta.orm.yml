@@ -1,0 +1,68 @@
+Servicos\FinanceiroBundle\Entity\TmpPonta:
+    type: entity
+    table: financeiro.tmp_ponta
+    indexes:
+        fk_tmp_ponta_tmp_circuito1_idx:
+            columns:
+                - id_tmp_circuito
+    id:
+        idTmpPonta:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_tmp_ponta
+            generator:
+                strategy: IDENTITY
+    fields:
+        ponta:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+        interface:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+        logradouro:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+        numero:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+        complemento:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+        cidade:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+        estado:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+        idPop:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: id_pop
+    manyToOne:
+        idTmpCircuito:
+            targetEntity: TmpCircuito
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_tmp_circuito:
+                    referencedColumnName: id_tmp_circuito
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,39 @@
+Servicos\FinanceiroBundle\Entity\TmpAtributo:
+    type: entity
+    table: financeiro.tmp_atributo
+    indexes:
+        fk_tmp_atributo_tmp_ponta1_idx:
+            columns:
+                - id_tmp_ponta
+    id:
+        idTmpAtributo:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_tmp_atributo
+            generator:
+                strategy: IDENTITY
+    fields:
+        colunaCsv:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            column: coluna_csv
+        valor:
+            type: string
+            nullable: true
+            length: 90
+            fixed: false
+    manyToOne:
+        idTmpPonta:
+            targetEntity: TmpPonta
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_tmp_ponta:
+                    referencedColumnName: id_tmp_ponta
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

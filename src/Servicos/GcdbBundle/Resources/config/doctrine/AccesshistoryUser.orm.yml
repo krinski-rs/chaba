@@ -1,0 +1,58 @@
+Servicos\GcdbBundle\Entity\AccesshistoryUser:
+    type: entity
+    table: gcdb.AccessHistory_user
+    indexes:
+        sid:
+            columns:
+                - sid
+        CustomerID:
+            columns:
+                - UserID
+        IP:
+            columns:
+                - IP
+    id:
+        sid:
+            type: string
+            nullable: false
+            length: 250
+            fixed: false
+            default: ''
+            id: true
+        data:
+            type: string
+            nullable: false
+            length: 30
+            fixed: false
+            default: ''
+            id: true
+        cpf:
+            type: string
+            nullable: false
+            length: 11
+            fixed: false
+            id: true
+        userid:
+            type: string
+            nullable: false
+            length: 10
+            fixed: false
+            id: true
+            column: UserID
+        ip:
+            type: string
+            nullable: false
+            length: 15
+            fixed: false
+            default: ''
+            id: true
+            column: IP
+        tipo:
+            type: string
+            nullable: false
+            length: 10
+            fixed: false
+            default: ''
+            id: true
+            column: Tipo
+    lifecycleCallbacks: {  }

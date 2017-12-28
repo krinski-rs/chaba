@@ -1,0 +1,49 @@
+Servicos\FinanceiroBundle\Entity\Igpm:
+    type: entity
+    table: financeiro.igpm
+    uniqueConstraints:
+        igpm_prazo:
+            columns:
+                - igpm_prazo
+    id:
+        igpmCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: igpm_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        igpmDatainc:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: igpm_datainc
+        igpmPercentual:
+            type: decimal
+            nullable: false
+            precision: 5
+            scale: 2
+            default: '0.00'
+            column: igpm_percentual
+        igpmAcumuladonoano:
+            type: decimal
+            nullable: false
+            precision: 5
+            scale: 2
+            default: '0.00'
+            column: igpm_acumuladonoano
+        igpmAcumulado12meses:
+            type: decimal
+            nullable: false
+            precision: 5
+            scale: 2
+            default: '0.00'
+            column: igpm_acumulado12meses
+        igpmPrazo:
+            type: datetime
+            nullable: false
+            default: '0000-00-00 00:00:00'
+            column: igpm_prazo
+    lifecycleCallbacks: {  }

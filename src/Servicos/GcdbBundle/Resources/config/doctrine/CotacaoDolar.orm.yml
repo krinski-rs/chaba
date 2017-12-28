@@ -1,0 +1,24 @@
+Servicos\GcdbBundle\Entity\CotacaoDolar:
+    type: entity
+    table: gcdb.cotacao_dolar
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        valor:
+            type: string
+            nullable: false
+            length: 7
+            fixed: true
+        data:
+            type: date
+            nullable: false
+        hora:
+            type: time
+            nullable: false
+    lifecycleCallbacks: {  }

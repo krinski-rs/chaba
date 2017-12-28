@@ -1,0 +1,51 @@
+Servicos\LumaBundle\Entity\ViaturaQuilometragem:
+    type: entity
+    table: luma.viatura_quilometragem
+    indexes:
+        fk_kilometragem_viatura1_idx:
+            columns:
+                - viaturaid
+        fk_kilometragem_tipo_idx:
+            columns:
+                - quilome_tipo_leitura
+    id:
+        viatQuilometragemid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: viat_quilometragemid
+            generator:
+                strategy: IDENTITY
+    fields:
+        quilomeTipoLeitura:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: quilome_tipo_leitura
+        quilomeCadUsuarioid:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: quilome_cad_usuarioid
+        quilometragem:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+        quilomeDatainc:
+            type: datetime
+            nullable: true
+            default: CURRENT_TIMESTAMP
+            column: quilome_datainc
+    manyToOne:
+        viaturaid:
+            targetEntity: Viatura
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                viaturaid:
+                    referencedColumnName: viaturaid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

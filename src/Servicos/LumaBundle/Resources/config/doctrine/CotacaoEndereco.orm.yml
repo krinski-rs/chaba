@@ -1,0 +1,50 @@
+Servicos\LumaBundle\Entity\CotacaoEndereco:
+    type: entity
+    table: luma.cotacao_endereco
+    indexes:
+        cota_codigoid_2:
+            columns:
+                - cota_codigoid
+        ende_codigoid:
+            columns:
+                - ende_codigoid
+    uniqueConstraints:
+        cota_codigoid:
+            columns:
+                - cota_codigoid
+                - ende_codigoid
+    id:
+        cotaendeCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: cotaende_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        cotaendeDatainc:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: cotaende_datainc
+    manyToOne:
+        cotaCodigoid:
+            targetEntity: Cotacao
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cota_codigoid:
+                    referencedColumnName: cota_codigoid
+            orphanRemoval: false
+        endeCodigoid:
+            targetEntity: Endereco
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                ende_codigoid:
+                    referencedColumnName: ende_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

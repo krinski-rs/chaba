@@ -1,0 +1,26 @@
+Servicos\RhBundle\Entity\RhBancoOperacao:
+    type: entity
+    table: rh.rh_banco_operacao
+    id:
+        idBancoOperacao:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_banco_operacao
+            generator:
+                strategy: IDENTITY
+    fields:
+        operacao:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+        dataInc:
+            type: datetime
+            nullable: true
+            column: data_inc
+        ativo:
+            type: boolean
+            nullable: true
+    lifecycleCallbacks: {  }

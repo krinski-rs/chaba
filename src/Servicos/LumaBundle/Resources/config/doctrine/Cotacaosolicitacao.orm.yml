@@ -1,0 +1,39 @@
+Servicos\LumaBundle\Entity\Cotacaosolicitacao:
+    type: entity
+    table: luma.cotacaosolicitacao
+    indexes:
+        fk_cotacaosolicitacao_solicitacao1_idx:
+            columns:
+                - soli_codigoid
+        fk_cotacaosolicitacao_cotacao1_idx:
+            columns:
+                - cota_codigoid
+    id:
+        cotasoliCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: cotasoli_codigoid
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        cotaCodigoid:
+            targetEntity: Cotacao
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cota_codigoid:
+                    referencedColumnName: cota_codigoid
+            orphanRemoval: false
+        soliCodigoid:
+            targetEntity: Solicitacao
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                soli_codigoid:
+                    referencedColumnName: soli_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,51 @@
+Servicos\GcdbBundle\Entity\GenTemplateHistorico:
+    type: entity
+    table: gcdb.gen_template_historico
+    indexes:
+        fk_tmp_id:
+            columns:
+                - tmp_id
+        fk_aut_usuarios_id:
+            columns:
+                - aut_usuarios_id
+    id:
+        tmpHistoricoId:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: tmp_historico_id
+            generator:
+                strategy: IDENTITY
+    fields:
+        tmpHistoricoMensagem:
+            type: text
+            nullable: true
+            length: 65535
+            fixed: false
+            column: tmp_historico_mensagem
+        tmpHistoricoDatainc:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: tmp_historico_datainc
+    manyToOne:
+        autUsuarios:
+            targetEntity: AutUsuarios
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                aut_usuarios_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        tmp:
+            targetEntity: GenTemplate
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                tmp_id:
+                    referencedColumnName: tmp_id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

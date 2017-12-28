@@ -1,0 +1,43 @@
+Servicos\LumaBundle\Entity\Remessa:
+    type: entity
+    table: remessa
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        remDataCriacao:
+            type: datetime
+            nullable: false
+            column: rem_data_criacao
+        remDataRetorno:
+            type: datetime
+            nullable: true
+            column: rem_data_retorno
+        remArquivoFornecedores:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: rem_arquivo_fornecedores
+        remArquivoProdutos:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: rem_arquivo_produtos
+        remArquivoPedidos:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: rem_arquivo_pedidos 
+    oneToMany:
+        remessaOrdem:
+            targetEntity: RemessaOrdem
+            mappedBy: id
+    lifecycleCallbacks: {  }

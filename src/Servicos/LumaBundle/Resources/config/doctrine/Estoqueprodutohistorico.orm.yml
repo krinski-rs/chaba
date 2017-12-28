@@ -1,0 +1,53 @@
+Servicos\LumaBundle\Entity\Estoqueprodutohistorico:
+    type: entity
+    table: luma.estoqueprodutohistorico
+    indexes:
+        id_produto:
+            columns:
+                - id_produto
+                - id_estoquehistorico
+        id_estoquehistorico:
+            columns:
+                - id_estoquehistorico
+        IDX_8C4647308231E0A7:
+            columns:
+                - id_produto
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        minimo:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+        total:
+            type: decimal
+            nullable: false
+            precision: 10
+            scale: 2
+    manyToOne:
+        idProduto:
+            targetEntity: Produto
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_produto:
+                    referencedColumnName: prod_codigoid
+            orphanRemoval: false
+        idEstoquehistorico:
+            targetEntity: Estoquehistorico
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_estoquehistorico:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

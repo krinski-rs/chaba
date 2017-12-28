@@ -1,0 +1,51 @@
+Servicos\LumaBundle\Entity\Atributoproduto:
+    type: entity
+    table: luma.atributoproduto
+    indexes:
+        fk_atributoproduto_produto1:
+            columns:
+                - prod_codigoid
+        fk_atributoproduto_atributo1:
+            columns:
+                - atri_codigoid
+    uniqueConstraints:
+        prod_codigoid:
+            columns:
+                - prod_codigoid
+                - atri_codigoid
+    id:
+        atriprodCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: atriprod_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        atriprodValor:
+            type: text
+            nullable: true
+            length: 65535
+            fixed: false
+            column: atriprod_valor
+    manyToOne:
+        atriCodigoid:
+            targetEntity: Atributo
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                atri_codigoid:
+                    referencedColumnName: atri_codigoid
+            orphanRemoval: false
+        prodCodigoid:
+            targetEntity: Produto
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                prod_codigoid:
+                    referencedColumnName: prod_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

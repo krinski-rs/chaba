@@ -1,0 +1,44 @@
+Servicos\FinanceiroBundle\Entity\Ipcaibge:
+    type: entity
+    table: financeiro.ipcaibge
+    id:
+        ipcaibgeCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: ipcaibge_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        ipcaibgeDatainc:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: ipcaibge_datainc
+        ipcaibgePercentual:
+            type: decimal
+            nullable: false
+            precision: 5
+            scale: 2
+            column: ipcaibge_percentual
+        ipcaibgeAcumuladonoano:
+            type: decimal
+            nullable: false
+            precision: 5
+            scale: 2
+            default: '0.00'
+            column: ipcaibge_acumuladonoano
+        ipcaibgeAcumulado12meses:
+            type: decimal
+            nullable: false
+            precision: 5
+            scale: 2
+            default: '0.00'
+            column: ipcaibge_acumulado12meses
+        ipcaibgePrazo:
+            type: datetime
+            nullable: false
+            default: '0000-00-00 00:00:00'
+            column: ipcaibge_prazo
+    lifecycleCallbacks: {  }

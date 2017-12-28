@@ -1,0 +1,33 @@
+Servicos\GcdbBundle\Entity\Customerservico:
+    type: entity
+    table: gcdb.customerservico
+    id:
+        custservCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: custserv_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        idservico:
+            type: integer
+            nullable: false
+            unsigned: false
+        customerid:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: CustomerID
+        custservAtivo:
+            type: boolean
+            nullable: false
+            default: '1'
+            column: custserv_ativo
+        custservDatainc:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: custserv_datainc
+    lifecycleCallbacks: {  }

@@ -1,0 +1,27 @@
+Servicos\GcdbBundle\Entity\ControleAtualizacaoAt:
+    type: entity
+    table: gcdb.controle_atualizacao_at
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        idCidUser:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: id_cid_user
+        quem:
+            type: string
+            nullable: false
+            length: 10
+            fixed: false
+        data:
+            type: datetime
+            nullable: true
+            default: CURRENT_TIMESTAMP
+    lifecycleCallbacks: {  }

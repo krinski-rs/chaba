@@ -1,0 +1,80 @@
+Servicos\LumaBundle\Entity\Cotacaounidadeproduto:
+    type: entity
+    table: luma.cotacaounidadeproduto
+    indexes:
+        fk_cotacaounidadeproduto_produto1_idx:
+            columns:
+                - prod_codigoid
+        fk_cotacaounidadeproduto_cotacaounidade1_idx:
+            columns:
+                - cotaunid_codigoid
+    id:
+        cotaunidprodCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: cotaunidprod_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        cotaunidprodDatainc:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: cotaunidprod_datainc
+        cotaunidprodQuantidade:
+            type: decimal
+            nullable: false
+            precision: 10
+            scale: 2
+            column: cotaunidprod_quantidade
+        cotaunidprodValorunitario:
+            type: decimal
+            nullable: false
+            precision: 10
+            scale: 2
+            column: cotaunidprod_valorunitario
+        cotaunidprodValortotal:
+            type: decimal
+            nullable: false
+            precision: 10
+            scale: 2
+            column: cotaunidprod_valortotal
+        cotaunidprodFrete:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 2
+            column: cotaunidprod_frete
+        cotaunidprodTipofrete:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            column: cotaunidprod_tipofrete
+        cotaunidprodSubstituicaotributaria:
+            type: boolean
+            nullable: false
+            default: '0'
+            column: cotaunidprod_substituicaotributaria
+    manyToOne:
+        cotaunidCodigoid:
+            targetEntity: Cotacaounidade
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cotaunid_codigoid:
+                    referencedColumnName: cotaunid_codigoid
+            orphanRemoval: false
+        prodCodigoid:
+            targetEntity: Produto
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                prod_codigoid:
+                    referencedColumnName: prod_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

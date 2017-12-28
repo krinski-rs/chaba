@@ -1,0 +1,59 @@
+Servicos\GcdbBundle\Entity\Powerswitches:
+    type: entity
+    table: gcdb.PowerSwitches
+    id:
+        powerswitchid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: PowerSwitchID
+            generator:
+                strategy: IDENTITY
+    fields:
+        ip:
+            type: string
+            nullable: false
+            length: 15
+            fixed: false
+            default: ''
+            column: IP
+        descricao:
+            type: string
+            nullable: false
+            length: 150
+            fixed: false
+            default: ''
+            column: Descricao
+        local:
+            type: string
+            nullable: false
+            length: 150
+            fixed: false
+            default: ''
+            column: Local
+        runpath:
+            type: string
+            nullable: false
+            length: 250
+            fixed: false
+            default: ''
+            column: RunPath
+        login:
+            type: string
+            nullable: false
+            length: 10
+            fixed: false
+            default: ''
+        senha:
+            type: string
+            nullable: false
+            length: 10
+            fixed: false
+            default: ''
+        numportas:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: NumPortas
+    lifecycleCallbacks: {  }

@@ -1,0 +1,12 @@
+{% block breadcrumb %}
+    {% set breadcrumb = tt_breadcrumb(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
+
+    {% for item in breadcrumb %}
+        <a href="{% if item.url is defined %}{{ item.url }}{% else %}{{ path(item.routeName, item.routeParams) }}{% endif %}">
+            <span>
+                {{item.label | raw}}
+            </span>
+        </a>
+    {% endfor %}
+
+{% endblock %}

@@ -1,0 +1,35 @@
+Servicos\GcdbBundle\Entity\SemanaturnoautUsuarios:
+    type: entity
+    table: gcdb.semanaturnoaut_usuarios
+    indexes:
+        fk_semanaturnoaut_usuarios_semanaturno1:
+            columns:
+                - sematurn_codigoid
+        fk_semanaturnoaut_usuarios_aut_usuarios1:
+            columns:
+                - id
+    id:
+        sematurnautUsr:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: sematurnaut_usr
+            generator:
+                strategy: IDENTITY
+    fields:
+        sematurnCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: sematurn_codigoid
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+        sematurnautUsrAtivo:
+            type: boolean
+            nullable: false
+            default: '1'
+            column: sematurnaut_usr_ativo
+    lifecycleCallbacks: {  }

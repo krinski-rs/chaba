@@ -1,0 +1,45 @@
+Servicos\FinanceiroBundle\Entity\ContratovalorDiscriminacao:
+    type: entity
+    table: financeiro.contratovalor_discriminacao
+    indexes:
+        fk_contratovalor_has_discriminacao_discriminacao1_idx:
+            columns:
+                - discriminacao_codigoid
+        fk_contratovalor_has_discriminacao_contratovalor1_idx:
+            columns:
+                - contvalo_codigoid
+    id:
+        contDiscriminacaoCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: cont_discriminacao_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        valor:
+            type: decimal
+            nullable: false
+            precision: 10
+            scale: 2
+    manyToOne:
+        contvaloCodigoid:
+            targetEntity: Contratovalor
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                contvalo_codigoid:
+                    referencedColumnName: contvalo_codigoid
+            orphanRemoval: false
+        discriminacaoCodigoid:
+            targetEntity: Discriminacao
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                discriminacao_codigoid:
+                    referencedColumnName: id_discriminacao
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

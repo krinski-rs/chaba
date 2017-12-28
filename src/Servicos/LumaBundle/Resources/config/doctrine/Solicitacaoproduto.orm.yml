@@ -1,0 +1,59 @@
+Servicos\LumaBundle\Entity\Solicitacaoproduto:
+    type: entity
+    repositoryClass: Servicos\LumaBundle\Repository\SolicitacaoprodutoRepository
+    table: luma.solicitacaoproduto
+    indexes:
+        fk_solicitacaoproduto_solicitacao1:
+            columns:
+                - soli_codigoid
+        fk_solicitacaoproduto_produto1:
+            columns:
+                - prod_codigoid
+        fk_solicitacaoproduto_tipo1:
+            columns:
+                - tipo_codigoid
+    id:
+        soliprodCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: soliprod_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        soliprodQuantidade:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+            column: soliprod_quantidade
+    manyToOne:
+        prodCodigoid:
+            targetEntity: Produto
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                prod_codigoid:
+                    referencedColumnName: prod_codigoid
+            orphanRemoval: false
+        soliCodigoid:
+            targetEntity: Solicitacao
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                soli_codigoid:
+                    referencedColumnName: soli_codigoid
+            orphanRemoval: false
+        tipoCodigoid:
+            targetEntity: Tipo
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                tipo_codigoid:
+                    referencedColumnName: tipo_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,97 @@
+Servicos\GcdbBundle\Entity\AccountsOld:
+    type: entity
+    table: gcdb.accounts_old
+    indexes:
+        CustomerID:
+            columns:
+                - CustomerID
+    uniqueConstraints:
+        AccountID:
+            columns:
+                - AccountID
+    id:
+        accountid:
+            type: integer
+            nullable: false
+            unsigned: true
+            id: true
+            column: AccountID
+            generator:
+                strategy: IDENTITY
+    fields:
+        customerid:
+            type: integer
+            nullable: true
+            unsigned: true
+            column: CustomerID
+        username:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+            column: Username
+        password:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+            column: Password
+        description:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            column: Description
+        dateopened:
+            type: date
+            nullable: true
+            column: DateOpened
+        dateclosed:
+            type: date
+            nullable: true
+            column: DateClosed
+        price:
+            type: float
+            nullable: true
+            precision: 5
+            scale: 2
+            column: Price
+        status:
+            type: string
+            nullable: true
+            length: 25
+            fixed: false
+            column: Status
+        charged:
+            type: string
+            nullable: false
+            length: 15
+            fixed: false
+            default: ''
+            column: Charged
+        servidor:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            column: Servidor
+        plano:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+            column: Plano
+        dominio:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            column: Dominio
+        moeda:
+            type: string
+            nullable: false
+            length: null
+            fixed: false
+            default: R
+            column: Moeda
+    lifecycleCallbacks: {  }

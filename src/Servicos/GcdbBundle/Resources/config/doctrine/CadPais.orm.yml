@@ -1,0 +1,50 @@
+Servicos\GcdbBundle\Entity\CadPais:
+    type: entity
+    table: gcdb.cad_pais
+    indexes:
+        CAD05_PAIS_FKIndex1:
+            columns:
+                - CAD16_CODIGO
+    id:
+        cad05Codigo:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: CAD05_CODIGO
+            generator:
+                strategy: IDENTITY
+    fields:
+        cad05Sigla:
+            type: string
+            nullable: false
+            length: 3
+            fixed: false
+            default: ''
+            column: CAD05_SIGLA
+        cad05Nome:
+            type: string
+            nullable: false
+            length: 30
+            fixed: false
+            default: ''
+            column: CAD05_NOME
+        cad05Referencia:
+            type: smallint
+            nullable: true
+            unsigned: false
+            column: CAD05_REFERENCIA
+        cad16Codigo:
+            type: integer
+            nullable: false
+            unsigned: false
+            default: '0'
+            column: CAD16_CODIGO
+        cad05Nacionalidade:
+            type: string
+            nullable: false
+            length: 10
+            fixed: false
+            default: ''
+            column: CAD05_NACIONALIDADE
+    lifecycleCallbacks: {  }

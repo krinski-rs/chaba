@@ -1,0 +1,39 @@
+Servicos\GcdbBundle\Entity\PlanosServicosAdicionais:
+    type: entity
+    table: gcdb.Planos_Servicos_adicionais
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nome:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+        descricao:
+            type: text
+            nullable: true
+            length: 65535
+            fixed: false
+        valorAtivacao:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 2
+            column: valor_ativacao
+        valorMensal:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 2
+            column: valor_mensal
+        periodo:
+            type: integer
+            nullable: true
+            unsigned: false
+    lifecycleCallbacks: {  }

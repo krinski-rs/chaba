@@ -1,0 +1,57 @@
+Servicos\GcdbBundle\Entity\Vendasagentes:
+    type: entity
+    table: gcdb.VendasAgentes
+    indexes:
+        CustomerID:
+            columns:
+                - CustomerID
+        AgenteID:
+            columns:
+                - AgenteID
+    id:
+        vendaid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: VendaID
+            generator:
+                strategy: IDENTITY
+    fields:
+        customerid:
+            type: integer
+            nullable: false
+            unsigned: false
+            default: '0'
+            column: CustomerID
+        agenteid:
+            type: integer
+            nullable: false
+            unsigned: false
+            default: '0'
+            column: AgenteID
+        status:
+            type: integer
+            nullable: false
+            unsigned: false
+            default: '0'
+            column: Status
+        comissao:
+            type: string
+            nullable: false
+            length: 25
+            fixed: false
+            default: ''
+            column: Comissao
+        pago:
+            type: integer
+            nullable: false
+            unsigned: false
+            default: '0'
+            column: Pago
+        datapago:
+            type: date
+            nullable: false
+            default: '0000-00-00'
+            column: DataPago
+    lifecycleCallbacks: {  }

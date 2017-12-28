@@ -1,0 +1,18 @@
+Servicos\GcdbBundle\Entity\CustomerCfop:
+    type: entity
+    table: gcdb.Customer_CFOP
+    id:
+        cfop:
+            type: string
+            nullable: false
+            length: 10
+            fixed: false
+            id: true
+            column: CFOP
+        customerid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: CustomerID
+    lifecycleCallbacks: {  }

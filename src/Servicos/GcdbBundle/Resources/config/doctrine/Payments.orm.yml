@@ -1,0 +1,55 @@
+Servicos\GcdbBundle\Entity\Payments:
+    type: entity
+    table: gcdb.Payments
+    indexes:
+        CustomerID:
+            columns:
+                - CustomerID
+    uniqueConstraints:
+        PaymentID:
+            columns:
+                - PaymentID
+    id:
+        paymentid:
+            type: integer
+            nullable: false
+            unsigned: true
+            id: true
+            column: PaymentID
+            generator:
+                strategy: IDENTITY
+    fields:
+        customerid:
+            type: integer
+            nullable: false
+            unsigned: true
+            default: '0'
+            column: CustomerID
+        datepaid:
+            type: date
+            nullable: true
+            column: DatePaid
+        type:
+            type: string
+            nullable: true
+            length: 20
+            fixed: false
+            column: Type
+        number:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+            column: Number
+        amount:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 2
+            column: Amount
+        refinv:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: RefInv
+    lifecycleCallbacks: {  }

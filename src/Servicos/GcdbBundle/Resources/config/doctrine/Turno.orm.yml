@@ -1,0 +1,40 @@
+Servicos\GcdbBundle\Entity\Turno:
+    type: entity
+    table: gcdb.turno
+    id:
+        turnCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: turn_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        turnInicio:
+            type: time
+            nullable: false
+            column: turn_inicio
+        turnIntervaloinicio:
+            type: time
+            nullable: false
+            column: turn_intervaloinicio
+        turnIntervalofim:
+            type: time
+            nullable: false
+            column: turn_intervalofim
+        turnFim:
+            type: time
+            nullable: false
+            column: turn_fim
+        turnPlantao:
+            type: boolean
+            nullable: false
+            default: '0'
+            column: turn_plantao
+        turnAtivo:
+            type: boolean
+            nullable: false
+            default: '1'
+            column: turn_ativo
+    lifecycleCallbacks: {  }

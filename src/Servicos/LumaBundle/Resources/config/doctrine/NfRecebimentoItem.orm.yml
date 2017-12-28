@@ -1,0 +1,44 @@
+Servicos\LumaBundle\Entity\NfRecebimentoItem:
+    type: entity
+    table: nf_recebimento_item
+    indexes:
+        fk_nf_recebimento_item:
+            columns:
+                - nf_recebimento_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        prodCodigoid:
+            type: string
+            nullable: false
+            length: 15
+            fixed: false
+            column: prod_codigoid
+        quantidade:
+            type: float
+            nullable: false
+            precision: 22
+            scale: 0
+        valorTotal:
+            type: float
+            nullable: false
+            precision: 22
+            scale: 0
+            column: valor_total
+    manyToOne:
+        nfRecebimento:
+            targetEntity: NfRecebimento
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                nf_recebimento_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

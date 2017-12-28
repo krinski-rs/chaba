@@ -1,0 +1,48 @@
+Servicos\FinanceiroBundle\Entity\Modelo:
+    type: entity
+    repositoryClass: Servicos\FinanceiroBundle\Repository\ModeloRepository
+    table: financeiro.modelo
+    indexes:
+        fk_modelo_contrato1_idx:
+            columns:
+                - cont_codigoid
+    id:
+        modeCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: mode_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        modeNome:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: mode_nome
+        modeAtivo:
+            type: boolean
+            nullable: false
+            column: mode_ativo
+        modeDatainc:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: mode_datainc
+        modeDatafim:
+            type: datetime
+            nullable: true
+            column: mode_datafim
+    manyToOne:
+        contCodigoid:
+            targetEntity: Contrato
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cont_codigoid:
+                    referencedColumnName: cont_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

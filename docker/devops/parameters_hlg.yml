@@ -1,0 +1,78 @@
+# This file is auto-generated during the composer install
+parameters:
+########## TRUBLETICKET #########
+    troub.driver: pdo_pgsql
+    troub.host: 192.168.10.192
+    troub.port: 5432
+    troub.name: vogel
+    troub.user: postgres
+    troub.password: '!#V0gelTel3com*@'
+
+########### GCDB ###########
+    gcdb.driver: pdo_mysql
+    gcdb.host: 192.168.10.192
+    gcdb.port: 3306
+    gcdb.name: gcdb
+    gcdb.user: root
+    gcdb.password: '!#V0gelTel3com*@'
+    
+########## L.U.M.A #########
+    luma.driver: pdo_mysql
+    luma.host: 192.168.10.192
+    luma.port: 3306
+    luma.name: luma
+    luma.user: root
+    luma.password: '!#V0gelTel3com*@'
+
+######## FINANCEIRO ########
+    fina.driver: pdo_mysql
+    fina.host: 192.168.10.192
+    fina.port: 3306
+    fina.name: financeiro
+    fina.user: root
+    fina.password: '!#V0gelTel3com*@'
+
+########## RH #########
+    rh.driver: pdo_mysql
+    rh.host: 192.168.10.192
+    rh.port: 3306
+    rh.name: rh
+    rh.user: root
+    rh.password: '!#V0gelTel3com*@'
+
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    locale: en
+    secret: ThisTokenIsNotSoSecretChangeIt
+
+########## SSO ##############
+
+    vogel_sso:
+        port: 5011
+        endpoints:
+            login: 192.168.10.191/app_dev.php/auth/login
+            logout: 192.168.10.191/app_dev.php/auth/logout
+            userdata: 192.168.10.191/app_dev.php/auth/me
+        cookie_name: homolog_vogel_sso
+        cookie_domain: .vogeltelecom.com
+        cookie_expire_time: 5 #dias
+        application: sistech
+        authVersion: '2.0'
+        appKey: a20dfa4c1598f28b2f8460c37c68f234aadc5bb7
+
+        auth_exceptions:
+            sitech:
+                ips:
+                    - ::1
+                    - 172.17.0.1
+                    - 172.18.0.1
+                routes: '*'
+            mobile:
+                ips:
+                    - 192.168.0.153
+                    - 192.168.10.191
+########## FLUIG ###########
+    cors:
+        allowed_origin: 'https://dsvredecolaborativa.vogeltelecom.com'

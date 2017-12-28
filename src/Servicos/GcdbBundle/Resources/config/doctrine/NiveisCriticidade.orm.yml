@@ -1,0 +1,42 @@
+Servicos\GcdbBundle\Entity\NiveisCriticidade:
+    type: entity
+    table: gcdb.niveis_criticidade
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nivel:
+            type: string
+            nullable: false
+            length: 20
+            fixed: false
+        tIniCom:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: t_ini_com
+        tResCom:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: t_res_com
+        tIniExt:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: t_ini_ext
+        tResExt:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: t_res_ext
+        status:
+            type: integer
+            nullable: false
+            unsigned: false
+    lifecycleCallbacks: {  }

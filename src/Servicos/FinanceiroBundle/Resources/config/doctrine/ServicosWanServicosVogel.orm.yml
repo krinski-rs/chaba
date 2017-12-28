@@ -1,0 +1,37 @@
+Servicos\FinanceiroBundle\Entity\ServicosWanServicosVogel:
+    type: entity
+    table: financeiro.servicos_wan_servicos_vogel
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id
+            generator:
+                strategy: IDENTITY
+    fields:
+        servicoVogelId:
+            type: integer
+            nullable: false
+            column: servico_vogel_id
+        servicoWanId:
+            type: integer
+            nullable: false
+            column: servico_wan_id
+        tprIdServico:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: tpr_id_servico
+        dataHoraCriacao:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: data_hora_criacao
+        peso:
+            type: integer
+            nullable: false
+            column: peso
+    lifecycleCallbacks: {  }

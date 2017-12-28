@@ -1,0 +1,23 @@
+{% block ba_change_responsible %}
+<div class="row">
+    <form id="form_ba_send_to_user" method="post" action="{{ path('troubleticket_ba_send_to_user', {'report_id': reports.getId()}) }}">
+        <div class="row">
+            <div class="col-sm-100">
+                <div class="row">
+                    <label>*Colaborador</label>
+                    <select name="colaborador" id="select_ba_colaborador">
+                        <option value="">---</option>
+                        {% for colaborador in colaboradores %}
+                            {% if reports.getResponsible() == colaborador.id %}
+                                <option value="{{ colaborador.id }}" selected>{{ colaborador.nome }}</option>
+                            {% else %}
+                                <option value="{{ colaborador.id }}">{{ colaborador.nome }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

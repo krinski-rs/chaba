@@ -1,0 +1,33 @@
+{% block ba_change_stack %}
+<div class="row">
+    <form id="form_ba_change_stack" method="post" action="{{ path('troubleticket_ba_change_stack', {'report_id': reports.getId()}) }}">
+        <div class="row">
+            <div class="col-sm-100">
+                <div class="row">
+                    <label>*Stack</label>
+                    <select name="stack" id="select_ba_stack">
+                        <option value="">---</option>
+                        {% for stack in stacks %}
+                            {% set  seletected = false %}
+                            {% if reports.getStack() == stack.code %}
+                                {% set  seletected = true %}
+                            {% endif %}
+
+                            {% if constant('TroubleticketBundle\\Entity\\Reports::STACK_SN1') == stack.code and reports.canSendToSN1() %}
+                                <option value="{{ stack.code }}">{{ stack.label }}</option>
+                            {% elseif constant('TroubleticketBundle\\Entity\\Reports::STACK_SN2') == stack.code and reports.canSendToSN2() %}
+                                <option value="{{ stack.code }}">{{ stack.label }}</option>
+                            {% elseif constant('TroubleticketBundle\\Entity\\Reports::STACK_SN3') == stack.code and reports.canSendToSN3() %}
+                                <option value="{{ stack.code }}">{{ stack.label }}</option>
+                            {% elseif constant('TroubleticketBundle\\Entity\\Reports::STACK_VOZ') == stack.code and reports.canSendToVoz() %}
+                                <option value="{{ stack.code }}">{{ stack.label }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}
+{# {{ constant('RSS', date) }} #}

@@ -1,0 +1,3 @@
+parameters:
+    troubleticket.FIREBASE_ACCESS_KEY: AIzaSyCWKxNKJoMSxbGoarmBzbGX8tk30e-aLvU
+    troubleticket.FCM_PATH: https://fcm.googleapis.com/fcm/send

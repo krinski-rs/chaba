@@ -1,0 +1,35 @@
+Servicos\GcdbBundle\Entity\TempCadUserHasComplemento:
+    type: entity
+    table: gcdb.temp_cad_user_has_complemento
+    indexes:
+        cad_user_has_complemento_FKIndex1:
+            columns:
+                - adm_tipo_complemento_id
+        cad_user_has_complemento_FKIndex2:
+            columns:
+                - cad_users_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        cadUsersId:
+            type: integer
+            nullable: true
+            unsigned: true
+            column: cad_users_id
+        admTipoComplementoId:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: adm_tipo_complemento_id
+        complemento:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+    lifecycleCallbacks: {  }

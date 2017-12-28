@@ -1,0 +1,57 @@
+Servicos\GcdbBundle\Entity\Documentos:
+    type: entity
+    table: gcdb.Documentos
+    indexes:
+        CategoriaID:
+            columns:
+                - CategoriaID
+    id:
+        documentoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: DocumentoID
+            generator:
+                strategy: IDENTITY
+    fields:
+        titulo:
+            type: string
+            nullable: false
+            length: 150
+            fixed: false
+            default: ''
+            column: Titulo
+        conteudo:
+            type: text
+            nullable: false
+            length: 65535
+            fixed: false
+            column: Conteudo
+        criacao:
+            type: date
+            nullable: false
+            default: '0000-00-00'
+            column: Criacao
+        visitas:
+            type: integer
+            nullable: false
+            unsigned: false
+            default: '0'
+            column: Visitas
+        ativo:
+            type: boolean
+            nullable: false
+            default: '1'
+            column: Ativo
+    manyToOne:
+        categoriaid:
+            targetEntity: CategoriaDocumentos
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                CategoriaID:
+                    referencedColumnName: CategoriaID
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

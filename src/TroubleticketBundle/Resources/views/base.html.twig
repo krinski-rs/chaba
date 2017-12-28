@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% use "TroubleticketBundle:menu:menu.html.twig" %}
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}SisTech{% endblock %}</title>
+	    <link rel="icon" sizes="16x16" href="{{ asset('favicon.ico') }}" />
+	    <link rel="stylesheet" href="{{ asset('bundles/base/css/base.css') }}" />
+        <link rel="stylesheet" href="{{ asset('bundles/base/css/menu.css') }}" />
+        <link rel="stylesheet" href="{{ asset('bundles/base/css/jquery-ui.css') }}" />
+        <link rel="stylesheet" href="{{ asset('bundles/troubleticket/css/troubleticket.css') }}" />
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        {% block static_css %}
+        {% endblock %}
+    </head>
+    <body>
+        <div id="overlay">
+            <img src="{{ asset('bundles/troubleticket/img/loader.gif') }}" />
+        </div>
+        {{ block('menu') }}
+        {% for flash_message in app.session.flashbag.get('error') %}
+            <div class="error">
+                <span>{{ flash_message }}</span>
+            </div>
+        {% endfor %}
+        {% for flash_message in app.session.flashbag.get('success') %}
+            <div class="sucesso">
+                <span>{{ flash_message }}</span>
+            </div>
+        {% endfor %}
+        {% for flash_message in app.session.flashbag.get('alert') %}
+            <div class="alert">
+                <span><strong>ALERTA</strong>: {{ flash_message }}</span>
+            </div>
+        {% endfor %}
+        <div class="content">{% block body %}{% endblock %}</div>
+        <script type="text/javascript" src="{{ asset('bundles/base/js/jquery/jquery-1.11.3.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/base/js/jquery-ui/jquery-ui.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/troubleticket/js/plugins/jquery.inputmask.bundle.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/troubleticket/js/troubleticket.js') }}"></script>
+         <script type="text/javascript" src="{{ asset('bundles/base/js/base.js') }}"></script>
+        {% block static_js %}
+        {% endblock %}
+    </body>
+</html>

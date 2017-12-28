@@ -1,0 +1,35 @@
+Servicos\GcdbBundle\Entity\PlanosRelacaoPlanoServico:
+    type: entity
+    table: gcdb.Planos_relacao_plano_servico
+    indexes:
+        Planos_relacao_plano_servico_FKIndex1:
+            columns:
+                - Planos_servicos_id
+        Planos_relacao_plano_servico_FKIndex2:
+            columns:
+                - Planos_tipo_servico_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        planosTipoServicoId:
+            type: integer
+            nullable: false
+            unsigned: true
+            column: Planos_tipo_servico_id
+        planosServicosId:
+            type: integer
+            nullable: false
+            unsigned: true
+            column: Planos_servicos_id
+        quantidade:
+            type: string
+            nullable: true
+            length: 20
+            fixed: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,84 @@
+<div id="tabs" class="circuitos">
+	<ul>
+    	<li>
+    		<a href="#tabs-1">Informações técnicas</a>
+    	</li>
+    	<li>
+    		<a href="#tabs-2">Materiais no circuito</a>
+    	</li>
+    	<li>
+    		<a href="#tabs-3">Projeto</a>
+    	</li>
+{% set aux = 3 %}
+{% for key,dep in dependetes %}
+		{% set aux = aux+1 %}
+		<li>
+    		<a href="#tabs-{{ aux }}">{{ key }}</a>
+    	</li>
+{% endfor %}
+    </ul>
+	<div class="containerTip">
+		 <div id="tabs-1">
+{% for info in infos %}
+		 	<div class="info">
+		 		<label>{{ info.label }}:</label>
+		 		<span>{{ info.value|raw }}</span>
+		 	</div>
+{% endfor %}
+		 </div>
+		 <div id="tabs-2">
+{% for key,material in materiais %}
+			<div class="linksEstoque">
+				<a href="{{ material.link }}" target="_blank"><span>Cilque aqui para visualizar o estoque</span></a>
+			</div>
+{% if  key == 0 %}
+		 	<table width="100%" class="gridsort">
+		 		<thead class="gridHead">
+		 			<th width="10%" class="center">ID</th>
+		 			<th width="70%" class="center">Produto</th>
+		 			<th width="20%" class="center">QTD</th>
+		 		</thead>
+		 		<tbody>
+{% endif %}
+{% for dados in material.dados %}
+		 			<tr>
+		 				<td class="celula center"><a href="/luma/produto/?edtCodigo={{ dados.coluna1.texto }}" target="_blank">{{ "%05d"|format(dados.coluna1.texto) }}</a></td>
+		 				<td class="celula">{{ dados.coluna2.texto }}</td>
+		 				<td class="celula center">{{ dados.coluna3.texto }}</td>
+		 			</tr>
+{% endfor %}
+{% endfor %}
+		 		</tbody>
+		 	</table>
+{% if materiais|length == 0 %}
+			<div class="error">
+				<span>
+					<strong>Sem Materiais!</strong>
+				</span>
+			</div>
+{% endif %}
+		 </div>
+		 <div id="tabs-3">
+{% for pj in projeto %}
+		 	<div class="info">
+		 		<label>{{ pj.label }}:</label>
+		 		<span>{{ pj.value|raw }}</span>
+		 	</div>
+{% endfor %}
+{% if projeto|length == 0 %}
+			<div class="error">
+				<span>
+					<strong>Sem Projeto!</strong>
+				</span>
+			</div>
+{% endif %}
+		 </div>
+{% set aux = 3 %}
+{% for key,dep in dependetes %}
+		{% set aux = aux+1 %}
+		<li>
+    		<a href="#tabs-{{ aux }}">{{ key }}</a>
+    	</li>
+{% endfor %}
+	</div>
+</div>

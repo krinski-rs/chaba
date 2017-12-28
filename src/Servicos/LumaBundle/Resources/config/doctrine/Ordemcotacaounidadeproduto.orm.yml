@@ -1,0 +1,52 @@
+Servicos\LumaBundle\Entity\Ordemcotacaounidadeproduto:
+    type: entity
+    table: luma.ordemcotacaounidadeproduto
+    repositoryClass: Servicos\LumaBundle\Repository\OrdemcotacaounidadeprodutoRepository
+    indexes:
+        fk_ordemcotacaounidadeproduto_ordem1_idx:
+            columns:
+                - orde_codigoid
+        fk_ordemcotacaounidadeproduto_cotacaounidadeproduto1_idx:
+            columns:
+                - cotaunidprod_codigoid
+    id:
+        ordecotaunidprod:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        ordecotaunidprodQuantidade:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 2
+            column: ordecotaunidprod_quantidade
+        ordecotaunidprodPedida:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 2
+            column: ordecotaunidprod_pedida
+    manyToOne:
+        cotaunidprodCodigoid:
+            targetEntity: Cotacaounidadeproduto
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cotaunidprod_codigoid:
+                    referencedColumnName: cotaunidprod_codigoid
+            orphanRemoval: false
+        ordeCodigoid:
+            targetEntity: Ordem
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                orde_codigoid:
+                    referencedColumnName: orde_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

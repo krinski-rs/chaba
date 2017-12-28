@@ -1,0 +1,93 @@
+Servicos\FinanceiroBundle\Entity\Enderecoentregaatributovalor:
+    type: entity
+    repositoryClass: Servicos\FinanceiroBundle\Repository\EnderecoentregaatributovalorRepository
+    table: financeiro.enderecoentregaatributovalor
+    indexes:
+        fk_contratoservicoatributos_atributovalor1_idx:
+            columns:
+                - atrivalo_codigoid
+        fk_enderecoentregaatributovalor_cont_codigoid_idx:
+            columns:
+                - cont_codigoid
+        fk_endeentratrivalo_paicodigoid_idx:
+            columns:
+                - endeentratrivalo_paicodigoid
+    id:
+        endeentratrivaloCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: endeentratrivalo_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        endeentrCodigoid:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: Deprecated
+            column: endeentr_codigoid
+        endeentratrivaloValor:
+            type: text
+            nullable: true
+            length: 65535
+            fixed: false
+            column: endeentratrivalo_valor
+        endeentratrivaloDescricao:
+            type: text
+            nullable: true
+            length: 65535
+            fixed: false
+            column: endeentratrivalo_descricao
+        dataInc:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: data_inc
+        registrante:
+            type: integer
+            nullable: true
+            unsigned: false
+        endeentratrivaloDatafim:
+            type: datetime
+            nullable: true
+            column: endeentratrivalo_datafim
+    oneToMany:
+        circuitoPop:
+            targetEntity: Servicos\GcdbBundle\Entity\CircuitoPop
+            cascade: {  }
+            mappedBy: endeentratrivaloCodigoid
+        atributoAdicional:
+            targetEntity: AtributoAdicional
+            cascade: {  }
+            mappedBy: endeentratrivaloCodigoid
+    manyToOne:
+        contCodigoid:
+            targetEntity: Contrato
+            cascade: {  }
+            mappedBy: null
+            inversedBy: enderecoentregaatributovalor
+            joinColumns:
+                cont_codigoid:
+                    referencedColumnName: cont_codigoid
+            orphanRemoval: false
+        atrivaloCodigoid:
+            targetEntity: Atributovalor
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                atrivalo_codigoid:
+                    referencedColumnName: atrivalo_codigoid
+            orphanRemoval: false
+        endeentratrivaloPaicodigoid:
+            targetEntity: Enderecoentregaatributovalor
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                endeentratrivalo_paicodigoid:
+                    referencedColumnName: endeentratrivalo_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

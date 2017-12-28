@@ -1,0 +1,53 @@
+Servicos\FinanceiroBundle\Entity\EnderecoentregaatributovalorHisto:
+    type: entity
+    table: financeiro.enderecoentregaatributovalor_histo
+    indexes:
+        fk_enderecoentregaatributovalor_histo_endeentratrivalo_codi_idx:
+            columns:
+                - endeentratrivalo_codigoid
+    id:
+        endeentratrivaloHisto:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: endeentratrivalo_histo
+            generator:
+                strategy: IDENTITY
+    fields:
+        atrivaloCodigoid:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: atrivalo_codigoid
+        endeentratrivaloValor:
+            type: text
+            nullable: true
+            length: 65535
+            fixed: false
+            column: endeentratrivalo_valor
+        endeentratrivaloDescricao:
+            type: text
+            nullable: true
+            length: 65535
+            fixed: false
+            column: endeentratrivalo_descricao
+        dataInc:
+            type: datetime
+            nullable: true
+            column: data_inc
+        registrante:
+            type: integer
+            nullable: true
+            unsigned: false
+    manyToOne:
+        endeentratrivaloCodigoid:
+            targetEntity: Enderecoentregaatributovalor
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                endeentratrivalo_codigoid:
+                    referencedColumnName: endeentratrivalo_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

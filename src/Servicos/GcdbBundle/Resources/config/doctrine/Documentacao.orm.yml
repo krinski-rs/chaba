@@ -1,0 +1,50 @@
+Servicos\GcdbBundle\Entity\Documentacao:
+    type: entity
+    table: gcdb.Documentacao
+    indexes:
+        CustomerID:
+            columns:
+                - CustomerID
+        DOCID:
+            columns:
+                - DOCID
+        CustomerID_2:
+            columns:
+                - CustomerID
+    id:
+        docid:
+            type: integer
+            nullable: false
+            unsigned: true
+            id: true
+            column: DOCID
+            generator:
+                strategy: IDENTITY
+    fields:
+        customerid:
+            type: integer
+            nullable: false
+            unsigned: true
+            default: '0'
+            column: CustomerID
+        descricao:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+            default: 'Sem Descricao'
+            column: Descricao
+        texto:
+            type: text
+            nullable: false
+            length: 65535
+            fixed: false
+            column: Texto
+        mostrar:
+            type: string
+            nullable: false
+            length: null
+            fixed: false
+            default: SIM
+            column: Mostrar
+    lifecycleCallbacks: {  }

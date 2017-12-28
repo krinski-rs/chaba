@@ -1,0 +1,50 @@
+Servicos\GcdbBundle\Entity\AutPermissoes:
+    type: entity
+    table: gcdb.aut_permissoes
+    indexes:
+        usuarios_id:
+            columns:
+                - usuarios_id
+        opcoes_id:
+            columns:
+                - opcoes_id
+    id:
+        opcoesId:
+            type: integer
+            nullable: false
+            unsigned: true
+            default: '0'
+            id: true
+            column: opcoes_id
+        usuariosId:
+            type: integer
+            nullable: false
+            unsigned: true
+            default: '0'
+            id: true
+            column: usuarios_id
+    fields:
+        permissao:
+            type: integer
+            nullable: true
+            unsigned: true
+    manyToOne:
+        autUsuario:
+            targetEntity: AutUsuarios
+            cascade: {  }
+            mappedBy: null
+            inversedBy: autPermissoes
+            joinColumns:
+                usuarios_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        autOpcoes:
+            targetEntity: AutOpcoes
+            cascade: {  }
+            mappedBy: null
+            inversedBy: autPermissoes
+            joinColumns:
+                opcoes_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

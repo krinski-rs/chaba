@@ -1,0 +1,37 @@
+Servicos\FinanceiroBundle\Entity\Moeda:
+    type: entity
+    table: financeiro.moeda
+    id:
+        moedCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: moed_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        moedNome:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            column: moed_nome
+        moedValor:
+            type: decimal
+            nullable: false
+            precision: 5
+            scale: 2
+            column: moed_valor
+        moedSigla:
+            type: string
+            nullable: false
+            length: 10
+            fixed: false
+            column: moed_sigla
+    oneToMany:
+        contrato:
+            targetEntity: Contrato
+            cascade: {  }
+            mappedBy: moedCodigoid
+    lifecycleCallbacks: {  }

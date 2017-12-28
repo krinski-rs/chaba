@@ -1,0 +1,44 @@
+Servicos\LumaBundle\Entity\ViaturaCadUserUltilizador:
+    type: entity
+    table: luma.viatura_cad_user_ultilizador
+    indexes:
+        fk_viatura_cad_user_ultilizador_viatura_idx:
+            columns:
+                - viaturaid
+        fk_viatura_cad_user_ultilizador_cad_user_idx:
+            columns:
+                - cad_user_id
+    id:
+        viatCadUserUltilizadorid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: viat_cad_user_ultilizadorid
+            generator:
+                strategy: IDENTITY
+    fields:
+        cadUserId:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: cad_user_id
+        dataInc:
+            type: datetime
+            nullable: true
+            column: data_inc
+        dataFim:
+            type: date
+            nullable: true
+            column: data_fim
+    manyToOne:
+        viaturaid:
+            targetEntity: Viatura
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                viaturaid:
+                    referencedColumnName: viaturaid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

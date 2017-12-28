@@ -1,0 +1,28 @@
+Servicos\GcdbBundle\Entity\PlanosEmailAtivacao:
+    type: entity
+    table: gcdb.Planos_email_ativacao
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        accountid:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: AccountID
+        email:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+        modelo:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+    lifecycleCallbacks: {  }

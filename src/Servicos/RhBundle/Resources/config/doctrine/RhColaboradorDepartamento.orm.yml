@@ -1,0 +1,52 @@
+Servicos\RhBundle\Entity\RhColaboradorDepartamento:
+    type: entity
+    table: rh.rh_colaborador_departamento
+    repositoryClass: Servicos\RhBundle\Repository\RhColaboradorDepartamentoRepository
+    indexes:
+        fk_rh_departamento_has_rh_colaborador_rh_colaborador1_idx:
+            columns:
+                - id_colaborador
+        fk_rh_departamento_has_rh_colaborador_rh_departamento1_idx:
+            columns:
+                - id_departamento
+    id:
+        idColaboradorDepartamento:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_colaborador_departamento
+            generator:
+                strategy: IDENTITY
+    fields:
+        dataInc:
+            type: date
+            nullable: true
+            column: data_inc
+        boss:
+            type: boolean
+            nullable: true
+        aprovadorSa:
+            type: boolean
+            nullable: true
+            column: aprova_sa
+    manyToOne:
+        idColaborador:
+            targetEntity: RhColaborador
+            cascade: {  }
+            mappedBy: null
+            inversedBy: colaboradorDepartamento
+            joinColumns:
+                id_colaborador:
+                    referencedColumnName: id_colaborador
+            orphanRemoval: false
+        idDepartamento:
+            targetEntity: RhDepartamento
+            cascade: {  }
+            mappedBy: null
+            inversedBy: colaboradorDepartamento
+            joinColumns:
+                id_departamento:
+                    referencedColumnName: id_departamento
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,102 @@
+Servicos\LumaBundle\Entity\Poplocalizacao:
+    type: entity
+    table: luma.poplocalizacao
+    id:
+        idLocalizacao:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_localizacao
+            generator:
+                strategy: IDENTITY
+    fields:
+        cidade:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+        endereco:
+            type: string
+            nullable: true
+            length: 200
+            fixed: false
+        bairro:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+        referencia:
+            type: string
+            nullable: true
+            length: 500
+            fixed: false
+        latitude:
+            type: string
+            nullable: true
+            length: 20
+            fixed: false
+        longitude:
+            type: string
+            nullable: true
+            length: 20
+            fixed: false
+        latitudeMaps:
+            type: string
+            nullable: true
+            length: 20
+            fixed: false
+            column: latitude_maps
+        longitudeMaps:
+            type: string
+            nullable: true
+            length: 20
+            fixed: false
+            column: longitude_maps
+        telefone1:
+            type: string
+            nullable: true
+            length: 20
+            fixed: false
+        telefone2:
+            type: string
+            nullable: true
+            length: 20
+            fixed: false
+        cep:
+            type: string
+            nullable: true
+            length: 15
+            fixed: false
+        uf:
+            type: string
+            nullable: true
+            length: 200
+            fixed: false
+        nome:
+            type: string
+            nullable: true
+            length: 200
+            fixed: false
+        numero:
+            type: integer
+            nullable: true
+            unsigned: false
+        complemento:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+        complementoNumero:
+            type: string
+            nullable: true
+            length: 15
+            fixed: false
+            column: complemento_numero
+        localeCodigoid:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: 'Billing.locale '
+            column: locale_codigoid
+    lifecycleCallbacks: {  }

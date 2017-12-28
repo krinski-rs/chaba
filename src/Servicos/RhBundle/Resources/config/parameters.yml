@@ -1,0 +1,11 @@
+parameters:
+    colaborador:
+        sexo:
+            - 'M'
+            - 'F'
+        tipo:
+            - 'J'
+            - 'F'
+        estado_civil:
+            - 'Solteiro'
+            - 'Casado'

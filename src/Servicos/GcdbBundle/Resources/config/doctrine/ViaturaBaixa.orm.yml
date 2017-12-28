@@ -1,0 +1,66 @@
+Servicos\GcdbBundle\Entity\ViaturaBaixa:
+    type: entity
+    table: gcdb.viatura_baixa
+    indexes:
+        fk_baixa_viatura1_idx:
+            columns:
+                - viaturaid
+    id:
+        viatBaixaid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: viat_baixaid
+            generator:
+                strategy: IDENTITY
+    fields:
+        viaturaid:
+            type: integer
+            nullable: false
+            unsigned: false
+        baixaCadUsuarioid:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: baixa_cad_usuarioid
+        baixaMotivo:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: baixa_motivo
+        baixaDestinoSistechid:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: baixa_destino_sistechid
+        baixaDatainc:
+            type: datetime
+            nullable: true
+            default: CURRENT_TIMESTAMP
+            column: baixa_datainc
+        baixaDataPrevista:
+            type: datetime
+            nullable: true
+            column: baixa_data_prevista
+        baixaDatafim:
+            type: datetime
+            nullable: true
+            column: baixa_datafim
+        baixaPermanente:
+            type: boolean
+            nullable: true
+            column: baixa_permanente
+        observacaoRetorno:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            column: observacao_retorno
+        baixaRetornoUsuarioid:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: baixa_retorno_usuarioid
+    lifecycleCallbacks: {  }

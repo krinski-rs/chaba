@@ -1,0 +1,25 @@
+Servicos\LumaBundle\Entity\Logbiometria:
+    type: entity
+    table: luma.logbiometria
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        usuario:
+            type: integer
+            nullable: true
+            unsigned: false
+        acesso:
+            type: string
+            nullable: true
+            length: 1
+            fixed: true
+        data:
+            type: datetime
+            nullable: true
+    lifecycleCallbacks: {  }

@@ -1,0 +1,38 @@
+Servicos\GcdbBundle\Entity\AdmSwitchsPortasBloqueadas:
+    type: entity
+    table: gcdb.adm_switchs_portas_bloqueadas
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        portId:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: port_id
+        idSwitch:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: id_switch
+        dataBloqueio:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: data_bloqueio
+        dataDesbloqueio:
+            type: datetime
+            nullable: true
+            column: data_desbloqueio
+        quemDesbloqueou:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            column: quem_desbloqueou
+    lifecycleCallbacks: {  }

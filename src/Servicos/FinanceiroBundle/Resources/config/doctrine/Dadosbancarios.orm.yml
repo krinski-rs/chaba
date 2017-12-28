@@ -1,0 +1,51 @@
+Servicos\FinanceiroBundle\Entity\Dadosbancarios:
+    type: entity
+    table: financeiro.dadosbancarios
+    indexes:
+        fk_dadosbancarios_banco1_idx:
+            columns:
+                - banc_codigoid
+    id:
+        dadobancCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: dadobanc_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        dadobancAgencia:
+            type: string
+            nullable: false
+            length: 10
+            fixed: false
+            column: dadobanc_agencia
+        dadobancConta:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            column: dadobanc_conta
+        emprCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: empr_codigoid
+        dadobancCodigocedente:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+            column: dadobanc_codigocedente
+    manyToOne:
+        bancCodigoid:
+            targetEntity: Banco
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                banc_codigoid:
+                    referencedColumnName: banc_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

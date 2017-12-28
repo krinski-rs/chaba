@@ -1,0 +1,41 @@
+Servicos\LumaBundle\Entity\RemessamoviMovimentacaoLog:
+    type: entity
+    table: remessamovi_movimentacao_log
+    indexes:
+        remessamovi_movimentacao_log_ibfk1:
+            columns:
+                - id_remessamovi_movimentacao
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        campo:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+        mensagem:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+        dataCriacao:
+            type: datetime
+            nullable: false
+            column: data_criacao
+    manyToOne:
+        idRemessamoviMovimentacao:
+            targetEntity: RemessamoviMovimentacao
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_remessamovi_movimentacao:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,55 @@
+Servicos\GcdbBundle\Entity\Cartao:
+    type: entity
+    table: gcdb.Cartao
+    indexes:
+        CartaoID:
+            columns:
+                - CartaoID
+        CustomerID:
+            columns:
+                - CustomerID
+    id:
+        cartaoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: CartaoID
+            generator:
+                strategy: IDENTITY
+    fields:
+        verificador:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: Verificador
+        nome:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+            column: Nome
+        tipo:
+            type: string
+            nullable: true
+            length: 10
+            fixed: false
+            column: Tipo
+        obs:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+            column: Obs
+        customerid:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: CustomerID
+        numero:
+            type: string
+            nullable: true
+            length: 22
+            fixed: false
+            column: Numero
+    lifecycleCallbacks: {  }

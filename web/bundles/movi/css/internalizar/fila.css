@@ -1,0 +1,45 @@
+#contadoresInternalizacao {
+    display: none;
+    float: right;
+    font-weight: 700;
+}
+
+#contadoresInternalizacao:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+#contadoresInternalizacao table {
+    display: inline-block;
+    background-color: #FFF;
+    border-collapse: collapse;
+}
+
+#contadoresInternalizacao thead {
+    background-color: #0088D2;
+    color: #FFF;
+}
+
+#contadoresInternalizacao td, #contadoresInternalizacao th{
+    padding: 3px;
+    border: 1px solid #636363;
+}
+
+#contadoresInternalizacao td:first-child {
+    padding: 0 2.5px;
+    font-size: 18px;
+    text-align: center;
+    min-width: 35px;
+    background-color:#FFF;
+}
+#contadoresInternalizacao td:last-child {
+    background-color: #f2f2f2;
+    width: 156px;
+    color:  #636363;
+}
+
+#lista-internalizacao tbody tr td.error {
+    background-color: #F7584A !important;
+    color: #FFF;
+}

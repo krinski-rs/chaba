@@ -1,0 +1,55 @@
+Servicos\GcdbBundle\Entity\Atendimento:
+    type: entity
+    table: gcdb.Atendimento
+    indexes:
+        CustomerID:
+            columns:
+                - CustomerID
+        ATID:
+            columns:
+                - ATID
+        CustomerID_2:
+            columns:
+                - CustomerID
+    id:
+        atid:
+            type: integer
+            nullable: false
+            unsigned: true
+            id: true
+            column: ATID
+            generator:
+                strategy: IDENTITY
+    fields:
+        customerid:
+            type: integer
+            nullable: false
+            unsigned: true
+            default: '0'
+            column: CustomerID
+        url:
+            type: string
+            nullable: true
+            length: 150
+            fixed: false
+            column: URL
+        urlobs:
+            type: text
+            nullable: true
+            length: 65535
+            fixed: false
+            column: URLObs
+        obs:
+            type: text
+            nullable: true
+            length: 65535
+            fixed: false
+            column: Obs
+        mostrar:
+            type: string
+            nullable: false
+            length: null
+            fixed: false
+            default: SIM
+            column: Mostrar
+    lifecycleCallbacks: {  }

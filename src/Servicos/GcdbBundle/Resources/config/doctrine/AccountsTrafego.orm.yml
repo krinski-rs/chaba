@@ -1,0 +1,46 @@
+Servicos\GcdbBundle\Entity\AccountsTrafego:
+    type: entity
+    table: gcdb.accounts_trafego
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        accountid:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: accountID
+        servicoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: servicoID
+        tipoServicoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: tipo_servicoID
+        volumeTrafego:
+            type: string
+            nullable: false
+            length: 10
+            fixed: true
+            column: volume_trafego
+        trafegoExtra:
+            type: string
+            nullable: false
+            length: 10
+            fixed: true
+            column: trafego_extra
+        tipoMedida:
+            type: string
+            nullable: false
+            length: 50
+            fixed: true
+            column: tipo_medida
+    lifecycleCallbacks: {  }

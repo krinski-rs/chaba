@@ -1,0 +1,101 @@
+Servicos\LumaBundle\Entity\Solicitacao:
+    type: entity
+    repositoryClass: Servicos\LumaBundle\Repository\SolicitacaoRepository
+    table: luma.solicitacao
+    indexes:
+        fk_solicitacao_unidade1:
+            columns:
+                - unid_codigoid
+    id:
+        soliCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: soli_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        soliDatainc:
+            type: datetime
+            nullable: false
+            column: soli_datainc
+        usuaCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: usua_codigoid
+        soliPrazoentrerga:
+            type: date
+            nullable: true
+            column: soli_prazoentrerga
+        soliAtivo:
+            type: boolean
+            nullable: true
+            column: soli_ativo
+        soliObservacao:
+            type: text
+            nullable: true
+            length: 65535
+            fixed: false
+            column: soli_observacao
+        soliObservacaofornecedor:
+            type: text
+            nullable: true
+            length: 65535
+            fixed: false
+            column: soli_observacaofornecedor
+        cadUserFilial:
+          type: integer
+          nullable: true
+          column: cad_user_filial
+        soliLimite:
+          type: decimal
+          nullable: true
+          column: soli_limite
+        soliEnderecoEntrega:
+          type: text
+          nullable: true
+          column: soli_endereco_entrega
+        soliCer:
+          type: text
+          nullable: true
+          column: soli_cer
+    manyToOne:
+        ordemInterna:
+            targetEntity: OrdemInterna
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                ordem_interna_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        unidCodigoid:
+            targetEntity: Unidade
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                unid_codigoid:
+                    referencedColumnName: unid_codigoid
+            orphanRemoval: false
+        centroCusto:
+            targetEntity: CentroCusto
+            inversedBy: null
+            joinColumns:
+                centro_custo_id:
+                    referencedColumnName: id
+                    nullable: true
+    oneToMany:
+        solicitacaoaprovacao:
+            targetEntity: \Servicos\LumaBundle\Entity\Solicitacaoaprovacao
+            mappedBy: soliCodigoid
+        solicitacaoprodutos:
+            targetEntity: \Servicos\LumaBundle\Entity\Solicitacaoproduto
+            mappedBy: soliCodigoid
+        solicitacaocotacoes:
+            targetEntity: \Servicos\LumaBundle\Entity\Cotacaosolicitacao
+            mappedBy: soliCodigoid
+            
+    lifecycleCallbacks: {  }

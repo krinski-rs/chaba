@@ -1,0 +1,23 @@
+Servicos\LumaBundle\Entity\ProdutoSimilar:
+    type: entity
+    table: luma.produto_similar
+    id:
+        produtoSimilarCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: produto_similar_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        nome:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+        dataInc:
+            type: date
+            nullable: true
+            column: data_inc
+    lifecycleCallbacks: {  }

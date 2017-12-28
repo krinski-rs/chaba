@@ -1,0 +1,58 @@
+{% block bi_subcase_open %}
+<div class="row">
+	<form id="form_bi_subcase_create" method="POST" action="{{ path('troubleticket_bi_subcase_create',{'report_id': reports.getId()}) }}">
+		<div class="col-sm-100">
+			<div class="row">
+				<label>*Tipo de Sub Caso</label>
+				<select name="form[tipo_subcaso]" id="select_bi_subcase_type">
+					<option value="">---</option>
+					{%if reports.canOpenSubcase(1) and isAllowed('SUB_COC', 'create') %}
+						<option value="1">COC</option>
+					{%endif%}
+					{%if reports.canOpenSubcase(2) and isAllowed('SUB_MANTAINER', 'create') %}
+						<option value="2">Maintainer</option>
+					{%endif%}
+				</select>
+				<div class="error alert" id="div_error_select_bi_subcase_type"
+				style="display:none">
+					<span>Este campo precisa ser preenchido!</span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-100">
+					<div class="col-sm-50" style="float:left;">
+						<div class="row">
+							<label>*Tipo de serviço</label>
+							<select name="form[activity_type]" id="select_ba_service_type">
+								<option value="">---</option>
+								<option value="01">Rádio</option>
+								<option value="02">Fibra</option>
+								<option value="03">Infraestrutura</option>
+							</select>
+							<div class="error alert" id="div_error_select_ba_subcase_type" style="display:none">
+								<span>Este campo precisa ser preenchido!</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-100">
+					<div class="row">
+						<div class="col-md-12" style="float:left;">
+							<label>*Comentário</label>
+							<textarea name="form[comentario]" id="textarea_ba_subcase_comentario"></textarea>
+							<div class="error alert" id="div_error_textarea_ba_subcase_comentario" style="display:none">
+								<span>Este campo precisa ser preenchido!</span>
+							</div>
+						</div>
+					</div>
+					<small><em>(*) Campos obrigatórios</em></small>
+				</div>
+			</div>
+		</div>
+		<input type="hidden" name="" value="{{csrf_token(null)}}">
+		<input type="hidden" name="form[hidden_report_id]" value="{{reports.getId()}}" />
+	</form>
+</div>
+{% endblock %}

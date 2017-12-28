@@ -1,0 +1,162 @@
+Servicos\LumaBundle\Entity\Movimentacao:
+    type: entity
+    table: luma.movimentacao
+    repositoryClass: Servicos\LumaBundle\Repository\MovimentacaoRepository
+    indexes:
+        fk_movimentacao_unidade1:
+            columns:
+                - unid_decodigoid
+        fk_movimentacao_unidade2:
+            columns:
+                - unid_paracodigoid
+        fk_movimentacao_finalidade1:
+            columns:
+                - fina_codigoid
+        unid_destinofinalcodigoid:
+            columns:
+                - unid_destinofinalcodigoid
+        movi_motivo:
+            columns:
+                - movi_motivo
+        movi_tipo:
+            columns:
+                - movi_tipo
+    id:
+        moviCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: movi_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        usrResponsavel:
+            type: integer
+            nullable: false
+            unsigned: true
+            column: usr_responsavel
+        usrSolicitante:
+            type: integer
+            nullable: true
+            unsigned: true
+            column: usr_solicitante
+        moviDatainc:
+            type: datetime
+            nullable: false
+            column: movi_datainc
+        moviMotivo:
+            type: text
+            nullable: false
+            length: 65535
+            fixed: false
+            column: movi_motivo
+        moviTipo:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: movi_tipo
+        moviEntregador:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            column: movi_entregador
+        moviDocumentoentregador:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+            column: movi_documentoentregador
+        moviNfe:
+            type: boolean
+            nullable: true
+            column: movi_nfe
+        nfeId:
+            type: string
+            nullable: true
+            length: 47
+            fixed: false
+            column: nfe_Id
+        moviAutomatica:
+            type: boolean
+            nullable: true
+            column: movi_automatica
+        cadUserDestino:
+            type: integer
+            unsigned: false
+            nullable: true
+            column: cad_user_destino
+        cadUserOrigem:
+            type: integer
+            unsigned: false
+            nullable: true
+            column: cad_user_origem
+        operacao:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+            column: operacao
+        moviStatusIntegracao:
+            type: integer
+            unsigned: false
+            nullable: true
+            column: movi_status_integracao
+    oneToMany:
+        moviProdutos:
+            targetEntity: Movimentacaoproduto
+            cascade: ["persist"]
+            mappedBy: moviCodigoid
+            inversedBy: null
+            joinColumns:
+            movi_decodigoid:
+                referencedColumnName: movi_decodigoid
+            orphanRemoval: false
+    manyToOne:
+        finaCodigoid:
+            targetEntity: Finalidade
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                fina_codigoid:
+                    referencedColumnName: fina_codigoid
+            orphanRemoval: false
+        unidDecodigoid:
+            targetEntity: Unidade
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                unid_decodigoid:
+                    referencedColumnName: unid_codigoid
+            orphanRemoval: false
+        unidParacodigoid:
+            targetEntity: Unidade
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                unid_paracodigoid:
+                    referencedColumnName: unid_codigoid
+            orphanRemoval: false
+        unidDestinofinalcodigoid:
+            targetEntity: Unidade
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                unid_destinofinalcodigoid:
+                    referencedColumnName: unid_codigoid
+            orphanRemoval: false
+    manyToMany:
+        pediCodigoid:
+            targetEntity: Pedido
+            cascade: {  }
+            mappedBy: moviCodigoid
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+    lifecycleCallbacks: {  }

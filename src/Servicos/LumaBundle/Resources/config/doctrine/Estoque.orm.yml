@@ -1,0 +1,32 @@
+Servicos\LumaBundle\Entity\Estoque:
+    type: entity
+    table: luma.estoque
+    indexes:
+        fk_estoque_unidade1:
+            columns:
+                - unid_codigoid
+    id:
+        estoCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: esto_codigoid
+            generator:
+                strategy: IDENTITY
+    oneToMany:
+        estoqueproduto:
+            targetEntity: Estoqueproduto
+            cascade: {  }
+            mappedBy: estoCodigoid
+    manyToOne:
+        unidCodigoid:
+            targetEntity: Unidade
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                unid_codigoid:
+                    referencedColumnName: unid_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

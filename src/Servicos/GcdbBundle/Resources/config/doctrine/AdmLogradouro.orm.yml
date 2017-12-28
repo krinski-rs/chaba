@@ -1,0 +1,19 @@
+Servicos\GcdbBundle\Entity\AdmLogradouro:
+    type: entity
+    repositoryClass: Servicos\GcdbBundle\Repository\AdmLogradouroRepository
+    table: gcdb.adm_logradouro
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nome:
+            type: string
+            nullable: true
+            length: 30
+            fixed: false
+    lifecycleCallbacks: {  }

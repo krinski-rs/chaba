@@ -1,0 +1,36 @@
+Servicos\GcdbBundle\Entity\ParceirosAccounts:
+    type: entity
+    table: gcdb.Parceiros_Accounts
+    indexes:
+        AccountID:
+            columns:
+                - AccountID
+        UsuarioID:
+            columns:
+                - UsuarioID
+        ComissaoID:
+            columns:
+                - ComissaoID
+    id:
+        accountid:
+            type: integer
+            nullable: false
+            unsigned: false
+            default: '0'
+            id: true
+            column: AccountID
+        usuarioid:
+            type: integer
+            nullable: false
+            unsigned: false
+            default: '0'
+            id: true
+            column: UsuarioID
+        comissaoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            default: '0'
+            id: true
+            column: ComissaoID
+    lifecycleCallbacks: {  }

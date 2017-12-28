@@ -1,0 +1,70 @@
+Servicos\LumaBundle\Entity\ManutencaoCustoItem:
+    type: entity
+    table: luma.manutencao_custo_item
+    indexes:
+        fk_causa_id:
+            columns:
+                - causa_codigoid
+        fk_classificacao_id:
+            columns:
+                - class_codigoid
+        fk_custo_id:
+            columns:
+                - cust_codigoid
+    id:
+        custitemCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: custitem_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        descricao:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+        valor:
+            type: decimal
+            nullable: false
+            precision: 10
+            scale: 2
+    manyToOne:
+        causaCodigoid:
+            targetEntity: ManutencaoCausa
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                causa_codigoid:
+                    referencedColumnName: causa_codigoid
+            orphanRemoval: false
+        classCodigoid:
+            targetEntity: ManutencaoClassificacao
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                class_codigoid:
+                    referencedColumnName: class_codigoid
+            orphanRemoval: false
+        custCodigoid:
+            targetEntity: ManutencaoCusto
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cust_codigoid:
+                    referencedColumnName: cust_codigoid
+            orphanRemoval: false
+    manyToMany:
+        pecaCodigoid:
+            targetEntity: ManutencaoPecas
+            cascade: {  }
+            mappedBy: custitemCodigoid
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+    lifecycleCallbacks: {  }

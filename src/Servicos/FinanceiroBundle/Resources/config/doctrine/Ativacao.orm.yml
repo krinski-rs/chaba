@@ -1,0 +1,87 @@
+Servicos\FinanceiroBundle\Entity\Ativacao:
+    type: entity
+    table: financeiro.ativacao
+    indexes:
+        fk_ativacao_contrato1_idx:
+            columns:
+                - cont_codigoid
+        ativ_dataativado:
+            columns:
+                - ativ_dataativado
+    id:
+        ativCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: ativ_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        usuaCodigoid:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: usua_codigoid
+        ativDatainc:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: ativ_datainc
+        ativDataativado:
+            type: datetime
+            nullable: true
+            column: ativ_dataativado
+        ativApospagamento:
+            type: boolean
+            nullable: false
+            column: ativ_apospagamento
+        ativAposassinatura:
+            type: boolean
+            nullable: false
+            column: ativ_aposassinatura
+        ativDatafixa:
+            type: date
+            nullable: true
+            column: ativ_datafixa
+        ativDiasapos:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: ativ_diasapos
+        ativCobraraposativacao:
+            type: boolean
+            nullable: false
+            column: ativ_cobraraposativacao
+        ativCobraraposassinatura:
+            type: boolean
+            nullable: false
+            column: ativ_cobraraposassinatura
+        ativCobrardatafixa:
+            type: date
+            nullable: true
+            column: ativ_cobrardatafixa
+        ativCobrardiasapos:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: ativ_cobrardiasapos
+        ativDataalterado:
+            type: datetime
+            nullable: true
+            column: ativ_dataalterado
+        ativPagamentotaxa:
+            type: date
+            nullable: true
+            column: ativ_pagamentotaxa
+    manyToOne:
+        contCodigoid:
+            targetEntity: Contrato
+            cascade: {  }
+            mappedBy: null
+            inversedBy: ativacao
+            joinColumns:
+                cont_codigoid:
+                    referencedColumnName: cont_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

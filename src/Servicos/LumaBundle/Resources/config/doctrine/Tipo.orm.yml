@@ -1,0 +1,26 @@
+Servicos\LumaBundle\Entity\Tipo:
+    type: entity
+    repositoryClass: Servicos\LumaBundle\Repository\TipoRepository
+    table: luma.tipo
+    id:
+        tipoCodigoid:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            column: tipo_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        tipoNome:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            column: tipo_nome
+        tipoTipo:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: tipo_tipo
+    lifecycleCallbacks: {  }

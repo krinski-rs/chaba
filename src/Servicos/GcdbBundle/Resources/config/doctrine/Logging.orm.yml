@@ -1,0 +1,37 @@
+Servicos\GcdbBundle\Entity\Logging:
+    type: entity
+    table: gcdb.logging
+    id:
+        idlog:
+            type: integer
+            nullable: false
+            unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        tipo:
+            type: string
+            nullable: false
+            length: 1
+            fixed: true
+        log:
+            type: string
+            nullable: false
+            length: 255
+            fixed: true
+        data:
+            type: string
+            nullable: false
+            length: 10
+            fixed: true
+        hora:
+            type: string
+            nullable: false
+            length: 10
+            fixed: true
+        idusuario:
+            type: integer
+            nullable: false
+            unsigned: true
+    lifecycleCallbacks: {  }

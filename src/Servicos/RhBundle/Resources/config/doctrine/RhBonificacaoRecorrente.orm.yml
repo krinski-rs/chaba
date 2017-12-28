@@ -1,0 +1,52 @@
+Servicos\RhBundle\Entity\RhBonificacaoRecorrente:
+    type: entity
+    table: rh.rh_bonificacao_recorrente
+    indexes:
+        fk_rh_bonificacao_recorrente_rh_colaborador1_idx:
+            columns:
+                - id_colaborador
+    id:
+        idBonificacaoRecorrente:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_bonificacao_recorrente
+            generator:
+                strategy: IDENTITY
+    fields:
+        idColaborador:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: id_colaborador
+        valor:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 2
+        percentual:
+            type: integer
+            nullable: true
+            unsigned: false
+        registrante:
+            type: integer
+            nullable: true
+            unsigned: false
+        dataInc:
+            type: datetime
+            nullable: true
+            column: data_inc
+        registranteEdicao:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: registrante_edicao
+        dataEdicao:
+            type: datetime
+            nullable: true
+            column: data_edicao
+        ativo:
+            type: boolean
+            nullable: true
+    lifecycleCallbacks: {  }

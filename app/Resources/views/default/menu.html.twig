@@ -1,0 +1,62 @@
+{% block menu %}
+	<div class="menu">
+		<div class="migalha">
+			<a href="/"><img src="{{ asset('bundles/base/img/home.png') }}" class="home"></a>
+		 	<a href="/"><span>SISTECH ></span></a>
+{% if navegacao is defined %}
+{% for navega in navegacao %}
+		 	<a href="{{ navega.link }}"><span>{{ navega.label|raw }}</span></a>
+{% endfor %}
+{% endif %} 
+		</div>
+		<div class="infoSistema">
+			<form action="/sistech/busca.php" method="post">
+				<div class="floatL pesquisa"> 
+					<input type="text" name="busca" placeholder="Pesquisar no Sistech">
+					<input type="submit" class="btBusca" value=" ">
+				</div>
+			</form>
+			<div class="floatL login">
+				<span>{% if login is defined %}{{ login|raw }}{% endif %} &nbsp;|<a href="/sistech/fim_sessao.php">sair</a></span>
+			</div>
+			<div class="headLogo">
+				<img src="http://192.168.10.33/inc/img/header-logo.png">
+			</div>
+		</div>
+	</div>
+	<div class="navegacao" id="navegacao">
+{% if menu is defined %}
+		<ul class="nave navegacaoMenuSistech" id="listaMenu">
+{% for mn in menu %}
+{% for item in mn %}
+			<li>
+				<a href="{{ item.link_item }}">{{ item.link_texto|convert_encoding('UTF-8', 'ISO-8859-1')|raw }}</a>
+{% if item.sub is defined and item.sub|length > 0 %}
+				<ul>
+{% for sub in item.sub %}
+{% for subItem in sub %}
+				    <li class="{% if subItem.class is defined %}{{ subItem.class }}{% endif %}">
+					    <a href="{{ subItem.link_item }}">{{ subItem.link_texto|convert_encoding('UTF-8', 'ISO-8859-1')|raw }}</a>
+					    
+					    
+{% if subItem.sub is defined and subItem.sub|length > 0 %}
+			  			<ul>
+{% for subItemSub in subItem.sub %}
+						     <li class="{% if subItemSub.class is defined %}{{ subItemSub.class }}{% endif %}">
+			     				<a href="{{ subItemSub.link_item }}">{{ subItemSub.link_texto|convert_encoding('UTF-8', 'ISO-8859-1')|raw }}</a>
+			     			</li>
+{% endfor %}
+			    		</ul>
+{% endif %}
+			   		</li>
+{% endfor %}
+{% endfor %}
+			  	</ul>
+{% endif %}
+			</li>
+{% endfor %}
+{% endfor %}
+		</ul>
+{% endif %}
+	</div>
+{% endblock %}

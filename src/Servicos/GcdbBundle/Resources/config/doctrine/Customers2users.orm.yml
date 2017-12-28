@@ -1,0 +1,56 @@
+Servicos\GcdbBundle\Entity\Customers2users:
+    type: entity
+    table: gcdb.Customers2users
+    repositoryClass: Servicos\GcdbBundle\Repository\Customers2UsersRepository
+    indexes:
+        fk_Customers2users_1_idx:
+            columns:
+                - id_customers
+        IDX_1BCCE4D6FA06E4D9:
+            columns:
+                - id_users
+    uniqueConstraints:
+        id_users:
+            columns:
+                - id_users
+                - id_customers
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        dataAbertura:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: data_abertura
+        alqtIcms:
+            type: integer
+            nullable: false
+            unsigned: false
+            default: '1'
+            column: alqt_icms
+    manyToOne:
+        idUsers:
+            targetEntity: CadUsers
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_users:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idCustomers:
+            targetEntity: Customers
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_customers:
+                    referencedColumnName: CustomerID
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

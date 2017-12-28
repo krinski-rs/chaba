@@ -1,0 +1,26 @@
+Servicos\RhBundle\Entity\RhDocumentoTipo:
+    type: entity
+    table: rh.rh_documento_tipo
+    id:
+        idDocumentoTipo:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_documento_tipo
+            generator:
+                strategy: IDENTITY
+    fields:
+        descricao:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+        dataInc:
+            type: datetime
+            nullable: true
+            column: data_inc
+        ativo:
+            type: boolean
+            nullable: true
+    lifecycleCallbacks: {  }

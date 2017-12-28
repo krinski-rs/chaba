@@ -1,0 +1,174 @@
+{% extends 'TroubleticketBundle::base.html.twig' %}
+{% use "TroubleticketBundle:BS/modal:bs_close.html.twig" %}
+{% use "TroubleticketBundle:BS/modal:bs_change_responsible.html.twig" %}
+{% block body %}
+    <div class="titleModulo">
+        <div>
+            <span>Apresentação do Boletim de Serviço (BS)</span>
+        </div>
+    </div>
+    <div class="row report-data">
+        <div class="col-sm-50" style="float:left;">
+            <h3>Informações do chamado</h3>
+            <hr>
+            <div class="col-sm-100">
+                <div class="row">
+                    <div class="col-sm-100">
+                        <label>Número do chamado:</label>
+                        <input type="text" value="{{report.getCode()}}" disabled="disabled" style="padding:0px;">
+                    </div>
+                </div>
+
+                {% if report.getParent() is not null %}
+                    {% set parentType = report.getParent().getTypeString() %}
+                    <div class="row">
+                        <div class="col-sm-{% if isAllowed(parentType, 'read') %}80 {% else %} 100 {% endif %}">
+                            <label>{{parentType}} relacionado:</label>
+                            <input type="text" value="{{report.getParent().getCode()}}" disabled="disabled" style="padding:0px;">
+                        </div>
+                        {% if isAllowed(parentType, 'read') %}
+                            <div class="col-sm-20">
+                                <a href="{{ path('troubleticket_'~parentType|lower~'_main', { 'report_id': report.getParent().getId()}) }}" target="_blank">
+                                    <button class="btn btn-primary full-width">Visualizar {{parentType}}</button>
+                                </a>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+
+                <div class="row">
+                    <div class="col-sm-100">
+                        <label>Status:</label>
+                        <input type="text" value="{{report.getStatusString()}}" disabled="disabled" style="padding:0px;">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-100">
+                        <label>Data e hora da abertura:</label>
+                        <input type="text" value="{{report.getInitialDate()|date('d/m/Y H:i:s')}}" disabled="disabled" style="padding:0px;">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-100">
+                        <label>Designação:</label>
+                        <input type="text" value="{{report.getDesignation()}}" disabled="disabled" style="padding:0px;">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-100">
+                        <label>Téc. Responsavel:</label>
+                        {% if report.getResponsible() != null  %}
+                            <input type="text" value="{{ report.getResponsibleData().nome }}" disabled="disabled" style="padding:0px;">
+                        {% else %}
+                            <input type="text" value="" disabled="disabled" style="padding:0px;">
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-100">
+                        <label>Tempo decorrido:</label>
+                        <input type="text" value="{{report.getTME()|tt_time}}" disabled="disabled" style="padding:0px;">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-100">
+                        <label>SLA:</label>
+                        <input type="text" value="{{circuit.sla.disponibilidade}}" disabled="disabled" style="padding:0px;">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-100">
+                        <label>Solicitação:</label>
+                        <input disabled="disabled" type="text" style="padding:0px;" value="{{report.getDescription()}}" >
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-100">
+                        <label>Comentários:</label>
+                        <textarea col="4" disabled="disabled" style="padding:0px;">{{report.getCommentsAsString()}}</textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-50" style="float:left;">
+            <h3>Informações do solicitante</h3>
+            <hr>
+            <div class="col-sm-100">
+                <div class="row">
+                    <div class="col-sm-100">
+                        <label>Solicitante:</label>
+                        <input type="text" value="{{report.getRequesterName()}}" disabled="disabled" style="padding:0px;">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-100">
+                        <label>Email:</label>
+                        <input type="text" value="{{report.getRequesterEmail()}}" disabled="disabled" style="padding:0px;">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-100">
+                        <label>Telefone:</label>
+                        <input type="text" value="{{report.getRequesterPhone()}}" disabled="disabled" style="padding:0px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row report_actions">
+        {% if report.getStatus() == 0 and isAllowed('BS', 'close') %}
+            <button class="btn btn-success" id="btn_close">Fechar</button>
+        {% endif %}
+
+        {% if report.canComment() and isAllowed('BS', 'comment') %}
+            <button class="btn btn-primary" id="btn_comment">Comentar</button>
+        {% endif %}
+        {% if report.canTakeOn() and isAllowed('BS', 'send_to_user') %}
+            <button type="button" class="btn btn-primary" id="btn_bs_send_to_user">Transferir Boletim</button>
+        {% elseif report.canTakeOn(session_user) and isAllowed('BS', 'take_on') %}
+            <form id="form_take_on" method="get" action="{{path('troubleticket_bs_take_on', {'id': report.getId()})}}">
+                <button type="submit" class="btn btn-primary" id="btn_take_on">Assumir</button>
+            </form>
+        {% endif %}
+        <div class="clearfix"></div>
+    </div>
+
+    <div id="comment_bs" style="display:none">
+        <div class="row">
+            <div class="col-sm-100">
+                <form method="post" action="{{ path('troubleticket_bs_comment', {'id': report.getId() }) }}">
+                    <label>*Comentário</label>
+                    <textarea name="comment" required="required"></textarea>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="close_bs" style="display:none">
+        {{ block('bs_close') }}
+    </div>
+    <div id="div_change_responsible" style="width:500px; display:none">
+        {{ block('bs_change_responsible') }}
+    </div>
+{% endblock %}
+
+{% block static_css %}
+    <link rel="stylesheet" href="{{ asset('bundles/troubleticket/js/plugins/jquery-dataTables/datatables.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/base/css/abs.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/base/css/jquery-gridsor2.css') }}" />
+{% endblock %}
+{% block static_js %}
+    <script type="text/javascript">
+        var pop_request = "{{path('troubleticket_pop_request')}}",
+            provider_request = "{{path('troubleticket_provider_request')}}",
+            yaml_form_close = JSON.parse('{{yaml_form_close|json_encode()}}'.replace(/&quot;/g,'"'));
+    </script>
+    <script type="text/javascript" src="{{ asset('bundles/troubleticket/js/bs_main.js') }}"></script>
+    <script type="text/javascript" src="/inc/js/base.js"></script>
+{% endblock %}

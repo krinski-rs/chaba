@@ -1,0 +1,60 @@
+Servicos\GcdbBundle\Entity\AdmSwitchsPortas:
+    type: entity
+    table: gcdb.adm_switchs_portas
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        portId:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: port_id
+        idSwitchs:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: id_switchs
+        idAccount:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: id_account
+        blocoIp:
+            type: string
+            nullable: true
+            length: 20
+            fixed: false
+            column: bloco_ip
+        natMask:
+            type: string
+            nullable: false
+            length: 20
+            fixed: false
+            column: nat_mask
+        interfaceNome:
+            type: string
+            nullable: true
+            length: 200
+            fixed: false
+            column: interface_nome
+        interfaceDesc:
+            type: text
+            nullable: true
+            length: 65535
+            fixed: false
+            column: interface_desc
+        dtAtiva:
+            type: datetime
+            nullable: true
+            column: dt_ativa
+        dtDesativa:
+            type: datetime
+            nullable: true
+            column: dt_desativa
+    lifecycleCallbacks: {  }

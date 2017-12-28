@@ -1,0 +1,127 @@
+Servicos\FinanceiroBundle\Entity\Contratovalor:
+    type: entity
+    table: financeiro.contratovalor
+    indexes:
+        fk_contratovalor_contrato1_idx:
+            columns:
+                - cont_codigoid
+        fk_contratovalor_moeda1_idx:
+            columns:
+                - moed_codigoid
+        fk_contratovalor_contratovalor1_idx:
+            columns:
+                - contvalo_proximocodigoid
+        fk_contratovalor_natureza1_idx:
+            columns:
+                - natu_codigoid
+        fk_contratovalor_contratovalor2_idx:
+            columns:
+                - contvalo_anteriorcodigoid
+        contvalo_datafim:
+            columns:
+                - contvalo_datafim
+    id:
+        contvaloCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: contvalo_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        contvaloDatainic:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: contvalo_datainic
+        contvaloDatafim:
+            type: datetime
+            nullable: true
+            column: contvalo_datafim
+        contvaloValor:
+            type: decimal
+            nullable: false
+            precision: 10
+            scale: 2
+            column: contvalo_valor
+        contvaloValorsemdesconto:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 2
+            column: contvalo_valorsemdesconto
+        contvaloValorsemimposto:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 2
+            column: contvalo_valorsemimposto
+        contvaloSva:
+            type: decimal
+            nullable: true
+            precision: 5
+            scale: 2
+            column: contvalo_SVA
+        contvaloScm:
+            type: decimal
+            nullable: true
+            precision: 5
+            scale: 2
+            column: contvalo_SCM
+    oneToMany:
+        contratovalorDiscriminacao:
+            targetEntity: ContratovalorDiscriminacao
+            cascade: ["persist"]
+            mappedBy: contvaloCodigoid
+        periodicidade:
+            targetEntity: Periodicidade
+            cascade: ["persist"]
+            mappedBy: contvaloCodigoid
+    manyToOne:
+        contCodigoid:
+            targetEntity: Contrato
+            cascade: {  }
+            mappedBy: null
+            inversedBy: contratovalor
+            joinColumns:
+                cont_codigoid:
+                    referencedColumnName: cont_codigoid
+            orphanRemoval: false
+        contvaloProximocodigoid:
+            targetEntity: Contratovalor
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                contvalo_proximocodigoid:
+                    referencedColumnName: contvalo_codigoid
+            orphanRemoval: false
+        contvaloAnteriorcodigoid:
+            targetEntity: Contratovalor
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                contvalo_anteriorcodigoid:
+                    referencedColumnName: contvalo_codigoid
+            orphanRemoval: false
+        moedCodigoid:
+            targetEntity: Moeda
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                moed_codigoid:
+                    referencedColumnName: moed_codigoid
+            orphanRemoval: false
+        natuCodigoid:
+            targetEntity: Natureza
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                natu_codigoid:
+                    referencedColumnName: natu_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

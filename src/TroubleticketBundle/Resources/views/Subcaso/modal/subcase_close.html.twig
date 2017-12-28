@@ -1,0 +1,18 @@
+{% block ba_subcase_close %}
+<div class="row">
+	<form id="form_close_subcase" method="POST" action="{{ path('troubleticket_ba_subcase_close', { 'subcaseId': subcases.getId()}) }}">
+		<div class="col-sm-100">
+			<div class="row">
+				<label>*Comentário</label>
+				<textarea name="form[comentario]" id="textarea_ba_subcase_comentario"></textarea>
+				<div class="error alert" id="div_error_textarea_ba_subcase_comentario"
+				style="display:none">
+					<span>Este campo precisa ser preenchido!</span>
+				</div>
+				<input type="hidden" name="" value="{{csrf_token(null)}}">
+			</div>
+			<small><em>(*) Campos obrigatórios</em></small>
+		</div>
+	</form>
+</div>
+{% endblock %}

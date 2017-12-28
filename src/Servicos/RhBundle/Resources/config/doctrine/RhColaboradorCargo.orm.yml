@@ -1,0 +1,81 @@
+Servicos\RhBundle\Entity\RhColaboradorCargo:
+    type: entity
+    table: rh.rh_colaborador_cargo
+    indexes:
+        fk_rh_colaborador_has_rh_cargo_rh_cargo1_idx:
+            columns:
+                - id_cargo
+        fk_rh_colaborador_has_rh_cargo_rh_colaborador1_idx:
+            columns:
+                - id_colaborador
+    id:
+        idColaboradorCargo:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_colaborador_cargo
+            generator:
+                strategy: IDENTITY
+    fields:
+        descricao:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+        dataInicio:
+            type: datetime
+            nullable: true
+            column: data_inicio
+        dataPrevista:
+            type: datetime
+            nullable: true
+            column: data_prevista
+        dataEdicao:
+            type: datetime
+            nullable: true
+            column: data_edicao
+        registranteEdicao:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: registrante_edicao
+        registrante:
+            type: integer
+            nullable: true
+            unsigned: false
+        dataInc:
+            type: datetime
+            nullable: true
+            column: data_inc
+        cancelado:
+            type: boolean
+            nullable: true
+            default: '0'
+        processado:
+            type: boolean
+            nullable: true
+            default: '0'
+        ativo:
+            type: boolean
+            nullable: true
+    manyToOne:
+        idCargo:
+            targetEntity: RhCargo
+            cascade: {  }
+            mappedBy: null
+            inversedBy: colaboradorCargo
+            joinColumns:
+                id_cargo:
+                    referencedColumnName: id_cargo
+            orphanRemoval: false
+        idColaborador:
+            targetEntity: RhColaborador
+            cascade: {  }
+            mappedBy: null
+            inversedBy: colaboradorCargo
+            joinColumns:
+                id_colaborador:
+                    referencedColumnName: id_colaborador
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,79 @@
+Servicos\RhBundle\Entity\RhDocumento:
+    type: entity
+    table: rh.rh_documento
+    indexes:
+        fk_rh_documento_rh_colaborador1_idx:
+            columns:
+                - id_colaborador
+        fk_rh_documento_rh_documento_tipo1_idx:
+            columns:
+                - id_documento_tipo
+    id:
+        idDocumento:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_documento
+            generator:
+                strategy: IDENTITY
+    fields:
+        dataExpedicao:
+            type: datetime
+            nullable: true
+            column: data_expedicao
+        dataVencimento:
+            type: datetime
+            nullable: true
+            column: data_vencimento
+        numero:
+            type: string
+            nullable: true
+            length: 80
+            fixed: false
+        urlDocumento:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            column: url_documento
+        dataInc:
+            type: datetime
+            nullable: true
+            column: data_inc
+        dataEdicao:
+            type: datetime
+            nullable: true
+            column: data_edicao
+        registrante:
+            type: integer
+            nullable: true
+            unsigned: false
+        registranteEdicao:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: registrante_edicao
+        ativo:
+            type: boolean
+            nullable: true
+    manyToOne:
+        idColaborador:
+            targetEntity: RhColaborador
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_colaborador:
+                    referencedColumnName: id_colaborador
+            orphanRemoval: false
+        idDocumentoTipo:
+            targetEntity: RhDocumentoTipo
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_documento_tipo:
+                    referencedColumnName: id_documento_tipo
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

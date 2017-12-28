@@ -1,0 +1,44 @@
+{% block tabela %}
+	<table class="{% if tabela.class is defined %}{{ tabela.class }}{% endif %} tabelaPrincipal" {% if tabela.width is defined %}width="{{ tabela.width }}"{% endif %} {% if tabela.id is defined %}id="{{ tabela.id }}"{% endif %}>
+		<thead class="gridHead">
+			<tr>
+{% if tabela.colunas is defined %}
+{% for coluna in tabela.colunas %}
+				<th width="{{ coluna.width }}">
+{% if coluna.text is defined %}
+					<input type="text" id="{{ coluna.text.id }}" name="{{ coluna.text.name }}" placeholder="{{ coluna.text.placeholder|raw }}">
+{% endif %}
+{% if coluna.select is defined %}
+					<select name="{{ coluna.select.name }}" id="{{ coluna.select.id }}">
+{% if coluna.select.start is defined %}
+						<option value=""> {{ coluna.select.start|raw }} </option>
+{% endif %} 
+{% if coluna.select.options is defined %}
+{% for select in coluna.select.options  %}
+						<option value="{{ select.value }}"{% if select.attr is defined %} {{ select.attr|raw }}{% endif %}> {{ select.label|raw }} </option> 
+{% endfor %}		
+{% endif %}
+					</select>
+{% endif %}
+{% if coluna.texto is defined %}
+					<span class="text"> {{ coluna.texto|raw }} </span>
+{% endif %}
+ 
+{% if coluna.config is defined %}
+					<img src="/inc/img/config.png" class="jConfigTab configuraTabela pointer" data-toggle="popover" container="body" data-placement="bottom" data-html="true" data-trigger="click" data-title="Marque para exibir as colunas" data-original-title="" title="">	
+{% endif %}
+
+				</th>
+{% endfor %} 
+{% endif %}
+			</tr>
+		</thead>
+		<tbody>
+{% if mensagemerrotabela is defined %}
+		<tr class="error">
+		 	<td colspan="20" class="celula center error">{{ mensagemerrotabela }}</td>
+		</tr>
+{% endif %}
+		</tbody>
+	</table>
+{% endblock %}

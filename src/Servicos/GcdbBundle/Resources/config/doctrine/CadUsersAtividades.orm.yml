@@ -1,0 +1,43 @@
+Servicos\GcdbBundle\Entity\CadUsersAtividades:
+    type: entity
+    table: gcdb.cad_users_atividades
+    indexes:
+        id_atividade:
+            columns:
+                - id_atividade
+        id_user:
+            columns:
+                - id_user
+        id_atividadesecundaria:
+            columns:
+                - id_atividadesecundaria
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        idAtividadesecundaria:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: id_atividadesecundaria
+        idUser:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: id_user
+    manyToOne:
+        idAtividade:
+            targetEntity: AtividadesPrimarias
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_atividade:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

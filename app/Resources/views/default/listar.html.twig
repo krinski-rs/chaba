@@ -1,0 +1,87 @@
+{% extends '::base.html.twig' %}
+{% use '::default/tabela.html.twig' %}
+{% use '::default/busca_avancada.html.twig' %}
+{% block body -%}
+	{% for flash_message in app.session.flashbag.get('error') %}
+        <div class="error">
+            <span>{{ flash_message }}</span>
+        </div>
+    {% endfor %}
+    {% for flash_message in app.session.flashbag.get('success') %}
+        <div class="sucesso">
+            <span>{{ flash_message }}</span>
+        </div>
+    {% endfor %}
+	<div class="titleModulo">
+		<div>
+			<span>{{ title|raw }}</span>
+			<div id="paginacao"></div>
+		</div>
+		<span>{% if subTitle is defined %}{{ subTitle|raw }}{% endif %}</span>
+	</div> 
+	{{ block('custom_area') }}
+    {% if lista_internalizacao is defined and lista_internalizacao == true %}
+        <div id='contadoresInternalizacao'>
+            <table id='slaSuporte' celspan="0" rowspan="0">
+                <thead>
+                    <tr>
+                        <th colspan='2'>SLA Suporte</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class='noPrazo'></td>
+                        <td>SLA no Prazo</td>
+                    </tr>
+                    <tr>
+                        <td class='ultrapassado'></td>
+                        <td>SLA Ultrapassado</td>
+                    </tr>
+                </tbody>
+            </table> 
+           <table id='slaSuporteFinanceiro' celspan="0" rowspan="0">
+                <thead>
+                    <tr>
+                        <th colspan='2'>SLA Suporte + Financeiro</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class='noPrazo'></td>
+                        <td>SLA no Prazo</td>
+                    </tr>
+                    <tr>
+                        <td class='ultrapassado'></td>
+                        <td>SLA Ultrapassado</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
+    <div style='clear: both;'></div>
+	<form id="buscaTabela">
+
+{% if buscas is defined %}
+{{ block('busca_avancada') }}
+{% endif %}
+		{{ block('tabela') }}
+	</form>
+{% if excel is defined %}
+	<span class="excel pointer" title="Exportar para excel">Exportar dados em excel</span>
+{% endif %}
+	<div id="dialog"></div>
+{% endblock %}
+{% block static_css %}
+{% if pathCss is defined %}
+{% for css in pathCss %}
+	<link rel="stylesheet" href="{{ asset( css ) }}"/>
+{% endfor %}
+{% endif %}
+{% endblock %}
+{% block static_js %}
+{% if pathJs is defined %}
+{% for js in pathJs %}
+   	<script type="text/javascript" src="{{ asset( js ) }}"></script>
+{% endfor %}
+{% endif %}
+{% endblock %}

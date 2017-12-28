@@ -1,0 +1,43 @@
+Servicos\RhBundle\Entity\RhDemissao:
+    type: entity
+    table: rh.rh_demissao
+    indexes:
+        fk_rh_demissao_rh_colaborador1_idx:
+            columns:
+                - id_colaborador
+    id:
+        idDemissao:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_demissao
+            generator:
+                strategy: IDENTITY
+    fields:
+        dataInc:
+            type: datetime
+            nullable: true
+            column: data_inc
+        registrante:
+            type: integer
+            nullable: true
+            unsigned: false
+        dataDemissao:
+            type: date
+            nullable: true
+            column: data_demissao
+        pendencia:
+            type: boolean
+            nullable: true
+    manyToOne:
+        idColaborador:
+            targetEntity: RhColaborador
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_colaborador:
+                    referencedColumnName: id_colaborador
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,40 @@
+Servicos\LumaBundle\Entity\Popautonomia:
+    type: entity
+    table: luma.popautonomia
+    indexes:
+        id_pop:
+            columns:
+                - id_pop
+    id:
+        idAutonomia:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_autonomia
+            generator:
+                strategy: IDENTITY
+    fields:
+        idPop:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: id_pop
+        dataCalculo:
+            type: datetime
+            nullable: true
+            column: data_calculo
+        capacidade:
+            type: integer
+            nullable: true
+            unsigned: false
+        autonomia:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+        ativo:
+            type: integer
+            nullable: true
+            unsigned: false
+    lifecycleCallbacks: {  }

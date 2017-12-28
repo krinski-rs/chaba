@@ -1,0 +1,51 @@
+Servicos\GcdbBundle\Entity\CloseTicketSoclicitacao:
+    type: entity
+    table: gcdb.close_ticket_soclicitacao
+    indexes:
+        fk_close_ticket_soclicitacao_close_ticket1_idx:
+            columns:
+                - close_ticket_close_ticket_id
+    id:
+        closetSoclicitacaoId:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: closet_soclicitacao_id
+            generator:
+                strategy: IDENTITY
+    fields:
+        closetSoclicitacaoNumero:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            column: closet_soclicitacao_numero
+        closeTicketDataInc:
+            type: datetime
+            nullable: true
+            column: close_ticket_data_inc
+        closeTicketSoclicitacaoInicio:
+            type: datetime
+            nullable: true
+            column: close_ticket_soclicitacao_inicio
+        closeTicketSoclicitacaoAlocacao:
+            type: datetime
+            nullable: true
+            column: close_ticket_soclicitacao_alocacao
+        closeTicketSoclicitacaoUserId:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: close_ticket_soclicitacao_user_id
+    manyToOne:
+        closeTicketCloseTicket:
+            targetEntity: CloseTicket
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                close_ticket_close_ticket_id:
+                    referencedColumnName: close_ticket_id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

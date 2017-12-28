@@ -1,0 +1,58 @@
+Servicos\LumaBundle\Entity\OrdemNfEntrada:
+    type: entity
+    table: ordem_nf_entrada
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nfDoc:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: nf_doc
+        nfSerie:
+            type: string
+            nullable: true
+            length: 3
+            fixed: false
+            column: nf_serie
+        nfStatus:
+            type: string
+            nullable: true
+            length: 1
+            fixed: false
+            column: nf_status
+        nfEmissao:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: nf_emissao
+        nfQuantidade:
+            type: float
+            nullable: false
+            column: nf_quantidade
+    manyToOne:
+        ordeCodigoid:
+            targetEntity: Ordem
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                orde_codigoid:
+                    referencedColumnName: orde_codigoid
+            orphanRemoval: false
+        prodCodigoid:
+            targetEntity: Produto
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                prod_codigoid:
+                    referencedColumnName: prod_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

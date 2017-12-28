@@ -1,0 +1,29 @@
+Servicos\LumaBundle\Entity\Pedidostatus:
+    type: entity
+    table: luma.pedidostatus
+    id:
+        pedistatCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: pedistat_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        pedistatNome:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: pedistat_nome
+        pedistatEditavel:
+            type: boolean
+            nullable: false
+            default: '0'
+            column: pedistat_editavel
+        pedistatPendente:
+            type: boolean
+            nullable: false
+            column: pedistat_pendente
+    lifecycleCallbacks: {  }

@@ -1,0 +1,18 @@
+Servicos\GcdbBundle\Entity\TicketsPermission:
+    type: entity
+    table: gcdb.Tickets_permission
+    id:
+        idUser:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_user
+            generator:
+                strategy: IDENTITY
+    fields:
+        status:
+            type: integer
+            nullable: false
+            unsigned: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,20 @@
+Servicos\LumaBundle\Entity\Pedidoarea:
+    type: entity
+    table: luma.pedidoarea
+    id:
+        pediareaCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: pediarea_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        pediareaNome:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: pediarea_nome
+    lifecycleCallbacks: {  }

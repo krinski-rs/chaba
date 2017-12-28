@@ -1,0 +1,19 @@
+Servicos\LumaBundle\Entity\ManutencaoCausa:
+    type: entity
+    table: luma.manutencao_causa
+    id:
+        causaCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: causa_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        causa:
+            type: string
+            nullable: false
+            length: 30
+            fixed: false
+    lifecycleCallbacks: {  }

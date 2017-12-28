@@ -1,0 +1,4 @@
+
+troubleticket:
+    resource: "@TroubleticketBundle/Resources/config/routing.php"
+    prefix:   /

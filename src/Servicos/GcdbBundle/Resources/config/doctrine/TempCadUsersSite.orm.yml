@@ -1,0 +1,27 @@
+Servicos\GcdbBundle\Entity\TempCadUsersSite:
+    type: entity
+    table: gcdb.temp_cad_users_site
+    indexes:
+        cad_users_site_FKIndex1:
+            columns:
+                - cad_users_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        cadUsersId:
+            type: integer
+            nullable: true
+            unsigned: true
+            column: cad_users_id
+        site:
+            type: string
+            nullable: true
+            length: 200
+            fixed: false
+    lifecycleCallbacks: {  }

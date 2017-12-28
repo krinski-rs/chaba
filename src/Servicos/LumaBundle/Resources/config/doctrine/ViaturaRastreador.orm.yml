@@ -1,0 +1,82 @@
+Servicos\LumaBundle\Entity\ViaturaRastreador:
+    type: entity
+    table: luma.viatura_rastreador
+    indexes:
+        fk_viatura_rastreador_viatura1_idx:
+            columns:
+                - viaturaid
+    id:
+        viatRastreadorid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: viat_rastreadorid
+            generator:
+                strategy: IDENTITY
+    fields:
+        rastCadUsuarioid:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: rast_cad_usuarioid
+        rastUsuarioidAlteracao:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: rast_usuarioid_alteracao
+        rastMotivoAlteracao:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            column: rast_motivo_alteracao
+        rastDataAlteracao:
+            type: datetime
+            nullable: true
+            column: rast_data_alteracao
+        rastDatainc:
+            type: datetime
+            nullable: true
+            default: CURRENT_TIMESTAMP
+            column: rast_datainc
+        rastNumero:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            column: rast_numero
+        rastChip:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            column: rast_chip
+        rastChipNumero:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            column: rast_chip_numero
+        rastOperadora:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            column: rast_operadora
+        rastAtivo:
+            type: boolean
+            nullable: true
+            default: '1'
+            column: rast_ativo
+    manyToOne:
+        viaturaid:
+            targetEntity: Viatura
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                viaturaid:
+                    referencedColumnName: viaturaid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

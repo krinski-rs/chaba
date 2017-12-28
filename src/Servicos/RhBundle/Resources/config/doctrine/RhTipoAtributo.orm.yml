@@ -1,0 +1,24 @@
+Servicos\RhBundle\Entity\RhTipoAtributo:
+    type: entity
+    table: rh.rh_tipo_atributo
+    id:
+        idTipoAtributo:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_tipo_atributo
+            generator:
+                strategy: IDENTITY
+    fields:
+        descricao:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+        ativo:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+    lifecycleCallbacks: {  }

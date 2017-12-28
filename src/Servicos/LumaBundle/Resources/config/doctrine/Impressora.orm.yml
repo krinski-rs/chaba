@@ -1,0 +1,56 @@
+Servicos\LumaBundle\Entity\Impressora:
+    type: entity
+    table: luma.impressora
+    indexes:
+        fk_unidade_impressora_idx:
+            columns:
+                - unid_codigoid
+    id:
+        impressoraId:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: impressora_id
+            generator:
+                strategy: IDENTITY
+    fields:
+        unidCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: unid_codigoid
+        host:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+        descricao:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+        tipo:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+        fila:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+        ip:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+        ativo:
+            type: boolean
+            nullable: false
+        localizacao:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+    lifecycleCallbacks: {  }

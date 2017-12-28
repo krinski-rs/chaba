@@ -1,0 +1,62 @@
+Servicos\LumaBundle\Entity\Industrializacao:
+    type: entity
+    table: luma.industrializacao
+    indexes:
+        fk_industrializacao_produto1:
+            columns:
+                - prod_codigoid
+    id:
+        induCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: indu_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        induQuantidade:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+            column: indu_quantidade
+        induDatainc:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: indu_datainc
+        induFabricantecodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: indu_fabricantecodigoid
+        induAuditorcodigoid:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: indu_auditorcodigoid
+        induAlditoriadatainc:
+            type: datetime
+            nullable: true
+            column: indu_alditoriadatainc
+        induAprovadosn:
+            type: boolean
+            nullable: true
+            column: indu_aprovadosn
+        moviCodigoid:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: movi_codigoid
+    manyToOne:
+        prodCodigoid:
+            targetEntity: Produto
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                prod_codigoid:
+                    referencedColumnName: prod_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

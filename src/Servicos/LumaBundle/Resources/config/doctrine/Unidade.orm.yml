@@ -1,0 +1,88 @@
+Servicos\LumaBundle\Entity\Unidade:
+    type: entity
+    repositoryClass: Servicos\LumaBundle\Repository\UnidadeRepository
+    table: luma.unidade
+    indexes:
+        fk_unidade_unidade1:
+            columns:
+                - unid_paicodigoid
+    id:
+        unidCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: unid_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        circCodigoid:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: circ_codigoid
+        endeentrCodigoid:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: endeentr_codigoid
+        unidNome:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+            column: unid_nome
+        unidStechcodigoid:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: unid_stechcodigoid
+        unidDatainc:
+            type: datetime
+            nullable: true
+            default: CURRENT_TIMESTAMP
+            column: unid_datainc
+        unidAtivo:
+            type: boolean
+            nullable: false
+            default: '1'
+            column: unid_ativo
+        unidOculto:
+            type: boolean
+            nullable: false
+            default: '0'
+            column: unid_oculto
+        unidLocaldeentrega:
+            type: boolean
+            nullable: true
+            default: '0'
+            column: unid_localdeentrega
+    oneToMany:
+        estoque:
+            targetEntity: Estoque
+            cascade: ['persist']
+            mappedBy: unidCodigoid
+    manyToOne:
+        unidPaicodigoid:
+            targetEntity: Unidade
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                unid_paicodigoid:
+                    referencedColumnName: unid_codigoid
+            orphanRemoval: false
+    manyToMany:
+        tipo:
+            targetEntity: Tipo
+            cascade: ['persist']
+            inversedBy: unidade
+            joinTable:
+                name: luma.tipounidade
+                joinColumns:
+                    unid_codigoid:
+                        referencedColumnName: unid_codigoid
+                inverseJoinColumns:
+                    tipo_codigoid:
+                        referencedColumnName: tipo_codigoid
+    lifecycleCallbacks: {  }

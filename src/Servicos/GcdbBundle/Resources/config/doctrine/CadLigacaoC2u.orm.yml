@@ -1,0 +1,68 @@
+Servicos\GcdbBundle\Entity\CadLigacaoC2u:
+    type: entity
+    repositoryClass: Servicos\GcdbBundle\Repository\CadLigacaoC2uRepository
+    table: gcdb.cad_ligacao_c2u
+    indexes:
+        cad_ligacao_u2u_FKIndex1:
+            columns:
+                - adm_tipo_ligacao_id
+        cad_ligacao_u2u_FKIndex2:
+            columns:
+                - cad_users_id2
+        cad_ligacao_u2u_FKIndex3:
+            columns:
+                - cad_cid_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        dtInicio:
+            type: date
+            nullable: true
+            column: dt_inicio
+        dtFim:
+            type: date
+            nullable: true
+            column: dt_fim
+        cargo:
+            type: string
+            nullable: true
+            length: 200
+            fixed: false
+        cobranca:
+            type: boolean
+            nullable: false
+    manyToOne:
+        cadCid:
+            targetEntity: Customers
+            cascade: {  }
+            mappedBy: null
+            inversedBy: cadLigacaoC2u
+            joinColumns:
+                cad_cid_id:
+                    referencedColumnName: CustomerID
+            orphanRemoval: false
+        cadUsers2:
+            targetEntity: CadUsers
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cad_users_id2:
+                    referencedColumnName: id
+            orphanRemoval: false
+        admTipoLigacao:
+            targetEntity: AdmTipoLigacao
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                adm_tipo_ligacao_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,29 @@
+Servicos\GcdbBundle\Entity\AutGrupos:
+    type: entity
+    repositoryClass: Servicos\GcdbBundle\Repository\AutGruposRepository
+    table: gcdb.aut_grupos
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nome:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+            default: ''
+    oneToMany:
+        autUsuariosHasGrupos:
+            targetEntity: AutUsuariosHasGrupos
+            mappedBy: autGrupos
+            cascade: {  }
+        autPermissoesGrupos:
+            targetEntity: AutPermissoesGrupos
+            mappedBy: autGrupos
+            cascade: {  }
+    lifecycleCallbacks: {  }

@@ -1,0 +1,295 @@
+@import url("fonts.css");
+a, a:hover{
+	text-decoration: none !important;
+}
+
+/*=== Menu ===*/
+
+.nave, .nave-footer {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+  z-index: 99 !important;
+
+}
+
+.nave li, .nave-footer li {
+  float: left;
+  position: relative;
+  border: none;
+  z-index: 98 !important;
+}
+
+.nave li{  border-right: 1px solid #FFF; }
+
+.nave li a, .nave-footer li a {
+  color: #000;
+  display: block;
+  text-decoration: none;
+  height: 21px;
+  padding: 7px 10px 0px 10px;
+  font-family: 'Conv_myriad-web-pro',Sans-Serif;
+  border-top: 1px #FFF;
+  z-index: 100 !important;
+}
+
+.nave li a:hover, .nave li a:active, .ativoMenu, .nave-footer li a:hover, .nave-footer li a:active{
+  color:#FFF !important;
+  background-color: #0088D2;
+  /*border-top-right-radius: 7px;
+  border-top-left-radius: 7px; */
+
+}
+
+.nave li a:active, .nave-footer li a:active {
+	color:#FFF !important;
+	background-color: #0088D2;
+	
+}
+
+.celula{
+	font-size: 11px;
+	text-align: left;
+	padding: 4px;
+	border:#cdcdcd 1px solid;
+	
+
+}
+
+
+/*=== submenu ===*/
+
+.nave li ul, .nave-footer li ul {
+  display: none;
+  position: absolute;
+  margin-left: 0px;
+  list-style: none;
+  background-color: #CCCCCC;
+  padding:0;
+  border-top:1px solid #FFF;
+  z-index: 9999 !important;
+
+
+}
+
+.nave li ul li, .nave-footer li ul li {
+  border-top: 1px #fff !important;
+  margin: 0 !important;
+  z-index: 9999 !important;
+
+}
+
+.nave li ul li a, .nave-footer li ul li a {
+  display: block;
+  border-radius: 0;
+  width: 200px !important;
+  height: auto;
+  color: #000;
+  text-decoration: none;
+  border-radius: 0 !important;
+  margin: 0 !important;
+  text-align: left;
+  z-index: 9999 !important;
+
+
+}
+
+.nave ul li a:hover, .nave-footer ul li a:hover {
+  color: #FFF;
+  z-index: 9999 !important;
+}
+
+.nave ul a, .nave-footer ul a{
+	display: block;
+	/* height: 15px; */
+	padding: 7px 8px;
+	color: #fff;
+	text-decoration: none;
+	border-bottom: 1px solid #FFF
+}
+
+/*====== Barra footer =====*/
+
+.paginacaoFooter{
+	display:none;
+	width: 100%;
+	height: 28px;
+	background-color: #CCCCCC;
+	bottom: 0;
+	margin-top: 10px;
+	padding:0 2.25% 0 2.25%;
+}
+
+.botaoresp{
+	width: 25px !important;
+	height: 25px !important;
+	background-image: url(/rh/inc/img/botao_resp.png) !important;
+	background-repeat: no-repeat !important;
+	background-position: center !important;
+	cursor:pointer !important;
+	background-color: transparent !important;
+	border: none !important;
+}
+
+.botaoresp:hover{
+}
+
+.menufooter{
+	padding-left: 2.5%;
+	bottom: 30px;
+	position:fixed;
+	width: 10%;
+}
+
+.ui-corner-all .ui-state-focus , .ui-corner-all{
+	font-family:'Conv_myriad-web-pro',Sans-Serif;
+
+}
+
+.ui-menu .ui-menu-icon{
+	position:absolute !important;
+	width: 100% !important;
+}
+
+
+.ui-menu.ui-widget.ui-widget-content.ui-corner-all{
+	font-size: 13px !important;
+	width: 100px;
+
+
+}
+
+.ui-menu .ui-menu{
+	width: 50%;
+}
+
+
+#myModal{
+	z-index: 9999;
+}
+
+.buscaAvancada{
+	width: 23px;
+	height: 23px;
+}
+
+body.index .colaborador-menu, 
+body.colaborar-body .colaborador-menu, 
+body.config .parametros-menu,
+body.beneficio-body .parametros-menu,
+body.cargo .parametros-menu{
+	color: #FFF !important; 
+	background-color: #0088D2; 
+	border-top-right-radius: 7px; 
+	border-top-left-radius: 7px;
+}
+
+.botaoresp.floatL{
+	
+	z-index: 9999;
+}
+
+/*====== Menu Fotter =====*/
+
+.menu-footer .nave-footer { bottom: 24px !important; }
+.menu-footer .nave-footer li ul { margin: -57px 0 0 200px  }
+.nave-footer li ul { display: none; }
+#navegacao .nave li ul li ul { margin: -36px 0 0 201px !important; }
+
+
+.menu-active-hover { background-color: #0088D2;}
+
+
+.configuser:after {
+	background: #0088D2;
+	border: solid #0088D2 1px;
+  	border-radius: 0;
+}
+
+.toltipUser{
+	border: solid #0088D2 3px !important;
+  	border-radius: 0 !important;
+  	box-shadow: none !important;
+}
+
+.toltipUser .config{
+	padding: 3px;
+  	border-bottom: 1px solid #CCC;
+  	font-size: 10px !important;
+  	display: block;
+  	text-align: left;
+  	background-color: #FFF;
+  	width: 100%;
+  	height: auto;
+}
+
+.configuser {
+	width: 70px;
+	height: 16px;
+	overflow: hidden;
+	position: absolute;
+	left: 50%;
+	margin-left: -35px;
+	bottom: -16px;
+}
+
+.ui-tooltip-content .contetConfig > span{
+	font-size: 10px;
+ 	padding: 5px;
+  	display: block;
+	background-color: #ECECEC;
+  	margin-top: 5px;
+}
+
+.ui-tooltip-content .contetConfig > span:hover{
+	background-color: #CECECE;
+	cursor: pointer;
+}
+
+.ui-tooltip-content .contetConfig{
+	text-align: left
+}
+
+.ui-tooltip-content .contetConfig .ui-icon{
+	display: inline-block;
+	margin: -3px 0;
+	float: right;
+}
+
+.configuser.top {
+	top: -16px;
+	bottom: auto;
+}
+.configuser.left {
+	left: 20%;
+}
+.configuser:after {
+  	content: "";
+  	position: absolute;
+  	left: 20px;
+  	top: -20px;
+  	width: 25px;
+  	height: 25px;
+  	box-shadow: 6px 5px 9px -9px black;
+  	-webkit-transform: rotate(45deg);
+  	-ms-transform: rotate(45deg);
+  	transform: rotate(45deg);
+}
+.configuser.top:after {
+  	bottom: -20px;
+  	top: auto;
+}
+
+.alteraPassword input{
+	border-radius: 0px;
+  	font-size: 12px;
+  	color: #306398 !important;
+  	width: 100%;
+}
+
+.alteraPassword label{
+	margin-top: 10px;
+  	display: block;
+	font-size: 14px;
+  	font-family: Dax-Bold;
+}

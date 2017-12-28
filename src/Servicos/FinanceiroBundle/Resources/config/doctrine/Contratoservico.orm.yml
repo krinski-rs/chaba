@@ -1,0 +1,46 @@
+Servicos\FinanceiroBundle\Entity\Contratoservico:
+    type: entity
+    table: financeiro.contratoservico
+    indexes:
+        fk_contratoservico_contrato1_idx:
+            columns:
+                - cont_codigoid
+        fk_contratoservico_servicocapacidade1_idx:
+            columns:
+                - servcapa_codigoid
+    id:
+        contservCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: contserv_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        contservCircuito:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            column: contserv_circuito
+    manyToOne:
+        contCodigoid:
+            targetEntity: Contrato
+            cascade: {  }
+            mappedBy: null
+            inversedBy: contratoservico
+            joinColumns:
+                cont_codigoid:
+                    referencedColumnName: cont_codigoid
+            orphanRemoval: false
+        servcapaCodigoid:
+            targetEntity: Servicocapacidade
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                servcapa_codigoid:
+                    referencedColumnName: servcapa_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

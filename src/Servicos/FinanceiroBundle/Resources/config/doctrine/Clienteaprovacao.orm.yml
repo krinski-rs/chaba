@@ -1,0 +1,44 @@
+Servicos\FinanceiroBundle\Entity\Clienteaprovacao:
+    type: entity
+    table: financeiro.clienteaprovacao
+    indexes:
+        fk_clienteaprovacao_aprovacao1_idx:
+            columns:
+                - apro_codigoid
+    id:
+        clieaproCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: clieapro_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        clieCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: clie_codigoid
+        usuaCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: usua_codigoid
+        clieaproDelin:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: "clieapro_delin 1='Sempre'\nclieapro_delin 2='Nunca'"
+            column: clieapro_delin
+    manyToOne:
+        aproCodigoid:
+            targetEntity: Aprovacao
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                apro_codigoid:
+                    referencedColumnName: apro_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

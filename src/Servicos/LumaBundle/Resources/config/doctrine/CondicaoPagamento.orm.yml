@@ -1,0 +1,29 @@
+Servicos\LumaBundle\Entity\CondicaoPagamento:
+    type: entity
+    table: condicao_pagamento
+    uniqueConstraints:
+        condicao_pagamento_uk1:
+            columns:
+                - condpag_codigo
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        condpagCodigo:
+            type: string
+            nullable: false
+            length: 3
+            fixed: false
+            column: condpag_codigo
+        condpagDescricao:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: condpag_descricao
+    lifecycleCallbacks: {  }

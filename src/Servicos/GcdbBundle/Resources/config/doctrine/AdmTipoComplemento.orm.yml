@@ -1,0 +1,24 @@
+Servicos\GcdbBundle\Entity\AdmTipoComplemento:
+    type: entity
+    repositoryClass: Servicos\GcdbBundle\Repository\AdmTipoComplementoRepository
+    table: gcdb.adm_tipo_complemento
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nome:
+            type: string
+            nullable: true
+            length: 30
+            fixed: false
+        sigla:
+            type: string
+            nullable: true
+            length: 4
+            fixed: true
+    lifecycleCallbacks: {  }

@@ -1,0 +1,26 @@
+Servicos\GcdbBundle\Entity\Chat:
+    type: entity
+    table: gcdb.chat
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        data:
+            type: datetime
+            nullable: false
+        user:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+        recado:
+            type: text
+            nullable: false
+            length: 65535
+            fixed: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,61 @@
+Servicos\GcdbBundle\Entity\Historicoacesso:
+    type: entity
+    table: gcdb.historicoacesso
+    indexes:
+        fk_historicoacesso_1_idx:
+            columns:
+                - cad_users
+        fk_historicoacesso_2_idx:
+            columns:
+                - customerid
+    id:
+        histaceCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: histace_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        histaceTipo:
+            type: boolean
+            nullable: false
+            column: histace_tipo
+        histaceDatainc:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: histace_datainc
+        histaceSessao:
+            type: string
+            nullable: false
+            length: 32
+            fixed: false
+            column: histace_sessao
+        histaceIp:
+            type: string
+            nullable: false
+            length: 15
+            fixed: false
+            column: histace_ip
+    manyToOne:
+        cadUsers:
+            targetEntity: CadUsers
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cad_users:
+                    referencedColumnName: id
+            orphanRemoval: false
+        customerid:
+            targetEntity: Customers
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                customerid:
+                    referencedColumnName: CustomerID
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

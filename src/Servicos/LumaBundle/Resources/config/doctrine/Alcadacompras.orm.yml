@@ -1,0 +1,48 @@
+Servicos\LumaBundle\Entity\Alcadacompras:
+    type: entity
+    table: luma.alcadacompras
+    repositoryClass: Servicos\LumaBundle\Repository\AlcadacomprasRepository
+    indexes:
+        fk_alcadacompras_unidade1:
+            columns:
+                - unid_codigoid
+        alca_valormaximolimite:
+            columns:
+                - alca_valormaximolimite
+    uniqueConstraints:
+        unid_codigoid:
+            columns:
+                - unid_codigoid
+    id:
+        alcaCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: alca_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        alcaValormaximo:
+            type: decimal
+            nullable: false
+            precision: 10
+            scale: 2
+            column: alca_valormaximo
+        alcaValormaximolimite:
+            type: decimal
+            nullable: false
+            precision: 10
+            scale: 2
+            column: alca_valormaximolimite
+    manyToOne:
+        unidCodigoid:
+            targetEntity: Unidade
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                unid_codigoid:
+                    referencedColumnName: unid_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

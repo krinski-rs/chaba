@@ -1,0 +1,61 @@
+Servicos\GcdbBundle\Entity\CircuitoPop:
+    type: entity
+    table: gcdb.circuito_pop
+    indexes:
+        fk_circuito_pop_circuito1_idx:
+            columns:
+                - circ_codigoid
+        index3:
+            columns:
+                - endeentratrivalo_codigoid
+    id:
+        idCircuitoPop:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_circuito_pop
+            generator:
+                strategy: IDENTITY
+    fields:
+        registrante:
+            type: integer
+            nullable: true
+            unsigned: false
+        dataInc:
+            type: datetime
+            nullable: true
+            default: CURRENT_TIMESTAMP
+            column: data_inc
+        ativo:
+            type: boolean
+            nullable: true
+    manyToOne:
+        endeentratrivaloCodigoid:
+            targetEntity: Servicos\FinanceiroBundle\Entity\Enderecoentregaatributovalor
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                endeentratrivalo_codigoid:
+                    referencedColumnName: endeentratrivalo_codigoid
+            orphanRemoval: false
+        circCodigoid:
+            targetEntity: Circuito
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                circ_codigoid:
+                    referencedColumnName: circ_codigoid
+            orphanRemoval: false
+        idPop:
+            targetEntity: Servicos\LumaBundle\Entity\Pop
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_pop:
+                    referencedColumnName: id_pop
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

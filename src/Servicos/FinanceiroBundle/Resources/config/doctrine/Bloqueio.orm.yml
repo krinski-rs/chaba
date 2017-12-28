@@ -1,0 +1,20 @@
+Servicos\FinanceiroBundle\Entity\Bloqueio:
+    type: entity
+    table: financeiro.bloqueio
+    id:
+        bloqCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: bloq_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        bloqAcao:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            column: bloq_acao
+    lifecycleCallbacks: {  }

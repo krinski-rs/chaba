@@ -1,0 +1,68 @@
+Servicos\LumaBundle\Entity\Categoria:
+    type: entity
+    table: luma.categoria
+    indexes:
+        fk_categoria:
+            columns:
+                - cate_paicodigoid
+        fk_categoria_ncm1:
+            columns:
+                - ncm_codigoid
+    id:
+        cateCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: cate_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        cateNome:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: cate_nome
+        cateDescricao:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: cate_descricao
+        cateDatainc:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: cate_datainc
+        cateAtivo:
+            type: boolean
+            nullable: false
+            default: '1'
+            column: cate_ativo
+        cateOrdem:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            column: cate_ordem
+    manyToOne:
+        catePaicodigoid:
+            targetEntity: Categoria
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cate_paicodigoid:
+                    referencedColumnName: cate_codigoid
+            orphanRemoval: false
+        ncmCodigoid:
+            targetEntity: Ncm
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                ncm_codigoid:
+                    referencedColumnName: ncm_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

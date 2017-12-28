@@ -1,0 +1,68 @@
+Servicos\FinanceiroBundle\Entity\Recebimento:
+    type: entity
+    table: financeiro.recebimento
+    indexes:
+        fk_recebimento_fatura1_idx:
+            columns:
+                - fatu_codigoid
+        fk_recebimento_lotebancario1_idx:
+            columns:
+                - lotebanc_codigoid
+    id:
+        receCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: rece_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        receDatainc:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: rece_datainc
+        receValor:
+            type: decimal
+            nullable: false
+            precision: 10
+            scale: 2
+            column: rece_valor
+        receValormulta:
+            type: decimal
+            nullable: false
+            precision: 10
+            scale: 2
+            column: rece_valormulta
+        receValorjuros:
+            type: decimal
+            nullable: false
+            precision: 10
+            scale: 2
+            column: rece_valorjuros
+        receDatarecebido:
+            type: datetime
+            nullable: false
+            default: '0000-00-00 00:00:00'
+            column: rece_datarecebido
+    manyToOne:
+        fatuCodigoid:
+            targetEntity: Fatura
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                fatu_codigoid:
+                    referencedColumnName: fatu_codigoid
+            orphanRemoval: false
+        lotebancCodigoid:
+            targetEntity: Lotebancario
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                lotebanc_codigoid:
+                    referencedColumnName: lotebanc_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

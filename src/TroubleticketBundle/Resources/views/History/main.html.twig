@@ -1,0 +1,39 @@
+{% extends 'TroubleticketBundle::base.html.twig' %}
+{% set typeString = reports.getTypeString() %}
+{% block body %}
+<div class="titleModulo">
+    <div>
+        <span>Histórico de {{typeString}}</span>
+    </div>
+</div>
+<div class="row report_actions">
+    <a href="{{ path('troubleticket_'~typeString|lower~'_main', {'report_id' : reports.getId()})}}" style="float:right;">
+        <button  class="btn btn-primary">Visualizar {{typeString}}</button>
+    </a>
+    <div class="clearfix"></div>
+</div>
+<table class="gridsort" style="width:100%" id="historico">
+    <thead>
+        <tr>
+            <th>Status</th>
+            <th>Data e hora</th>
+            <th>Usuário</th>
+            <th>Comentário</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for history in reports.getHistories() %}
+        {% set reason = history.getReason() ? "Motivo: " ~ history.getReason() : '' %}
+        <tr>
+            <td style='width:13%;'>{{history.getStatusReportString()}}</td>
+            <td style='width:13%;'>{{history.getDate().format('d/m/Y H:i:s')}}</td>
+            <td style='width:16%;'>{{history.getUserName()}}</td>
+            <td style='width:68%;'><div class="comentario">{{history.getComment()|nl2br}} <br /> {{reason}}</div></td>
+        </tr>
+    {% endfor%}
+    </tbody>
+</table>
+{% endblock %}
+{% block static_css %}
+    <link rel="stylesheet" href="{{ asset('bundles/troubleticket/css/style.css') }}" />
+{% endblock %}

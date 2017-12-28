@@ -1,0 +1,36 @@
+Servicos\GcdbBundle\Entity\ParceirosCustomers:
+    type: entity
+    table: gcdb.Parceiros_Customers
+    indexes:
+        CustomerID:
+            columns:
+                - CustomerID
+        UsuarioID:
+            columns:
+                - UsuarioID
+        ComissaoID:
+            columns:
+                - ComissaoID
+    id:
+        customerid:
+            type: integer
+            nullable: false
+            unsigned: false
+            default: '0'
+            id: true
+            column: CustomerID
+        usuarioid:
+            type: integer
+            nullable: false
+            unsigned: false
+            default: '0'
+            id: true
+            column: UsuarioID
+        comissaoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            default: '0'
+            id: true
+            column: ComissaoID
+    lifecycleCallbacks: {  }

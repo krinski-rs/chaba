@@ -1,0 +1,44 @@
+Servicos\GcdbBundle\Entity\CadUsersNome:
+    type: entity
+    table: gcdb.cad_users_nome
+    indexes:
+        cad_users_nome_FKIndex1:
+            columns:
+                - cad_users_id
+        cad_users_nome_FKIndex2:
+            columns:
+                - adm_tipo_nome_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nome:
+            type: string
+            nullable: true
+            length: 200
+            fixed: false
+    manyToOne:
+        cadUsers:
+            targetEntity: CadUsers
+            cascade: {  }
+            mappedBy: null
+            inversedBy: cadUsersNome
+            joinColumns:
+                cad_users_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        admTipoNome:
+            targetEntity: AdmTipoNome
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                adm_tipo_nome_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

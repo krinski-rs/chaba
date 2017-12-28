@@ -1,0 +1,11 @@
+.row .ui-multiselect{
+	width: 100% !important;
+}
+
+.formBuscaAvancada .ui-multiselect{
+	 width: 250px !important;
+}
+
+.adicionar-usuario-canal{
+	margin-top: 10px;
+}

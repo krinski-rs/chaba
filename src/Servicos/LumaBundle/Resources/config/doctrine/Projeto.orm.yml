@@ -1,0 +1,83 @@
+Servicos\LumaBundle\Entity\Projeto:
+    type: entity
+    table: luma.projeto
+    indexes:
+        aut_usuario:
+            columns:
+                - aut_usuario
+        pedistat_codigoid:
+            columns:
+                - pedistat_codigoid
+        desig_codigodi:
+            columns:
+                - desig_codigoid
+    id:
+        projCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: proj_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        nome:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+        projDatainc:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: proj_datainc
+        autUsuario:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: aut_usuario
+        projObservacao:
+            type: text
+            nullable: true
+            length: 65535
+            fixed: false
+            column: proj_observacao
+        projDocumento:
+            type: text
+            nullable: true
+            length: 65535
+            fixed: false
+            column: proj_documento
+        desigCodigoid:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: desig_codigoid
+    manyToOne:
+        pedistatCodigoid:
+            targetEntity: Pedidostatus
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                pedistat_codigoid:
+                    referencedColumnName: pedistat_codigoid
+            orphanRemoval: false
+    manyToMany:
+        pediCodigoid:
+            targetEntity: Pedido
+            cascade: {  }
+            mappedBy: null
+            inversedBy: projCodigoid
+            joinTable:
+                name: projeto_pedido
+                joinColumns:
+                    -
+                        name: proj_codigoid
+                        referencedColumnName: proj_codigoid
+                inverseJoinColumns:
+                    -
+                        name: pedi_codigoid
+                        referencedColumnName: pedi_codigoid
+            orderBy: null
+    lifecycleCallbacks: {  }

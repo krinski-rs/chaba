@@ -1,0 +1,50 @@
+Servicos\LumaBundle\Entity\Fornecedorproduto:
+    type: entity
+    table: luma.fornecedorproduto
+    indexes:
+        fk_fornecedorproduto_unidade1:
+            columns:
+                - unid_codigoid
+        fk_fornecedorproduto_produto1:
+            columns:
+                - prod_codigoid
+    uniqueConstraints:
+        prod:
+            columns:
+                - unid_codigoid
+                - prod_codigoid
+    id:
+        fornprodCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: fornprod_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        fornprodAtivo:
+            type: boolean
+            nullable: false
+            default: '0'
+            column: fornprod_ativo
+    manyToOne:
+        prodCodigoid:
+            targetEntity: Produto
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                prod_codigoid:
+                    referencedColumnName: prod_codigoid
+            orphanRemoval: false
+        unidCodigoid:
+            targetEntity: Unidade
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                unid_codigoid:
+                    referencedColumnName: unid_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

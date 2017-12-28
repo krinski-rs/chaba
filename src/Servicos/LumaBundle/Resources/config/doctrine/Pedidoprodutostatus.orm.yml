@@ -1,0 +1,40 @@
+Servicos\LumaBundle\Entity\Pedidoprodutostatus:
+    type: entity
+    table: luma.pedidoprodutostatus
+    id:
+        pediprodstatCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: pediprodstat_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        pediprodstatNome:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: pediprodstat_nome
+        pediprodstatEditavel:
+            type: boolean
+            nullable: false
+            default: '0'
+            column: pediprodstat_editavel
+        pediprodstatRemovivel:
+            type: boolean
+            nullable: false
+            default: '0'
+            column: pediprodstat_removivel
+        pediprodstatSubstituivel:
+            type: boolean
+            nullable: false
+            default: '0'
+            column: pediprodstat_substituivel
+        pediprodstatVisivel:
+            type: boolean
+            nullable: false
+            default: '1'
+            column: pediprodstat_visivel
+    lifecycleCallbacks: {  }

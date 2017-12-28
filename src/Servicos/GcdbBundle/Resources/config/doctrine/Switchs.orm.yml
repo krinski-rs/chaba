@@ -1,0 +1,53 @@
+Servicos\GcdbBundle\Entity\Switchs:
+    type: entity
+    table: gcdb.switchs
+    id:
+        idswitch:
+            type: integer
+            nullable: false
+            unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nome:
+            type: string
+            nullable: false
+            length: 100
+            fixed: true
+        pop:
+            type: string
+            nullable: false
+            length: 50
+            fixed: true
+        localizacao:
+            type: string
+            nullable: false
+            length: 150
+            fixed: true
+        ipadmin:
+            type: string
+            nullable: false
+            length: 15
+            fixed: true
+        vlanadmin:
+            type: string
+            nullable: false
+            length: 4
+            fixed: true
+        modelo:
+            type: string
+            nullable: false
+            length: 40
+            fixed: true
+        usuario:
+            type: string
+            nullable: false
+            length: 30
+            fixed: true
+        senha:
+            type: string
+            nullable: false
+            length: 50
+            fixed: true
+    lifecycleCallbacks: {  }

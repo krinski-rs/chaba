@@ -1,0 +1,114 @@
+Servicos\LumaBundle\Entity\ViaturaBaixa:
+    type: entity
+    table: luma.viatura_baixa
+    indexes:
+        fk_baixa_viatura1_idx:
+            columns:
+                - viaturaid
+        fk_quilometragem_saida_idx:
+            columns:
+                - quilometragem_saida
+        fk_quilometragem_retorno_idx:
+            columns:
+                - quilometragem_retorno
+        fk_viatura_baixa_tipo_idx:
+            columns:
+                - baixa_tipo
+    id:
+        viatBaixaid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: viat_baixaid
+            generator:
+                strategy: IDENTITY
+    fields:
+        baixaCadUsuarioid:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: baixa_cad_usuarioid
+        baixaMotivo:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: baixa_motivo
+        baixaDestinoSistechid:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: baixa_destino_sistechid
+        baixaDatainc:
+            type: datetime
+            nullable: true
+            default: CURRENT_TIMESTAMP
+            column: baixa_datainc
+        baixaDataPrevista:
+            type: datetime
+            nullable: true
+            column: baixa_data_prevista
+        baixaDatafim:
+            type: datetime
+            nullable: true
+            column: baixa_datafim
+        baixaPermanente:
+            type: boolean
+            nullable: true
+            column: baixa_permanente
+        observacaoRetorno:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            column: observacao_retorno
+        baixaRetornoUsuarioid:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: baixa_retorno_usuarioid
+        baixaValor:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 2
+            column: baixa_valor
+    manyToOne:
+        baixaTipo:
+            targetEntity: Tipo
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                baixa_tipo:
+                    referencedColumnName: tipo_codigoid
+            orphanRemoval: false
+        quilometragemRetorno:
+            targetEntity: ViaturaQuilometragem
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                quilometragem_retorno:
+                    referencedColumnName: viat_quilometragemid
+            orphanRemoval: false
+        quilometragemSaida:
+            targetEntity: ViaturaQuilometragem
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                quilometragem_saida:
+                    referencedColumnName: viat_quilometragemid
+            orphanRemoval: false
+        viaturaid:
+            targetEntity: Viatura
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                viaturaid:
+                    referencedColumnName: viaturaid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

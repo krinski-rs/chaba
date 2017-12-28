@@ -1,0 +1,37 @@
+Servicos\GcdbBundle\Entity\AdmCidades:
+    type: entity
+    table: gcdb.adm_cidades
+    indexes:
+        adm_cidades_FKIndex1:
+            columns:
+                - adm_uf_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nome:
+            type: string
+            nullable: true
+            length: 30
+            fixed: false
+        codigoIbge:
+            type: integer
+            nullable: true
+            length: 7
+            column: codigo_ibge
+    manyToOne:
+        admUf:
+            targetEntity: AdmUf
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                adm_uf_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

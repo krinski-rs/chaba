@@ -1,0 +1,20 @@
+Servicos\FinanceiroBundle\Entity\Nivel:
+    type: entity
+    table: financeiro.nivel
+    id:
+        niveCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: nive_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        niveNome:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            column: nive_nome
+    lifecycleCallbacks: {  }

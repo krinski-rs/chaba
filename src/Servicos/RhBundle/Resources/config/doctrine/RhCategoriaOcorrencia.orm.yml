@@ -1,0 +1,30 @@
+Servicos\RhBundle\Entity\RhCategoriaOcorrencia:
+    type: entity
+    table: rh.rh_categoria_ocorrencia
+    id:
+        idCategoriaOcorrencia:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_categoria_ocorrencia
+            generator:
+                strategy: IDENTITY
+    fields:
+        descricao:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+        advertencia:
+            type: boolean
+            nullable: true
+        emailGestor:
+            type: boolean
+            nullable: true
+            column: email_gestor
+        emailRh:
+            type: boolean
+            nullable: true
+            column: email_rh
+    lifecycleCallbacks: {  }

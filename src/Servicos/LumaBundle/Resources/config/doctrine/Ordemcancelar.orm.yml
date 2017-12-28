@@ -1,0 +1,46 @@
+Servicos\LumaBundle\Entity\Ordemcancelar:
+    type: entity
+    table: luma.ordemcancelar
+    id:
+        ordecancCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: ordecanc_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        ordecancMotivo:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: ordecanc_motivo
+        ordecancMotivofornecedor:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: ordecanc_motivofornecedor
+        ordecancUsr:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: ordecanc_usr
+        ordecancTipo:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: ordecanc_tipo
+        ordecancDatainc:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: ordecanc_datainc
+        ordeCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: orde_codigoid
+    lifecycleCallbacks: {  }

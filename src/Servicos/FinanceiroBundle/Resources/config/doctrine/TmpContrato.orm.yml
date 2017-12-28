@@ -1,0 +1,114 @@
+Servicos\FinanceiroBundle\Entity\TmpContrato:
+    type: entity
+    table: financeiro.tmp_contrato
+    indexes:
+        fk_tmp_contrato_tmp_conta_criada1_idx:
+            columns:
+                - id_tmp_conta_criada
+    id:
+        idTmpContrato:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_tmp_contrato
+            generator:
+                strategy: IDENTITY
+    fields:
+        circuito:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+        conta:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+        cnpj:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+        status:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+        designacao:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+        canalVenda:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            column: canal_venda
+        ativado:
+            type: datetime
+            nullable: true
+        destivado:
+            type: datetime
+            nullable: true
+        velocidade:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+        produto:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+        servico:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+        pedido:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+        valorAtivacao:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 2
+            column: valor_ativacao
+        valorSemImposto:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 2
+            column: valor_sem_imposto
+        valorComImposto:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 2
+            column: valor_com_imposto
+        contCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: cont_codigoid
+        leitura:
+            type: boolean
+            nullable: true
+        erro:
+            type: boolean
+            nullable: true
+    manyToOne:
+        idTmpContaCriada:
+            targetEntity: TmpContaCriada
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_tmp_conta_criada:
+                    referencedColumnName: id_tmp_conta_criada
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

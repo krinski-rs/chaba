@@ -1,0 +1,78 @@
+Servicos\LumaBundle\Entity\Movimentacaoproduto:
+    type: entity
+    table: luma.movimentacaoproduto
+    repositoryClass: Servicos\LumaBundle\Repository\MovimentacaoProdutoRepository
+    indexes:
+        fk_movimentacaoproduto_movimentacao1:
+            columns:
+                - movi_codigoid
+        fk_movimentacaoproduto_estoqueproduto1:
+            columns:
+                - estoprod_codigoid
+        fk_movimentacaoproduto_lote1:
+            columns:
+                - lote_codigoid
+        fk_movimentacaoproduto_ordemcotacaounidadeproduto1:
+            columns:
+                - ordecotaunidprod_codigoid
+    id:
+        moviprodCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: moviprod_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        moviprodQuantidade:
+            type: float
+            nullable: false
+            precision: 15
+            scale: 2
+            column: moviprod_quantidade
+        moviprodValor:
+            type: decimal
+            nullable: true
+            precision: 15
+            scale: 2
+            default: '0.00'
+            column: moviprod_valor
+    manyToOne:
+        estoprodCodigoid:
+            targetEntity: Estoqueproduto
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                estoprod_codigoid:
+                    referencedColumnName: estoprod_codigoid
+            orphanRemoval: false
+        loteCodigoid:
+            targetEntity: Lote
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                lote_codigoid:
+                    referencedColumnName: lote_codigoid
+            orphanRemoval: false
+        moviCodigoid:
+            targetEntity: Movimentacao
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                movi_codigoid:
+                    referencedColumnName: movi_codigoid
+            orphanRemoval: false
+        ordecotaunidprodCodigoid:
+            targetEntity: Ordemcotacaounidadeproduto
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                ordecotaunidprod_codigoid:
+                    referencedColumnName: ordecotaunidprod
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

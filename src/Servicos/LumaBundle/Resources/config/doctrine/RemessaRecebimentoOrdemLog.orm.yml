@@ -1,0 +1,41 @@
+Servicos\LumaBundle\Entity\RemessaRecebimentoOrdemLog:
+    type: entity
+    table: remessa_recebimento_ordem_log
+    indexes:
+        id_remessa_recebimento_ordem:
+            columns:
+                - id_remessa_recebimento_ordem
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        campo:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+        mensagem:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+        dataCriacao:
+            type: datetime
+            nullable: false
+            column: data_criacao
+    manyToOne:
+        idRemessaRecebimentoOrdem:
+            targetEntity: RemessaRecebimentoOrdem
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_remessa_recebimento_ordem:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

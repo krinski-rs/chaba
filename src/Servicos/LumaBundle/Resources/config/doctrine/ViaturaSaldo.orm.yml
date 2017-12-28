@@ -1,0 +1,43 @@
+Servicos\LumaBundle\Entity\ViaturaSaldo:
+    type: entity
+    table: luma.viatura_saldo
+    indexes:
+        viatura_id:
+            columns:
+                - viatura_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        viaturaPlaca:
+            type: string
+            nullable: false
+            length: 10
+            fixed: false
+            column: viatura_placa
+        valor:
+            type: decimal
+            nullable: false
+            precision: 7
+            scale: 2
+        dateRecord:
+            type: datetime
+            nullable: true
+            default: CURRENT_TIMESTAMP
+            column: date_record
+    manyToOne:
+        viatura:
+            targetEntity: Viatura
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                viatura_id:
+                    referencedColumnName: viaturaid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

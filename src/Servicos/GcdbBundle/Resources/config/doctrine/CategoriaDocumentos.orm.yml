@@ -1,0 +1,31 @@
+Servicos\GcdbBundle\Entity\CategoriaDocumentos:
+    type: entity
+    table: gcdb.Categoria_Documentos
+    indexes:
+        CategoriaID:
+            columns:
+                - CategoriaID
+    id:
+        categoriaid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: CategoriaID
+            generator:
+                strategy: IDENTITY
+    fields:
+        titulo:
+            type: string
+            nullable: false
+            length: 60
+            fixed: false
+            default: ''
+            column: Titulo
+        descricao:
+            type: text
+            nullable: false
+            length: 65535
+            fixed: false
+            column: Descricao
+    lifecycleCallbacks: {  }

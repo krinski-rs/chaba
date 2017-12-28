@@ -1,0 +1,46 @@
+Servicos\FinanceiroBundle\Entity\Ativacaotemplatepermissao:
+    type: entity
+    table: financeiro.ativacaotemplatepermissao
+    indexes:
+        fk_ativacaotemplate_ativtemp_codigoid_idx:
+            columns:
+                - ativtemp_codigoid
+        fk_atributovalor_atri_codigoid_idx:
+            columns:
+                - atri_codigoid
+    id:
+        ativtemppermiCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: ativtemppermi_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        ativtemppermiOrdem:
+            type: integer
+            nullable: true
+            unsigned: false
+            default: '0'
+            column: ativtemppermi_ordem
+    manyToOne:
+        ativtempCodigoid:
+            targetEntity: Ativacaotemplate
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                ativtemp_codigoid:
+                    referencedColumnName: ativtemp_codigoid
+            orphanRemoval: false
+        atriCodigoid:
+            targetEntity: Atributo
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                atri_codigoid:
+                    referencedColumnName: atri_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

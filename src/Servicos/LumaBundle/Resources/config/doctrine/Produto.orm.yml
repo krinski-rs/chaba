@@ -1,0 +1,105 @@
+Servicos\LumaBundle\Entity\Produto:
+    type: entity
+    repositoryClass: Servicos\LumaBundle\Repository\ProdutoRepository
+    table: luma.produto
+    indexes:
+        fk_produto_categoria:
+            columns:
+                - cate_codigoid
+        fk_produto_medida1:
+            columns:
+                - medi_codigoid
+        fk_produto_ncm1:
+            columns:
+                - ncm_codigoid
+    id:
+        prodCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: prod_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        prodNome:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: prod_nome
+        prodDescricao:
+            type: text
+            nullable: true
+            length: 65535
+            fixed: false
+            column: prod_descricao
+        prodDatainc:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: prod_datainc
+        prodAtivo:
+            type: boolean
+            nullable: false
+            default: '1'
+            column: prod_ativo
+        prodIslance:
+            type: integer
+            nullable: true
+            column: prod_islance
+        nomeNfe:
+            type: string
+            nullable: true
+            length: 200
+            fixed: false
+            column: nome_nfe
+        prodGarantiaEstendida:
+            type: boolean
+            nullable: false
+            column: prod_garantia_estendida
+        prodImportado:
+            type: boolean
+            nullable: false
+            column: prod_importado
+        prodOrigem:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: prod_origem
+        prodClassificacao:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: prod_classificacao
+    manyToOne:
+        cateCodigoid:
+            targetEntity: Categoria
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cate_codigoid:
+                    referencedColumnName: cate_codigoid
+            orphanRemoval: false
+        mediCodigoid:
+            targetEntity: Medida
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                medi_codigoid:
+                    referencedColumnName: medi_codigoid
+            orphanRemoval: false
+        ncmCodigoid:
+            targetEntity: Ncm
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                ncm_codigoid:
+                    referencedColumnName: ncm_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

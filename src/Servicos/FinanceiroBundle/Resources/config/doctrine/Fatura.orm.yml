@@ -1,0 +1,108 @@
+Servicos\FinanceiroBundle\Entity\Fatura:
+    type: entity
+    table: financeiro.fatura
+    indexes:
+        fk_fatura_arquivoremessa1_idx:
+            columns:
+                - arqureme_codigoid
+    id:
+        fatuCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: fatu_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        usuaCodigoid:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: usua_codigoid
+        fatuDatainc:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: fatu_datainc
+        fatuDatavencimento:
+            type: datetime
+            nullable: false
+            default: '0000-00-00 00:00:00'
+            column: fatu_datavencimento
+        fatuValor:
+            type: decimal
+            nullable: false
+            precision: 10
+            scale: 2
+            column: fatu_valor
+        fatuNsr:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: fatu_nsr
+        fatuEmitido:
+            type: boolean
+            nullable: false
+            column: fatu_emitido
+        fatuDatade:
+            type: datetime
+            nullable: true
+            column: fatu_datade
+        fatuDataate:
+            type: datetime
+            nullable: true
+            column: fatu_dataate
+        fatuExcedente:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 2
+            column: fatu_excedente
+        fatuConsumido:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 2
+            column: fatu_consumido
+        fatuCodigobarra:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            column: fatu_codigobarra
+        fatuLinhadigitavel:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            column: fatu_linhadigitavel
+        fatuNossonumero:
+            type: string
+            nullable: true
+            length: 10
+            fixed: false
+            column: fatu_nossonumero
+        fatuValorjuros:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 2
+            column: fatu_valorjuros
+        fatuValormulta:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 2
+            column: fatu_valormulta
+    manyToOne:
+        arquremeCodigoid:
+            targetEntity: Arquivoremessa
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                arqureme_codigoid:
+                    referencedColumnName: arqureme_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

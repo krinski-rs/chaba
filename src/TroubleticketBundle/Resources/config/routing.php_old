@@ -1,0 +1,557 @@
+<?php
+
+use Symfony\Component\Routing\RouteCollection;
+use Symfony\Component\Routing\Route;
+
+$collection = new RouteCollection();
+
+//BA
+$collection->add('troubleticket_ba_new',new Route('ba/novo',array(
+    '_controller' => 'TroubleticketBundle:BA:new'),
+    array(),
+    array(),
+    '',
+    array(),
+    array('GET','POST')));
+
+$collection->add('troubleticket_ba_create_preview',new Route('ba/criar',array(
+    '_controller' => 'TroubleticketBundle:BA:createPreview'),
+    array(),
+    array(),
+    '',
+    array(),
+    array('POST')));
+
+$collection->add('troubleticket_ba_create',new Route('ba/criar/{report_id}',array(
+    '_controller' => 'TroubleticketBundle:BA:create'),
+    array(),
+    array(
+        'report_id' => '\d+'),
+    '',
+    array(),
+    array('GET', 'POST')));
+
+$collection->add('troubleticket_ba_create_post',new Route('ba/criar/{report_id}',array(
+    '_controller' => 'TroubleticketBundle:BA:createPost'),
+    array(),
+    array(
+        'report_id' => '\d+'),
+    '',
+    array(),
+    array('POST')));
+
+$collection->add('troubleticket_ba_main',new Route('ba/editar/{report_id}',array(
+    '_controller' => 'TroubleticketBundle:BA:main'),
+    array(),
+    array(
+        'report_id' => '\d+'),
+    '',
+    array(),
+    array('GET')));
+
+$collection->add('troubleticket_ba_main_update',new Route('ba/editar/{report_id}',array(
+    '_controller' => 'TroubleticketBundle:BA:mainUpdate'),
+    array(),
+    array(
+        'report_id' => '\d+'),
+    '',
+    array(),
+    array('POST')));
+
+$collection->add('troubleticket_ba_main_pause',new Route('ba/pause/{report_id}',array(
+    '_controller' => 'TroubleticketBundle:BA:mainPause'),
+    array(),
+    array(
+        'report_id' => '\d+'),
+    '',
+    array(),
+    array('POST')));
+
+$collection->add('troubleticket_ba_main_restart',new Route('ba/reiniciar/{report_id}',array(
+    '_controller' => 'TroubleticketBundle:BA:mainRestart'),
+    array(),
+    array(
+        'report_id' => '\d+'),
+    '',
+    array(),
+    array('POST')));
+
+$collection->add('troubleticket_ba_main_solve',new Route('ba/resolver/{report_id}',array(
+    '_controller' => 'TroubleticketBundle:BA:mainSolve'),
+    array(),
+    array(
+        'report_id' => '\d+'),
+    '',
+    array(),
+    array('POST')));
+
+$collection->add('troubleticket_ba_main_unsolved',new Route('ba/nao-resolvido/{report_id}',array(
+    '_controller' => 'TroubleticketBundle:BA:mainUnsolved'),
+    array(),
+    array(
+        'report_id' => '\d+'),
+    '',
+    array(),
+    array('POST')));
+
+$collection->add('troubleticket_ba_main_close',new Route('ba/fechar/{report_id}',array(
+    '_controller' => 'TroubleticketBundle:BA:mainClose'),
+    array(),
+    array(
+        'report_id' => '\d+'),
+    '',
+    array(),
+    array('POST')));
+
+$collection->add('troubleticket_ba_main_cancel',new Route('ba/cancelar/{report_id}',array(
+    '_controller' => 'TroubleticketBundle:BA:mainCancel'),
+    array(),
+    array(
+        'report_id' => '\d+'),
+    '',
+    array(),
+    array('POST')));
+
+$collection->add('troubleticket_ba_stack',new Route('ba/fila',array(
+    '_controller' => 'TroubleticketBundle:BA:stack'),
+    array(),
+    array(),
+    '',
+    array(),
+    array('GET')));
+
+$collection->add('troubleticket_ba_stack_request',new Route('ba/stack-request',array(
+    '_controller' => 'TroubleticketBundle:BA:stackRequest'),
+    array(),
+    array(),
+    '',
+    array(),
+    array('GET')));
+
+$collection->add(
+    'troubleticket_ba_send_to_sn2',
+    new Route(
+        'ba/enviar-para-sn2/{report_id}',
+        array(
+            '_controller' => 'TroubleticketBundle:BA:sendToSn2',
+            array(),
+            array('report_id' => '\d+'),
+        )
+    )
+);
+
+$collection->add(
+    'troubleticket_ba_comment',
+    new Route(
+        'ba/comentar/{report_id}',
+        array(
+            '_controller' => 'TroubleticketBundle:BA:comment',
+            array(),
+            array('report_id' => '\d+'),
+            '',
+            array(),
+            array('POST')
+        )
+    )
+);
+
+$collection->add(
+    'troubleticket_ba_link_to_bi',
+    new Route(
+        'ba/{report_id}/bis',
+        array(
+            '_controller' => 'TroubleticketBundle:BA:bis'
+        )
+    )
+);
+
+$collection->add(
+    'troubleticket_ba_take_on',
+    new Route(
+        'ba/assumir/{report_id}',
+        array(
+            '_controller' => 'TroubleticketBundle:BA:takeOn'
+        )
+    )
+);
+
+$collection->add('troubleticket_ba_report_incident',new Route('ba/relatorio/incidente',array(
+    '_controller' => 'TroubleticketBundle:BA:reportIncident'),
+    array(),
+    array(),
+    '',
+    array(),
+    array('GET')));
+
+$collection->add('troubleticket_ba_report_performance',new Route('ba/relatorio/performance',array(
+    '_controller' => 'TroubleticketBundle:BA:reportPerformance'),
+    array(),
+    array(),
+    '',
+    array(),
+    array('GET')));
+
+$collection->add('troubleticket_circuit_ba_request',new Route('circuito-ba-request',array(
+    '_controller' => 'TroubleticketBundle:BA:circuitRequest'),
+    array(),
+    array(),
+    '',
+    array(),
+    array('GET')));
+
+//BI
+$collection->add('troubleticket_bi_new',new Route('bi/novo',array(
+    '_controller' => 'TroubleticketBundle:BI:new'),
+    array(),
+    array(),
+    '',
+    array(),
+    array('GET','POST')));
+
+$collection->add('troubleticket_bi_create_preview',new Route('bi/criar',array(
+    '_controller' => 'TroubleticketBundle:BI:createPreview'),
+    array(),
+    array(),
+    '',
+    array(),
+    array('POST')));
+
+$collection->add('troubleticket_bi_create',new Route('bi/criar/{report_id}',array(
+    '_controller' => 'TroubleticketBundle:BI:create'),
+    array(),
+    array(
+        'report_id' => '\d+'),
+    '',
+    array(),
+    array('GET', 'POST')));
+
+$collection->add('troubleticket_bi_create_post',new Route('bi/criar/{report_id}',array(
+    '_controller' => 'TroubleticketBundle:BI:createPost'),
+    array(),
+    array(
+        'report_id' => '\d+'),
+    '',
+    array(),
+    array('POST')));
+
+$collection->add('troubleticket_circuit_request',new Route('circuito-request',array(
+    '_controller' => 'TroubleticketBundle:BI:circuitRequest'),
+    array(),
+    array(),
+    '',
+    array(),
+    array('GET')));
+
+$collection->add('troubleticket_bi_main',new Route('bi/editar/{report_id}',array(
+    '_controller' => 'TroubleticketBundle:BI:main'),
+    array(),
+    array(),
+    '',
+    array(),
+    array('GET')));
+
+$collection->add('troubleticket_bi_main_close',new Route('bi/fechar/{report_id}',array(
+    '_controller' => 'TroubleticketBundle:BI:mainClose'),
+    array(),
+    array(
+        'report_id' => '\d+'),
+    '',
+    array(),
+    array('POST')));
+
+$collection->add('troubleticket_bi_comment',new Route('bi/comentar/{report_id}',array(
+    '_controller' => 'TroubleticketBundle:BI:comment',
+    array(),
+    array('report_id' => '\d+'),
+    '',
+    array(),
+    array('POST')))
+);
+
+$collection->add('troubleticket_bi_take_on',new Route('bi/assumir/{report_id}',array(
+    '_controller' => 'TroubleticketBundle:BI:takeOn'))
+);
+
+$collection->add('troubleticket_bi_stack',new Route('bi/fila',array(
+    '_controller' => 'TroubleticketBundle:BI:stack'),
+    array(),
+    array(),
+    '',
+    array(),
+    array('GET')));
+
+$collection->add('troubleticket_bi_stack_request',new Route('bi/stack-request',array(
+    '_controller' => 'TroubleticketBundle:BI:stackRequest'),
+    array(),
+    array(),
+    '',
+    array(),
+    array('GET')));
+
+$collection->add('troubleticket_bi_related_ba',new Route('bi/incidentes/{report_id}',array(
+    '_controller' => 'TroubleticketBundle:BI:mainBaRelated'),
+    array(),
+    array('report_id' => '\d+'),
+    '',
+    array(),
+    array('GET')));
+
+$collection->add('troubleticket_bi_related_ba_request',new Route('bi/ba-related-request/{report_id}',array(
+    '_controller' => 'TroubleticketBundle:BI:mainBaRelatedRequest'),
+    array(),
+    array('report_id' => '\d+'),
+    '',
+    array(),
+    array('GET')));
+
+$collection->add('troubleticket_bi_report_incident',new Route('bi/relatorio/incidente',array(
+    '_controller' => 'TroubleticketBundle:BI:reportIncident',
+    array(),
+    array(),
+    '',
+    array(),
+    array('GET'))));
+
+$collection->add('troubleticket_bi_report_performance',new Route('bi/relatorio/performance',array(
+    '_controller' => 'TroubleticketBundle:BI:reportPerformance'),
+    array(),
+    array(),
+    '',
+    array(),
+    array('GET')));
+
+//Subcaso BI
+$collection->add('troubleticket_bi_subcase_main',new Route('bi/subcaso/{subcaseId}',array(
+    '_controller' => 'TroubleticketBundle:Subcases:main',
+    array(),
+    array('subcaseId' => '\d+'),
+    '',
+    array(),
+    array('GET')))
+);
+
+$collection->add('troubleticket_bi_subcase_create',new Route('bi/subcaso/criar/{report_id}',array(
+    '_controller' => 'TroubleticketBundle:Subcases:create',
+    array(),
+    array('report_id' => '\d+'),
+    '',
+    array(),
+    array('GET','POST')))
+);
+
+//Subcaso BA
+$collection->add(
+    'troubleticket_ba_subcase_pause',
+    new Route(
+        'ba/subcaso/pausar/{id}',
+        array(
+            '_controller' => 'TroubleticketBundle:Subcases:pause',
+        ),
+        array(),
+        array(
+            'id' => '\d+',
+        )
+    )
+);
+
+$collection->add(
+    'troubleticket_ba_subcase_main',
+    new Route(
+        'ba/subcaso/{subcaseId}',
+        array(
+            '_controller' => 'TroubleticketBundle:Subcases:main',
+            array(),
+            array(
+                'subcaseId' => '\d+'),
+            '',
+            array(),
+            array('GET')
+        )
+        )
+    );
+
+
+$collection->add(
+    'troubleticket_ba_subcase_create',
+    new Route(
+        'ba/subcaso/criar/{report_id}',
+        array(
+            '_controller' => 'TroubleticketBundle:Subcases:create',
+            array(),
+            array('report_id' => '\d+'),
+            '',
+            array(),
+            array('POST')
+        )
+        )
+    );
+
+$collection->add(
+    'troubleticket_ba_subcase_restart',
+    new Route(
+        'ba/subcaso/reiniciar/{id}',
+        array(
+            '_controller' => 'TroubleticketBundle:Subcases:restart',
+        ),
+        array(),
+        array(
+            'id' => '\d+',
+        )
+    )
+);
+
+$collection->add(
+    'troubleticket_ba_subcase_close',
+    new Route(
+        'ba/subcaso/fechar/{subcaseId}',
+        array(
+            '_controller' => 'TroubleticketBundle:Subcases:close',
+            array(),
+            array(
+                'subcaseId' => '\d+'
+            ),
+            '',
+            array(),
+            array('POST')
+        )
+    )
+);
+
+$collection->add(
+    'troubleticket_ba_subcase_update',
+    new Route(
+        'ba/subcaso/atualizar/{id}',
+        array(
+            '_controller' => 'TroubleticketBundle:Subcases:update',
+        ),
+        array(),
+        array(
+            'id' => '\d+',
+        )
+    )
+);
+
+//BS
+$collection->add(
+    'troubleticket_bs_config',
+    new Route(
+        'bs/configuracao',
+        array(
+            '_controller' => 'TroubleticketBundle:BS:config',
+            array(),
+            array('id' => '\d+'),
+            '',
+            array(),
+            array('GET')
+        )
+    )
+);
+
+$collection->add(
+    'troubleticket_bs_stack',
+    new Route(
+        'bs/fila',
+        array(
+            '_controller' => 'TroubleticketBundle:BS:stack',
+        )
+        )
+    );
+
+$collection->add(
+    'troubleticket_bs_stack_request',
+    new Route(
+        'bs/stack-request',
+        array(
+            '_controller' => 'TroubleticketBundle:BS:stackRequest',
+        )
+        )
+    );
+
+$collection->add(
+    'troubleticket_bs_main',
+    new Route(
+        'bs/editar/{id}',
+        array(
+            '_controller' => 'TroubleticketBundle:BS:main',
+        ),
+        array(),
+        array(
+            'id' => '\d+',
+        )
+        )
+    );
+
+$collection->add(
+    'troubleticket_bs_take_on',
+    new Route(
+        'bs/assumir/{id}',
+        array(
+            '_controller' => 'TroubleticketBundle:BS:takeOn',
+        ),
+        array(),
+        array(
+            'id' => '\d+',
+        )
+        )
+    );
+
+$collection->add(
+    'troubleticket_bs_comment',
+    new Route(
+        'bs/comentar/{id}',
+        array(
+            '_controller' => 'TroubleticketBundle:BS:comment',
+        ),
+        array(),
+        array(
+            'id' => '\d+',
+        )
+        )
+    );
+
+$collection->add(
+    'troubleticket_bs_close',
+    new Route(
+        'bs/fechar/{id}',
+        array(
+            '_controller' => 'TroubleticketBundle:BS:close',
+        ),
+        array(),
+        array(
+            'id' => '\d+',
+        )
+        )
+    );
+
+//Historico
+$collection->add(
+'troubleticket_history',
+    new Route(
+        'historico/{id}',
+        array('_controller' => 'TroubleticketBundle:History:main',
+            array(),
+            array('id' => '\d+'),
+            '',
+            array(),
+            array('GET')
+        )
+    )
+);
+
+
+//Visualizar Ponta
+$collection->add(
+	'troubleticket_tip',
+	new Route(
+			'ba/tip',
+			array('_controller' => 'TroubleticketBundle:BA:previewTip',
+					array(),
+					array(),
+					'',
+					array(),
+					array('GET')
+			)
+	)
+);
+
+return $collection;

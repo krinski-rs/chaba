@@ -1,0 +1,20 @@
+Servicos\FinanceiroBundle\Entity\Tipologging:
+    type: entity
+    table: financeiro.tipologging
+    id:
+        tipologgCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: tipologg_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        tipologgNome:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            column: tipologg_nome
+    lifecycleCallbacks: {  }

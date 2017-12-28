@@ -1,0 +1,19 @@
+Servicos\LumaBundle\Entity\Poptipolocalizacao:
+    type: entity
+    table: luma.poptipolocalizacao
+    id:
+        idTipo:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_tipo
+            generator:
+                strategy: IDENTITY
+    fields:
+        nome:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+    lifecycleCallbacks: {  }

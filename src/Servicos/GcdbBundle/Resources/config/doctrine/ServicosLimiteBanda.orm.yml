@@ -1,0 +1,23 @@
+Servicos\GcdbBundle\Entity\ServicosLimiteBanda:
+    type: entity
+    table: gcdb.servicos_limite_banda
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        servicoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: ServicoID
+        bandaLimitada:
+            type: boolean
+            nullable: false
+            comment: 'Informa se serviço possui banda limitada ou não 0=Não 1=Sim'
+            column: banda_limitada
+    lifecycleCallbacks: {  }

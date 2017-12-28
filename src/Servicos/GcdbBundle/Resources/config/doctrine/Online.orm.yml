@@ -1,0 +1,44 @@
+Servicos\GcdbBundle\Entity\Online:
+    type: entity
+    table: gcdb.online
+    indexes:
+        fk_online_aut_usuarios1:
+            columns:
+                - usuarios_id
+    id:
+        onliCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: onli_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        usuariosId:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: usuarios_id
+        onliDatainc:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: onli_datainc
+        onliIp:
+            type: string
+            nullable: false
+            length: 15
+            fixed: false
+            column: onli_ip
+        onliPagina:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+            column: onli_pagina
+        onliDisponivel:
+            type: boolean
+            nullable: false
+            column: onli_disponivel
+    lifecycleCallbacks: {  }

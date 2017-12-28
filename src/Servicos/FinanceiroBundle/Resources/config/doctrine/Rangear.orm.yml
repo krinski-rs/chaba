@@ -1,0 +1,41 @@
+Servicos\FinanceiroBundle\Entity\Rangear:
+    type: entity
+    table: financeiro.rangear
+    id:
+        rangarCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: rangar_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        rangarDatainc:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: rangar_datainc
+        rangarInicio:
+            type: string
+            nullable: false
+            length: 10
+            fixed: false
+            column: rangar_inicio
+        rangarFim:
+            type: string
+            nullable: false
+            length: 10
+            fixed: false
+            column: rangar_fim
+        rangarAtivo:
+            type: boolean
+            nullable: false
+            column: rangar_ativo
+        rangearSerie:
+            type: string
+            nullable: false
+            length: 2
+            fixed: false
+            column: rangear_serie
+    lifecycleCallbacks: {  }

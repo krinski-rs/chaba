@@ -1,0 +1,31 @@
+Servicos\FinanceiroBundle\Entity\Gruposervico:
+    type: entity
+    table: financeiro.gruposervico
+    id:
+        grupservCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: grupserv_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        grupservNome:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            column: grupserv_nome
+        grupservDescricao:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: grupserv_descricao
+        grupservDatainc:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: grupserv_datainc
+    lifecycleCallbacks: {  }

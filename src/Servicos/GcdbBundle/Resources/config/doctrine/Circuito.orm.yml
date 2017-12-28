@@ -1,0 +1,132 @@
+Servicos\GcdbBundle\Entity\Circuito:
+    type: entity
+    table: gcdb.circuito
+    indexes:
+        fk_circuito_customerservico1:
+            columns:
+                - custserv_codigoid
+    id:
+        circCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: circ_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        registrante:
+            type: integer
+            nullable: true
+            unsigned: false
+        usuaDesativacao:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: usua_desativacao
+        circOrdem:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: circ_ordem
+        endeentrCodigoid:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: endeentr_codigoid
+        circPontaa:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            column: circ_pontaa
+        circPopa:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: circ_popa
+        circPontab:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            column: circ_pontab
+        circPopb:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: circ_popb
+        circMeiotransmissao:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            column: circ_meiotransmissao
+        circVelocidade:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            column: circ_velocidade
+        circInterface:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            column: circ_interface
+        circInformacoestecnicas:
+            type: text
+            nullable: true
+            length: 65535
+            fixed: false
+            column: circ_informacoestecnicas
+        circObservacao:
+            type: text
+            nullable: true
+            length: 65535
+            fixed: false
+            column: circ_observacao
+        circAtivo:
+            type: boolean
+            nullable: true
+            column: circ_ativo
+        circDatainc:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: circ_datainc
+        circMotivodesativado:
+            type: text
+            nullable: true
+            length: 65535
+            fixed: false
+            column: circ_motivodesativado
+        circDatadesativado:
+            type: datetime
+            nullable: true
+            column: circ_datadesativado
+        circBandaid:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: circ_bandaid
+    manyToOne:
+        custservCodigoid:
+            targetEntity: Customerservico
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                custserv_codigoid:
+                    referencedColumnName: custserv_codigoid
+            orphanRemoval: false
+        enderecoentrega:
+            targetEntity: \Servicos\FinanceiroBundle\Entity\Enderecoentrega
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                endeentr_codigoid:
+                    referencedColumnName: endeentr_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

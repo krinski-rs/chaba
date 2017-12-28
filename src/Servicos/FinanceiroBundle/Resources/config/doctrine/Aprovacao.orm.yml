@@ -1,0 +1,26 @@
+Servicos\FinanceiroBundle\Entity\Aprovacao:
+    type: entity
+    table: financeiro.aprovacao
+    id:
+        aproCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: apro_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        aproNome:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            column: apro_nome
+        aproTipo:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: "apro_tipo: tipo de aprovação Interna = 1\n                  tipo de aprovação Externa = 2\n                  tipo de aprovação da ativação = 3"
+            column: apro_tipo
+    lifecycleCallbacks: {  }

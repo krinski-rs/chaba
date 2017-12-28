@@ -1,0 +1,124 @@
+Servicos\LumaBundle\Entity\Popestruturafisica:
+    type: entity
+    table: luma.popestruturafisica
+    indexes:
+        id_pop:
+            columns:
+                - id_pop
+        id_tipo_rf:
+            columns:
+                - id_tipo_rf
+        id_tipo_abrigo:
+            columns:
+                - id_tipo_abrigo
+    id:
+        idEstruturaFisica:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_estrutura_fisica
+            generator:
+                strategy: IDENTITY
+    fields:
+        altura:
+            type: string
+            nullable: true
+            length: 15
+            fixed: false
+        andares:
+            type: integer
+            nullable: true
+            unsigned: false
+        abordagemfo:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            column: abordagemFO
+        dataInicio:
+            type: datetime
+            nullable: true
+            column: data_inicio
+        dataFim:
+            type: datetime
+            nullable: true
+            column: data_fim
+        usuario:
+            type: string
+            nullable: true
+            length: 80
+            fixed: false
+        usuarioAprovador:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+            column: usuario_aprovador
+        observacaoAprovador:
+            type: string
+            nullable: true
+            length: 500
+            fixed: false
+            column: observacao_aprovador
+        dataAprovador:
+            type: datetime
+            nullable: true
+            column: data_aprovador
+        feedEnergia:
+            type: smallint
+            nullable: true
+            unsigned: false
+            default: '0'
+            column: feed_energia
+        biometria:
+            type: smallint
+            nullable: true
+            unsigned: false
+            default: '0'
+        chavesAcesso:
+            type: smallint
+            nullable: true
+            unsigned: false
+            column: chaves_acesso
+        alcanceRadio:
+            type: integer
+            nullable: false
+            unsigned: false
+            default: '0'
+            column: alcance_radio
+        possuiRadio:
+            type: smallint
+            nullable: false
+            unsigned: false
+            default: '0'
+            column: possui_radio
+    manyToOne:
+        idPop:
+            targetEntity: Pop
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_pop:
+                    referencedColumnName: id_pop
+            orphanRemoval: false
+        idTipoRf:
+            targetEntity: Poptiporf
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_tipo_rf:
+                    referencedColumnName: id_tipo_rf
+            orphanRemoval: false
+        idTipoAbrigo:
+            targetEntity: Poptipoabrigo
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_tipo_abrigo:
+                    referencedColumnName: id_tipo_abrigo
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

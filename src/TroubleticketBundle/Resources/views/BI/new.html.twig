@@ -1,0 +1,46 @@
+{% extends 'TroubleticketBundle::base.html.twig' %}
+{% block body %}
+    {% if message_error %}
+        <div class="error">
+            <span>{{message_error}}</span>
+        </div>
+    {% endif %}
+    <div class="titleModulo">
+        <div>
+            <span>Abrir BI</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-100">
+            <form action="{{ path('troubleticket_bi_new') }}" id="form_open_bi" name="form_open_bi" method="post">
+                <div class="row">
+                    <div class="col-sm-20">
+                        <input type="hidden" name="_csrf_token" value="{{csrf_token('authenticate')}}">
+                        <label for="input_bi_new_designador">Digite uma Designação:</label>
+                        <input type="text" id="input_bi_new_designador" name="data" value="{{designador}}">
+                    </div>
+                    <div class="col-sm-20">
+                        <button type="submit" class="btn btn-primary">Abrir BI</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <table id="table_bi_new" class="hover row-border stripe compact cell-border"></table>
+    <form method="post" id="form_bi_new" action="{{ path('troubleticket_bi_create_preview') }}">
+        <input type="hidden" name="data" value="" id="input_bi_new_data">
+    </form>
+{% endblock %}
+{% block static_css %}
+    <link rel="stylesheet" href="{{ asset('bundles/troubleticket/js/plugins/jquery-dataTables/datatables.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/troubleticket/css/style.css') }}" />
+{% endblock %}
+{% block static_js %}
+    <script type="text/javascript">
+        var circuit_request = "{{path('troubleticket_circuit_request')}}",
+            page_limit = parseInt('{{page_limit}}'),
+            request_designador = "{{designador}}";
+    </script>
+    <script type="text/javascript" src="{{ asset('bundles/troubleticket/js/plugins/jquery-dataTables/datatables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/troubleticket/js/bi_new.js') }}"></script>
+{% endblock %}

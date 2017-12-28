@@ -1,0 +1,44 @@
+Servicos\FinanceiroBundle\Entity\Igpdi:
+    type: entity
+    table: financeiro.igpdi
+    id:
+        igpdiCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: igpdi_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        igpdiDatainc:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: igpdi_datainc
+        igpdiPercentual:
+            type: decimal
+            nullable: false
+            precision: 5
+            scale: 2
+            column: igpdi_percentual
+        igpdiAcumuladonoano:
+            type: decimal
+            nullable: false
+            precision: 5
+            scale: 2
+            default: '0.00'
+            column: igpdi_acumuladonoano
+        igpdiAcumulado12meses:
+            type: decimal
+            nullable: false
+            precision: 5
+            scale: 2
+            default: '0.00'
+            column: igpdi_acumulado12meses
+        igpdiPrazo:
+            type: datetime
+            nullable: false
+            default: '0000-00-00 00:00:00'
+            column: igpdi_prazo
+    lifecycleCallbacks: {  }

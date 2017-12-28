@@ -1,0 +1,35 @@
+Servicos\GcdbBundle\Entity\TempCadUsersNome:
+    type: entity
+    table: gcdb.temp_cad_users_nome
+    indexes:
+        cad_users_nome_FKIndex1:
+            columns:
+                - cad_users_id
+        cad_users_nome_FKIndex2:
+            columns:
+                - adm_tipo_nome_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        cadUsersId:
+            type: integer
+            nullable: true
+            unsigned: true
+            column: cad_users_id
+        admTipoNomeId:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: adm_tipo_nome_id
+        nome:
+            type: string
+            nullable: true
+            length: 200
+            fixed: false
+    lifecycleCallbacks: {  }

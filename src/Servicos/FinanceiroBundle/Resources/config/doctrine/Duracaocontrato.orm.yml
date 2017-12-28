@@ -1,0 +1,61 @@
+Servicos\FinanceiroBundle\Entity\Duracaocontrato:
+    type: entity
+    table: financeiro.duracaocontrato
+    indexes:
+        fk_duracaocontrado_duracaocontrado1_idx:
+            columns:
+                - duracont_proximocodigoid
+        fk_duracaocontrato_contrato1_idx:
+            columns:
+                - cont_codigoid
+    id:
+        duracontCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: duracont_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        duracontMeses:
+            type: boolean
+            nullable: false
+            column: duracont_meses
+        duracontPeriodo:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: duracont_periodo
+        duracontInicio:
+            type: datetime
+            nullable: true
+            column: duracont_inicio
+        duracontFim:
+            type: datetime
+            nullable: true
+            column: duracont_fim
+        duracontRenovado:
+            type: boolean
+            nullable: true
+            column: duracont_renovado
+    manyToOne:
+        duracontProximocodigoid:
+            targetEntity: Duracaocontrato
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                duracont_proximocodigoid:
+                    referencedColumnName: duracont_codigoid
+            orphanRemoval: false
+        contCodigoid:
+            targetEntity: Contrato
+            cascade: {  }
+            mappedBy: null
+            inversedBy: duracaocontrato
+            joinColumns:
+                cont_codigoid:
+                    referencedColumnName: cont_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

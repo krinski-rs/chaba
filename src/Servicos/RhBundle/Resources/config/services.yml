@@ -1,0 +1,19 @@
+services:
+#    servicos_rh.example:
+#        class: Servicos\RhBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
+
+    colaborador_filial:
+        class: Servicos\RhBundle\Service\RhColaborador\ServiceList
+        lazy: true
+        arguments: ['@service_container']
+
+    rh_colaborador_list:
+        class: Servicos\RhBundle\Service\RhColaboradorDepartamento\RhColaboradorDepartamentoList
+        lazy: true
+        arguments: ['@service_container']
+
+    rh_ponto:
+        class: Servicos\RhBundle\Service\RhPonto\RhPontoService 
+        lazy: true
+        arguments: ['@service_container'] 

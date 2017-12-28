@@ -1,0 +1,32 @@
+Servicos\GcdbBundle\Entity\Recursos:
+    type: entity
+    table: gcdb.recursos
+    indexes:
+        RecursoID:
+            columns:
+                - RecursoID
+    id:
+        recursoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: RecursoID
+            generator:
+                strategy: IDENTITY
+    fields:
+        descricao:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            default: ''
+            column: Descricao
+        unidade:
+            type: string
+            nullable: false
+            length: 10
+            fixed: false
+            default: ''
+            column: Unidade
+    lifecycleCallbacks: {  }

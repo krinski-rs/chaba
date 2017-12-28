@@ -1,0 +1,16 @@
+Servicos\LumaBundle\Entity\Testejob:
+    type: entity
+    table: luma.testejob
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        data:
+            type: datetime
+            nullable: true
+    lifecycleCallbacks: {  }

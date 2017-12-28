@@ -1,0 +1,44 @@
+Servicos\GcdbBundle\Entity\CadUserHasComplemento:
+    type: entity
+    table: gcdb.cad_user_has_complemento
+    indexes:
+        cad_user_has_complemento_FKIndex1:
+            columns:
+                - adm_tipo_complemento_id
+        cad_user_has_complemento_FKIndex2:
+            columns:
+                - cad_users_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        complemento:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+    manyToOne:
+        admTipoComplemento:
+            targetEntity: AdmTipoComplemento
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                adm_tipo_complemento_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        cadUsers:
+            targetEntity: CadUsers
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cad_users_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

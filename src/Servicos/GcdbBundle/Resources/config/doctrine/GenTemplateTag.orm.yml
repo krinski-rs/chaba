@@ -1,0 +1,40 @@
+Servicos\GcdbBundle\Entity\GenTemplateTag:
+    type: entity
+    table: gcdb.gen_template_tag
+    id:
+        tmpTagId:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: tmp_tag_id
+            generator:
+                strategy: IDENTITY
+    fields:
+        tmpTagNome:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            column: tmp_tag_nome
+        tmpTagAlias:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            column: tmp_tag_alias
+        tmpTagDesc:
+            type: string
+            nullable: true
+            length: 90
+            fixed: false
+            column: tmp_tag_desc
+    manyToMany:
+        tmp:
+            targetEntity: GenTemplate
+            cascade: {  }
+            mappedBy: tmpTag
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+    lifecycleCallbacks: {  }

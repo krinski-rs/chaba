@@ -1,0 +1,19 @@
+BA:
+  - 'read'
+  - 'export_report'
+  - 'history'
+BI:
+  - 'read'
+  - 'export_report'
+  - 'history'
+  - 'read_related_ba'
+BS:
+  - 'read'
+  - 'export_report'
+  - 'history'
+SUB_COC:
+  - 'read'
+  - 'print_list_of_materials'
+SUB_MANTAINER:
+  - 'read'
+  - 'print_list_of_materials'

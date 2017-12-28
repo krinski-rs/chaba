@@ -1,0 +1,38 @@
+Servicos\LumaBundle\Entity\RemessamoviMovimentacao:
+    type: entity
+    table: remessamovi_movimentacao
+    indexes:
+        remessamovi_movimentacao_movimentacao_ibfk1:
+            columns:
+                - movi_codigoid
+        remessamovi_movimentacao_remessamovi_ibfk1:
+            columns:
+                - remmovi_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        moviCodigoid:
+            targetEntity: Movimentacao
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                movi_codigoid:
+                    referencedColumnName: movi_codigoid
+            orphanRemoval: false
+        remmovi:
+            targetEntity: Remessamovi
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                remmovi_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

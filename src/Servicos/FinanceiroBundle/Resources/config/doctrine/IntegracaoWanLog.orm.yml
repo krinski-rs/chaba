@@ -1,0 +1,43 @@
+Servicos\FinanceiroBundle\Entity\IntegracaoWanLog:
+    type: entity
+    table: financeiro.integracao_wan_log
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id
+            generator:
+                strategy: IDENTITY
+    fields:
+        contratoWanId:
+            type: integer
+            nullable: false
+            column: contrato_wan_id
+        contratoVogelId:
+            type: integer
+            nullable: false
+            column: contrato_vogel_id
+        customerId:
+            type: integer
+            nullable: false
+            column: customer_id
+        customerIdWan:
+            type: integer
+            nullable: false
+            column: customer_id_wan
+        status:
+            type: boolean
+            nullable: false
+            column: status
+        dataHoraCriacao:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: data_hora_criacao
+        message:
+            type: string
+            nullable: false
+            column: message
+    lifecycleCallbacks: {  }

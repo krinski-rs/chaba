@@ -1,0 +1,23 @@
+Servicos\LumaBundle\Entity\OrdemInterna:
+    type: entity
+    table: luma.ordem_interna
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nome:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+        codigo:
+            type: string
+            nullable: false
+            length: 2
+            fixed: false
+    lifecycleCallbacks: {  }

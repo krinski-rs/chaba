@@ -1,0 +1,53 @@
+Servicos\LumaBundle\Entity\Pagamento:
+    type: entity
+    table: luma.pagamento
+    indexes:
+        orde_codigoid_idx:
+            columns:
+                - orde_codigoid
+    id:
+        pagCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: pag_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        ordeCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: orde_codigoid
+        pagParcela:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: pag_parcela
+        pagValorprevisto:
+            type: decimal
+            nullable: false
+            precision: 10
+            scale: 2
+            column: pag_valorprevisto
+        pagDatainc:
+            type: datetime
+            nullable: false
+            column: pag_datainc
+        pagDataprevisto:
+            type: datetime
+            nullable: false
+            column: pag_dataprevisto
+        pagDataefetivo:
+            type: datetime
+            nullable: true
+            column: pag_dataefetivo
+        pagValorefetivo:
+            type: decimal
+            nullable: false
+            precision: 10
+            scale: 2
+            default: '0.00'
+            column: pag_valorefetivo
+    lifecycleCallbacks: {  }

@@ -1,0 +1,44 @@
+Servicos\LumaBundle\Entity\Tipounidade:
+    type: entity
+    table: luma.tipounidade
+    indexes:
+        fk_tipounidade_tipo1:
+            columns:
+                - tipo_codigoid
+        fk_tipounidade_unidade1:
+            columns:
+                - unid_codigoid
+    uniqueConstraints:
+        tipo_codigoid:
+            columns:
+                - tipo_codigoid
+                - unid_codigoid
+    id:
+        tipounidCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: tipounid_codigoid
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        tipoCodigoid:
+            targetEntity: Tipo
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                tipo_codigoid:
+                    referencedColumnName: tipo_codigoid
+            orphanRemoval: false
+        unidCodigoid:
+            targetEntity: Unidade
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                unid_codigoid:
+                    referencedColumnName: unid_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

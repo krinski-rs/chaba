@@ -1,0 +1,42 @@
+Servicos\GcdbBundle\Entity\Devices:
+    type: entity
+    repositoryClass: Servicos\GcdbBundle\Repository\DevicesRepository
+    table: gcdb.devices
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: true
+            id: true
+            column: id
+            generator:
+                strategy: IDENTITY
+    fields:
+        token:
+            type: string
+            nullable: false
+            length: 255
+            column: token
+        deviceID:
+            type: string
+            nullable: false
+            length: 255
+            column: device_id
+        so:
+            type: string
+            nullable: false
+            length: 1
+            column: so
+        active:
+            type: boolean
+            nullable: false
+            column: active
+    manyToOne:
+        customer:
+            targetEntity: Customers
+            inversedBy: devices
+            joinColumns:
+                customer_id:
+                    referencedColumnName: CustomerID
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

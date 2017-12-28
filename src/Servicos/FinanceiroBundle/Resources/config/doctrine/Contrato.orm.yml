@@ -1,0 +1,345 @@
+Servicos\FinanceiroBundle\Entity\Contrato:
+    type: entity
+    repositoryClass: Servicos\FinanceiroBundle\Repository\ContratoRepository
+    table: financeiro.contrato
+    indexes:
+        fk_contrato_sla1_idx:
+            columns:
+                - sla_codigoid
+        fk_contrato_contrato1_idx:
+            columns:
+                - cont_proximocodigoid
+        fk_contrato_multas1_idx:
+            columns:
+                - mult_codigoid
+        fk_contrato_status1_idx:
+            columns:
+                - stat_codigoid
+        fk_contrato_contrato2_idx:
+            columns:
+                - cont_paicodigoid
+        fk_contrato_modelo_idx:
+            columns:
+                - mode_codigoid
+        fk_contrato_enderecoentrega_idx:
+            columns:
+                - endeentr_codigoid
+        fk_contrato_designacao1_idx:
+            columns:
+                - desig_codigoid
+        clie_codigoid:
+            columns:
+                - clie_codigoid
+        fk_unid_codigoid_idx:
+            columns:
+                - unid_codigoid
+        banc_codigoid:
+            columns:
+                - banc_codigoid
+        envi_codigoid:
+            columns:
+                - envi_codigoid
+        fk_contrato_1_idx:
+            columns:
+                - cont_substituircodigoid
+    id:
+        contCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: cont_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        clieCodigoid:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: clie_codigoid
+        usuaCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: usua_codigoid
+        contNumero:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: cont_numero
+        contLimiteatraso:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: cont_limiteatraso
+        contMenorprazo:
+            type: boolean
+            nullable: false
+            column: cont_menorprazo
+        contPrazorescisao:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: cont_prazorescisao
+        contDataassinatura:
+            type: datetime
+            nullable: true
+            column: cont_dataassinatura
+        contDatainc:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: cont_datainc
+        contIndicereajuste:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            column: cont_indicereajuste
+        contPrazoreajuste:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: cont_prazoreajuste
+        contIndisponibilidade:
+            type: decimal
+            nullable: false
+            precision: 5
+            scale: 2
+            default: '0.00'
+            column: cont_indisponibilidade
+        bancCodigoid:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: banc_codigoid
+        contDatacancelamento:
+            type: datetime
+            nullable: true
+            column: cont_datacancelamento
+        contDatacancelado:
+            type: datetime
+            nullable: true
+            column: cont_datacancelado
+        contDatareajustado:
+            type: datetime
+            nullable: true
+            column: cont_datareajustado
+        contUnidArquivado:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: cont_unid_arquivado
+        contClienteFinal:
+            type: string
+            nullable: true
+            column: cont_cliente_final
+    oneToMany:
+        ativacao:
+            targetEntity: Ativacao
+            cascade: ['persist']
+            mappedBy: contCodigoid
+        cancelamento:
+            targetEntity: Cancelamento
+            cascade: ['persist']
+            mappedBy: contCodigoid
+        contratobloqueio:
+            targetEntity: Contratobloqueio
+            cascade: ['persist']
+            mappedBy: contCodigoid
+        contratocontato:
+            targetEntity: Contratocontato
+            cascade: ['persist']
+            mappedBy: contCodigoid
+        contratoservico:
+            targetEntity: Contratoservico
+            cascade: ['persist']
+            mappedBy: contCodigoid
+        contratoticket:
+            targetEntity: Contratoticket
+            cascade: ['persist']
+            mappedBy: contCodigoid
+        contratovalor:
+            targetEntity: Contratovalor
+            cascade: ['persist']
+            mappedBy: contCodigoid
+        desativacao:
+            targetEntity: Desativacao
+            cascade: ['persist']
+            mappedBy: contCodigoid
+        documento:
+            targetEntity: Documento
+            cascade: ['persist']
+            mappedBy: contCodigoid
+        duracaocontrato:
+            targetEntity: Duracaocontrato
+            cascade: ['persist']
+            mappedBy: contCodigoid
+        enderecocobranca:
+            targetEntity: Enderecocobranca
+            cascade: ['persist']
+            mappedBy: contCodigoid
+        impostoscontrato:
+            targetEntity: Impostoscontrato
+            cascade: ['persist']
+            mappedBy: contCodigoid
+        reativacao:
+            targetEntity: Reativacao
+            cascade: ['persist']
+            mappedBy: contCodigoid
+        rescisao:
+            targetEntity: Rescisao
+            cascade: ['persist']
+            mappedBy: contCodigoid
+        restricao:
+            targetEntity: Restricao
+            cascade: ['persist']
+            mappedBy: contCodigoid
+        suspencao:
+            targetEntity: Suspencao
+            cascade: ['persist']
+            mappedBy: contCodigoid
+        upgrade:
+            targetEntity: Upgrade
+            cascade: ['persist']
+            mappedBy: contCodigoid
+        contratoFilho:
+            targetEntity: Contrato
+            cascade: ["persist"]
+            mappedBy: contPaicodigoid
+        contratoDependente:
+            targetEntity: Contrato
+            cascade: ["persist"]
+            mappedBy: contDependentecodigoid
+        enderecoentregaatributovalor:
+            targetEntity: Enderecoentregaatributovalor
+            cascade: ["persist"]
+            mappedBy: contCodigoid
+    manyToOne:
+        contDependentecodigoid:
+            targetEntity: Contrato
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cont_dependentecodigoid:
+                    referencedColumnName: cont_codigoid
+            orphanRemoval: false
+        enviCodigoid:
+            targetEntity: Envio
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                envi_codigoid:
+                    referencedColumnName: envi_codigoid
+            orphanRemoval: false
+        contSubstituircodigoid:
+            targetEntity: Contrato
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cont_substituircodigoid:
+                    referencedColumnName: cont_codigoid
+            orphanRemoval: false
+        contProximocodigoid:
+            targetEntity: Contrato
+            cascade: ['persist']
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cont_proximocodigoid:
+                    referencedColumnName: cont_codigoid
+            orphanRemoval: false
+        contPaicodigoid:
+            targetEntity: Contrato
+            cascade: { }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cont_paicodigoid:
+                    referencedColumnName: cont_codigoid
+            orphanRemoval: false
+        desigCodigoid:
+            targetEntity: Designacao
+            cascade: ["persist"]
+            mappedBy: null
+            inversedBy: contrato
+            joinColumns:
+                desig_codigoid:
+                    referencedColumnName: desig_codigoid
+            orphanRemoval: false
+        endeentrCodigoid:
+            targetEntity: Enderecoentrega
+            cascade: ["persist"]
+            mappedBy: null
+            inversedBy: contrato
+            joinColumns:
+                endeentr_codigoid:
+                    referencedColumnName: endeentr_codigoid
+            orphanRemoval: false
+        modeCodigoid:
+            targetEntity: Modelo
+            cascade: {  }
+            mappedBy: null
+            inversedBy: contrato
+            joinColumns:
+                mode_codigoid:
+                    referencedColumnName: mode_codigoid
+            orphanRemoval: false
+        multCodigoid:
+            targetEntity: Multas
+            cascade: {  }
+            mappedBy: null
+            inversedBy: contrato
+            joinColumns:
+                mult_codigoid:
+                    referencedColumnName: mult_codigoid
+            orphanRemoval: false
+        slaCodigoid:
+            targetEntity: Sla
+            cascade: {  }
+            mappedBy: null
+            inversedBy: contrato
+            joinColumns:
+                sla_codigoid:
+                    referencedColumnName: sla_codigoid
+            orphanRemoval: false
+        statCodigoid:
+            targetEntity: Status
+            cascade: {  }
+            mappedBy: null
+            inversedBy: contrato
+            joinColumns:
+                stat_codigoid:
+                    referencedColumnName: stat_codigoid
+            orphanRemoval: false
+        unidCodigoid:
+            targetEntity: \Servicos\LumaBundle\Entity\Unidade
+            cascade: { }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                unid_codigoid:
+                    referencedColumnName: unid_codigoid
+            orphanRemoval: false
+        autUsuarios:
+            targetEntity: \Servicos\GcdbBundle\Entity\AutUsuarios
+            cascade: { }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                usua_codigoid:
+                    referencedColumnName: id
+            orphanRemoval: false
+        customers:
+            targetEntity: \Servicos\GcdbBundle\Entity\Customers
+            cascade: { }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                clie_codigoid:
+                    referencedColumnName: CustomerID
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

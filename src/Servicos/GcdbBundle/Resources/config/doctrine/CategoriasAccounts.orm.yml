@@ -1,0 +1,43 @@
+Servicos\GcdbBundle\Entity\CategoriasAccounts:
+    type: entity
+    table: gcdb.categorias_accounts
+    indexes:
+        Criador:
+            columns:
+                - Criador
+    id:
+        categoriaid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: CategoriaID
+            generator:
+                strategy: IDENTITY
+    fields:
+        descricao:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+            default: ''
+            column: Descricao
+        status:
+            type: integer
+            nullable: false
+            unsigned: false
+            default: '1'
+            column: Status
+        datacriacao:
+            type: date
+            nullable: false
+            default: '0000-00-00'
+            column: DataCriacao
+        criador:
+            type: string
+            nullable: false
+            length: 20
+            fixed: false
+            default: ''
+            column: Criador
+    lifecycleCallbacks: {  }

@@ -1,0 +1,49 @@
+Servicos\GcdbBundle\Entity\Birthday:
+    type: entity
+    table: gcdb.birthday
+    indexes:
+        cad_users_id:
+            columns:
+                - cad_users_id
+        cad_users_id_2:
+            columns:
+                - cad_users_id
+        cad_users_id_3:
+            columns:
+                - cad_users_id
+        cad_users_id_4:
+            columns:
+                - cad_users_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        dateSend:
+            type: date
+            nullable: false
+            column: date_send
+        dateSent:
+            type: datetime
+            nullable: true
+            column: date_sent
+        active:
+            type: integer
+            nullable: false
+            unsigned: false
+            default: '1'
+    manyToOne:
+        cadUsers:
+            targetEntity: CadUsers
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cad_users_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

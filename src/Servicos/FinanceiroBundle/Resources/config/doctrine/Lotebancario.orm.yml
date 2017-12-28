@@ -1,0 +1,50 @@
+Servicos\FinanceiroBundle\Entity\Lotebancario:
+    type: entity
+    table: financeiro.lotebancario
+    indexes:
+        fk_lotebancario_banco1_idx:
+            columns:
+                - banc_codigoid
+    id:
+        lotebancCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: lotebanc_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        usuaCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: usua_codigoid
+        lotebancDatainc:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: lotebanc_datainc
+        lotebancTexto:
+            type: text
+            nullable: false
+            length: 65535
+            fixed: false
+            column: lotebanc_texto
+        lotebancNome:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            column: lotebanc_nome
+    manyToOne:
+        bancCodigoid:
+            targetEntity: Banco
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                banc_codigoid:
+                    referencedColumnName: banc_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

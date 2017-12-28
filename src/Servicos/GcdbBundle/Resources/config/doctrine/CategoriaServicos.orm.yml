@@ -1,0 +1,17 @@
+Servicos\GcdbBundle\Entity\CategoriaServicos:
+    type: entity
+    table: gcdb.Categoria_Servicos
+    id:
+        categoriaid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: CategoriaID
+        servicoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: ServicoID
+    lifecycleCallbacks: {  }

@@ -1,0 +1,348 @@
+{% extends 'TroubleticketBundle::base.html.twig' %}
+{% use "TroubleticketBundle:Subcaso/modal:subcase_close.html.twig" %}
+{% set statuses = [1,2]%}
+{% block body %}
+    {% if message_error %}
+        <div class="error">
+            <span>{{message_error}}</span>
+        </div>
+    {% endif %}
+    {% if message_success %}
+        <div class="sucesso">
+            <span>{{message_success}}</span>
+        </div>
+    {% endif %}
+    <div class="titleModulo">
+        <div>
+            {% if reports.getType == '1' %}
+                <span>Apresentação de subcaso de BA {{' - ' ~ subcases.getTypeString()|capitalize}}</span>
+            {% endif %}
+            {% if reports.getType == '2' %}
+                <span>Apresentação de subcaso de BI {{' - ' ~ subcases.getTypeString()|capitalize}}</span>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-100">
+            <div class="row report_actions">
+            {% if reports.getType == '1' %}
+                <a href="{{ path('troubleticket_ba_main', { 'report_id': reports.getId()}) }}" style="float:right;">
+                    <button class="btn btn-primary">Voltar ao BA</button>
+                </a>
+            {% endif %}
+            {% if reports.getType == '2' %}
+                <a href="{{ path('troubleticket_bi_main', { 'report_id': reports.getId()}) }}" style="float:right;">
+                    <button  class="btn btn-primary">Voltar ao BI</button>
+                </a>
+            {% endif %}
+            <a href="{{ path('troubleticket_history', { 'id': reports.getId()}) }}" style="float:right;">
+                <button  class="btn btn-primary">Visualizar histórico</button>
+            </a>
+            <div class="clearfix"></div>
+            </div>
+            <h3>Informação do subcaso</h3>
+            <hr>
+            <form>
+                <div class="col-sm-50">
+                    <label>Número do subcaso:</label>
+                    <input type="text" value="{{subcases.getCode}}" disabled="disabled" style="padding:0px;">
+                    <label>Status:</label>
+                    <input type="text" value="{{subcases.getStatusString}}" disabled="disabled" style="padding:0px;">
+                    <label>Equipe encaminhada:</label>
+                    <input type="text" value="{{subcases.getTeam}}" disabled="disabled" style="padding:0px;">
+                    <label>Previsão:</label>
+                    <input type="text" value="{% if subcases.getForecast() %}{{subcases.getForecast().format('H:i')}}{% endif %}" disabled="disabled" style="padding:0px;">
+                </div>
+            </form>
+            <div class="row report_actions">
+		       	{% if subcases.getStatus() not in statuses  and isAllowed('SUB_' ~ subcases.getTypeString(), 'close') %}
+		            <form id="form_ba_subcaso_close" method="post">
+		                <button class="btn btn-primary" id="btn_ba_subcaso_close">Fechar</button>
+		            </form>
+		        {% endif %}
+                {% if subcases.getStatus() not in statuses and isAllowed('SUB_' ~ subcases.getTypeString(), 'pause') %}
+                    <button class="btn btn-primary" id="btn_ba_subcaso_pause">Pausar</button>
+                {% endif %}
+                {% if subcases.getStatus() == 1 and isAllowed('SUB_' ~ subcases.getTypeString(), 'restart') %}
+                    <button class="btn btn-primary" id="btn_ba_subcaso_restart">Reiniciar</button>
+                {% endif %}
+                {% if subcases.getStatus() not in statuses and isAllowed('SUB_' ~ subcases.getTypeString(), 'update') %}
+                    <form id="form_ba_subcaso_update" action="{{ path('troubleticket_ba_subcase_main', { 'subcaseId': subcases.getId()}) }}" method="post">
+                        <button class="btn btn-primary" id="btn_ba_subcaso_update">Atualizar</button>
+                    </form>
+                {% endif %}
+                {% if subcases.getStatus() not in statuses and reports.getType == 1 and isAllowed('SUB_' ~ subcases.getTypeString(), 'print_list_of_materials') %}
+                    <form id="form_ba_subcaso_materiais" action="{{ path('troubleticket_ba_subcase_materials', { 'subcaseId': subcases.getId()}) }}" method="post">
+                        <button class="btn btn-primary" id="btn_ba_subcaso_materials">Gerar lista de materiais</button>
+                    </form>
+                {% endif %}
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-50" style="float:left;">
+            <h3>Informação do circuito</h3>
+            <hr>
+            <div class="col-sm-100">
+                <div class="row">
+                    <div class="col-sm-50">
+                        <label>Designação:</label>
+                        <input type="text" value="{{reports.getDesignation()}}" disabled="disabled" style="padding:0px;">
+                    </div>
+                    <div class="col-sm-50">
+                        <label>Ativado Em:</label>
+                        <input type="text" value="{{reports.getInitialDate()|date('d/m/Y H:i:s')}}" disabled="disabled" style="padding:0px;">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-100">
+                        <label>Produto:</label>
+                        <input type="text" value="" disabled="disabled" style="padding:0px;">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-50">
+                        <label>Serviço:</label>
+                        <input type="text" value="{{api_circuit.servNome}}" disabled="disabled" style="padding:0px;">
+                    </div>
+                    <div class="col-sm-50">
+                        <label>Velocidade:</label>
+                        <input type="text" value="{{api_circuit.velocidade}}" disabled="disabled" style="padding:0px;">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-50">
+                        <label>Ponta A Cliente:</label>
+                        <input type="text" value="{{api_circuit.pontACliente}}" disabled="disabled" style="padding:0px;">
+                    </div>
+                    <div class="col-sm-50">
+                        <label>Ponta B Cliente:</label>
+                        <input type="text" value="{{api_circuit.pontBCliente}}" disabled="disabled" style="padding:0px;">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-50">
+                        <label>Ponta A Pop:</label>
+                        <input type="text" value="{{api_circuit.pontAPop}}" disabled="disabled" style="padding:0px;">
+                    </div>
+                    <div class="col-sm-50">
+                        <label>Ponta B Pop:</label>
+                        <input type="text" value="{{api_circuit.pontBPop}}" disabled="disabled" style="padding:0px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-50" style="float:left;">
+            <h3>Informação do incidente</h3>
+            <hr>
+            <div class="col-sm-100">
+                <div class="row">
+                    <div class="col-sm-30">
+                        <label>Número do chamado:</label>
+                        <input type="text" value="{{reports.getCode()}}" disabled="disabled" style="padding:0px;">
+                    </div>
+                    <div class="col-sm-50">
+                        <label>Status:</label>
+                        <input type="text" value="{{reports.getStatusString()}}" disabled="disabled" style="padding:0px;">
+                    </div>
+                    <div class="col-sm-20">
+                        <label>SLA:</label>
+                        <input type="text" value="{{api_circuit.sla.disponibilidade}}" disabled="disabled" style="padding:0px;">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-80">
+                        <label>Téc. Responsavel:</label>
+                        {% if reports.getResponsible()  %}
+                            <input type="text" value="{{ reports.getResponsibleData().nome }}" disabled="disabled" style="padding:0px;">
+                        {% else %}
+                            <input type="text" value="" disabled="disabled" style="padding:0px;">
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-50">
+                        <label>Data e hora da abertura:</label>
+                        <input type="text" value="{{reports.getInitialDate()|date('d/m/Y H:i:s')}}" disabled="disabled" style="padding:0px;">
+                    </div>
+                    <div class="col-sm-50">
+                        <label>Tempo decorrido:</label>
+                        <input type="text" value="{{reports.getTME()|tt_time}}" disabled="disabled" style="padding:0px;">
+                    </div>
+                </div>
+                {% if reports.getType == '1' %}
+                <div class="row">
+                    <form method="post" action="{{ path('troubleticket_ba_main_update', { 'report_id': reports.getId()}) }}">
+                        <div class="col-sm-80">
+                            <label>ID chamado operadora:</label>
+                            <input type="text" name="reports_operator_report_identifier" value="{{reports.getOperatorReportIdentifier()}}"{% if reports.getStatus() != '0' or not isAllowed('BA', 'update') %} disabled="disabled" {% endif %} style="padding:0px;">
+                        </div>
+                    </form>
+                </div>
+                {% endif %}
+                {% if reports.getParent() %}
+                <div class="row">
+                    <div class="col-sm-80" id="linked_bi">
+                        <label>BI:</label>
+                        <input type="text" value="{{reports.getParent().getCode()}} - {{reports.getParent().getDesignation() }}" disabled="disabled" style="padding:0px;">
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-100">
+            <h3>Informação do cliente</h3>
+            <hr>
+            <form>
+                <div class="col-sm-50">
+                    <label>Cliente:</label>
+                    <input type="text" value="{{api_client.razaoSocial}}" disabled="disabled" style="padding:0px;">
+                    <label>Solicitante:</label>
+                    <input type="text" value="{{reports.getRequesterName}}" disabled="disabled" style="padding:0px;">
+                    <label>Email:</label>
+                    <input type="text" value="{{reports.getRequesterEmail}}" disabled="disabled" style="padding:0px;">
+                    <label>Telefone:</label>
+                    <input type="text" value="{{reports.getRequesterPhone}}" disabled="disabled" style="padding:0px;">
+                </div>
+                <div class="col-sm-50">
+                    <label>Cliente Final:</label>
+                    <input type="text" value="{{api_circuit.clienteFinal.nome}}" disabled="disabled" style="padding:0px;">
+                    <label>Contato:</label>
+                    {% if api_circuit.contatos.contatos is empty %}
+                        <input type="text" name="" value="" disabled="disabled" style="padding:0px;">
+                    {% else %}
+                        <input type="text" value="{{api_circuit.contatos.contatos[0].nome}}" disabled="disabled" style="padding:0px;">
+                    {% endif %}
+                    <label>Telefone:</label>
+                    <input type="text" value="{{api_circuit.contatos.telefone.numero}}" disabled="disabled" style="padding:0px;">
+                    <label>Email:</label>
+                    <input type="text" value="{{api_circuit.contatos.email.email}}" disabled="disabled" style="padding:0px;">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-100">
+            <div class="col-sm-100">
+                <h3>Atendimento</h3>
+                <hr>
+                <form>
+                    <div class="col-sm-50">
+                    {% set mantainer = reports.getSubcaseByType(2) %}
+                        <label>Sub Caso Mainteiner:</label>
+                        <input type="text" value="{{mantainer.getCode()}}" disabled="disabled" style="padding:0px;">
+                        <label>Status:</label>
+                        <input type="text" value="{{mantainer.getStatusString()}}" disabled="disabled" style="padding:0px;">
+                        <label>Tempo Decorrido:</label>
+                        <input type="text" value="{{mantainer.getTME() | tt_time}}" disabled="disabled" style="padding:0px;">
+                    </div>
+                    <div class="col-sm-50">
+                    {% set coc = reports.getSubcaseByType(1) %}
+                        <label>Sub Caso COC:</label>
+                        <input type="text" value="{{coc.getCode()}}" disabled="disabled" style="padding:0px;">
+                        <label>Status:</label>
+                        <input type="text" value="{{coc.getStatusString()}}" disabled="disabled" style="padding:0px;">
+                        <label>Tempo Decorrido:</label>
+                        <input type="text" value="{{coc.getTME() | tt_time}}" disabled="disabled" style="padding:0px;">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-100">
+            <div class="col-sm-100">
+                <h3>Solicitação</h3>
+                <hr>
+                <form>
+                    <div class="col-sm-50">
+                        <label>Solicitação:</label>
+                        <textarea col="4" disabled="disabled" style="padding:0px;">{{reports.getDescription()}}</textarea>
+                    </div>
+                    <div class="col-sm-50">
+                        <label>Ultimo comentário:</label>
+                        <textarea col="4" disabled="disabled" style="padding:0px;">{{ '[' ~ history_last.getDate().format('d/m/Y H:i:s') ~ ' - ' ~ history_last.getUserName() ~ '] ' ~ history_last.getComment()}}</textarea>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="div_close_subcase_ba" style="width:500px; display:none">
+        {{ block('ba_subcase_close') }}
+	</div>
+    <div id="pause_modal" style="display:none">
+        <div class="row">
+            <div class="col-sm-100">
+                <form id="pause_modal_form" action="{{ path('troubleticket_ba_subcase_pause', { 'id': subcases.getId()}) }}" method="post">
+                    <label>*Motivo da Pausa</label>
+                    <select required="required" name="form[reason]">
+                        <option value="">Selecione um motivo</option>
+                        {% for reason in pause_reasons %}
+                            <option value="{{reason}}">{{reason}}</option>
+                        {% endfor %}
+                    </select>
+                    <label>Comentário</label>
+                    <textarea name="form[comment]"></textarea>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="restart_modal" style="display:none">
+        <div class="row">
+            <div class="col-sm-100">
+                <form id="restart_modal_form" action="{{ path('troubleticket_ba_subcase_restart', { 'id': subcases.getId()}) }}" method="post">
+                    <label>*Comentário</label>
+                    <textarea name="form[comment]"></textarea>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="update_modal" style="display:none">
+        <div class="row">
+            <div class="col-sm-100">
+                <form id="update_modal_form" action="{{ path('troubleticket_ba_subcase_update', { 'id': subcases.getId()}) }}" method="post">
+                    <label>*Novo Status</label>
+                    <select name="form[status]">
+                        <option value="3" {% if subcases.getStatus() == 3 %} selected="selected" {% endif %}>Em Deslocamento</option>
+                        <option value="4" {% if subcases.getStatus() == 4 %} selected="selected" {% endif %}>Em Atendimento Infra</option>
+                        <option value="5" {% if subcases.getStatus() == 5 %} selected="selected" {% endif %}>Em Atendimento Campo</option>
+                        <option value="6" {% if subcases.getStatus() == 6 %} selected="selected" {% endif %}>Em Atendimento Cliente</option>
+                    </select>
+                    <label>*Previsão</label>
+                    <select name="form[forecast]">
+                        {% for hour in range(0, 23) %}
+                            {% set base_hour = ( hour|length > 1 ? hour : '0' ~ hour) %}
+                            {% for minutes in [0, 30] %}
+                                {% set forecast = base_hour ~ ':' ~ (minutes|length > 1 ? minutes : '0' ~ minutes) %}
+                                <option value="{{forecast}}" {% if subcases.getForecast() and subcases.getForecast().format('H:i') == forecast %} selected="selected" {% endif %}>{{forecast}}</option>
+                            {% endfor %}
+                        {% endfor %}
+                    </select>
+                    <label>*Equipe</label>
+                    <select name="form[team]">
+                        {% for team in teams %}
+                            <option value="{{team}}" {% if subcases.getTeam() == team %} selected="selected" {% endif %}>{{team}}</option>
+                        {% endfor %}
+                    </select>
+                    <label>*Comentário</label>
+                    <textarea name="form[comment]"></textarea>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block static_js %}
+    <script type="text/javascript" src="{{ asset('bundles/troubleticket/js/subcase.js') }}"></script>
+{% endblock %}

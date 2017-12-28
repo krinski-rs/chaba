@@ -1,0 +1,55 @@
+Servicos\FinanceiroBundle\Entity\Servico:
+    type: entity
+    table: financeiro.servico
+    indexes:
+        fk_sevico_gruposervico1_idx:
+            columns:
+                - grupserv_codigoid
+    id:
+        servCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: serv_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        servNome:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: serv_nome
+        servDescricao:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: serv_descricao
+        servDatainc:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: serv_datainc
+        servApelido:
+            type: string
+            nullable: false
+            length: 20
+            fixed: false
+            column: serv_apelido
+        servDependente:
+            type: boolean
+            nullable: false
+            column: serv_dependente
+    manyToOne:
+        grupservCodigoid:
+            targetEntity: Gruposervico
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                grupserv_codigoid:
+                    referencedColumnName: grupserv_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

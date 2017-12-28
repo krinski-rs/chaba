@@ -1,0 +1,66 @@
+Servicos\LumaBundle\Entity\Cotacao:
+    type: entity
+    table: luma.cotacao
+    indexes:
+        tipo_codigoid:
+            columns:
+                - tipo_codigoid
+    id:
+        cotaCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: cota_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        autusuarioCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: autusuario_codigoid
+        cotaDatainc:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: cota_datainc
+        cotaAbertura:
+            type: datetime
+            nullable: false
+            default: '0000-00-00 00:00:00'
+            column: cota_abertura
+        cotaFechamento:
+            type: datetime
+            nullable: false
+            default: '0000-00-00 00:00:00'
+            column: cota_fechamento
+        cotaDescricao:
+            type: text
+            nullable: true
+            length: 65535
+            fixed: false
+            column: cota_descricao
+        cotaDescricaofornecedor:
+            type: text
+            nullable: true
+            length: 65535
+            fixed: false
+            column: cota_descricaofornecedor
+        cotaEnderecoentrega:
+            type: text
+            nullable: true
+            length: 65535
+            fixed: false
+            column: cota_enderecoentrega
+    manyToOne:
+        tipoCodigoid:
+            targetEntity: Tipo
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                tipo_codigoid:
+                    referencedColumnName: tipo_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

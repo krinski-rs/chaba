@@ -1,0 +1,40 @@
+Servicos\GcdbBundle\Entity\AutLogerror:
+    type: entity
+    table: gcdb.aut_logerror
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        usuario:
+            type: string
+            nullable: false
+            length: 200
+            fixed: false
+            default: ''
+        ip:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+            default: ''
+        site:
+            type: string
+            nullable: false
+            length: 200
+            fixed: false
+            default: ''
+        referer:
+            type: string
+            nullable: true
+            length: 200
+            fixed: false
+        data:
+            type: datetime
+            nullable: false
+            default: '0000-00-00 00:00:00'
+    lifecycleCallbacks: {  }

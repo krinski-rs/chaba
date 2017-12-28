@@ -1,0 +1,46 @@
+Servicos\LumaBundle\Entity\Pedidorejeicaoproduto:
+    type: entity
+    table: luma.pedidorejeicaoproduto
+    indexes:
+        pedireje_codigoid:
+            columns:
+                - pedireje_codigoid
+        prod_codigoid:
+            columns:
+                - prod_codigoid
+    id:
+        pedirejeprodCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: pedirejeprod_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        pedirejeprodQuantidade:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+            column: pedirejeprod_quantidade
+    manyToOne:
+        pedirejeCodigoid:
+            targetEntity: Pedidorejeicao
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                pedireje_codigoid:
+                    referencedColumnName: pedireje_codigoid
+            orphanRemoval: false
+        prodCodigoid:
+            targetEntity: Produto
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                prod_codigoid:
+                    referencedColumnName: prod_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

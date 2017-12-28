@@ -1,0 +1,55 @@
+Servicos\LumaBundle\Entity\Ncm:
+    type: entity
+    table: luma.ncm
+    indexes:
+        fk_ncm_ncm1:
+            columns:
+                - ncm_pai
+    id:
+        ncmCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: ncm_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        ncmNcm:
+            type: string
+            nullable: false
+            length: 15
+            fixed: false
+            column: ncm_ncm
+        ncmDescricao:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: ncm_descricao
+        ncmIpi:
+            type: decimal
+            nullable: false
+            precision: 5
+            scale: 2
+            column: ncm_ipi
+        ncmDatainc:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: ncm_datainc
+        ncmDataalteracao:
+            type: datetime
+            nullable: true
+            column: ncm_dataalteracao
+    manyToOne:
+        ncmPai:
+            targetEntity: Ncm
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                ncm_pai:
+                    referencedColumnName: ncm_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

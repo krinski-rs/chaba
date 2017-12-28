@@ -1,0 +1,38 @@
+Servicos\GcdbBundle\Entity\Vlans:
+    type: entity
+    table: gcdb.vlans
+    id:
+        idvlan:
+            type: integer
+            nullable: false
+            unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        tagid:
+            type: integer
+            nullable: false
+            unsigned: true
+        descricao:
+            type: text
+            nullable: false
+            length: 65535
+            fixed: false
+        servico:
+            type: string
+            nullable: false
+            length: 30
+            fixed: true
+        numCircuito:
+            type: string
+            nullable: false
+            length: 2
+            fixed: true
+            column: num_circuito
+        status:
+            type: string
+            nullable: false
+            length: 1
+            fixed: true
+    lifecycleCallbacks: {  }

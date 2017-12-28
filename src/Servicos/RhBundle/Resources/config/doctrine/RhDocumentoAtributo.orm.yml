@@ -1,0 +1,70 @@
+Servicos\RhBundle\Entity\RhDocumentoAtributo:
+    type: entity
+    table: rh.rh_documento_atributo
+    indexes:
+        fk_rh_documento_atributo_rh_tipo_atributo1_idx:
+            columns:
+                - id_tipo_atributo
+        fk_rh_documento_atributo_rh_documento1_idx1:
+            columns:
+                - id_documento
+    id:
+        idDocumentoAtributo:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_documento_atributo
+            generator:
+                strategy: IDENTITY
+    fields:
+        idTipoAtributo:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: id_tipo_atributo
+        valor:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+        pagina:
+            type: integer
+            nullable: true
+            unsigned: false
+        registrante:
+            type: integer
+            nullable: true
+            unsigned: false
+        dataInc:
+            type: datetime
+            nullable: true
+            column: data_inc
+        dataEdicao:
+            type: datetime
+            nullable: true
+            column: data_edicao
+        registranteEdicao:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: registrante_edicao
+        refenciaHistorico:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: refencia_historico
+        ativo:
+            type: boolean
+            nullable: true
+    manyToOne:
+        idDocumento:
+            targetEntity: RhDocumento
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_documento:
+                    referencedColumnName: id_documento
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,34 @@
+Servicos\FinanceiroBundle\Entity\Excedente:
+    type: entity
+    table: financeiro.excedente
+    indexes:
+        fk_excedente_contrato1_idx:
+            columns:
+                - cont_codigoid
+    id:
+        exceCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: exce_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        exceValor:
+            type: decimal
+            nullable: false
+            precision: 10
+            scale: 2
+            column: exce_valor
+    manyToOne:
+        contCodigoid:
+            targetEntity: Contrato
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cont_codigoid:
+                    referencedColumnName: cont_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,43 @@
+Servicos\LumaBundle\Entity\CentroCustoColaborador:
+    type: entity
+    table: centro_custo_colaborador
+    indexes:
+        centro_custo_id:
+            columns:
+                - centro_custo_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        colaboradorId:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: colaborador_id
+        dataInclusao:
+            type: datetime
+            nullable: false
+            column: data_inclusao
+        dataExclusao:
+            type: datetime
+            nullable: true
+            column: data_exclusao
+        ativo:
+            type: boolean
+            nullable: false
+    manyToOne:
+        centroCusto:
+            targetEntity: CentroCusto
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                centro_custo_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

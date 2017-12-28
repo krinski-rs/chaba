@@ -1,0 +1,139 @@
+{% extends 'TroubleticketBundle::base.html.twig' %}
+{% use "TroubleticketBundle:BI/modal:bi_export.html.twig" %}
+{% use "TroubleticketBundle:BI/modal:bi_export_performance.html.twig" %}
+{% block body %}
+    {% if message_error %}
+        <div class="error">
+            <span>{{message_error}}</span>
+        </div>
+    {% endif %}
+    {% if message_success %}
+        <div class="sucesso">
+            <span>{{message_success}}</span>
+        </div>
+    {% endif %}
+    <div class="titleModulo">
+        <div>
+            <span>Fila de BI</span>
+        </div>
+    </div>
+    <form id="form_stack_search" action="" method="get">
+        <div class="row" style="margin-bottom: 0px !important;">
+            <div class="col-sm-10">
+                <label>ID do BI</label>
+                <input type="text" id="input_id" name="id">
+            </div>
+            <div class="col-sm-10">
+                <label>Designação</label>
+                <input type="text" id="input_designacao" name="designacao">
+            </div>
+            <div class="col-sm-10">
+                <label>Status</label>
+                <select type="text" id="input_status" name="status">
+                    <option value="">Todos</option>
+                    {% for entry in status %}
+                        <option value="{{entry.code}}">{{entry.label}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-sm-30" style="margin-bottom: 0px !important;">
+                <label>Data de abertura</label>
+                <div class="row" style="margin-bottom: 0px !important;margin-top: 0 !important;">
+                    <div class="col-sm-10" style="margin-bottom: 0px !important;">
+                        de:
+                    </div>
+                    <div class="col-sm-40" style="margin-bottom: 0px !important;">
+                        <input type="text" class="input_date" id="initial_date" name="initial_date">
+                    </div>
+                    <div class="col-sm-10" style="margin-bottom: 0px !important;">
+                        até:
+                    </div>
+                    <div class="col-sm-40" style="margin-bottom: 0px !important;">
+                        <input type="text" class="input_date" id="final_date" name="final_date">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-10" style="margin-bottom: 0px !important;">
+                <button class="btn btn-primary" type="button" name="btn_show_filters" id="btn_show_filters">Exibir mais filtros</button>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <div class="row" id="filters">
+            <div class="col-sm-10">
+                <label>UF</label>
+                <select type="text" id="input_uf" name="uf">
+                    <option value="">Todos</option>
+                    {% for states in ufs.states %}
+                        <option value="{{states.code}}">{{states.code}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-sm-10">
+                <label>Severidade</label>
+                <select type="text" id="input_severity" name="severity">
+                    <option value="">Todos</option>
+                    {% for key, severidade in options_severidade %}
+                        <option value="{{key}}">{{severidade.severidade}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-sm-30" style="margin-bottom: 0px !important;">
+                <label>Data da &Uacute;ltima atualiza&ccedil;&atilde;o</label>
+                <div class="row" style="margin-bottom: 0px !important;margin-top: 0 !important;">
+                    <div class="col-sm-10" style="margin-bottom: 0px !important;">
+                        de:
+                    </div>
+                    <div class="col-sm-40" style="margin-bottom: 0px !important;">
+                        <input type="text" class="input_date" id="initial_last_update" name="initial_last_update">
+                    </div>
+                    <div class="col-sm-10" style="margin-bottom: 0px !important;">
+                        até:
+                    </div>
+                    <div class="col-sm-40" style="margin-bottom: 0px !important;">
+                        <input type="text" class="input_date" id="final_last_update" name="final_last_update">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-20">
+                <label>Respons&aacute;vel:</label>
+                <input type="text" name="responsible"/>
+            </div>
+            <div class="col-sm-30">
+                <label>Mostrar boletins:</label>
+                <input type="checkbox" name="closed" value="1"/>Fechados
+                <input type="checkbox" name="cancelled" value="1"/>Cancelados
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-10">
+                <button class="btn btn-primary">Pesquisar</button>
+            </div>
+        </div>
+    </form>
+    <table id="table_bi_stack" class="hover row-border stripe compact cell-border"></table>
+    <div class="row report_actions">
+            <button class="btn btn-primary btn_stack_bi_export" id="btn_stack_bi_export">Relatório de Incidentes</button>
+            <button class="btn btn-primary btn_stack_bi_export_performance" id="btn_stack_bi_export_performance">Relatório de Performance</button>
+            <div class="clearfix"></div>
+    </div>
+    <div id="div_stack_bi_export" style="display:none;">
+        {{ block('bi_export') }}
+    </div>
+    <div id="div_stack_bi_export_performance" style="display:none;">
+        {{ block('bi_export_performance') }}
+    </div>
+{% endblock %}
+{% block static_css %}
+    <link rel="stylesheet" href="{{ asset('bundles/troubleticket/js/plugins/jquery-dataTables/datatables.min.css') }}" />
+{% endblock %}
+{% block static_js %}
+    <script type="text/javascript">
+        var stack_request = "{{path('troubleticket_bi_stack_request')}}",
+            main_request = "{{path('troubleticket_bi_main',{'report_id':0})}}",
+            subcase_request = "{{path('troubleticket_bi_subcase_main',{'subcaseId':0})}}",
+            new_request = "{{path('troubleticket_bi_new')}}",
+            page_limit = parseInt('{{page_limit}}');
+    </script>
+    <script type="text/javascript" src="{{ asset('bundles/troubleticket/js/plugins/jquery-dataTables/datatables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/troubleticket/js/bi_stack.js') }}"></script>
+{% endblock %}

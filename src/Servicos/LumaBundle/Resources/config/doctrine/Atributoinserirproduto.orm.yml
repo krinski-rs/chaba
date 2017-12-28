@@ -1,0 +1,44 @@
+Servicos\LumaBundle\Entity\Atributoinserirproduto:
+    type: entity
+    table: luma.atributoinserirproduto
+    indexes:
+        fk_atributo:
+            columns:
+                - atri_codigoid
+        fk_inserirproduto:
+            columns:
+                - inse_codigoid
+    uniqueConstraints:
+        atri_codigoid:
+            columns:
+                - atri_codigoid
+                - inse_codigoid
+    id:
+        atriinseCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: atriinse_codigoid
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        atriCodigoid:
+            targetEntity: Atributo
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                atri_codigoid:
+                    referencedColumnName: atri_codigoid
+            orphanRemoval: false
+        inseCodigoid:
+            targetEntity: Inserirproduto
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                inse_codigoid:
+                    referencedColumnName: inse_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

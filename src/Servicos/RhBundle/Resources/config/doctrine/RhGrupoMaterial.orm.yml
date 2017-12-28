@@ -1,0 +1,26 @@
+Servicos\RhBundle\Entity\RhGrupoMaterial:
+    type: entity
+    table: rh.rh_grupo_material
+    id:
+        idCargoMaterial:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_cargo_material
+            generator:
+                strategy: IDENTITY
+    fields:
+        descricao:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+        dataInc:
+            type: datetime
+            nullable: true
+            column: data_inc
+        ativo:
+            type: boolean
+            nullable: true
+    lifecycleCallbacks: {  }

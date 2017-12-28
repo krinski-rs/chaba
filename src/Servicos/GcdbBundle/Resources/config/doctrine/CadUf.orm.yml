@@ -1,0 +1,33 @@
+Servicos\GcdbBundle\Entity\CadUf:
+    type: entity
+    table: gcdb.cad_uf
+    indexes:
+        CAD04_UNIDADE_FEDERATIVA_FKIndex1:
+            columns:
+                - CAD05_CODIGO
+    id:
+        cad04Codigo:
+            type: string
+            nullable: false
+            length: 2
+            fixed: false
+            default: ''
+            id: true
+            column: CAD04_CODIGO
+            generator:
+                strategy: IDENTITY
+    fields:
+        cad04Nome:
+            type: string
+            nullable: false
+            length: 20
+            fixed: false
+            default: ''
+            column: CAD04_NOME
+        cad05Codigo:
+            type: integer
+            nullable: false
+            unsigned: false
+            default: '0'
+            column: CAD05_CODIGO
+    lifecycleCallbacks: {  }

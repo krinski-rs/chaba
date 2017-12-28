@@ -1,0 +1,54 @@
+Servicos\FinanceiroBundle\Entity\Postagem:
+    type: entity
+    table: financeiro.postagem
+    indexes:
+        fk_postagem_ar1_idx:
+            columns:
+                - ar_codigoid
+        fk_postagem_fatura1_idx:
+            columns:
+                - fatu_codigoid
+    id:
+        postCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: post_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        usuaCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: usua_codigoid
+        postDatainc:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: post_datainc
+        postDatarecebimento:
+            type: datetime
+            nullable: true
+            column: post_datarecebimento
+    manyToOne:
+        arCodigoid:
+            targetEntity: Ar
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                ar_codigoid:
+                    referencedColumnName: ar_codigoid
+            orphanRemoval: false
+        fatuCodigoid:
+            targetEntity: Fatura
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                fatu_codigoid:
+                    referencedColumnName: fatu_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

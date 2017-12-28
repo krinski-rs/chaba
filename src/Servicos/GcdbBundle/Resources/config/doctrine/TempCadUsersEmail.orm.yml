@@ -1,0 +1,33 @@
+Servicos\GcdbBundle\Entity\TempCadUsersEmail:
+    type: entity
+    table: gcdb.temp_cad_users_email
+    indexes:
+        cad_users_email_FKIndex1:
+            columns:
+                - cad_users_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        cadUsersId:
+            type: integer
+            nullable: true
+            unsigned: true
+            column: cad_users_id
+        email:
+            type: string
+            nullable: true
+            length: 200
+            fixed: false
+        mailing:
+            type: boolean
+            nullable: true
+        principal:
+            type: boolean
+            nullable: true
+    lifecycleCallbacks: {  }

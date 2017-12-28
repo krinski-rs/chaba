@@ -1,0 +1,35 @@
+Servicos\GcdbBundle\Entity\Portasvlan:
+    type: entity
+    table: gcdb.portasvlan
+    id:
+        idportavlan:
+            type: integer
+            nullable: false
+            unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        idporta:
+            type: integer
+            nullable: false
+            unsigned: true
+        idvlan:
+            type: integer
+            nullable: false
+            unsigned: true
+        idswitch:
+            type: integer
+            nullable: false
+            unsigned: true
+        nome:
+            type: string
+            nullable: false
+            length: 30
+            fixed: true
+        tagging:
+            type: string
+            nullable: false
+            length: 8
+            fixed: true
+    lifecycleCallbacks: {  }

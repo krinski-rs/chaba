@@ -1,0 +1,43 @@
+Servicos\LumaBundle\Entity\Unidaderesponsavel:
+    type: entity
+    table: luma.unidaderesponsavel
+    indexes:
+        unidresp_esto_fk:
+            columns:
+                - unid_codigoid
+    id:
+        unidrespCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: unidresp_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        unidrespDatacadastro:
+            type: datetime
+            nullable: false
+            comment: 'Precisa ser o horario da modificação'
+            default: CURRENT_TIMESTAMP
+            column: unidresp_datacadastro
+        caduserCodigoid:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: caduser_codigoid
+        unidrespDigest:
+            type: boolean
+            nullable: false
+            column: unidresp_digest
+    manyToOne:
+        unidCodigoid:
+            targetEntity: Unidade
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                unid_codigoid:
+                    referencedColumnName: unid_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,23 @@
+<html>
+<head>
+	<link rel="stylesheet" href="/template/inc/css/error.css" type="text/css" />
+	<title>OPS!! Erro {% if numeroError is defined %}{{ numeroError|raw }}{% endif %}</title>
+</head>
+<body>
+	<div class="container">
+		<div class="errors">
+			<div><span class="titleError errorNumber"> OPS!! </span></div>
+			<div><span class="errorNumber">{% if numeroError is defined %}{{ numeroError|raw }}{% endif %}</span></div>
+			<div>
+				<span class="mensagemError">
+					{% if exception is defined %}
+				        {{ exception.getMessage() }}
+				    {% endif %}
+				</span>
+			</div>
+			<div class="voltar"> <span onclick="javascript:window.history.back();"> Voltar </span></div>
+		</div>
+		<img src="/template/inc/img/robot.png">
+	</div>
+</body>
+</html>

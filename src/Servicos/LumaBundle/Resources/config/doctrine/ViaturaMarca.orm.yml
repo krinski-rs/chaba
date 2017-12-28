@@ -1,0 +1,35 @@
+Servicos\LumaBundle\Entity\ViaturaMarca:
+    type: entity
+    table: luma.viatura_marca
+    id:
+        viatMarcaid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: viat_marcaid
+            generator:
+                strategy: IDENTITY
+    fields:
+        marcaCadUsuarioid:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: marca_cad_usuarioid
+        marcaNome:
+            type: string
+            nullable: false
+            length: 128
+            fixed: false
+            column: marca_nome
+        marcaDatainc:
+            type: datetime
+            nullable: true
+            default: CURRENT_TIMESTAMP
+            column: marca_datainc
+        marcaAtivo:
+            type: boolean
+            nullable: true
+            default: '1'
+            column: marca_ativo
+    lifecycleCallbacks: {  }

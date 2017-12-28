@@ -1,0 +1,87 @@
+Servicos\FinanceiroBundle\Entity\Enderecocobranca:
+    type: entity
+    table: financeiro.enderecocobranca
+    indexes:
+        fk_enderecocobranca_contrato1_idx:
+            columns:
+                - cont_codigoid
+    id:
+        endecobrCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: endecobr_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        endecobrPais:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: endecobr_pais
+        endecobrEstado:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            column: endecobr_estado
+        endecobrCidade:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            column: endecobr_cidade
+        endecobrBairro:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            column: endecobr_bairro
+        endecobrLogradouro:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            column: endecobr_logradouro
+        endecobrCep:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            column: endecobr_cep
+        endecobrNumero:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            column: endecobr_numero
+        endecobrComplemento:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            column: endecobr_complemento
+        endecobrLatitude:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            column: endecobr_latitude
+        endecobrLongitude:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            column: endecobr_longitude
+    manyToOne:
+        contCodigoid:
+            targetEntity: Contrato
+            cascade: {  }
+            mappedBy: null
+            inversedBy: enderecocobranca
+            joinColumns:
+                cont_codigoid:
+                    referencedColumnName: cont_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

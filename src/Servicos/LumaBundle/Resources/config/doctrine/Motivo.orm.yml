@@ -1,0 +1,25 @@
+Servicos\LumaBundle\Entity\Motivo:
+    type: entity
+    table: luma.motivo
+    id:
+        motivoCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: motivo_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        motivoMotivo:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: motivo_motivo
+        motivoAtivo:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: motivo_ativo
+    lifecycleCallbacks: {  }

@@ -1,0 +1,42 @@
+Servicos\GcdbBundle\Entity\Userequipe:
+    type: entity
+    table: gcdb.Userequipe
+    indexes:
+        ID:
+            columns:
+                - ID
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        tipo:
+            type: boolean
+            nullable: false
+            default: '1'
+            column: Tipo
+        fkUserid:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: FK_UserID
+        fkEquipeid:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: FK_EquipeID
+        dataAdd:
+            type: date
+            nullable: false
+            column: Data_Add
+        dataRem:
+            type: date
+            nullable: true
+            default: '0000-00-00'
+            column: Data_Rem
+    lifecycleCallbacks: {  }

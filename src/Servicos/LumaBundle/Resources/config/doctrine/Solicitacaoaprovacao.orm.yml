@@ -1,0 +1,71 @@
+Servicos\LumaBundle\Entity\Solicitacaoaprovacao:
+    type: entity
+    repositoryClass: Servicos\LumaBundle\Repository\SolicitacaoaprovacaoRepository
+    table: luma.solicitacaoaprovacao
+    indexes:
+        soli_codigoid:
+            columns:
+                - soli_codigoid
+        tipo_codigoid:
+            columns:
+                - tipo_codigoid
+    id:
+        soliaproCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: soliapro_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        usrCodigoid:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: usr_codigoid
+        soliaproMotivo:
+            type: text
+            nullable: true
+            length: 65535
+            fixed: false
+            column: soliapro_motivo
+        soliaproData:
+            type: datetime
+            nullable: true
+            column: soliapro_data
+        soliaproDatainc:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: soliapro_datainc
+    manyToOne:
+        soliCodigoid:
+            targetEntity: Solicitacao
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                soli_codigoid:
+                    referencedColumnName: soli_codigoid
+            orphanRemoval: false
+        tipoCodigoid:
+            targetEntity: Tipo
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                tipo_codigoid:
+                    referencedColumnName: tipo_codigoid
+            orphanRemoval: false
+    oneToOne:
+        tipoAprovacaoId:
+            targetEntity: TipoAprovacao
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                tipo_aprovacao_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

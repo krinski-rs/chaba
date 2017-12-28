@@ -1,0 +1,224 @@
+@CHARSET "ISO-8859-1";
+table.gridsort {
+	background-color: transparent !important;
+	font-weight: 600;
+	font-family: "Trebuchet MS", "Helvetica", "Arial", "Verdana", "sans-serif" !important;
+	border-spacing: 0px;
+	border-collapse: collapse !important;
+	width: 100%;
+}
+
+table.gridsort > thead > tr th {
+	text-align: left;
+	height: 29px;
+}
+
+table.gridsort > tbody > tr:nth-child(odd) td {
+	background-color: #E6E6E6 !important;
+}
+
+table.gridsort > tbody > tr:hover {
+	background-color: #5C9CCC !important;
+}
+
+table.gridsort > tbody > tr > td {
+	border: #cdcdcd 1px solid !important;
+	padding: 4px;
+	font-size: 12px !important;
+}
+
+table.gridsort > tbody > tr:hover > td {
+	background-color: #5C9CCC !important;
+	color: #fff !important;
+}
+
+
+table.gridsort > tbody > tr > td a,
+table.gridsort > tbody > tr > td a:visited,
+table.gridsort > tbody > tr > td a:active{
+	text-decoration: none;
+	font-weight: bold;
+	color: #0088D2 !important;
+}
+
+table.gridsort > tbody > tr:hover > td a{
+	text-decoration: underline;
+	color: #fff !important;
+}
+
+table.gridsort .ui-icon.ui-icon-triangle-1-s,
+table.gridsort .ui-icon.ui-icon-triangle-1-n {
+	width: 15px;
+  	height: 10px;
+  	float: left !important;
+  	margin-top: 0px !important;
+  	position: absolute;
+  	cursor:pointer;
+}
+
+.cab.ui-widget-header {
+	background-color: #0088D2 !important;
+}
+
+.paginacao .ui-widget-header{
+	background: none !important;
+	border: none !important;
+}
+
+.paginacao .ui-button .ui-button-text { 
+	line-height: normal !important; 
+}
+
+.paginacao .ui-button-icon-primary .ui-icon .ui-icon-seek-start{
+	width: 24px !important;
+	height: 24px !important;
+}
+
+.paginacao .ui-button-icon-only .ui-button-text, 
+.paginacao .ui-button-icons-only .ui-button-text{
+	width: 18px !important;
+	height: 24px !important;
+}
+
+.paginacao .ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-icon-only.ui-state-focus{
+	background:#0088D2 !important;
+	color:#FFF !important ;
+	outline:none !important;
+   	background-image: none !important;
+   	border: 1px solid #CCCCCC !important;
+}
+
+.paginacao .ui-state-default, 
+.paginacao .ui-widget-content .ui-state-default, 
+.paginacao .ui-widget-header .ui-state-default {
+	border: 1px solid #d3d3d3 !important;
+	font-weight: normal !important;
+	background:#FFF !important;
+	font-family:'Conv_myriad-web-pro',Sans-Serif !important;
+	color:#0088D2 !important;
+}
+
+.paginacao .ui-state-active, .paginacao .ui-state-hover{
+	background:#0088D2 !important;
+	color:#FFF !important ;
+}
+
+.paginacao .ui-button.ui-widget.ui-state-default.ui-button-text-only.ui-state-hover, 
+.paginacao .ui-button.ui-widget.ui-state-default.ui-button-text-only.ui-state-active, 
+.paginacao .ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-icon-only.ui-state-hover{
+	background:#0088D2 !important;
+	color:#FFF !important ;
+}
+
+.paginacao.ui-button.ui-widget.ui-state-default.ui-button-text-only.ui-corner-right.ui-state-active, 
+.paginacao .ui-button.ui-widget.ui-state-default.ui-button-text-only.ui-state-active{
+	border: 1px solid #d3d3d3 !important;
+}
+.paginacao.ui-button .ui-widget .ui-state-default .ui-button-text-only .ui-corner-right .ui-state-active{
+	background:#0088D2 !important;
+	color:#FFF !important ;
+}
+
+.paginacao .ui-button-text-only .ui-button-text{
+	padding: 3px 11px 3px 6px !important;
+	font-size: 16px;
+}
+
+.paginacao .ui-button-text{
+	padding-right: 10px !important;
+	font-size: 16px;
+
+}
+
+.paginacao .ui-icon-seek-start{
+	background-image: url(/vogel/web/bundles/base/img/prev.png)!important;
+	background-position: 0 !important;
+}
+
+.paginacao .ui-icon-seek-prev{
+	background-image: url(/vogel/web/bundles/base/img/first.png)!important;
+	background-position: 0 !important;
+}
+
+.paginacao .ui-icon-seek-end{
+	background-image: url(/vogel/web/bundles/base/img/last.png)!important;
+	background-position: 0 !important; 
+}
+
+.paginacao .ui-icon-seek-next{
+	background-image: url(/vogel/web/bundles/base/img/next.png)!important;
+	background-position: 0 !important;
+}
+
+.paginacao button{
+	padding:0 !important;
+}
+
+.paginacao{
+	margin-top: 1.5px;
+}
+
+.paginacao  button.ui-button-icon-only{
+	width: 26px !important;
+	height: 24px !important;
+	margin-top: -1px !important;
+	outline: none;
+}
+
+.paginacao  .first, .prev, .next, .last{
+	border-radius: 0 !important;
+	margin-top: -5px !important;
+}
+
+.paginacao  .prev{
+	margin-right: -2px !important;
+}
+.paginacao  .next{
+	margin-right: -2px !important;
+}
+
+.paginacao  .first{
+	border-top-left-radius: 5px !important;
+	border-bottom-left-radius: 5px !important;
+	margin: 0 !important;
+	margin-right: -2px !important;
+	margin-top: -5px !important;
+}
+
+.paginacao  .last{
+	border-top-right-radius: 5px !important;
+	border-bottom-right-radius: 5px !important;
+	margin: 0 !important;
+	margin-right: 0 !important;
+	margin-top: -5px !important;
+}
+
+.paginacao  .ui-icon{
+	display: inline-block;
+}
+
+.paginacao  .gridsort{
+	margin: 0 !important;
+}
+
+.paginacao  .ui-buttonset{
+	margin-left: 10px;
+}
+
+.paginacao label, #dialog .paginacao label{
+	display: inline-block !important;
+}
+
+.paginacao .pag{
+	width: 115px;
+  	border-radius: 0;
+  	margin: 5px;
+  	text-align: center;
+  	background: #F0F0F0;
+  	border: none;
+  	padding: 5px;
+  	font-size: 11px;
+  	color: #5A5A5A;
+  	border: 1px solid #d3d3d3 !important;
+}	
+	

@@ -1,0 +1,43 @@
+Servicos\LumaBundle\Entity\Remessamovi:
+    type: entity
+    table: remessamovi
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        remDataCriacao:
+            type: datetime
+            nullable: false
+            column: rem_data_criacao
+        remDataRetorno:
+            type: datetime
+            nullable: true
+            column: rem_data_retorno
+        remArquivoClientes:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: rem_arquivo_clientes
+        remArquivoProdutos:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: rem_arquivo_produtos
+        remArquivoMovimentacoes:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: rem_arquivo_movimentacoes
+    oneToMany:
+        remessamoviMovimentacao:
+            targetEntity: RemessamoviMovimentacao
+            mappedBy: remmovi 
+    lifecycleCallbacks: {  }

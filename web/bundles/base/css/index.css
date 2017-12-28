@@ -1,0 +1,135 @@
+.buttons{
+	width: 80%;
+	float: left;
+}
+
+.buttons .button{
+	width: 110px;
+  	height: 85px;
+  	background-color: #EEEEEE;
+  	margin: 4px 0 5px 5px;
+  	display: inline-block;
+  	padding: 5px;
+  	vertical-align: top;
+  	text-align: center;
+}
+
+.button .title-nav {
+	text-align: center;
+	margin-bottom: 3px;
+}
+
+.icon{
+	background-image: url(/bundles/base/img/icons.png);
+	background-repeat: no-repeat;
+	height: 55px;
+	width: 50px;
+	margin: 0 auto;
+	background-size: 230px;
+}
+
+.icon.config{
+	background-position: -109px 0px;
+}
+
+.icon.movi{
+	background-position: 0px -55px;
+}
+
+.icon.implatacao{
+	background-position: -55px -55px;
+}
+
+.icon.pessoa{
+	background-position: 0px 0px;
+}
+
+.icon.cliente{
+	background-position: -55px 0px;
+}
+
+.button .title-nav{
+	font-family: 'Dax-Bold';
+	font-size: 17px;
+	text-align: center;
+	color: #0088D2;
+}
+
+.button:hover{
+	background-color: #DEDEDE;
+	cursor: pointer;
+}
+
+.button a{
+	display: block;
+	text-decoration: none;	
+}
+
+.button a:visited{
+	color: #0088D2 !important;
+}
+
+.buttons > div{
+	padding: 5px;
+	border: 1px solid #CCC;
+	display: inline-block;
+	margin: 5px;
+	width: 98%;
+}
+
+.buttons > span{
+	font-family: Dax-Bold;
+	color: #0088D2;
+	font-size: 19px;
+	padding: 15px 5px;
+	display: block;
+}
+
+.button.chamados{
+	width: auto !important;
+}
+
+.chamados span.number {
+	display: block;
+	font-family: 'Dax-Bold';
+	font-size: 50px;
+	color: #BA1919;
+	margin: -5px 10px 0 10px;
+	text-align: center;
+}
+
+.chamados span.titleChamado {
+	display: block;
+	font-size: 11px;
+	font-family: Dax-Bold;
+	text-align: center;
+	color: #BA1919;
+}
+
+.chamados span.internos {
+	font-size: 12px;
+	display: block;
+	text-align: center;
+	font-family: Dax-Bold;
+	margin-top: 3px;
+}
+
+.buscaGeral{
+	width: 16%;
+	float: left;
+	margin: 20px 0 0 20px;
+}
+
+.buscaGeral label{
+	font-family: Dax-Bold;
+	font-size: 12px;
+	display: block;
+	margin-bottom: 5px;
+}
+
+.form select{
+	width: 96%;
+}
+.chamados a, .chamados a:active{
+	color:#000;	
+}

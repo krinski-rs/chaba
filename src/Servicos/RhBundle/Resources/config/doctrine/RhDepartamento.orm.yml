@@ -1,0 +1,65 @@
+Servicos\RhBundle\Entity\RhDepartamento:
+    type: entity
+    repositoryClass: Servicos\RhBundle\Repository\RhDepartamentoRepository
+    table: rh.rh_departamento
+    indexes:
+        fk_rh_departamento_rh_departamento1_idx:
+            columns:
+                - id_departamento_asc
+    id:
+        idDepartamento:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_departamento
+            generator:
+                strategy: IDENTITY
+    fields:
+        nome:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+        staff:
+            type: boolean
+            nullable: true
+        dataInc:
+            type: date
+            nullable: true
+            column: data_inc
+    oneToMany:
+        colaboradorDepartamento:
+            targetEntity: RhColaboradorDepartamento
+            mappedBy: idDepartamento
+            cascade:
+                - persist
+                - merge
+    manyToOne:
+        idDepartamentoAsc:
+            targetEntity: RhDepartamento
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_departamento_asc:
+                    referencedColumnName: id_departamento
+            orphanRemoval: false
+    manyToMany:
+        rhCargoCargo:
+            targetEntity: RhCargo
+            cascade: {  }
+            mappedBy: null
+            inversedBy: rhDepartamentoDepartamento
+            joinTable:
+                name: rh.rh_departamento_cargo
+                joinColumns:
+                    -
+                        name: rh_departamento_id_departamento
+                        referencedColumnName: id_departamento
+                inverseJoinColumns:
+                    -
+                        name: rh_cargo_id_cargo
+                        referencedColumnName: id_cargo
+            orderBy: null
+    lifecycleCallbacks: {  }

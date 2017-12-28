@@ -1,0 +1,65 @@
+Servicos\LumaBundle\Entity\Atributoprodutolote:
+    type: entity
+    table: luma.atributoprodutolote
+    indexes:
+        fk_atributoprodutolote_lote1:
+            columns:
+                - lote_codigoid
+        fk_atributoprodutolote_atributoproduto1:
+            columns:
+                - atriprod_codigoid
+    id:
+        atriprodloteCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: atriprodlote_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        autUserid:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: aut_userid
+        atriprodloteDado:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: atriprodlote_dado
+        datainc:
+            type: datetime
+            nullable: true
+            default: CURRENT_TIMESTAMP
+            column: dataInc
+    manyToOne:
+        atriprodCodigoid:
+            targetEntity: Atributoproduto
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                atriprod_codigoid:
+                    referencedColumnName: atriprod_codigoid
+            orphanRemoval: false
+        loteCodigoid:
+            targetEntity: Lote
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                lote_codigoid:
+                    referencedColumnName: lote_codigoid
+            orphanRemoval: false
+        autUsuarios:
+            targetEntity: \Servicos\GcdbBundle\Entity\AutUsuarios
+            cascade: { }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                aut_userid:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

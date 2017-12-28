@@ -1,0 +1,42 @@
+Servicos\GcdbBundle\Entity\CloseTicketProblema:
+    type: entity
+    table: gcdb.close_ticket_problema
+    indexes:
+        fk_closest_ticket_problema_closest_ticket_tipo_problema_idx:
+            columns:
+                - closest_ticket_tipo_problema_id
+    id:
+        closestTicketProblemaId:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: closest_ticket_problema_id
+            generator:
+                strategy: IDENTITY
+    fields:
+        closestTicketDescricao:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            column: closest_ticket_descricao
+    manyToOne:
+        closestTicketTipoProblema:
+            targetEntity: ClosestTicketTipoProblema
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                closest_ticket_tipo_problema_id:
+                    referencedColumnName: closest_ticket_tipo_problema_id
+            orphanRemoval: false
+    manyToMany:
+        closeTicket:
+            targetEntity: CloseTicket
+            cascade: {  }
+            mappedBy: closestTicketProblema
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+    lifecycleCallbacks: {  }

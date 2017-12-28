@@ -1,0 +1,184 @@
+Servicos\GcdbBundle\Entity\CadUsers:
+    type: entity
+    repositoryClass: Servicos\GcdbBundle\Repository\CadUsersRepository
+    table: gcdb.cad_users
+    indexes:
+        cad_users_FKIndex1:
+            columns:
+                - adm_logradouro_id
+        cad_users_FKIndex2:
+            columns:
+                - adm_pais_id
+        cad_users_FKIndex3:
+            columns:
+                - adm_uf_id
+        cad_users_FKIndex4:
+            columns:
+                - adm_cidades_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        cnpj:
+            type: bigint
+            nullable: true
+            unsigned: true
+        cpf:
+            type: bigint
+            nullable: true
+            unsigned: true
+        inscEst:
+            type: string
+            nullable: true
+            length: 32
+            fixed: false
+            comment: 'Tipo de Documento Estrangeiro'
+            column: insc_est
+        inscMun:
+            type: string
+            nullable: true
+            length: 32
+            fixed: false
+            comment: 'documento Estrangeiro'
+            column: insc_mun
+        senha:
+            type: string
+            nullable: true
+            length: 20
+            fixed: false
+        dtAbertura:
+            type: date
+            nullable: true
+            column: dt_abertura
+        cep:
+            type: string
+            nullable: true
+            length: 8
+            fixed: false
+        endereco:
+            type: string
+            nullable: true
+            length: 200
+            fixed: false
+        numero:
+            type: string
+            nullable: true
+            length: 15
+            fixed: false
+        bairro:
+            type: string
+            nullable: true
+            length: 200
+            fixed: false
+        site:
+            type: string
+            nullable: true
+            length: 80
+            fixed: false
+        dtCadastro:
+            type: datetime
+            nullable: true
+            column: dt_cadastro
+        tipo:
+            type: string
+            nullable: true
+            length: null
+            fixed: false
+        qtfoto:
+            type: integer
+            nullable: true
+            unsigned: false
+        latitude:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+        longitude:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+        simples:
+            type: integer
+            nullable: true
+            unsigned: false
+        atividadeRamo:
+            type: string
+            nullable: true
+            length: 2
+            fixed: false
+            column: atividade_ramo
+        tipoCliente:
+            type: string
+            nullable: true
+            length: 1
+            fixed: false
+            column: tipo_cliente
+    oneToMany:
+        cadUsersNome:
+            targetEntity: CadUsersNome
+            mappedBy: cadUsers
+            cascade: ["persist"]
+        cadLigacaoU2u:
+            targetEntity: CadLigacaoU2u
+            mappedBy: cadUsers
+        cadUsersEmail:
+            targetEntity: CadUsersEmail
+            mappedBy: cadUsers
+            cascade: ["persist"]
+        cadUsersTelefone:
+            targetEntity: CadUsersTelefone
+            mappedBy: cadUsers
+            cascade: ["persist"]
+    manyToOne:
+        segmento:
+            targetEntity: CadUsersSegmento
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                segmento_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        admLogradouro:
+            targetEntity: AdmLogradouro
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                adm_logradouro_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        admPais:
+            targetEntity: AdmPais
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                adm_pais_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        admUf:
+            targetEntity: AdmUf
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                adm_uf_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        admCidades:
+            targetEntity: AdmCidades
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                adm_cidades_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

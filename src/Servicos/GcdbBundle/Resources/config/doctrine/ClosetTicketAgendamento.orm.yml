@@ -1,0 +1,44 @@
+Servicos\GcdbBundle\Entity\ClosetTicketAgendamento:
+    type: entity
+    table: gcdb.closet_ticket_agendamento
+    indexes:
+        fk_closet_ticket_agendamento_close_ticket_soclicitacao1_idx:
+            columns:
+                - closet_soclicitacao_id
+    id:
+        closetTicketAgendamentoId:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: closet_ticket_agendamento_id
+            generator:
+                strategy: IDENTITY
+    fields:
+        closetTicketChegadaPrevisao:
+            type: datetime
+            nullable: true
+            column: closet_ticket_chegada_previsao
+        closetTicketChegada:
+            type: datetime
+            nullable: true
+            column: closet_ticket_chegada
+        closetTicketReparo:
+            type: datetime
+            nullable: true
+            column: closet_ticket_reparo
+        closetTicketFuncionamento:
+            type: datetime
+            nullable: true
+            column: closet_ticket_funcionamento
+    manyToOne:
+        closetSoclicitacao:
+            targetEntity: CloseTicketSoclicitacao
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                closet_soclicitacao_id:
+                    referencedColumnName: closet_soclicitacao_id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

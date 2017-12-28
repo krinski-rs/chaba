@@ -1,0 +1,112 @@
+{% block bs_close %}
+{% set condition = (report.getParent() and report.getParent().getStatus() == 3) %}
+
+<div class="row">
+    <small><em>(*) Campos obrigatórios</em></small>
+    <form id="form_bs_close" method="POST" action="{{ path('troubleticket_bs_close', { 'id': report.getId()}) }}">
+        <div class="col-sm-50" style="float: left;">
+            <div class="row">
+                {% if condition %}
+                    <input type="hidden" id="incidente_val" name="hidden_incidente" value="{{ report.getParent().getIncident() }}"/>
+                {% endif %}
+                <label for="select_bs_close_incidente">* Incidente</label>
+                <select name="incidente" id="select_bs_close_incidente">
+                    <option value="">---</option>
+                </select>
+                <div class="error alert" id="div_error_select_bs_close_incidente" style="display:none"><span>Este campo precisa ser preenchido corretamente!</span></div>
+            </div>
+            <div class="row">
+                {% if condition %}
+                    <input type="hidden" id="severidade_val" name="hidden_severidade" value="{{ report.getParent().getClosedSymptom() }}"/>
+                {% endif %}
+                <label for="select_bs_close_severidade">* Severidade</label>
+                <select name="severidade" id="select_bs_close_severidade">
+                    <option value="">---</option>
+                </select>
+                <div class="error alert" id="div_error_select_bs_close_severidade" style="display:none"><span>Este campo precisa ser preenchido corretamente!</span></div>
+            </div>
+            <div class="row">
+                {% if condition %}
+                    <input type="hidden" id="pop_val" name="hidden_pop" value="{{ report.getParent().getPopId() }}"/>
+                {% endif %}
+                <label for="select_bs_close_pop">* POP</label>
+                <select name="pop" id="select_bs_close_pop">
+                    <option value="">---</option>
+                </select>
+                <div class="error alert" id="div_error_select_bs_close_pop" style="display:none"><span>Este campo precisa ser preenchido corretamente!</span></div>
+            </div>
+            <div class="row">
+                {% if condition %}
+                    <input type="hidden" id="fornecedor_val" name="hidden_fornecedor" value="{{ report.getParent().getProviderId() }}"/>
+                {% endif %}
+                <label for="select_bs_close_fornecedor">Fornecedor</label>
+                <select name="fornecedor" id="select_bs_close_fornecedor">
+                    <option value="">---</option>
+                </select>
+                <div class="error alert" id="div_error_select_bs_close_fornecedor" style="display:none"><span>Este campo precisa ser preenchido corretamente!</span></div>
+            </div>
+        </div>
+        <div class="col-sm-50" style="float: left;">
+            <div class="row">
+                {% if condition %}
+                    <input type="hidden" id="estrutura_val" name="hidden_estrutura" value="{{ report.getParent().getStructure() }}"/>
+                {% endif %}
+                <label for="select_bs_close_estrutura">* Estrutura</label>
+                <select name="estrutura" id="select_bs_close_estrutura">
+                    <option value="">---</option>
+                </select>
+                <div class="error alert" id="div_error_select_bs_close_estrutura" style="display:none"><span>Este campo precisa ser preenchido corretamente!</span></div>
+            </div>
+            <div class="row">
+                {% if condition %}
+                    <input type="hidden" id="elemento_val" name="hidden_elemento" value="{{ report.getParent().getElement() }}"/>
+                {% endif %}
+                <label for="select_bs_close_elemento">* Elemento</label>
+                <select name="elemento" id="select_bs_close_elemento">
+                    <option value="">---</option>
+                </select>
+                <div class="error" id="div_error_select_bs_close_elemento" style="display:none"><span>Este campo precisa ser preenchido corretamente!</span></div>
+            </div>
+            <div class="row">
+                {% if condition %}
+                    <input type="hidden" id="causa_val" name="hidden_causa" value="{{ report.getParent().getCause() }}"/>
+                {% endif %}
+                <label for="select_bs_close_causa">* Causa</label>
+                <select name="causa" id="select_bs_close_causa">
+                    <option value="">---</option>
+                </select>
+                <div class="error" id="div_error_select_bs_close_causa" style="display:none"><span>Este campo precisa ser preenchido corretamente!</span></div>
+            </div>
+            <div class="row">
+                {% if condition %}
+                    <input type="hidden" id="problema_val" name="hidden_problema" value="{{ report.getParent().getProblem() }}"/>
+                {% endif %}
+                <label>* Problema</label>
+                <select name="problema" id="select_bs_close_problema">
+                    <option value="">---</option>
+                </select>
+                <div class="error alert" id="div_error_select_bs_close_problema" style="display:none"><span>Este campo precisa ser preenchido corretamente!</span></div>
+            </div>
+            <div class="row">
+                {% if condition %}
+                    <input type="hidden" id="solucao_val" name="hidden_solucao" value="{{ report.getParent().getSolution() }}"/>
+                {% endif %}
+                <label>* Solução</label>
+                <select name="solucao" id="select_bs_close_solucao">
+                    <option value="">---</option>
+                </select>
+                <div class="error alert" id="div_error_select_bs_close_solucao" style="display:none"><span>Este campo precisa ser preenchido corretamente!</span></div>
+            </div>
+        </div>
+        <div class="col-sm-100">
+            <div class="row">
+                {% if condition %}
+                    <input type="hidden" id="motivo_val" name="hidden_motivo" value="{{ report.getParent().getCloseReason() }}"/>
+                {% endif %}
+                <label>* Motivo</label>
+                <textarea name="comentario" id="textarea_bs_close_comentario"></textarea>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

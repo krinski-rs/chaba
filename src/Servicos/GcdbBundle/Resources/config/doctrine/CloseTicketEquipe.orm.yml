@@ -1,0 +1,33 @@
+Servicos\GcdbBundle\Entity\CloseTicketEquipe:
+    type: entity
+    table: gcdb.close_ticket_equipe
+    indexes:
+        fk_close_ticket_equipe_close_ticket_soclicitacao1_idx:
+            columns:
+                - closet_soclicitacao_id
+    id:
+        closeTicketEquipeId:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: close_ticket_equipe_id
+            generator:
+                strategy: IDENTITY
+    fields:
+        userId:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: user_id
+    manyToOne:
+        closetSoclicitacao:
+            targetEntity: CloseTicketSoclicitacao
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                closet_soclicitacao_id:
+                    referencedColumnName: closet_soclicitacao_id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

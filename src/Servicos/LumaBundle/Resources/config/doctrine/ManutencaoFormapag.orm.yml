@@ -1,0 +1,20 @@
+Servicos\LumaBundle\Entity\ManutencaoFormapag:
+    type: entity
+    table: luma.manutencao_formapag
+    id:
+        formapagCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: formapag_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        formaPagamento:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+            column: forma_pagamento
+    lifecycleCallbacks: {  }

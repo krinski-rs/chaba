@@ -1,0 +1,38 @@
+Servicos\FinanceiroBundle\Entity\Banco:
+    type: entity
+    table: financeiro.banco
+    id:
+        bancCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: banc_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        bancCodigobacen:
+            type: string
+            nullable: false
+            length: 3
+            fixed: false
+            column: banc_codigobacen
+        bancNome:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            column: banc_nome
+        bancSegmento:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: banc_segmento
+        bancCnpj:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            column: banc_cnpj
+    lifecycleCallbacks: {  }

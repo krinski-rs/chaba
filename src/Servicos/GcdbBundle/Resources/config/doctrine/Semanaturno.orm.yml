@@ -1,0 +1,40 @@
+Servicos\GcdbBundle\Entity\Semanaturno:
+    type: entity
+    table: gcdb.semanaturno
+    indexes:
+        fk_semanaturno_semana1:
+            columns:
+                - sema_codigoid
+        fk_semanaturno_turno1:
+            columns:
+                - turn_codigoid
+    id:
+        sematurnCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: sematurn_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        semaCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: sema_codigoid
+        turnCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: turn_codigoid
+        sematurnDiasemana:
+            type: boolean
+            nullable: false
+            column: sematurn_diasemana
+        sematurnAtivo:
+            type: boolean
+            nullable: false
+            default: '1'
+            column: sematurn_ativo
+    lifecycleCallbacks: {  }

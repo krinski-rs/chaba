@@ -1,0 +1,29 @@
+Servicos\GcdbBundle\Entity\Equipeto:
+    type: entity
+    table: gcdb.equipeTo
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        equipepai:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: EquipePai
+        equipefilho:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: EquipeFilho
+        ativo:
+            type: boolean
+            nullable: false
+            default: '1'
+            column: Ativo
+    lifecycleCallbacks: {  }

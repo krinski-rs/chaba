@@ -1,0 +1,85 @@
+Servicos\LumaBundle\Entity\TempMovimentacao:
+    type: entity
+    table: luma._temp_movimentacao
+    indexes:
+        codigo:
+            columns:
+                - codigo
+                - origem
+                - destino
+                - responsavel
+                - solicitante
+    id:
+        codigo:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        dataordem:
+            type: datetime
+            nullable: true
+        origem:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+        destino:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+        destinoFinal:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            column: destino_final
+        responsavel:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+        solicitante:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+        motivo:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+        nfe:
+            type: string
+            nullable: true
+            length: 47
+            fixed: false
+        ordem:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+        finalidade:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+        origemId:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: origem_id
+        destinoId:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: destino_id
+        destinoFinalId:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: destino_final_id
+    lifecycleCallbacks: {  }

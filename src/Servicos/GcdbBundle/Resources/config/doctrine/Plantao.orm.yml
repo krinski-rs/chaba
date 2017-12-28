@@ -1,0 +1,59 @@
+Servicos\GcdbBundle\Entity\Plantao:
+    type: entity
+    table: gcdb.Plantao
+    uniqueConstraints:
+        uid:
+            columns:
+                - uid
+    id:
+        uid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nome:
+            type: string
+            nullable: false
+            length: 250
+            fixed: false
+            default: ''
+            column: Nome
+        celular:
+            type: string
+            nullable: false
+            length: 20
+            fixed: false
+            default: ''
+            column: Celular
+        email:
+            type: string
+            nullable: false
+            length: 250
+            fixed: false
+            default: ''
+            column: Email
+        fone:
+            type: string
+            nullable: false
+            length: 15
+            fixed: false
+            default: ''
+            column: Fone
+        sms:
+            type: string
+            nullable: false
+            length: 250
+            fixed: false
+            default: ''
+            column: SMS
+        plantao:
+            type: string
+            nullable: false
+            length: 1
+            fixed: true
+            default: '0'
+            column: Plantao
+    lifecycleCallbacks: {  }

@@ -1,0 +1,115 @@
+Servicos\GcdbBundle\Entity\TempCadUsers:
+    type: entity
+    table: gcdb.temp_cad_users
+    indexes:
+        cad_users_FKIndex1:
+            columns:
+                - adm_logradouro_id
+        cad_users_FKIndex2:
+            columns:
+                - adm_pais_id
+        cad_users_FKIndex3:
+            columns:
+                - adm_uf_id
+        cad_users_FKIndex4:
+            columns:
+                - adm_cidades_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        cnpj:
+            type: bigint
+            nullable: true
+            unsigned: true
+        cpf:
+            type: bigint
+            nullable: true
+            unsigned: true
+        inscEst:
+            type: string
+            nullable: true
+            length: 32
+            fixed: false
+            comment: 'Tipo de Documento Estrangeiro'
+            column: insc_est
+        inscMun:
+            type: string
+            nullable: true
+            length: 32
+            fixed: false
+            comment: 'documento Estrangeiro'
+            column: insc_mun
+        senha:
+            type: string
+            nullable: true
+            length: 20
+            fixed: false
+        dtAbertura:
+            type: date
+            nullable: true
+            column: dt_abertura
+        admLogradouroId:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: adm_logradouro_id
+        cep:
+            type: string
+            nullable: true
+            length: 8
+            fixed: false
+        endereco:
+            type: string
+            nullable: true
+            length: 200
+            fixed: false
+        numero:
+            type: string
+            nullable: true
+            length: 5
+            fixed: false
+        bairro:
+            type: string
+            nullable: true
+            length: 200
+            fixed: false
+        admPaisId:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: adm_pais_id
+        admUfId:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: adm_uf_id
+        admCidadesId:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: adm_cidades_id
+        site:
+            type: string
+            nullable: true
+            length: 80
+            fixed: false
+        dtCadastro:
+            type: datetime
+            nullable: true
+            column: dt_cadastro
+        tipo:
+            type: string
+            nullable: true
+            length: null
+            fixed: false
+        qtfoto:
+            type: integer
+            nullable: true
+            unsigned: false
+    lifecycleCallbacks: {  }

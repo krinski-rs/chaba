@@ -1,0 +1,77 @@
+Servicos\GcdbBundle\Entity\Portas:
+    type: entity
+    table: gcdb.portas
+    id:
+        idporta:
+            type: integer
+            nullable: false
+            unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        porta:
+            type: string
+            nullable: false
+            length: 6
+            fixed: true
+            default: ''
+        adminStatus:
+            type: string
+            nullable: false
+            length: 10
+            fixed: true
+            default: Down
+            column: admin_status
+        operacao:
+            type: string
+            nullable: false
+            length: 10
+            fixed: true
+            default: Ativada
+        autoneg:
+            type: string
+            nullable: false
+            length: 10
+            fixed: true
+            default: Ativada
+        speed:
+            type: string
+            nullable: false
+            length: 6
+            fixed: true
+            default: '-'
+        duplex:
+            type: string
+            nullable: false
+            length: 15
+            fixed: true
+            default: '-'
+        flowctrl:
+            type: string
+            nullable: false
+            length: 10
+            fixed: true
+            default: Desativado
+        modo:
+            type: string
+            nullable: false
+            length: 7
+            fixed: true
+            default: Access
+        vlanbase:
+            type: string
+            nullable: false
+            length: 13
+            fixed: true
+            default: 'Sem vlan base'
+        destino:
+            type: string
+            nullable: false
+            length: 150
+            fixed: true
+        idswitch:
+            type: integer
+            nullable: false
+            unsigned: true
+    lifecycleCallbacks: {  }

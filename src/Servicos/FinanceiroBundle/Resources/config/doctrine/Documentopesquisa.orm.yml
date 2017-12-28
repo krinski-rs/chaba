@@ -1,0 +1,46 @@
+Servicos\FinanceiroBundle\Entity\Documentopesquisa:
+    type: entity
+    table: financeiro.documentopesquisa
+    indexes:
+        fk_documentopesquisa_documento1_idx:
+            columns:
+                - docu_codigoid
+        fk_documentopesquisa_pesquisa1_idx:
+            columns:
+                - pesq_codigoid
+    id:
+        docupesqCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: docupesq_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        docupesqDado:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: docupesq_dado
+    manyToOne:
+        docuCodigoid:
+            targetEntity: Documento
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                docu_codigoid:
+                    referencedColumnName: docu_codigoid
+            orphanRemoval: false
+        pesqCodigoid:
+            targetEntity: Pesquisa
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                pesq_codigoid:
+                    referencedColumnName: pesq_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

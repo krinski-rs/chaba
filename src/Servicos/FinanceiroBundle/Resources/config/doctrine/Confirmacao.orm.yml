@@ -1,0 +1,66 @@
+Servicos\FinanceiroBundle\Entity\Confirmacao:
+    type: entity
+    table: financeiro.confirmacao
+    indexes:
+        ativ_codigoid:
+            columns:
+                - ativ_codigoid
+    id:
+        confCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: conf_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        confTipo:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: conf_tipo
+        confDatainc:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: conf_datainc
+        confDataconfi:
+            type: datetime
+            nullable: false
+            comment: 'data que o usuário alegou ter confirmado'
+            default: '0000-00-00 00:00:00'
+            column: conf_dataconfi
+        usuaCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: usua_codigoid
+        confCiente:
+            type: boolean
+            nullable: false
+            column: conf_ciente
+        confJustificativa:
+            type: text
+            nullable: true
+            length: 65535
+            fixed: false
+            column: conf_justificativa
+        confContato:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            column: conf_contato
+    manyToOne:
+        ativCodigoid:
+            targetEntity: Ativacao
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                ativ_codigoid:
+                    referencedColumnName: ativ_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

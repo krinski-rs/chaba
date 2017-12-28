@@ -1,0 +1,32 @@
+Servicos\FinanceiroBundle\Entity\Atributo:
+    type: entity
+    table: financeiro.atributo
+    id:
+        atriCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: atri_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        atriNome:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: atri_nome
+        atribTipohtml:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            column: atrib_tipohtml
+        atribMask:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            column: atrib_mask
+    lifecycleCallbacks: {  }

@@ -1,0 +1,51 @@
+{% extends 'TroubleticketBundle::base.html.twig' %}
+
+{% form_theme form _self %}
+
+{% block form_errors %}
+    {% if errors|length > 0 %}
+        <span style="color:red">
+            {% for error in errors %}
+                {{ error.message|trans }}
+            {% endfor %}
+        </span>
+    {% endif %}
+{% endblock form_errors %}
+
+{% block body %}
+    {% for message in messages %}
+        <div class="{{message['type']}}">
+            <span>{{message['message']}}</span>
+        </div>
+    {% endfor %}
+    <div class="titleModulo">
+        <div>
+            <span>Configurações de Boletins de Serviço (BS)</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-20">
+            {{ form_start(form) }}
+            <div class="row">
+                <div class="col-sm-100">
+                    <label>*Intervalo de tempo (dias):</label>
+                    {{ form_widget(form.interval_days) }}
+                    {{ form_errors(form.interval_days) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-100">
+                    <label>*Chamados no intervalo:</label>
+                    {{ form_widget(form.reports_amount) }}
+                    {{ form_errors(form.reports_amount) }}
+                </div>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block static_js %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('bundles/troubleticket/js/config.js') }}"></script>
+{% endblock %}

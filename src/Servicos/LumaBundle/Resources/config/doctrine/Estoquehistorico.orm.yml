@@ -1,0 +1,45 @@
+Servicos\LumaBundle\Entity\Estoquehistorico:
+    type: entity
+    table: luma.estoquehistorico
+    indexes:
+        id_responsavel:
+            columns:
+                - id_responsavel
+        id_estoque:
+            columns:
+                - id_estoque
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        idResponsavel:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: id_responsavel
+        dataCrawler:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: data_crawler
+        cicloCrawler:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: ciclo_crawler
+    manyToOne:
+        idEstoque:
+            targetEntity: Estoque
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_estoque:
+                    referencedColumnName: esto_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

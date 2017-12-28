@@ -1,0 +1,55 @@
+Servicos\GcdbBundle\Entity\GerenciaCrontab:
+    type: entity
+    table: gcdb.gerencia_crontab
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nome:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+        caminho:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+        descricao:
+            type: text
+            nullable: false
+            length: 65535
+            fixed: false
+        maxDuracao:
+            type: time
+            nullable: false
+            column: max_duracao
+        frequencia:
+            type: string
+            nullable: false
+            length: null
+            fixed: false
+            comment: 'I- minuto, H- hora , D-dia,M-mes,A- ano'
+        tempoFrequencia:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: 'quantas vezes será executado'
+            column: tempo_frequencia
+        horaRodara:
+            type: string
+            nullable: false
+            length: 19
+            fixed: false
+            comment: 'Hora que rodará dentro das regras criadas'
+            column: hora_rodara
+        ultimoRoda:
+            type: datetime
+            nullable: false
+            column: ultimo_roda
+    lifecycleCallbacks: {  }

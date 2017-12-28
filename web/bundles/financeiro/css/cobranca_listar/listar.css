@@ -1,0 +1,72 @@
+.ui-dialog .alert {
+	padding: 10px;
+}
+
+.alert.alert-danger{
+	background-color: #f2dede;
+	color: #a94442;
+	font-weight: bold;
+}
+
+#dialog select, #dialog input{
+    width: 100%;
+    font-size: 12px;
+    margin-bottom: 10px; 
+    border-radius: 0;   
+    color: #3578B2;
+}
+
+#dialog .rangeData{
+    width: 48%;
+    display: inline-block;
+}
+
+#dialog .rangeData:nth-child(odd){
+    margin-right: 4%;
+}
+
+.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix{
+    border: none !important;
+}
+
+.ui-dialog {
+    top: 18% !important;
+    left: 12% !important;
+}
+
+div.acoes{
+    width: 100%;
+}
+
+div.acoes > div{
+    width: 300px;
+    display: inline-block;
+}
+
+div.acoes .btn-group{
+    width: 95% !important;
+}
+
+div.acoes .btn-group button{
+    width: 100%;
+    border-radius: 0 !important;
+    padding: 4px;
+}
+
+div.acoes .dropdown-menu{
+    width: 100% !important;
+}
+
+div.acoes .multiselect-container>li>a>label{
+    padding: 3px 20px 3px 0;
+}
+
+.data-revisao{
+    width: 100px !important;
+    margin-left: 10px;
+}
+
+div.acoes label.radio input{
+    width: 10px !important;
+    margin-top: 5px !important;
+}

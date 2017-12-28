@@ -1,0 +1,28 @@
+Servicos\RhBundle\Entity\RhBancoDefinicao:
+    type: entity
+    table: rh.rh_banco_definicao
+    id:
+        idBancoDefinicao:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_banco_definicao
+            generator:
+                strategy: IDENTITY
+    fields:
+        descricao:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+        dataInc:
+            type: datetime
+            nullable: true
+            column: data_inc
+        ativo:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+    lifecycleCallbacks: {  }

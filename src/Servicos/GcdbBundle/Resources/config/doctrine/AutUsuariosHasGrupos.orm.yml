@@ -1,0 +1,45 @@
+Servicos\GcdbBundle\Entity\AutUsuariosHasGrupos:
+    type: entity
+    table: gcdb.aut_usuarios_has_Grupos
+    indexes:
+        grupos_id:
+            columns:
+                - grupos_id
+        usuarios_id:
+            columns:
+                - usuarios_id
+    id:
+        usuariosId:
+            type: integer
+            nullable: false
+            unsigned: true
+            default: '0'
+            id: true
+            column: usuarios_id
+        gruposId:
+            type: integer
+            nullable: false
+            unsigned: true
+            default: '0'
+            id: true
+            column: grupos_id
+    manyToOne:
+        autUsuario:
+            targetEntity: AutUsuarios
+            cascade: {  }
+            mappedBy: null
+            inversedBy: autUsuariosHasGrupos
+            joinColumns:
+                usuarios_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        autGrupos:
+            targetEntity: AutGrupos
+            cascade: {  }
+            mappedBy: null
+            inversedBy: grupos
+            joinColumns:
+                grupos_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

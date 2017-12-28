@@ -1,0 +1,39 @@
+Servicos\FinanceiroBundle\Entity\Contratocontato:
+    type: entity
+    table: financeiro.contratocontato
+    indexes:
+        fk_contratocontato_contrato1_idx:
+            columns:
+                - cont_codigoid
+    id:
+        contcontCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: contcont_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        usrCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: usr_codigoid
+        contcontContato:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+            column: contcont_contato
+    manyToOne:
+        contCodigoid:
+            targetEntity: Contrato
+            cascade: {  }
+            mappedBy: null
+            inversedBy: contratocontato
+            joinColumns:
+                cont_codigoid:
+                    referencedColumnName: cont_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

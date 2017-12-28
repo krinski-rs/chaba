@@ -1,0 +1,46 @@
+Servicos\LumaBundle\Entity\Unidadenotificacao:
+    type: entity
+    table: luma.unidadenotificacao
+    indexes:
+        unidnoti_unidresp_fk:
+            columns:
+                - unidresp_codigoid
+        unidnoti_movi_fk:
+            columns:
+                - movi_codigoid
+    id:
+        unidnotiCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: unidnoti_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        unidnotiEnviada:
+            type: boolean
+            nullable: true
+            comment: 'Significa o envio para a TABELA de email. Nada além disto.'
+            default: '0'
+            column: unidnoti_enviada
+    manyToOne:
+        unidrespCodigoid:
+            targetEntity: Unidaderesponsavel
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                unidresp_codigoid:
+                    referencedColumnName: unidresp_codigoid
+            orphanRemoval: false
+        moviCodigoid:
+            targetEntity: Movimentacao
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                movi_codigoid:
+                    referencedColumnName: movi_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

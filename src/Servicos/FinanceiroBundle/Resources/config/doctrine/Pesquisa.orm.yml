@@ -1,0 +1,26 @@
+Servicos\FinanceiroBundle\Entity\Pesquisa:
+    type: entity
+    table: financeiro.pesquisa
+    id:
+        pesqCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: pesq_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        pesqNome:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            column: pesq_nome
+        pesqTipo:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            column: pesq_tipo
+    lifecycleCallbacks: {  }

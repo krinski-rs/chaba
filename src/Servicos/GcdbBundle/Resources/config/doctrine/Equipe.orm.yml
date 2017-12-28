@@ -1,0 +1,30 @@
+Servicos\GcdbBundle\Entity\Equipe:
+    type: entity
+    table: gcdb.Equipe
+    id:
+        equipeid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: EquipeID
+            generator:
+                strategy: IDENTITY
+    fields:
+        equipenome:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            column: EquipeNome
+        equipeapelido:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            column: EquipeApelido
+        ativo:
+            type: boolean
+            nullable: false
+            column: Ativo
+    lifecycleCallbacks: {  }

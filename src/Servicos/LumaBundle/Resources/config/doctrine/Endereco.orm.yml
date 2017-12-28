@@ -1,0 +1,96 @@
+Servicos\LumaBundle\Entity\Endereco:
+    type: entity
+    table: luma.endereco
+    indexes:
+        fk_unidadeendereco_unidade1:
+            columns:
+                - unid_codigoid
+    id:
+        endeCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: ende_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        endeUf:
+            type: string
+            nullable: false
+            length: 2
+            fixed: false
+            column: ende_uf
+        endeCidade:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: ende_cidade
+        endeEndereco:
+            type: text
+            nullable: false
+            length: 65535
+            fixed: false
+            column: ende_endereco
+        endeNumero:
+            type: string
+            nullable: true
+            length: 11
+            fixed: false
+            column: ende_numero
+        endeBairro:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            column: ende_bairro
+        endeCep:
+            type: string
+            nullable: true
+            length: 10
+            fixed: false
+            column: ende_cep
+        endeLongitude:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            column: ende_longitude
+        endeLatitude:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            column: ende_latitude
+        endeReferencia:
+            type: text
+            nullable: true
+            length: 65535
+            fixed: false
+            column: ende_referencia
+        localeCodigoid:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: voice.locale
+            column: locale_codigoid
+    manyToOne:
+        unidCodigoid:
+            targetEntity: Unidade
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                unid_codigoid:
+                    referencedColumnName: unid_codigoid
+            orphanRemoval: false
+    manyToMany:
+        ordeCodigoid:
+            targetEntity: Ordem
+            cascade: {  }
+            mappedBy: endeCodigoid
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+    lifecycleCallbacks: {  }

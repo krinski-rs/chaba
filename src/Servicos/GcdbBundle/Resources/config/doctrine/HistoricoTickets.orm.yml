@@ -1,0 +1,49 @@
+Servicos\GcdbBundle\Entity\HistoricoTickets:
+    type: entity
+    table: gcdb.historico_tickets
+    indexes:
+        tickcate_codigoid:
+            columns:
+                - tickcate_codigoid
+        autuser_codigoid:
+            columns:
+                - autuser_codigoid
+        histtick_datainc:
+            columns:
+                - histtick_datainc
+    id:
+        histtickCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: histtick_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        histtickDatainc:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+            column: histtick_datainc
+        histtickQuantidade:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: histtick_quantidade
+        tickcateCodigoid:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: tickcate_codigoid
+    manyToOne:
+        autuserCodigoid:
+            targetEntity: AutUsuarios
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                autuser_codigoid:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

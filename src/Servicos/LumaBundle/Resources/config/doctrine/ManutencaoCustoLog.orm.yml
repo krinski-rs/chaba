@@ -1,0 +1,47 @@
+Servicos\LumaBundle\Entity\ManutencaoCustoLog:
+    type: entity
+    table: luma.manutencao_custo_log
+    indexes:
+        fk_cust_id:
+            columns:
+                - cust_codigoid
+    id:
+        custlogCodigoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: custlog_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        userId:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: user_id
+        dataInc:
+            type: datetime
+            nullable: false
+            column: data_inc
+        acao:
+            type: string
+            nullable: false
+            length: 20
+            fixed: false
+        motivo:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+    manyToOne:
+        custCodigoid:
+            targetEntity: ManutencaoCusto
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cust_codigoid:
+                    referencedColumnName: cust_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }
