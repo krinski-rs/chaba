@@ -48,6 +48,21 @@ abstract class FileCache extends CacheProvider
     private $umask;
 
     /**
+     * @var int
+     */
+    private $directoryStringLength;
+
+    /**
+     * @var int
+     */
+    private $extensionStringLength;
+
+    /**
+     * @var bool
+     */
+    private $isRunningOnWindows;
+
+    /**
      * Constructor.
      *
      * @param string $directory The cache directory.
@@ -83,6 +98,10 @@ abstract class FileCache extends CacheProvider
         // YES, this needs to be *after* createPathIfNeeded()
         $this->directory = realpath($directory);
         $this->extension = (string) $extension;
+
+        $this->directoryStringLength = strlen($this->directory);
+        $this->extensionStringLength = strlen($this->extension);
+        $this->isRunningOnWindows    = defined('PHP_WINDOWS_VERSION_BUILD');
     }
 
     /**
@@ -115,10 +134,16 @@ abstract class FileCache extends CacheProvider
         $hash = hash('sha256', $id);
 
         // This ensures that the filename is unique and that there are no invalid chars in it.
-        if ('' === $id || strlen($id) > ((255 - strlen($this->extension)) / 2)) {
-            // Most filesystems have a limit of 255 chars for each path component. So if the id in hex representation
-            // plus the extension would surpass the limit, we use the hash instead. The prefix prevents collisions
-            // between the hash and bin2hex.
+        if (
+            '' === $id
+            || ((strlen($id) * 2 + $this->extensionStringLength) > 255)
+            || ($this->isRunningOnWindows && ($this->directoryStringLength + 4 + strlen($id) * 2 + $this->extensionStringLength) > 258)
+        ) {
+            // Most filesystems have a limit of 255 chars for each path component. On Windows the the whole path is limited
+            // to 260 chars (including terminating null char). Using long UNC ("\\?\" prefix) does not work with the PHP API.
+            // And there is a bug in PHP (https://bugs.php.net/bug.php?id=70943) with path lengths of 259.
+            // So if the id in hex representation would surpass the limit, we use the hash instead. The prefix prevents
+            // collisions between the hash and bin2hex.
             $filename = '_' . $hash;
         } else {
             $filename = bin2hex($id);
@@ -177,13 +202,13 @@ abstract class FileCache extends CacheProvider
 
         $free = disk_free_space($this->directory);
 
-        return array(
+        return [
             Cache::STATS_HITS               => null,
             Cache::STATS_MISSES             => null,
             Cache::STATS_UPTIME             => null,
             Cache::STATS_MEMORY_USAGE       => $usage,
             Cache::STATS_MEMORY_AVAILABLE   => $free,
-        );
+        ];
     }
 
     /**
@@ -192,7 +217,7 @@ abstract class FileCache extends CacheProvider
      * @param string $path
      * @return bool TRUE on success or if path already exists, FALSE if path cannot be created.
      */
-    private function createPathIfNeeded($path)
+    private function createPathIfNeeded(string $path) : bool
     {
         if ( ! is_dir($path)) {
             if (false === @mkdir($path, 0777 & (~$this->umask), true) && !is_dir($path)) {
@@ -211,7 +236,7 @@ abstract class FileCache extends CacheProvider
      *
      * @return bool TRUE on success, FALSE if path cannot be created, if path is not writable or an any other error.
      */
-    protected function writeFile($filename, $content)
+    protected function writeFile(string $filename, string $content) : bool
     {
         $filepath = pathinfo($filename, PATHINFO_DIRNAME);
 
@@ -227,6 +252,7 @@ abstract class FileCache extends CacheProvider
         @chmod($tmpFile, 0666 & (~$this->umask));
 
         if (file_put_contents($tmpFile, $content) !== false) {
+            @chmod($tmpFile, 0666 & (~$this->umask));
             if (@rename($tmpFile, $filename)) {
                 return true;
             }
@@ -240,7 +266,7 @@ abstract class FileCache extends CacheProvider
     /**
      * @return \Iterator
      */
-    private function getIterator()
+    private function getIterator() : \Iterator
     {
         return new \RecursiveIteratorIterator(
             new \RecursiveDirectoryIterator($this->directory, \FilesystemIterator::SKIP_DOTS),
@@ -253,9 +279,9 @@ abstract class FileCache extends CacheProvider
      *
      * @return bool
      */
-    private function isFilenameEndingWithExtension($name)
+    private function isFilenameEndingWithExtension(string $name) : bool
     {
         return '' === $this->extension
-            || strrpos($name, $this->extension) === (strlen($name) - strlen($this->extension));
+            || strrpos($name, $this->extension) === (strlen($name) - $this->extensionStringLength);
     }
 }

@@ -17,11 +17,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 class RequestTest extends \PHPUnit_Framework_TestCase
 {
-    public function testConstructor()
-    {
-        $this->testInitialize();
-    }
-
     public function testInitialize()
     {
         $request = new Request();
@@ -215,7 +210,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('/?foo', $request->getRequestUri());
         $this->assertEquals(array('foo' => ''), $request->query->all());
 
-        ## assume rewrite rule: (.*) --> app/app.php ; app/ is a symlink to a symfony web/ directory
+        // assume rewrite rule: (.*) --> app/app.php; app/ is a symlink to a symfony web/ directory
         $request = Request::create('http://test.com/apparthotel-1234', 'GET', array(), array(), array(),
             array(
                 'DOCUMENT_ROOT' => '/var/www/www.test.com',
@@ -330,6 +325,13 @@ class RequestTest extends \PHPUnit_Framework_TestCase
         }
     }
 
+    public function testGetFormatWithCustomMimeType()
+    {
+        $request = new Request();
+        $request->setFormat('custom', 'application/vnd.foo.api;myversion=2.3');
+        $this->assertEquals('custom', $request->getFormat('application/vnd.foo.api;myversion=2.3'));
+    }
+
     public function getFormatToMimeTypeMapProvider()
     {
         return array(
@@ -340,7 +342,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
             array('json', array('application/json', 'application/x-json')),
             array('xml', array('text/xml', 'application/xml', 'application/x-xml')),
             array('rdf', array('application/rdf+xml')),
-            array('atom',array('application/atom+xml')),
+            array('atom', array('application/atom+xml')),
         );
     }
 
@@ -868,6 +870,10 @@ class RequestTest extends \PHPUnit_Framework_TestCase
 
             // client IP with port
             array(array('88.88.88.88'), '127.0.0.1', '88.88.88.88:12345, 127.0.0.1', array('127.0.0.1')),
+
+            // invalid forwarded IP is ignored
+            array(array('88.88.88.88'), '127.0.0.1', 'unknown,88.88.88.88', array('127.0.0.1')),
+            array(array('88.88.88.88'), '127.0.0.1', '}__test|O:21:&quot;JDatabaseDriverMysqli&quot;:3:{s:2,88.88.88.88', array('127.0.0.1')),
         );
     }
 
@@ -1479,6 +1485,13 @@ class RequestTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(80, $request->getPort());
         $this->assertFalse($request->isSecure());
 
+        // request is forwarded by a non-trusted proxy
+        Request::setTrustedProxies(array('2.2.2.2'));
+        $this->assertEquals('3.3.3.3', $request->getClientIp());
+        $this->assertEquals('example.com', $request->getHost());
+        $this->assertEquals(80, $request->getPort());
+        $this->assertFalse($request->isSecure());
+
         // trusted proxy via setTrustedProxies()
         Request::setTrustedProxies(array('3.3.3.3', '2.2.2.2'));
         $this->assertEquals('1.1.1.1', $request->getClientIp());
@@ -1671,7 +1684,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
         $request = Request::create('/');
         $request->headers->set('host', $host);
         $this->assertEquals($host, $request->getHost());
-        $this->assertLessThan(1, microtime(true) - $start);
+        $this->assertLessThan(5, microtime(true) - $start);
     }
 
     /**

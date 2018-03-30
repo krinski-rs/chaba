@@ -12,6 +12,7 @@
 namespace Symfony\Component\Serializer\Tests\Encoder;
 
 use Symfony\Component\Serializer\Tests\Fixtures\Dummy;
+use Symfony\Component\Serializer\Tests\Fixtures\NormalizableTraversableDummy;
 use Symfony\Component\Serializer\Tests\Fixtures\ScalarDummy;
 use Symfony\Component\Serializer\Encoder\XmlEncoder;
 use Symfony\Component\Serializer\Serializer;
@@ -74,7 +75,7 @@ class XmlEncoderTest extends \PHPUnit_Framework_TestCase
                 '@Type' => 'test',
             ),
             'föo_bär' => 'a',
-            'Bar' => array(1,2,3),
+            'Bar' => array(1, 2, 3),
             'a' => 'b',
         );
         $expected = '<?xml version="1.0"?>'."\n".
@@ -203,6 +204,21 @@ class XmlEncoderTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expected, $serializer->serialize($array, 'xml', $options));
     }
 
+    public function testEncodeTraversableWhenNormalizable() {
+        $this->encoder = new XmlEncoder();
+        $serializer = new Serializer(array(new CustomNormalizer()), array('xml' => new XmlEncoder()));
+        $this->encoder->setSerializer($serializer);
+
+        $expected = <<<XML
+<?xml version="1.0"?>
+<response><foo>normalizedFoo</foo><bar>normalizedBar</bar></response>
+
+XML;
+
+        $this->assertEquals($expected, $serializer->serialize(new NormalizableTraversableDummy(), 'xml'));
+
+    }
+
     public function testDecode()
     {
         $source = $this->getXmlSource();
@@ -283,7 +299,7 @@ class XmlEncoderTest extends \PHPUnit_Framework_TestCase
                 '@Type' => 'test',
             ),
             'föo_bär' => 'a',
-            'Bar' => array(1,2,3),
+            'Bar' => array(1, 2, 3),
             'a' => 'b',
         );
         $expected = array(
@@ -296,7 +312,7 @@ class XmlEncoderTest extends \PHPUnit_Framework_TestCase
                 '@Type' => 'test',
             ),
             'föo_bär' => 'a',
-            'Bar' => array(1,2,3),
+            'Bar' => array(1, 2, 3),
             'a' => 'b',
         );
         $xml = $this->encoder->encode($obj, 'xml');

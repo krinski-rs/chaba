@@ -91,9 +91,9 @@ class GetSetMethodNormalizerTest extends \PHPUnit_Framework_TestCase
     public function attributeProvider()
     {
         return array(
-            array('attribute_test', array('attribute_test'),'AttributeTest'),
-            array('attribute_test', array('any'),'attribute_test'),
-            array('attribute', array('attribute'),'Attribute'),
+            array('attribute_test', array('attribute_test'), 'AttributeTest'),
+            array('attribute_test', array('any'), 'attribute_test'),
+            array('attribute', array('attribute'), 'Attribute'),
             array('attribute', array(), 'attribute'),
         );
     }
@@ -208,7 +208,6 @@ class GetSetMethodNormalizerTest extends \PHPUnit_Framework_TestCase
             array(
                 array(
                     'bar' => function ($bar) {
-                        return;
                     },
                 ),
                 'baz',
@@ -298,6 +297,11 @@ class GetSetDummy
     public function otherMethod()
     {
         throw new \RuntimeException('Dummy::otherMethod() should not be called');
+    }
+
+    protected function getPrivate()
+    {
+        throw new \RuntimeException('Dummy::getPrivate() should not be called');        
     }
 }
 

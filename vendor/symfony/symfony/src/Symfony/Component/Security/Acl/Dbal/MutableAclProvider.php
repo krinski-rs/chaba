@@ -253,7 +253,7 @@ class MutableAclProvider extends AclProvider implements MutableAclProviderInterf
             }
 
             // check properties for deleted, and created ACEs, and perform deletions
-            // we need to perfom deletions before updating existing ACEs, in order to
+            // we need to perform deletions before updating existing ACEs, in order to
             // preserve uniqueness of the order field
             if (isset($propertyChanges['classAces'])) {
                 $this->updateOldAceProperty('classAces', $propertyChanges['classAces']);
@@ -433,7 +433,7 @@ class MutableAclProvider extends AclProvider implements MutableAclProviderInterf
      */
     protected function getInsertAccessControlEntrySql($classId, $objectIdentityId, $field, $aceOrder, $securityIdentityId, $strategy, $mask, $granting, $auditSuccess, $auditFailure)
     {
-        $query = <<<QUERY
+        $query = <<<'QUERY'
             INSERT INTO %s (
                 class_id,
                 object_identity_id,
@@ -510,7 +510,7 @@ QUERY;
      */
     protected function getInsertObjectIdentitySql($identifier, $classId, $entriesInheriting)
     {
-        $query = <<<QUERY
+        $query = <<<'QUERY'
               INSERT INTO %s (class_id, object_identifier, entries_inheriting)
               VALUES (%d, %s, %s)
 QUERY;
@@ -856,7 +856,7 @@ QUERY;
      */
     private function updateNewAceProperty($name, array $changes)
     {
-        list($old, $new) = $changes;
+        list(, $new) = $changes;
 
         $sids = new \SplObjectStorage();
         $classIds = new \SplObjectStorage();

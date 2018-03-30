@@ -34,6 +34,10 @@ class ServerRunCommand extends ContainerAwareCommand
             return false;
         }
 
+        if (!class_exists('Symfony\Component\Process\Process')) {
+            return false;
+        }
+
         return parent::isEnabled();
     }
 
@@ -50,7 +54,7 @@ class ServerRunCommand extends ContainerAwareCommand
             ))
             ->setName('server:run')
             ->setDescription('Runs PHP built-in web server')
-            ->setHelp(<<<EOF
+            ->setHelp(<<<'EOF'
 The <info>%command.name%</info> runs PHP built-in web server:
 
   <info>%command.full_name%</info>

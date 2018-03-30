@@ -15,7 +15,9 @@ use Symfony\Component\PropertyAccess\PropertyAccessor;
 use Symfony\Component\PropertyAccess\Tests\Fixtures\Author;
 use Symfony\Component\PropertyAccess\Tests\Fixtures\Magician;
 use Symfony\Component\PropertyAccess\Tests\Fixtures\MagicianCall;
+use Symfony\Component\PropertyAccess\Tests\Fixtures\TestClass;
 use Symfony\Component\PropertyAccess\Tests\Fixtures\Ticket5775Object;
+use Symfony\Component\PropertyAccess\Tests\Fixtures\TypeHinted;
 
 class PropertyAccessorTest extends \PHPUnit_Framework_TestCase
 {
@@ -90,9 +92,11 @@ class PropertyAccessorTest extends \PHPUnit_Framework_TestCase
 
     public function testGetValueReadsArrayWithMissingIndexForCustomPropertyPath()
     {
-        $array = array('child' => array('index' => array()));
+        $object = new \ArrayObject();
+        $array = array('child' => array('index' => $object));
 
-        $this->assertNull($this->propertyAccessor->getValue($array, '[child][index][firstName]'));
+        $this->assertNull($this->propertyAccessor->getValue($array, '[child][index][foo][bar]'));
+        $this->assertSame(array(), $object->getArrayCopy());
     }
 
     public function testGetValueReadsProperty()
@@ -307,7 +311,9 @@ class PropertyAccessorTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetValueThrowsExceptionIfGetterIsNotPublic()
     {
-        $this->propertyAccessor->setValue(new Author(), 'privateSetter', 'foobar');
+        $object = new Author();
+
+        $this->propertyAccessor->setValue($object, 'privateSetter', 'foobar');
     }
 
     /**
@@ -337,7 +343,7 @@ class PropertyAccessorTest extends \PHPUnit_Framework_TestCase
     {
         $value = new MagicianCall();
 
-        $this->propertyAccessor->getValue($value, 'foobar', 'bam');
+        $this->propertyAccessor->getValue($value, 'foobar');
     }
 
     public function testGetValueReadsMagicCall()
@@ -402,5 +408,35 @@ class PropertyAccessorTest extends \PHPUnit_Framework_TestCase
             array(array('index' => array()), '[index][firstName]', null),
             array(array('root' => array('index' => array())), '[root][index][firstName]', null),
         );
+    }
+
+    /**
+     * @expectedException \Symfony\Component\PropertyAccess\Exception\InvalidArgumentException
+     * @expectedExceptionMessage Expected argument of type "DateTime", "string" given
+     */
+    public function testThrowTypeError()
+    {
+        $object = new TypeHinted();
+
+        $this->propertyAccessor->setValue($object, 'date', 'This is a string, \DateTime expected.');
+    }
+
+    public function testSetTypeHint()
+    {
+        $date = new \DateTime();
+        $object = new TypeHinted();
+
+        $this->propertyAccessor->setValue($object, 'date', $date);
+        $this->assertSame($date, $object->getDate());
+    }
+
+    public function testArrayNotBeeingOverwritten()
+    {
+        $value = array('value1' => 'foo', 'value2' => 'bar');
+        $object = new TestClass($value);
+
+        $this->propertyAccessor->setValue($object, 'publicAccessor[value2]', 'baz');
+        $this->assertSame('baz', $this->propertyAccessor->getValue($object, 'publicAccessor[value2]'));
+        $this->assertSame(array('value1' => 'foo', 'value2' => 'baz'), $object->getPublicAccessor());
     }
 }

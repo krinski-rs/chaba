@@ -43,8 +43,8 @@ class TranslationUpdateCommand extends ContainerAwareCommand
                 new InputOption('clean', null, InputOption::VALUE_NONE, 'Should clean not found messages'),
             ))
             ->setDescription('Updates the translation file')
-            ->setHelp(<<<EOF
-The <info>%command.name%</info> command extract translation strings from templates
+            ->setHelp(<<<'EOF'
+The <info>%command.name%</info> command extracts translation strings from templates
 of a given bundle. It can display them or merge the new ones into the translation files.
 When new translation strings are found it can automatically add a prefix to the translation
 message.
@@ -95,7 +95,7 @@ EOF
         $extractor = $this->getContainer()->get('translation.extractor');
         $extractor->setPrefix($input->getOption('prefix'));
         foreach ($bundleTransPaths as $path) {
-            $path = $path.'views';
+            $path .= 'views';
             if (is_dir($path)) {
                 $extractor->extract($path, $extractedCatalogue);
             }
@@ -106,7 +106,7 @@ EOF
         $output->writeln('Loading translation files');
         $loader = $this->getContainer()->get('translation.loader');
         foreach ($bundleTransPaths as $path) {
-            $path = $path.'translations';
+            $path .= 'translations';
             if (is_dir($path)) {
                 $loader->loadMessages($path, $currentCatalogue);
             }
@@ -151,7 +151,7 @@ EOF
             $output->writeln('Writing files');
             $bundleTransPath = false;
             foreach ($bundleTransPaths as $path) {
-                $path = $path.'translations';
+                $path .= 'translations';
                 if (is_dir($path)) {
                     $bundleTransPath = $path;
                 }

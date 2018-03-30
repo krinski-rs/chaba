@@ -49,7 +49,7 @@ class ContainerDebugCommand extends ContainerAwareCommand
                 new InputOption('parameters', null, InputOption::VALUE_NONE, 'Displays parameters for an application'),
             ))
             ->setDescription('Displays current services for an application')
-            ->setHelp(<<<EOF
+            ->setHelp(<<<'EOF'
 The <info>%command.name%</info> command displays all configured <comment>public</comment> services:
 
   <info>php %command.full_name%</info>
@@ -75,7 +75,7 @@ Use the <info>--parameters</info> option to display all parameters:
 
   <info>php %command.full_name% --parameters</info>
 
-Display a specific parameter by specifying his name with the <info>--parameter</info> option:
+Display a specific parameter by specifying its name with the <info>--parameter</info> option:
 
   <info>php %command.full_name% --parameter=kernel.debug</info>
 EOF

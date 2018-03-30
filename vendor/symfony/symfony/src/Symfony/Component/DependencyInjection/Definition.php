@@ -40,8 +40,6 @@ class Definition
     protected $arguments;
 
     /**
-     * Constructor.
-     *
      * @param string $class     The service class
      * @param array  $arguments An array of arguments to pass to the service constructor
      */
@@ -409,9 +407,7 @@ class Definition
      */
     public function clearTag($name)
     {
-        if (isset($this->tags[$name])) {
-            unset($this->tags[$name]);
-        }
+        unset($this->tags[$name]);
 
         return $this;
     }

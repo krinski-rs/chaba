@@ -35,7 +35,7 @@ class ConfigDumpReferenceCommand extends ContainerDebugCommand
                 new InputArgument('name', InputArgument::OPTIONAL, 'The Bundle or extension alias'),
             ))
             ->setDescription('Dumps default configuration for an extension')
-            ->setHelp(<<<EOF
+            ->setHelp(<<<'EOF'
 The <info>%command.name%</info> command dumps the default configuration for an extension/bundle.
 
 The extension alias or bundle name can be used:
@@ -66,6 +66,11 @@ EOF
 
         if (empty($name)) {
             $output->writeln('Available registered bundles with their extension alias if available:');
+
+            usort($bundles, function($bundleA, $bundleB) {
+                return strcmp($bundleA->getName(), $bundleB->getName());
+            });
+
             foreach ($bundles as $bundle) {
                 $extension = $bundle->getContainerExtension();
                 $output->writeln($bundle->getName().($extension ? ': '.$extension->getAlias() : ''));
